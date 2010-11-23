@@ -1,0 +1,20 @@
+update=apt-get update
+upgrade=apt-get -y dist-upgrade
+install=apt-get -y install
+remove=apt-get -y remove
+query_upgradable=apt-get -u -s -qq upgrade
+query_local_byname=dpkg-query -W -f='${Package} ${Version}\n'
+query_local_info_byname=dpkg-query -W -f='Name : ${Package}\nVersion : ${Version}\nGroups : ${Section}\nLicenses : ${License}\nURL : ${Homepage}\nDescription : ${Description}'
+query_remote_byname=apt-cache pkgname
+query_remote_info_byname=apt-cache show
+
+query_filter_regexp=^.+
+query_name_regexp=^[^\\ ]+
+query_lversion_regexp=[^\\ ]+$
+
+query_info_name_regexp=^Name[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
+query_info_version_regexp=^Version[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
+query_info_group_regexp=^Groups[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
+query_info_license_regexp=^Licenses[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
+query_info_description_regexp=^Description[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
+query_info_url_regexp=^URL[ \t\r\n\v\f]+:[ \t\r\n\v\f]+

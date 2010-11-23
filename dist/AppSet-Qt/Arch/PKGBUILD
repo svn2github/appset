@@ -1,0 +1,19 @@
+# Mainteiner: Simone Tobia <simone.tobia@gmail.com>
+
+pkgname=appset-qt
+pkgver=0.1.0
+pkgrel=1
+pkgdesc=""
+arch=('i686' 'x86_64')
+url="http://appset.sourceforge.net/"
+license=('GPL2')
+depends=('qt>=4.6')
+source=(http://downloads.sourceforge.net/project/appset/appset/$pkgver/$pkgname-$pkgver-sources.tar.gz)
+md5sums=(55a74bfeedc23434a334e600dcfed9bc)
+
+build() {
+  cd $srcdir/$pkgname-$pkgver-sources
+  qmake PREFIX=/usr
+  make || return 1
+  make INSTALL_ROOT="$pkgdir/" install
+}
