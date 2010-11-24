@@ -667,6 +667,7 @@ void MainWindow::confirm(){
 
     toI=in;toU=u;toR=r;
     statusI=statusU=statusR=0;
+    baseIndex=0;
     baseSizes.reserve(in+u);
     for(int k=0;k<in+u;++k) baseSizes[k]=-1;
 }
