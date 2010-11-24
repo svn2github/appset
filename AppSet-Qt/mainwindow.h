@@ -157,6 +157,9 @@ private:
 
     QRegExp category;
     QRegExp category_exclude;
+    QRegExp expert;
+
+    bool isExpert;
 
     AsThread *asThread;
 

@@ -111,7 +111,7 @@ MainWindow::MainWindow(QWidget *parent) :
     loadingDialog->layout()->addWidget(loadingBar);
     loadingBar->setFormat(tr("Loading %p%"));
 
-    flags = as_QUERY_ALL_INFO;
+    flags = as_QUERY_ALL_INFO | as_EXPERT_QUERY;
 
     timer = new QTimer();
     timer2 = new QTimer();
@@ -151,6 +151,8 @@ MainWindow::MainWindow(QWidget *parent) :
     category.setCaseSensitivity(Qt::CaseInsensitive);
     category_exclude = QRegExp("---");
     category_exclude.setCaseSensitivity(Qt::CaseInsensitive);
+    expert = QRegExp("lib[s]*.*|.*lib[s]*|.*-lib[s]*.*|.*lib[s]*-.*|ttf-.*|.*-data");
+    expert.setCaseSensitivity(Qt::CaseInsensitive);
 
     ui->tableWidget->hideColumn(5);
     ui->tableWidget->hideColumn(6);
@@ -159,6 +161,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),SLOT(aboutQt()));
     connect(ui->actionAbout_AppSet,SIGNAL(triggered()),SLOT(about()));
+
+    isExpert = false;
 }
 
 void MainWindow::aboutQt(){
@@ -456,6 +460,13 @@ void MainWindow::asyncFilter(QString filter){
         }
     }
 
+    if(!isExpert){
+        for(int i=0;i<rows;++i){
+            if(ui->tableWidget->item(i,1)->text().contains(expert))
+                ui->tableWidget->hideRow(i);
+        }
+    }
+
     ui->tableWidget->sortByColumn(1,Qt::AscendingOrder);
 
     int first=-1;
@@ -556,8 +567,11 @@ void MainWindow::confirm(){
 
     int rows = ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
+        if((!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable"))
+            ui->tableWidget->setItem(i,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgrade"));
+
         if(ui->tableWidget->item(i,0)->text()=="Upgrade"){
-            ui->tableUpgraded->insertRow(u);
+            ui->tableUpgraded->insertRow(u);            
             ui->tableUpgraded->setItem(u,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
             ui->tableUpgraded->setItem(u,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
             ui->tableUpgraded->setItem(u,2,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
@@ -585,6 +599,8 @@ void MainWindow::confirm(){
 
             //ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
             ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,6)->text().toFloat()/1024)));
+
+//            ui->tableUpgraded->showRow(u++);
         }else if(ui->tableWidget->item(i,0)->text()=="Install"){
             ui->tableInstall->insertRow(in);
             ui->tableInstall->setItem(in,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
@@ -787,17 +803,22 @@ void MainWindow::updateDB(){
 }
 
 void MainWindow::expertMode(bool mode){
+    this->isExpert = mode;
+
+    asyncFilter("@@");
+
+
     //ui->searchBar->clear();
     //timer2->stop();
 
 
-    if(mode){
+    /*if(mode){
         flags |= as_EXPERT_QUERY;
     }else{
         flags &= ~as_EXPERT_QUERY;
-    }
+    }*/
 
-    addRows();
+    //addRows();
 }
 
 void MainWindow::showGames(){
