@@ -29,6 +29,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <QThreadPool>
 #include <QDialog>
 #include <QProgressBar>
+#include <QLabel>
+#include <QMovie>
 #include <asengine.h>
 #include <list>
 #include <vector>
@@ -153,6 +155,7 @@ private:
     QAction *applyAction;
 
     int toI, toU, toR;
+    int fromI, fromU, fromR;
     int statusI, statusU, statusR;
 
     QRegExp category;
@@ -168,6 +171,8 @@ private:
 
     std::vector<int> baseSizes;
     int baseIndex;
+
+    QMovie *loadingMovie;
 };
 
 #endif // MAINWINDOW_H

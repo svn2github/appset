@@ -46,6 +46,8 @@ AS::NIXEngine::NIXEngine(){
     commands.insert(StrPair("query_remote_byname",""));
     commands.insert(StrPair("query_remote_info_byname",""));
     commands.insert(StrPair("tool_ignore_upgrades",""));
+    commands.insert(StrPair("tool_hold_upgrades",""));
+    commands.insert(StrPair("tool_unhold_upgrades",""));
     commands.insert(StrPair("check_install_deps",""));
     commands.insert(StrPair("check_remove_deps",""));
     commands.insert(StrPair("check_upgrade_deps",""));
@@ -153,23 +155,50 @@ int AS::NIXEngine::saveConfig(const char *distName, const char *toolName, const 
 int AS::NIXEngine::update(){
     return execCmd(commands["update"]);
 }
-
+#include <iostream>
+using namespace std;
 int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
     string cmd(commands["upgrade"]);
+    string tail("");
+    int status=0;
+    bool holding=false;
+
+    cout << "A: " << cmd << endl;
 
     if(ignore_packages && ignore_packages->size()){
-        cmd+=" ";
-        cmd+=commands["tool_ignore_upgrades"];
-        cmd+=" ";
+        holding=commands["tool_hold_upgrades"].find('*')==std::string::npos;
+        if(!holding){
+            tail+=" ";
+            tail+=commands["tool_ignore_upgrades"];
+        }
+
+        tail+=" ";
         bool first=true;
         for(std::list<Package*>::iterator it=ignore_packages->begin();it!=ignore_packages->end();it++){
-            if(!first) cmd += ",";
-            cmd += (*it)->getName();
+            if(!first) tail += ",";
+            tail += (*it)->getName();
             first=false;
+        }
+
+        if(holding){
+            string lcmd=commands["tool_hold_upgrades"];
+            lcmd+=tail;
+            status+=execCmd(lcmd);
         }
     }
 
-    return execCmd(cmd);
+    if(!holding) cmd += tail;
+
+    cout << cmd << endl;
+    status += execCmd( cmd );
+
+    if(holding){
+        string lcmd=commands["tool_unhold_upgrades"];
+        lcmd+=tail;
+        status+=execCmd(lcmd);
+    }
+
+    return status;
 }
 
 int AS::NIXEngine::install(std::list<Package*>* packages){

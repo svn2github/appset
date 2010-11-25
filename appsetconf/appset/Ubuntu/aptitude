@@ -2,19 +2,27 @@ update=aptitude update
 upgrade=aptitude -y dist-upgrade
 install=aptitude -y install
 remove=aptitude -y remove
-query_upgradable=aptitude search -F '%p %v' '~N'
+query_upgradable=aptitude search -F '%p %v' '~U'
 query_local_byname=dpkg-query -W -f='${Package} ${Version}\n'
-query_local_info_byname=dpkg-query -W -f='Name : ${Package}\nVersion : ${Version}\nGroups : ${Section}\nLicenses : ${License}\nURL : ${Homepage}\nDescription : ${Description}'
+query_local_info_byname=dpkg-query -W -f='Name : ${Package}\nVersion : ${Version}\nGroups : ${Section}\nLicenses : ${License}\nURL : ${Homepage}\nDownload Size : ${Size}\nDescription : ${Description}'
 query_remote_byname=aptitude search -F '%p %v'
 query_remote_info_byname=apt-cache show
+tool_ignore_upgrades=*
+tool_hold_upgrades=aptitude hold
+tool_unhold_upgrades=aptitude unhold
+check_install_deps=dpkg-query -W -f='${Depends}\n'
+check_remove_deps=dpkg-query -W -f='${Breaks}\n'
+check_upgrade_deps=dpkg-query -W -f='${Depends}\n'
+download_path=/var/cache/
+
 
 query_filter_regexp=^.+
 query_name_regexp=^[^\\ ]+
 query_lversion_regexp=[^\\ ]+$
-
 query_info_name_regexp=^Name[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
 query_info_version_regexp=^Version[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
 query_info_group_regexp=^Groups[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
 query_info_license_regexp=^Licenses[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
 query_info_description_regexp=^Description[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
 query_info_url_regexp=^URL[ \t\r\n\v\f]+:[ \t\r\n\v\f]+
+query_info_ksize_regexp=^Download[[:space:]]Size[[:space:]]+:[ ]+

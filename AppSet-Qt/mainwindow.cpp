@@ -163,6 +163,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAbout_AppSet,SIGNAL(triggered()),SLOT(about()));
 
     isExpert = false;
+
+    loadingMovie = new QMovie(":/pkgstatus/loading.gif");
+    loadingMovie->start();
 }
 
 void MainWindow::aboutQt(){
@@ -228,10 +231,14 @@ void MainWindow::refresh(){
             }
 
             float perc = reached*100/(float)total;
-            ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setValue(perc);
+            ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setValue((int)perc);
             if(perc>=99){
+                ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setValue(100);
                 ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setFormat("%p%");
-                ui->tableInstall->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Working"));
+                //ui->tableInstall->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Working"));
+                QLabel *label = new QLabel();
+                label->setMovie(loadingMovie);
+                ui->tableInstall->setCellWidget(i,0,label);
             }
         }
         break;
@@ -254,10 +261,15 @@ void MainWindow::refresh(){
             }
 
             float perc = reached*100/(float)total;
-            ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(perc);
+            ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue((int)perc);
             if(perc>=99){
-                ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat("%p%");
+
+                ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(100);
+                ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat("Waiting others...");
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Working"));
+                /*QLabel *label = new QLabel();
+                label->setMovie(loadingMovie);
+                ui->tableUpgraded->setCellWidget(i,0,label);*/
             }
         }
         break;
@@ -567,7 +579,8 @@ void MainWindow::confirm(){
 
     int rows = ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
-        if((!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable"))
+
+        if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,1)->text().contains(expert))
             ui->tableWidget->setItem(i,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgrade"));
 
         if(ui->tableWidget->item(i,0)->text()=="Upgrade"){
@@ -681,7 +694,7 @@ void MainWindow::confirm(){
         ui->lblRemoved->show();
     }
 
-    toI=in;toU=u;toR=r;
+    toI=fromI=in;toU=fromU=u;toR=fromR=r;
     statusI=statusU=statusR=0;
     baseIndex=0;
     baseSizes.reserve(in+u);
