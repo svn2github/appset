@@ -205,6 +205,8 @@ void MainWindow::refresh(){
     case 1:
         rows=ui->tableInstall->rowCount();
         for(int i=0;i<rows;++i){
+            if(completed[i+baseIndex]) continue;
+
             Package pkg;
             pkg.setName(ui->tableInstall->item(i,1)->text().toAscii().data());
             int reached = as->getProgressSize(&pkg);
@@ -235,16 +237,31 @@ void MainWindow::refresh(){
             if(perc>=99){
                 ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setValue(100);
                 ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setFormat("%p%");
-                //ui->tableInstall->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Working"));
-                QLabel *label = new QLabel();
-                label->setMovie(loadingMovie);
-                ui->tableInstall->setCellWidget(i,0,label);
+                ui->tableInstall->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Working"));
+
+                bool totalCompleted=true;
+                for(int k=0;totalCompleted && k<rows;++k){
+                    if(!completed[k]) totalCompleted=false;
+                }
+
+                if(totalCompleted){
+                    for(int k=0;k<rows;++k){
+                        QLabel *label = new QLabel();
+                        label->setMovie(loadingMovie);
+                        ui->tableInstall->setCellWidget(k,0,label);
+                        ((QProgressBar*)ui->tableInstall->cellWidget(k,5))->setFormat("Installing...");
+                    }
+
+                    break;
+                }
             }
         }
         break;
      case 2:
         rows=ui->tableUpgraded->rowCount();
         for(int i=0;i<rows;++i){
+            if(completed[i+baseIndex]) continue;
+
             Package pkg;
             pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());
             int reached = as->getProgressSize(&pkg);
@@ -263,13 +280,27 @@ void MainWindow::refresh(){
             float perc = reached*100/(float)total;
             ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue((int)perc);
             if(perc>=99){
-
+                completed[i+baseIndex]=true;
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(100);
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat("Waiting others...");
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Working"));
-                /*QLabel *label = new QLabel();
-                label->setMovie(loadingMovie);
-                ui->tableUpgraded->setCellWidget(i,0,label);*/
+
+
+                bool totalCompleted=true;
+                for(int k=0;totalCompleted && k<rows;++k){
+                    if(!completed[k+baseIndex]) totalCompleted=false;
+                }
+
+                if(totalCompleted){
+                    for(int k=0;k<rows;++k){
+                        QLabel *label = new QLabel();
+                        label->setMovie(loadingMovie);
+                        ui->tableUpgraded->setCellWidget(k,0,label);
+                        ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat("Installing...");
+                    }
+
+                    break;
+                }
             }
         }
         break;
@@ -694,11 +725,15 @@ void MainWindow::confirm(){
         ui->lblRemoved->show();
     }
 
-    toI=fromI=in;toU=fromU=u;toR=fromR=r;
+    toI=in;toU=u;toR=r;
     statusI=statusU=statusR=0;
     baseIndex=0;
     baseSizes.reserve(in+u);
-    for(int k=0;k<in+u;++k) baseSizes[k]=-1;
+    completed.reserve(in+u);
+    for(int k=0;k<in+u;++k){
+        baseSizes[k]=-1;
+        completed[k]=false;
+    }
 }
 
 void MainWindow::changeStatus(int row, int col){    

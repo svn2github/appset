@@ -155,7 +155,6 @@ private:
     QAction *applyAction;
 
     int toI, toU, toR;
-    int fromI, fromU, fromR;
     int statusI, statusU, statusR;
 
     QRegExp category;
@@ -170,6 +169,7 @@ private:
     QProgressBar *loadingBar;
 
     std::vector<int> baseSizes;
+    std::vector<bool> completed;
     int baseIndex;
 
     QMovie *loadingMovie;
