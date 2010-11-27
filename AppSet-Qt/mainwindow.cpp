@@ -225,15 +225,18 @@ void MainWindow::refresh(){
             float speed=0;
             if(reached){
                 if(baseSizes[i]!=-1){
-                    speed=(reached-baseSizes[i])/((float)0.333);
+                    speed=(reached-baseSizes[i])/((float)0.500);
                     ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setFormat(QString("%p% (")+QString::number((int)speed)+" KB/s)");
                 }
                 baseSizes[i]=reached;
 
             }
 
-            float perc = reached*100/(float)total;
+            float perc = (reached/(float)total)*100;
             ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setValue((int)perc);
+
+            if(perc>0) ui->tableInstall->scrollToItem(ui->tableInstall->item(i,0));
+
             if(perc>=99){
                 ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setValue(100);
                 ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setFormat("%p%");
@@ -270,15 +273,18 @@ void MainWindow::refresh(){
             float speed=0;
             if(reached){
                 if(baseSizes[i+baseIndex]!=-1){
-                    speed=(reached-baseSizes[i+baseIndex])/((float)0.333);
+                    speed=(reached-baseSizes[i+baseIndex])/((float)0.500);
                     ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat(QString("%p% (")+QString::number((int)speed)+" KB/s)");
                 }
                 baseSizes[i+baseIndex]=reached;
 
             }
 
-            float perc = reached*100/(float)total;
+            float perc = (reached/(float)total)*100;
             ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue((int)perc);
+
+            if(perc>0) ui->tableUpgraded->scrollToItem(ui->tableUpgraded->item(i,0));
+
             if(perc>=99){
                 completed[i+baseIndex]=true;
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(100);
@@ -364,7 +370,7 @@ void MainWindow::opFinished(){
         done.setText(status?tr("Errors!"):tr("Success!"));
         done.setInformativeText(status?tr("Some errors during operations, check your network, check your mirrors or try to update..."):tr("All operations completed successfully!"));
         done.setIcon(status?QMessageBox::Critical:QMessageBox::Information);
-        done.exec();
+        done.show();
 
         ui->stacked->setCurrentIndex(0);
         QCoreApplication::processEvents(QEventLoop::AllEvents,500);
@@ -373,7 +379,11 @@ void MainWindow::opFinished(){
         ui->editCancel->setEnabled(true);
         ui->editConfirm->setEnabled(true);
 
-        ui->searchBar->clear();        
+        ui->searchBar->clear();
+
+        ui->tableInstall->show();
+        ui->tableUpgraded->show();
+        ui->tableRemoved->show();
 
         modified=0;
         applyEnabler();
@@ -396,6 +406,10 @@ void MainWindow::editConfirm(){
             ui->tableRemoved->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Waiting"));
         }
 
+        ui->tableInstall->hide();
+        ui->tableUpgraded->hide();
+        ui->tableRemoved->show();
+
         asThread->setList(prem);
         asThread->setOp(3);
         pkgs=prem;
@@ -410,6 +424,10 @@ void MainWindow::editConfirm(){
             pinst->insert(pinst->end(), p);
             ui->tableInstall->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Waiting"));
         }
+
+        ui->tableInstall->show();
+        ui->tableUpgraded->hide();
+        ui->tableRemoved->hide();
 
         asThread->setList(pinst);
         asThread->setOp(1);
@@ -429,13 +447,17 @@ void MainWindow::editConfirm(){
             ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Waiting"));
         }
 
+        ui->tableInstall->hide();
+        ui->tableUpgraded->show();
+        ui->tableRemoved->hide();
+
         asThread->setList(pupgr);
         asThread->setOp(2);
         pkgs=pupgr;
         asThread->start();
     }
 
-    if(toU || toR || toI) timerUpdate->start(333);
+    if(toU || toR || toI) timerUpdate->start(500);
 }
 
 void MainWindow::timeFilter(){
