@@ -209,8 +209,8 @@ void MainWindow::refresh(){
 
             Package pkg;
             pkg.setName(ui->tableInstall->item(i,1)->text().toAscii().data());
-            int reached = as->getProgressSize(&pkg);
-            int total = ui->tableInstall->item(i,4)->text().toFloat()*1024;
+            float reached = as->getProgressSize(&pkg);
+            float total = ui->tableInstall->item(i,4)->text().toFloat()*1024;
 
             if(ui->tableInstall->item(i,3) && ui->tableInstall->item(i,3)->text().length()){
                 QString deps = ui->tableInstall->item(i,3)->text();
@@ -225,7 +225,7 @@ void MainWindow::refresh(){
             float speed=0;
             if(reached){
                 if(baseSizes[i]!=-1){
-                    speed=(reached-baseSizes[i])/((float)0.500);
+                    speed=(reached-baseSizes[i])/((float)0.5);
                     ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setFormat(QString("%p% (")+QString::number((int)speed)+" KB/s)");
                 }
                 baseSizes[i]=reached;
@@ -267,13 +267,13 @@ void MainWindow::refresh(){
 
             Package pkg;
             pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());
-            int reached = as->getProgressSize(&pkg);
-            int total = ui->tableUpgraded->item(i,4)->text().toFloat()*1024;
+            float reached = as->getProgressSize(&pkg);
+            float total = ui->tableUpgraded->item(i,4)->text().toFloat()*1024;
 
             float speed=0;
             if(reached){
                 if(baseSizes[i+baseIndex]!=-1){
-                    speed=(reached-baseSizes[i+baseIndex])/((float)0.500);
+                    speed=(reached-baseSizes[i+baseIndex])/((float)0.5);
                     ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat(QString("%p% (")+QString::number((int)speed)+" KB/s)");
                 }
                 baseSizes[i+baseIndex]=reached;
@@ -370,7 +370,8 @@ void MainWindow::opFinished(){
         done.setText(status?tr("Errors!"):tr("Success!"));
         done.setInformativeText(status?tr("Some errors during operations, check your network, check your mirrors or try to update..."):tr("All operations completed successfully!"));
         done.setIcon(status?QMessageBox::Critical:QMessageBox::Information);
-        done.show();
+        if(status)done.exec();
+        else done.show();
 
         ui->stacked->setCurrentIndex(0);
         QCoreApplication::processEvents(QEventLoop::AllEvents,500);
