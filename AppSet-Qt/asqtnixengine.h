@@ -30,6 +30,8 @@ namespace AS{
         int execCmd(std::string command);
     public:
         QString getConfErrStr(int errno);
+
+        int compareVersions(const QString &s1, const QString &s2);
     };
 
 }

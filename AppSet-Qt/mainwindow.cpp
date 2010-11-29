@@ -364,33 +364,35 @@ void MainWindow::opFinished(){
 
     timerUpdate->stop();
 
-    if(!toI && !toU && !toR){
-        QMessageBox done;
-        status = statusI+statusR+statusU;
-        done.setText(status?tr("Errors!"):tr("Success!"));
-        done.setInformativeText(status?tr("Some errors during operations, check your network, check your mirrors or try to update..."):tr("All operations completed successfully!"));
-        done.setIcon(status?QMessageBox::Critical:QMessageBox::Information);
-        if(status)done.exec();
-        else done.show();
+    if(op>0&&op<4){
+        if(!toI && !toU && !toR){
+            QMessageBox done;
+            status = statusI+statusR+statusU;
+            done.setText(status?tr("Errors!"):tr("Success!"));
+            done.setInformativeText(status?tr("Some errors during operations, check your network, check your mirrors or try to update..."):tr("All operations completed successfully!"));
+            done.setIcon(status?QMessageBox::Critical:QMessageBox::Information);
+            if(status)done.exec();
+            else done.show();
 
-        ui->stacked->setCurrentIndex(0);
-        QCoreApplication::processEvents(QEventLoop::AllEvents,500);
-        ui->mainToolBar->show();
+            ui->stacked->setCurrentIndex(0);
+            QCoreApplication::processEvents(QEventLoop::AllEvents,500);
+            ui->mainToolBar->show();
 
-        ui->editCancel->setEnabled(true);
-        ui->editConfirm->setEnabled(true);
+            ui->editCancel->setEnabled(true);
+            ui->editConfirm->setEnabled(true);
 
-        ui->searchBar->clear();
+            ui->searchBar->clear();
 
-        ui->tableInstall->show();
-        ui->tableUpgraded->show();
-        ui->tableRemoved->show();
+            ui->tableInstall->show();
+            ui->tableUpgraded->show();
+            ui->tableRemoved->show();
 
-        modified=0;
-        applyEnabler();
-        ui->showAll->setChecked(true);
-        addRows();
-    }else editConfirm();
+            modified=0;
+            applyEnabler();
+            ui->showAll->setChecked(true);
+            addRows();
+        }else editConfirm();
+    }
 }
 
 void MainWindow::editConfirm(){    
@@ -613,7 +615,7 @@ void MainWindow::notRemove(){
 }
 
 void MainWindow::notUpgrade(){
-    ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Upgradable"));
+    ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgradable"));
     modified--;
     applyEnabler();
 }
@@ -997,7 +999,7 @@ void MainWindow::showAllCat(){
     ui->tabWidget->setTabText(1, "All");
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/all.png"));
 
-    asyncFilter("@@");
+    if(ui->tabWidget->tabText(1)!="All") asyncFilter("@@");
 }
 
 void MainWindow::showNotInstalled(bool checked){
@@ -1045,6 +1047,10 @@ void MainWindow::addRows(bool checked){
     pkgs = as->queryRemote(flags);
     as->removeListener(&sbu);
 
+    AsThread t2(as);
+    t2.setOp(4);
+    t2.start();
+
     loadingBar->setValue(30);
 
     QTableWidgetItem *newItem;
@@ -1084,9 +1090,11 @@ void MainWindow::addRows(bool checked){
 
     sbu.setPreMessage(tr("PARSING INSTALLED: "));
     sbu.setStepping(60);
-    as->addListener(&sbu);
-    pkgs = as->queryLocal(flags);
-    as->removeListener(&sbu);
+    //as->addListener(&sbu);
+    //pkgs = as->queryLocal(flags);
+    //as->removeListener(&sbu);
+    t2.wait();
+    pkgs=t2.getList();
 
     loadingBar->setValue(60);
 
@@ -1094,13 +1102,29 @@ void MainWindow::addRows(bool checked){
 
     int k=0;
     int rows = ui->tableWidget->rowCount();
+    QList<int> toRemove;
     for(std::list<Package*>::iterator it=pkgs->begin(); it!=pkgs->end(); it++){
         Package *pkg = *it;
 
         int found=-1;
-        for(int index=0;found==-1 && index<rows;++index){
+        QString versionMatch;
+        int matchIndex;
+        for(int index=0;index<rows;++index){
             if(ui->tableWidget->item(index,1)->text()==QString(pkg->getName().c_str())){
-                found=index;
+                if(found!=-1){
+                    if((((QTNIXEngine*)as)->compareVersions(ui->tableWidget->item(index,3)->text(),versionMatch))<0){
+                        toRemove.insert(toRemove.end(),index);
+                    }else{
+                        toRemove.insert(toRemove.end(),matchIndex);
+                        found=index;
+                        matchIndex=index;
+                        versionMatch=ui->tableWidget->item(index,3)->text();
+                    }
+                }else{
+                    matchIndex=index;
+                    versionMatch=ui->tableWidget->item(index,3)->text();
+                    found=index;
+                }
             }
         }
 
@@ -1150,7 +1174,7 @@ void MainWindow::addRows(bool checked){
     rows = ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
         if(ui->tableWidget->item(i,0) && (ui->tableWidget->item(i,0)->text()=="Installed" || ui->tableWidget->item(i,0)->text()=="Remove")
-             && ui->tableWidget->item(i,2) && ui->tableWidget->item(i,3) && ui->tableWidget->item(i,3)->text()!=(QString(" (")+tr("External")+QString(")")) && ui->tableWidget->item(i,2)->text()<ui->tableWidget->item(i,3)->text()){
+             && ui->tableWidget->item(i,2) && ui->tableWidget->item(i,3) && ui->tableWidget->item(i,3)->text()!=(QString(" (")+tr("External")+QString(")")) && (((QTNIXEngine*)as)->compareVersions(ui->tableWidget->item(i,2)->text(),ui->tableWidget->item(i,3)->text()))<0){
             newItem = new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable");
             newItem->setToolTip(tr("Upgradable"));
             ui->tableWidget->setItem(i,0,newItem);

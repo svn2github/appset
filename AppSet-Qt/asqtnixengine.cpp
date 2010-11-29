@@ -67,3 +67,32 @@ QString AS::QTNIXEngine::getConfErrStr(int errno){
 
     return "";
 }
+
+int AS::QTNIXEngine::compareVersions(const QString &s1, const QString &s2){
+    QStringList l1 = s1.split('.'), l2 = s2.split('.');
+    bool is1Number=true,is2Number=true;
+    int limit = l1.size()<l2.size()?l1.size():l2.size();
+
+    for(int i=0;i<limit;++i){
+        int num1 = l1.at(i).toInt(&is1Number);
+        int num2 = l2.at(i).toInt(&is2Number);
+
+        if(is1Number){
+            if(!is2Number) return 1;
+            else{
+                if(num1==num2)continue;
+                else if(num1<num2) return -1;
+                else return 1;
+            }
+        }else{
+            if(is2Number) return -1;
+            else{
+                if(l1.at(i)<l2.at(i)) return -1;
+                else if(l1.at(i)>l2.at(i)) return 1;
+                else continue;
+            }
+        }
+    }
+
+    return 0;
+}

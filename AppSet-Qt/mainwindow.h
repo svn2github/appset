@@ -75,6 +75,12 @@ public:
         case 3:
             status+=as->remove(l);
             break;
+        case 4:
+            l=as->queryLocal(as_QUERY_ALL_INFO | as_EXPERT_QUERY);
+            break;
+        case 5:
+            l=as->queryRemote(as_QUERY_ALL_INFO | as_EXPERT_QUERY);
+            break;
         }
     }
 };
