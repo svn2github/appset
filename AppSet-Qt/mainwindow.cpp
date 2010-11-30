@@ -126,7 +126,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mainToolBar->setDisabled(true);
 
     connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_BrowserReload), tr("Update")), SIGNAL(triggered()), SLOT(updateDB()));
-    connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_ArrowUp), tr("Mark all upgrades")),SIGNAL(triggered()),SLOT(markUpgrades()));
+    markAction = ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_ArrowUp), tr("Mark all upgrades"));
+    connect(markAction,SIGNAL(triggered()),SLOT(markUpgrades()));
     applyAction = ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_DialogApplyButton), tr("Check and apply"));
     connect(applyAction,SIGNAL(triggered()),SLOT(confirm()));
     applyAction->setDisabled(true);
@@ -1179,16 +1180,22 @@ void MainWindow::addRows(bool checked){
     ui->statusBar->showMessage("CHECKING UPGRADABLES", 5000);
 
     rows = ui->tableWidget->rowCount();
+    int upgradables=0;
     for(int i=0;i<rows;++i){
         if(ui->tableWidget->item(i,0) && (ui->tableWidget->item(i,0)->text()=="Installed" || ui->tableWidget->item(i,0)->text()=="Remove")
              && ui->tableWidget->item(i,2) && ui->tableWidget->item(i,3) && ui->tableWidget->item(i,3)->text()!=(QString(" (")+tr("External")+QString(")")) && (((QTNIXEngine*)as)->compareVersions(ui->tableWidget->item(i,2)->text(),ui->tableWidget->item(i,3)->text()))<0){
             newItem = new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable");
             newItem->setToolTip(tr("Upgradable"));
+            upgradables++;
             ui->tableWidget->setItem(i,0,newItem);
             QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
         }
         loadingBar->setValue(95+i*5/rows);
     }
+
+    markAction->setEnabled(upgradables>0);
+
+    markAction->setText(tr("Mark all upgrades")+QString(" (")+QString::number(upgradables)+QString(")"));
 
     ui->statusBar->showMessage(QString("INFO UPDATED: ")+QString::number(rows)+QString(" PACKAGES SHOWN"), 10000);
 

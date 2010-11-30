@@ -31,8 +31,11 @@ RESOURCES += \
 OTHER_FILES += \
     appset-launch.sh
 
+unix: QMAKE_COPY = "cp -fp"
+
 target.path = /usr/bin/
 target.files+=appset-launch.sh appset-qt
+target.commands =
 images.path = /usr/share/icons/appset
 images.files += appset.png
 desktop.path = /usr/share/applications

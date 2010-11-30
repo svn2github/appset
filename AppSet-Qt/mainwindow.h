@@ -159,6 +159,7 @@ private:
     int modified;
 
     QAction *applyAction;
+    QAction *markAction;
 
     int toI, toU, toR;
     int statusI, statusU, statusR;
