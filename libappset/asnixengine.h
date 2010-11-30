@@ -45,7 +45,7 @@ namespace AS{
         NIXEngine();
         ~NIXEngine();
 
-        int configure(const char *confFilePath="/etc/appset.conf", const char *pipePath="/tmp/as.tmp");
+        int configure(const char *confFilePath="/etc/appset.conf", const char *pipePath="/tmp/as.tmp",bool force=false);
         int saveConfig(const char *distName, const char *toolName, const char *confWrapperPath="/etc/appset/", const char *confFilePath="/etc/appset.conf");
 
         virtual int update();

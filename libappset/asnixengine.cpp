@@ -124,7 +124,7 @@ int AS::NIXEngine::execCmd(string command){
     return status;
 }
 
-int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath){
+int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath, bool force){
     string path;
     int ret = 0;
 
@@ -139,7 +139,7 @@ int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath){
 
     if( ( ret = loadConfigFile(path.c_str(), &regexps, 5, 6) ) ) return ret;
 
-    if( getuid() ) return 7;
+    if( getuid() && !force) return 7;
 
     if( mkfifo(pipePath, 0700) ) return 8;
 
