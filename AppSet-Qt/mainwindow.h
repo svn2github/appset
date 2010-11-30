@@ -180,6 +180,8 @@ private:
     int baseIndex;
 
     QMovie *loadingMovie;
+
+    int visibleRowCount();
 };
 
 #endif // MAINWINDOW_H

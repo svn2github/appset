@@ -184,7 +184,7 @@ class StatusBarUpdater:public AS::EngineListener{
     int i;
     QProgressBar *lb;
 public:
-    StatusBarUpdater(QStatusBar *bar){this->bar=bar;i=0;stepping=6666;pre=QString("PARSING DATABASE: ");}
+    StatusBarUpdater(QStatusBar *bar){this->bar=bar;i=0;stepping=3333;pre=QString("PARSING DATABASE: ");}
     void step(const char *content){
         if(!(i%stepping)){
             QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
@@ -887,39 +887,36 @@ void MainWindow::expertMode(bool mode){
     this->isExpert = mode;
 
     asyncFilter("@@");
+}
 
+int MainWindow::visibleRowCount(){
+    int rows=ui->tableWidget->rowCount();
+    int ret=rows;
 
-    //ui->searchBar->clear();
-    //timer2->stop();
+    for(int i=0;i<rows;++i) if(ui->tableWidget->isRowHidden(i)) ret--;
 
-
-    /*if(mode){
-        flags |= as_EXPERT_QUERY;
-    }else{
-        flags &= ~as_EXPERT_QUERY;
-    }*/
-
-    //addRows();
+    return ret;
 }
 
 void MainWindow::showGames(){
     category.setPattern("rpg|fps|game|games|race|racing|funny|shooter");
     category_exclude.setPattern("configuration[s]*|kernel|driver[s]*|firmware[s]*|libraries|library|protocol[s]*|dns|debug|traceroute|povray|screenshooter");
     ui->tabWidget->setCurrentIndex(1);
-    ui->tabWidget->setTabText(1, "Games");
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/games.png"));
     asyncFilter("@@");    
+    ui->tabWidget->setTabText(1, tr("Games")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
 }
 
 void MainWindow::showSystem(){
     category.setPattern("system|configuration[s]*|kernel|driver[s]*|firmware[s]*|libraries|library|protocol[s]*");
     category_exclude.setPattern("game[s]*|racing");
 
-    ui->tabWidget->setCurrentIndex(1);
-    ui->tabWidget->setTabText(1, "System");
+    ui->tabWidget->setCurrentIndex(1);    
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/system.png"));
 
     asyncFilter("@@");
+
+    ui->tabWidget->setTabText(1, tr("System")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
 }
 
 void MainWindow::showMultimedia(){
@@ -927,10 +924,11 @@ void MainWindow::showMultimedia(){
     category_exclude.setPattern("configuration[s]*|kernel|driver[s]*|firmware[s]*|libraries|library|protocol[s]*|rpg|fps|game|games|racing");
 
     ui->tabWidget->setCurrentIndex(1);
-    ui->tabWidget->setTabText(1, "Multimedia");
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/multimedia.png"));
 
     asyncFilter("@@");
+
+    ui->tabWidget->setTabText(1, tr("Multimedia")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
 }
 
 void MainWindow::showOffice(){
@@ -938,10 +936,11 @@ void MainWindow::showOffice(){
     category_exclude.setPattern("configuration[s]*|kernel|driver[s]*|firmware[s]*|libraries|library|protocol[s]*");
 
     ui->tabWidget->setCurrentIndex(1);
-    ui->tabWidget->setTabText(1, "Office");
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/office.png"));
 
     asyncFilter("@@");
+
+    ui->tabWidget->setTabText(1, tr("Office")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
 }
 
 void MainWindow::showInternet(){
@@ -949,10 +948,11 @@ void MainWindow::showInternet(){
     category_exclude.setPattern("gimp|image|configuration[s]*|kernel|driver[s]*|firmware[s]*|libraries|library|protocol[s]*");
 
     ui->tabWidget->setCurrentIndex(1);
-    ui->tabWidget->setTabText(1, "Internet");
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/internet.png"));
 
     asyncFilter("@@");
+
+    ui->tabWidget->setTabText(1, tr("Internet")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
 }
 
 void MainWindow::showUpgradable(bool checked){
@@ -1004,10 +1004,11 @@ void MainWindow::showAllCat(){
     category_exclude.setPattern("---");
 
     ui->tabWidget->setCurrentIndex(1);
-    ui->tabWidget->setTabText(1, "All");
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/all.png"));
 
     if(ui->tabWidget->tabText(1)!="All") asyncFilter("@@");
+
+    ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
 }
 
 void MainWindow::showNotInstalled(bool checked){
@@ -1219,6 +1220,8 @@ void MainWindow::addRows(bool checked){
     ui->mainToolBar->setEnabled(true);
 
     //ui->tableWidget->sortByColumn(1,Qt::AscendingOrder);
+
+    if(ui->tabWidget->tabText(1)=="All")ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
 }
 
 MainWindow::~MainWindow(){

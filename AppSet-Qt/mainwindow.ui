@@ -523,7 +523,7 @@
                      <property name="maximumSize">
                       <size>
                        <width>250</width>
-                       <height>150</height>
+                       <height>160</height>
                       </size>
                      </property>
                      <property name="frameShape">
@@ -560,7 +560,7 @@
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>150</height>
+                       <height>160</height>
                       </size>
                      </property>
                      <property name="focusPolicy">
