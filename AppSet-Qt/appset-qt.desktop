@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=0.1.2
-Exec=/usr/bin/appset-launch.sh /usr/bin/appset-qt
-Name=AppSet-Qt
-Categories=Application;System;
-Type=Application
-Icon=/usr/share/icons/appset/appset.png

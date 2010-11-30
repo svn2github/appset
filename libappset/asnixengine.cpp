@@ -66,7 +66,7 @@ AS::NIXEngine::NIXEngine(){
 }
 
 AS::NIXEngine::~NIXEngine(){
-    unlink("/tmp/as.tmp");
+    unlink(pipePath.c_str());
 }
 
 int AS::NIXEngine::loadConfigFile(const char *path, StrMap *params, int fErrorRet, int paramErrorRet){
@@ -100,7 +100,9 @@ int AS::NIXEngine::loadConfigFile(const char *path, StrMap *params, int fErrorRe
 
 int AS::NIXEngine::execCmd(string command){
     string buffer;
-    command += " > /tmp/as.tmp 2> /dev/null";
+    command += " > ";
+    command += pipePath;
+    command += " 2> /dev/null";
     int status = 0;
     ifstream output;
 

@@ -1,6 +1,6 @@
 QT       -= core gui
 
-TARGET = appsethelper
+TARGET = appset-helper
 TEMPLATE = app
 
 INCLUDEPATH += ../libappset
@@ -8,3 +8,6 @@ LIBS += -L../libappset -lappset
 
 SOURCES += \
     ashelper.cpp
+
+OTHER_FILES += \
+    appset-helper.sh
