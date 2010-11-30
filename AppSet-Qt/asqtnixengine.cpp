@@ -69,6 +69,8 @@ QString AS::QTNIXEngine::getConfErrStr(int errno){
 }
 
 int AS::QTNIXEngine::compareVersions(const QString &s1, const QString &s2){
+    if(s1==s2) return 0;
+
     QStringList l1 = s1.split('.'), l2 = s2.split('.');
     bool is1Number=true,is2Number=true;
     int limit = l1.size()<l2.size()?l1.size():l2.size();

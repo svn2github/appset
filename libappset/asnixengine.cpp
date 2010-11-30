@@ -155,15 +155,12 @@ int AS::NIXEngine::saveConfig(const char *distName, const char *toolName, const 
 int AS::NIXEngine::update(){
     return execCmd(commands["update"]);
 }
-#include <iostream>
-using namespace std;
+
 int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
     string cmd(commands["upgrade"]);
     string tail("");
     int status=0;
     bool holding=false;
-
-    cout << "A: " << cmd << endl;
 
     if(ignore_packages && ignore_packages->size()){
         holding=commands["tool_hold_upgrades"].find('*')==std::string::npos;
@@ -189,7 +186,6 @@ int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
 
     if(!holding) cmd += tail;
 
-    cout << cmd << endl;
     status += execCmd( cmd );
 
     if(holding){

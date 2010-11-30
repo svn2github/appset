@@ -181,22 +181,22 @@ class StatusBarUpdater:public AS::EngineListener{
     QString pre;
     int stepping;
     int i;
+    QProgressBar *lb;
 public:
-    StatusBarUpdater(QStatusBar *bar){this->bar=bar;i=0;stepping=150;pre=QString("PARSING DATABASE: ");}
+    StatusBarUpdater(QStatusBar *bar){this->bar=bar;i=0;stepping=6666;pre=QString("PARSING DATABASE: ");}
     void step(const char *content){
-
-
         if(!(i%stepping)){
             QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
             bar->showMessage(pre+content);
-
-        }
+            lb->setValue(i*3/9500);
+        }        
 
         i++;
     }
 
     void setStepping(int s){this->stepping=s;}
     void setPreMessage(QString s){this->pre=s;}
+    void setPB(QProgressBar *lb){this->lb=lb;}
 };
 
 void MainWindow::refresh(){
@@ -858,6 +858,8 @@ void MainWindow::updateDB(){
     QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 
     StatusBarUpdater *sbu = new StatusBarUpdater(ui->statusBar);
+    sbu->setPB(loadingBar);
+    //loadingDialog->show();
     sbu->setStepping(1);
     sbu->setPreMessage(tr("UPDATING DB: "));
 
@@ -871,6 +873,11 @@ void MainWindow::updateDB(){
     //ui->showUpgradable->setChecked(true);
 
     ui->statusBar->showMessage(tr("DB UPDATED!"),5000);
+
+    //loadingDialog->hide();
+    modified=0;
+    applyEnabler();
+
 
     addRows(true);
 }
@@ -1026,6 +1033,7 @@ void MainWindow::addRows(bool checked){
 
     //ui->stacked->setCurrentIndex(2);
     loadingDialog->show();
+    loadingBar->setValue(0);
 
     ui->tableWidget->setSortingEnabled(false);
 
@@ -1039,9 +1047,8 @@ void MainWindow::addRows(bool checked){
     for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);
     //ui->tableWidget->setRowCount(0);
 
-    loadingBar->setValue(10);
-
     StatusBarUpdater sbu(ui->statusBar);
+    sbu.setPB(loadingBar);
 
     as->addListener(&sbu);
     pkgs = as->queryRemote(flags);
@@ -1051,7 +1058,7 @@ void MainWindow::addRows(bool checked){
     t2.setOp(4);
     t2.start();
 
-    loadingBar->setValue(30);
+    //loadingBar->setValue(30);
 
     QTableWidgetItem *newItem;
     int i=0;
@@ -1077,11 +1084,12 @@ void MainWindow::addRows(bool checked){
 
         i++;
 
-        loadingBar->setValue(30+i*20/pkgs->size());
-
         delete pkg;
 
-        if(!(i%100)) QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
+        if(!(i%100)){
+            loadingBar->setValue(30+i*20/pkgs->size());
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
+        }
     }
 
     delete pkgs;
@@ -1096,7 +1104,7 @@ void MainWindow::addRows(bool checked){
     t2.wait();
     pkgs=t2.getList();
 
-    loadingBar->setValue(60);
+    //loadingBar->setValue(60);
 
     ui->statusBar->showMessage(tr("SEARCHING CORRESPONDENCES..."));
 
@@ -1107,22 +1115,19 @@ void MainWindow::addRows(bool checked){
         Package *pkg = *it;
 
         int found=-1;
-        QString versionMatch;
-        int matchIndex;
+        QTableWidgetItem* versionMatch;
         for(int index=0;index<rows;++index){
             if(ui->tableWidget->item(index,1)->text()==QString(pkg->getName().c_str())){
                 if(found!=-1){
-                    if((((QTNIXEngine*)as)->compareVersions(ui->tableWidget->item(index,3)->text(),versionMatch))<0){
+                    if((((QTNIXEngine*)as)->compareVersions(ui->tableWidget->item(index,3)->text(),versionMatch->text()))<0){
                         toRemove.insert(toRemove.end(),index);
                     }else{
-                        toRemove.insert(toRemove.end(),matchIndex);
+                        toRemove.insert(toRemove.end(),found);
                         found=index;
-                        matchIndex=index;
-                        versionMatch=ui->tableWidget->item(index,3)->text();
+                        versionMatch=ui->tableWidget->item(index,3);
                     }
                 }else{
-                    matchIndex=index;
-                    versionMatch=ui->tableWidget->item(index,3)->text();
+                    versionMatch=ui->tableWidget->item(index,3);
                     found=index;
                 }
             }
@@ -1156,9 +1161,11 @@ void MainWindow::addRows(bool checked){
         }
 
         k++;
-        loadingBar->setValue(60+k*30/pkgs->size());
 
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+        if(!(k%11)){
+            loadingBar->setValue(50+k*45/pkgs->size());
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
+        }
 
         delete pkg;
     }
@@ -1180,7 +1187,7 @@ void MainWindow::addRows(bool checked){
             ui->tableWidget->setItem(i,0,newItem);
             QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
         }
-        loadingBar->setValue(90+i*10/rows);
+        loadingBar->setValue(95+i*5/rows);
     }
 
     ui->statusBar->showMessage(QString("INFO UPDATED: ")+QString::number(rows)+QString(" PACKAGES SHOWN"), 10000);
