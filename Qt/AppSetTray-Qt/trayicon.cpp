@@ -18,8 +18,12 @@ TrayIcon::TrayIcon(QObject *parent) :
     QMenu *trayMenu = new QMenu();
 
     launch=trayMenu->addAction(QIcon(":general/appset.png"),tr("Launch AppSet-Qt"));
+    check=trayMenu->addAction(QApplication::style()->standardIcon(QStyle::SP_BrowserReload),tr("Check for updates NOW!"));
+    quit=trayMenu->addAction(QApplication::style()->standardIcon(QStyle::SP_BrowserStop),tr("Quit Tray"));
 
     connect(launch,SIGNAL(triggered()),SLOT(launchAS()));
+    connect(check,SIGNAL(triggered()),SLOT(checkUps()));
+    connect(quit,SIGNAL(triggered()),SLOT(quitter()));
     connect(this,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),SLOT(activatedSlot(QSystemTrayIcon::ActivationReason)));
 
     setContextMenu(trayMenu);
@@ -43,30 +47,82 @@ TrayIcon::TrayIcon(QObject *parent) :
     timer->setSingleShot(true);
     timer->start(6666);
 
+    timer2 = new QTimer();
+    timer2->start(3000);
+
     connect(timer,SIGNAL(timeout()),SLOT(checkUps()));
+    connect(timer2,SIGNAL(timeout()),SLOT(checkRunning()));
+
+    setToolTip("Waiting helper...");
+
+    running=false;
+}
+
+void TrayIcon::quitter(){
+    QMessageBox reqMes;
+    reqMes.setText(tr("Are you sure to quit this tray?"));
+    reqMes.setInformativeText(tr("You can restart it from desktop menu"));
+    reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    reqMes.setIcon(QMessageBox::Question);
+    int res = reqMes.exec();
+
+    if(res==QMessageBox::Yes){
+        QCoreApplication::quit();
+    }
+}
+
+void TrayIcon::checkRunning(){
+    int status = 0;
+
+#ifdef unix
+    status = system("ls /tmp/as.tmp >/dev/null 2>/dev/null");
+#endif
+
+    if(status == 0){
+        setIcon(QIcon(":pkgstatus/working.png"));
+
+        setToolTip(tr("AppSet-Qt is Running!"));
+    }else if(running){
+        checkUps();
+    }
+
+    running = status!=0?false:true;
 }
 
 void TrayIcon::checkUps(){
-    list<Package*> *pkgs = as->queryLocal(as_QUERY_UPGRADABLE);
+    bool running = this->running;
+    if(!running){
+        list<Package*> *pkgs = as->queryLocal(as_QUERY_UPGRADABLE);
 
-    if(pkgs->size()){
-        QString str("The following upgrades are available\n");
-        for(list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-            Package *pkg = *it;
-            str+=QString("\n")+pkg->getName().c_str();
+        if(pkgs && pkgs->size()){
+            QString str=pkgs->size()>1?tr("There are updates for:"):tr("There is an update for:");
+            int i=30;
+            for(list<Package*>::iterator it=pkgs->begin();i>0 && it!=pkgs->end();it++){
+                Package *pkg = *it;
+                str+=QString("\n- ")+QString(pkg->getName().c_str())+QString(" ")+QString(pkg->getLocalVersion().c_str());
+                i--;
+            }
+
+            if(i==0) str+="\nAnd others...";
+
+            setToolTip(QString::number(pkgs->size())+QString((pkgs->size()>1?tr(" updates available!"):tr(" update available!"))));
+
+            showMessage(QString::number(pkgs->size())+(pkgs->size()>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information,66666);
+            setIcon(QIcon(":pkgstatus/upgrade.png"));
+        }else{
+            showMessage("AppSetTray-Qt",tr("No updates available"),QSystemTrayIcon::Information,3000);
+            setIcon(QIcon(":general/appset.png"));
+
+            setToolTip(tr("No updates available"));
         }
-
-        showMessage("Upgrades Check",str,QSystemTrayIcon::Information,66666);
-    }else{
-        showMessage("Upgrades Check","No upgrades available",QSystemTrayIcon::Information,3333);
     }
 
     timer->setSingleShot(true);
-    timer->start(3600000);
+    timer->start(running?3000:1800000);
 }
 
 void TrayIcon::launchAS(){
-    showMessage("Launching AppSet-Qt","You need administrative privileges to run AppSet-Qt...",QSystemTrayIcon::Information,3333);
+    showMessage("Launching AppSet-Qt","Wait...",QSystemTrayIcon::Information,1000);
 
 #ifdef unix
     system("appset-launch.sh &");

@@ -15,3 +15,17 @@ HEADERS += \
 
 RESOURCES += \
     icons.qrc
+
+target.path = /usr/bin/
+target.files += appsettray-qt
+
+autostart.path = /etc/xdg/autostart/
+autostart.files += appsettray-qt.desktop
+
+desktop.path = /usr/share/applications/
+desktop.files += appsettray-qt.desktop
+
+INSTALLS += target autostart desktop
+
+OTHER_FILES += \
+    appsettray-qt.desktop

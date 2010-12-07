@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webkit
+QT       += core gui network xml webkit
 
 TARGET = appset-qt
 TEMPLATE = app
@@ -24,13 +24,13 @@ RESOURCES += \
     icons.qrc
 
 OTHER_FILES += \
-    appset-launch.sh
+    appset-launch.sh \
+    appset-qt.desktop
 
 unix: QMAKE_COPY = "cp -fp"
 
 target.path = /usr/bin/
 target.files+=appset-launch.sh appset-qt
-target.commands =
 images.path = /usr/share/icons/appset
 images.files += appset.png
 desktop.path = /usr/share/applications

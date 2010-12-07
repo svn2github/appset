@@ -9,7 +9,7 @@ case "$1" in
         start)
                 stat_busy "Starting appset-helper"
 
-                appset-helper &
+                nice -n 10 appset-helper &
 
                 stat_done
         ;;
@@ -18,6 +18,8 @@ case "$1" in
                 stat_busy "Stopping appset-helper"
 
                 killall -e appset-helper > /dev/null 2> /dev/null
+                rm /tmp/ashelper.tmp
+                rm /tmp/ashelper.out
 
                 stat_done
 

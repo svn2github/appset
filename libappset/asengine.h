@@ -33,6 +33,7 @@ namespace AS{
 
 #define as_QUERY_DEPS 0x0010
 #define as_UPGRADE_DEPS 0x0020
+#define as_MERGE_QUERIES 0x0040
 
     class EngineListener{
     public:

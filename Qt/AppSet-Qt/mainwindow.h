@@ -35,9 +35,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <list>
 #include <vector>
 
+#include <QEventLoop>
+
 namespace Ui {
     class MainWindow;
 }
+
+#include <QStatusBar>
+#include <QCoreApplication>
 
 class AsThread:public QThread{
     int op;
@@ -85,6 +90,65 @@ public:
     }
 };
 
+#include <fstream>
+class ASLogger:public AS::EngineListener{
+    std::ofstream logFile;
+public:
+    ASLogger(){
+#ifdef unix
+        logFile.open("/var/log/appset.log");
+#endif
+    }
+    ~ASLogger(){
+#ifdef unix
+        if(logFile.is_open()) logFile.close();
+#endif
+    }
+
+    void step(const char *content){
+        logFile << std::string(content) << std::endl;
+        logFile.flush();
+    }
+};
+
+class StatusBarUpdater:public AS::EngineListener{
+    QStatusBar *bar;
+    QString pre;
+    int stepping;
+    int i;
+    QProgressBar *lb;
+public:
+    StatusBarUpdater(QStatusBar *bar){
+        this->bar=bar;i=0;stepping=3333;pre=QString("PARSING DATABASE: ");
+    }
+    void step(const char *content){
+        if(!(i%stepping)){
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
+            bar->showMessage(pre+content);
+            lb->setValue(i*3/9500);
+        }
+
+        i++;
+    }
+
+    void setStepping(int s){this->stepping=s;}
+    void setPreMessage(QString s){this->pre=s;}
+    void setPB(QProgressBar *lb){this->lb=lb;}
+};
+
+
+//RSS feeder
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QBuffer>
+#include <QXmlStreamReader>
+#include <QUrl>
+
+QT_BEGIN_NAMESPACE
+class QTreeWidget;
+class QTreeWidgetItem;
+QT_END_NAMESPACE
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -128,6 +192,8 @@ public slots:
     void notUpgrade();
     void confirm();
 
+    void cleanCache();
+
     void editConfirm();
     void editCancel();
 
@@ -141,6 +207,15 @@ public slots:
     void aboutQt();
     void about();
 
+    void confirmTimeout();
+
+    //RSS
+    void finished(QNetworkReply *reply);
+    void readyRead();
+    void metaDataChanged();
+    void itemActivated(QTreeWidgetItem * item);
+    void error(QNetworkReply::NetworkError);
+
 private:
     Ui::MainWindow *ui;
 
@@ -149,6 +224,9 @@ private:
     QTimer *timer;
     QTimer *timer2;
     QTimer *timerUpdate;
+
+    QTimer *timerConfirm;
+    int confirmRemaining;
 
     std::list<AS::Package*> *pkgs;
 
@@ -160,6 +238,7 @@ private:
 
     QAction *applyAction;
     QAction *markAction;
+    QAction *cleanAction;
 
     int toI, toU, toR;
     int statusI, statusU, statusR;
@@ -182,6 +261,22 @@ private:
     QMovie *loadingMovie;
 
     int visibleRowCount();
+
+    bool merging;
+
+    ASLogger *logger;
+
+    StatusBarUpdater *sbu;
+
+    QNetworkReply *currentReply;
+    QNetworkAccessManager manager;
+    QXmlStreamReader xml;
+    QString currentTag;
+    QString linkString;
+    QString titleString;
+
+    void parseXml();
+    void get(const QUrl &url);
 };
 
 #endif // MAINWINDOW_H

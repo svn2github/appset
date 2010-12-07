@@ -45,13 +45,21 @@ public slots:
     void launchAS();
     void activatedSlot(QSystemTrayIcon::ActivationReason ar);
     void checkUps();
+    void checkRunning();
+
+    void quitter();
 
 private:
     Engine *as;
 
     QAction *launch;
+    QAction *check;
+    QAction *quit;
 
     QTimer *timer;
+    QTimer *timer2;
+
+    bool running;
 
 };
 

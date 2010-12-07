@@ -11,3 +11,8 @@ SOURCES += \
 
 OTHER_FILES += \
     appset-helper.sh
+
+target.path = /usr/bin/
+target.files+=appset-helper
+
+INSTALLS += target

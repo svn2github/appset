@@ -2,6 +2,7 @@ update=pacman -Sy
 upgrade=pacman -Su --noconfirm
 install=pacman -S --noconfirm --needed
 remove=pacman -Rsd --noconfirm
+clean_cache=pacman -Scc --noconfirm
 query_upgradable=pacman -Qu
 query_local_byname=pacman -Q
 query_local_info_byname=pacman -Qi
@@ -14,6 +15,7 @@ check_install_deps=pacman -Sp --print-format "%n %s"
 check_remove_deps=pacman -Rcp --print-format "%n %s"
 check_upgrade_deps=pacman -Sup --print-format "%n %s"
 download_path=/var/cache/pacman/pkg/
+tool_lock_file=/var/lib/pacman/db.lck
 
 query_filter_regexp=^[[:alpha:]][^\\ ]+\\ [[:digit:]]|-|[.]+$
 query_name_regexp=^[[:alpha:]][^\\ ]+

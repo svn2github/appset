@@ -29,7 +29,9 @@ int AS::QTNIXEngine::execCmd(std::string command){
 
     process.setProcessEnvironment(env);;
 
-    process.start(command.c_str());
+    process.setProcessChannelMode(QProcess::MergedChannels);
+
+    process.start(command.c_str());    
 
     while(!process.waitForFinished(1000)){
         if(process.state()==QProcess::NotRunning) break;
@@ -60,7 +62,7 @@ QString AS::QTNIXEngine::getConfErrStr(int errno){
     case 7:
         return QObject::tr("It seems that you are not an administrator, use sudo, gksu or kdesu to launch AppSet...");
     case 8:
-        return QObject::tr("It seems that another instance of this program is already running, if sure of not reboot or delete /tmp/appset.tmp");
+        return QObject::tr("It seems that another instance of this program is already running, if sure of not reboot or delete /tmp/as.tmp");
     default:
         break;
     }
@@ -71,7 +73,7 @@ QString AS::QTNIXEngine::getConfErrStr(int errno){
 int AS::QTNIXEngine::compareVersions(const QString &s1, const QString &s2){
     if(s1==s2) return 0;
 
-    QStringList l1 = s1.split(QRegExp("[.-+_,;]")), l2 = s2.split(QRegExp("[.-+_,;]"));
+    QStringList l1 = s1.split(QRegExp("[.-+_]")), l2 = s2.split(QRegExp("[.-+_]"));
     bool is1Number = true, is2Number = true;
     int limit = (l1.size() < l2.size()) ? l1.size() : l2.size();
 
@@ -96,5 +98,5 @@ int AS::QTNIXEngine::compareVersions(const QString &s1, const QString &s2){
         }
     }
 
-    return l1.size()<l2.size()?1:-1;
+    return s1.length()>s2.length()?1:-1;
 }

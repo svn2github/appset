@@ -52,6 +52,8 @@ AS::NIXEngine::NIXEngine(){
     commands.insert(StrPair("check_remove_deps",""));
     commands.insert(StrPair("check_upgrade_deps",""));
     commands.insert(StrPair("download_path",""));
+    commands.insert(StrPair("tool_lock_file",""));
+    commands.insert(StrPair("clean_cache",""));
 
     regexps.insert(StrPair("query_filter_regexp",""));
     regexps.insert(StrPair("query_name_regexp",""));
@@ -100,16 +102,18 @@ int AS::NIXEngine::loadConfigFile(const char *path, StrMap *params, int fErrorRe
 
 int AS::NIXEngine::execCmd(string command){
     string buffer;
+    string env = "LANG=en ";
     command += " > ";
     command += pipePath;
-    command += " 2> /dev/null";
+    command += " 2> ";
+    command += pipePath;
+    env+=command;
     int status = 0;
     ifstream output;
 
-
     pid_t pid = fork();
     if(pid == 0){
-        ::exit(system(command.c_str()));
+        ::exit(system(env.c_str()));
     }else if(pid == -1){
         return 1;
     }else{
@@ -459,24 +463,6 @@ std::list<AS::Package*>* AS::NIXEngine::queryLocal(unsigned flags, AS::Package *
 
     int status = execQuery(ret, flags, package, false);
 
-    if(status){
-        delete ret;
-        ret = 0;
-    }
-
-    return ret;
-}
-
-std::list<AS::Package*>* AS::NIXEngine::queryRemote(unsigned flags, AS::Package *package){
-    std::list<AS::Package*>* ret = new std::list<AS::Package*>();
-
-    int status = execQuery(ret, flags, package, true);
-
-    if(status){
-        delete ret;
-        ret = 0;
-    }
-
     return ret;
 }
 
@@ -485,6 +471,65 @@ std::list<AS::Package*>* AS::NIXEngine::queryRemote(unsigned flags, AS::Package 
 #include <unistd.h>
 #include <dirent.h>
 #include <ctype.h>
+
+std::list<AS::Package*>* AS::NIXEngine::queryRemote(unsigned flags, AS::Package *package){
+    std::list<AS::Package*>* ret = new std::list<AS::Package*>();
+    int status=0;
+
+
+    if(flags & as_MERGE_QUERIES){
+        const char *helperPath = "/tmp/ashelper.out";
+        struct stat s;
+
+        status = stat(helperPath,&s);
+
+        string buffer;
+        ifstream output;
+
+        output.open(helperPath);
+        int part=0;
+        AS::Package *pkg;
+        while(getline(output,buffer).good()){
+            switch(part){
+            case 0:
+                pkg = new AS::Package();
+                ret->insert(ret->end(),pkg);
+                pkg->setName(buffer);
+                break;
+            case 1:
+                pkg->setLocalVersion(buffer);
+                break;
+            case 2:
+                pkg->setRemoteVersion(buffer);
+                break;
+            case 3:
+                pkg->setSize(atoi(buffer.c_str()));
+                break;
+            case 4:
+                pkg->setDescription(buffer);
+                pkg->setQueried();
+                break;
+            case 5:
+                pkg->setURL(buffer);;
+                break;
+            case 6:
+                pkg->setInstalled(buffer.compare("false"));
+                break;
+            }
+            part = (part+1)%7;
+        }
+        if(output.is_open()) output.close();
+    }else{
+        status = execQuery(ret, flags, package, true);
+    }
+
+    if(status){
+        delete ret;
+        ret = 0;
+    }
+
+    return ret;
+}
 
 int AS::NIXEngine::getProgressSize(AS::Package *package){
     if(!package) return 0;
@@ -519,4 +564,50 @@ int AS::NIXEngine::getProgressSize(AS::Package *package){
     closedir(dpath);
 
     return ret;
+}
+
+int AS::NIXEngine::removeLock(){
+    return unlink(commands["tool_lock_file"].c_str());
+}
+
+int AS::NIXEngine::cacheSize(){
+    DIR *dpath = opendir(commands["download_path"].c_str());
+    dirent *dir;
+    std::string fname, fpath;
+    struct stat fsize;
+    float ret=0;
+
+    while(dir=readdir(dpath)){
+        fname=string(dir->d_name);
+        fpath=commands["download_path"];
+        fpath += fname;
+
+        stat(fpath.c_str(), &fsize);
+
+        ret += fsize.st_size;
+    }
+
+    closedir(dpath);
+
+    return ret/(1024*1024);
+}
+
+int AS::NIXEngine::cleanCache(){
+    DIR *dpath = opendir(commands["download_path"].c_str());
+    dirent *dir;
+    std::string fname, fpath;
+
+    while(dir=readdir(dpath)){
+        fname=string(dir->d_name);
+        fpath=commands["download_path"];
+        fpath += fname;
+
+        if(!fname.compare(".") || !fname.compare("..")) continue;
+
+        unlink(fpath.c_str());
+    }
+
+    closedir(dpath);
+
+    return 0;
 }
