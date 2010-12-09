@@ -46,6 +46,7 @@ protected:
 };
 
 #include <QSplitter>
+#include <QWidgetList>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow), currentReply(0){
@@ -141,9 +142,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_BrowserReload), tr("Update")), SIGNAL(triggered()), SLOT(updateDB()));
 #ifdef unix
-    cleanAction = ui->mainToolBar->addAction(QIcon(":editing/clear.png"), tr("Clean cache"));
-    connect(cleanAction,SIGNAL(triggered()),SLOT(cleanCache()));
-    cleanAction->setDisabled(true);
+    cleanAction = ui->mainToolBar->addAction(QIcon(":editing/clear.png"), tr("Clean cache"), this, SLOT(cleanCache()));
+    cleanAction->setDisabled(true);    
 #endif
     markAction = ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_ArrowUp), tr("Mark all upgrades"));
     connect(markAction,SIGNAL(triggered()),SLOT(markUpgrades()));
@@ -191,7 +191,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->treeWidget, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
             this, SLOT(itemActivated(QTreeWidgetItem*)));    
     QStringList headerLabels;
-    headerLabels << tr("Title") << tr("Link");
+    headerLabels << tr("Link") << tr("Title");
     ui->treeWidget->setHeaderLabels(headerLabels);
     ui->treeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
     get(QUrl("http://www.archlinux.org/feeds/news/"));
@@ -1378,19 +1378,38 @@ void MainWindow::addRows(bool checked){
         ui->statusBar->showMessage("CHECKING UPGRADABLES", 5000);
 
         rows = ui->tableWidget->rowCount();
+
+        std::list<Package*> *ups = as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
+        std::list<Package*>::iterator upsit = ups->begin();
+
         for(int i=0;i<rows;++i){
             if(ui->tableWidget->item(i,0) && (ui->tableWidget->item(i,0)->text()=="Installed" || ui->tableWidget->item(i,0)->text()=="Remove")
-                 && ui->tableWidget->item(i,2) && ui->tableWidget->item(i,3) && ui->tableWidget->item(i,3)->text()!=(QString(" (")+tr("External")+QString(")")) && (((QTNIXEngine*)as)->compareVersions(ui->tableWidget->item(i,2)->text(),ui->tableWidget->item(i,3)->text()))<0){
-                newItem = new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable");
-                newItem->setToolTip(tr("Upgradable"));
-                upgradables++;
-                ui->tableWidget->setItem(i,0,newItem);
-                QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
+                 && ui->tableWidget->item(i,2) && ui->tableWidget->item(i,3) && ui->tableWidget->item(i,3)->text()!=(QString(" (")+tr("External")+QString(")"))){
+
+                bool found=false;
+                while(!found && upsit!=ups->end()){
+                    Package *pkgup=*upsit;
+                    if(ui->tableWidget->item(i,1)->text()==pkgup->getName().c_str()) found=true;
+                    else upsit++;
+                }
+                if(found){
+                    newItem = new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable");
+                    newItem->setToolTip(tr("Upgradable"));
+                    upgradables++;
+                    ui->tableWidget->setItem(i,0,newItem);
+                    QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
+
+                    delete *upsit;
+                    ups->remove(*upsit);
+                }
+
+                upsit=ups->begin();
             }
             loadingBar->setValue(95+i*5/rows);
         }
 
         delete pkgs;
+        delete ups;
     }else{
         std::list<AS::Package*>::iterator it=pkgs->begin();
 
@@ -1398,19 +1417,30 @@ void MainWindow::addRows(bool checked){
         ui->tableWidget->setRowCount(rows);
         int i=0;
 
+        std::list<Package*> *ups = as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
+        std::list<Package*>::iterator upsit = ups->begin();
+
         while(it!=pkgs->end()){
             Package *pkg = *it;
 
             if(pkg->isInstalled()){
-                if(pkg->getRemoteVersion().compare("NO INFO") &&
-                   ((((QTNIXEngine*)as)->compareVersions(pkg->getLocalVersion().c_str(),pkg->getRemoteVersion().c_str()))<0)){
+                bool found=false;
+                while(!found && upsit!=ups->end()){
+                    Package *pkgup=*upsit;
+                    if(pkgup->getName().compare(pkg->getName()) == 0) found=true;
+                    else upsit++;
+                }
+                if(found){
                     newItem = new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable");
                     newItem->setToolTip(tr("Upgradable"));
                     upgradables++;
+                    delete *upsit;
+                    ups->remove(*upsit);
                 }else{
                     newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
                     newItem->setToolTip(tr("Installed"));
                 }
+                upsit=ups->begin();
             }else{
                 newItem = new QTableWidgetItem(QIcon(":pkgstatus/unchecked.png"),"Remote");
                 newItem->setToolTip(tr("Not Installed"));
@@ -1454,8 +1484,8 @@ void MainWindow::addRows(bool checked){
         }
 
         delete pkgs;
+        delete ups;
     }
-
 
     markAction->setEnabled(upgradables>0);
 
@@ -1492,7 +1522,7 @@ void MainWindow::addRows(bool checked){
 
     //ui->tableWidget->sortByColumn(1,Qt::AscendingOrder);
 
-    if(ui->tabWidget->tabText(1)=="All")ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
+    if(ui->tabWidget->tabText(1)=="All")ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(visibleRowCount())+QString(")"));   
 }
 
 #include <sys/types.h>

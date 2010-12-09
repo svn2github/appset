@@ -45,7 +45,7 @@ TrayIcon::TrayIcon(QObject *parent) :
 
     timer = new QTimer();
     timer->setSingleShot(true);
-    timer->start(6666);
+    timer->start(100);
 
     timer2 = new QTimer();
     timer2->start(3000);
