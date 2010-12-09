@@ -105,7 +105,7 @@
                  <widget class="QToolButton" name="showAllCat">
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                    </font>
                   </property>
                   <property name="cursor">
@@ -126,8 +126,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>118</width>
-                    <height>118</height>
+                    <width>110</width>
+                    <height>110</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -142,7 +142,7 @@
                  <widget class="QToolButton" name="showGames">
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                    </font>
                   </property>
                   <property name="cursor">
@@ -157,8 +157,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>118</width>
-                    <height>118</height>
+                    <width>110</width>
+                    <height>110</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -173,7 +173,7 @@
                  <widget class="QToolButton" name="showMultimedia">
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                    </font>
                   </property>
                   <property name="cursor">
@@ -188,8 +188,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>118</width>
-                    <height>118</height>
+                    <width>110</width>
+                    <height>110</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -204,7 +204,7 @@
                  <widget class="QToolButton" name="showInternet">
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                    </font>
                   </property>
                   <property name="cursor">
@@ -219,8 +219,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>118</width>
-                    <height>118</height>
+                    <width>110</width>
+                    <height>110</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -235,7 +235,7 @@
                  <widget class="QToolButton" name="showOffice">
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                    </font>
                   </property>
                   <property name="cursor">
@@ -250,8 +250,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>118</width>
-                    <height>118</height>
+                    <width>110</width>
+                    <height>110</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -266,7 +266,7 @@
                  <widget class="QToolButton" name="showSystem">
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                    </font>
                   </property>
                   <property name="cursor">
@@ -281,8 +281,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>118</width>
-                    <height>118</height>
+                    <width>110</width>
+                    <height>110</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -335,8 +335,17 @@
                      <bold>false</bold>
                     </font>
                    </property>
+                   <property name="showDropIndicator" stdset="0">
+                    <bool>false</bool>
+                   </property>
+                   <property name="alternatingRowColors">
+                    <bool>true</bool>
+                   </property>
                    <property name="rootIsDecorated">
                     <bool>false</bool>
+                   </property>
+                   <property name="columnCount">
+                    <number>2</number>
                    </property>
                    <attribute name="headerVisible">
                     <bool>false</bool>
@@ -346,20 +355,20 @@
                      <string notr="true">1</string>
                     </property>
                    </column>
+                   <column>
+                    <property name="text">
+                     <string notr="true">2</string>
+                    </property>
+                   </column>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QWebView" name="RSSView">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
+                  <widget class="QTextBrowser" name="textBrowser">
+                   <property name="openExternalLinks">
+                    <bool>true</bool>
                    </property>
-                   <property name="url">
-                    <url>
-                     <string>about:blank</string>
-                    </url>
+                   <property name="openLinks">
+                    <bool>false</bool>
                    </property>
                   </widget>
                  </item>
@@ -581,7 +590,7 @@
                </layout>
               </item>
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_7">
+               <layout class="QVBoxLayout" name="contents">
                 <item>
                  <widget class="QTableWidget" name="tableWidget">
                   <property name="minimumSize">
@@ -640,6 +649,18 @@
                 </item>
                 <item>
                  <widget class="QGroupBox" name="extraInfoGroupBox">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>15</height>
+                   </size>
+                  </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
                    <item>
                     <widget class="QTextBrowser" name="infoText">
@@ -658,7 +679,7 @@
                      <property name="maximumSize">
                       <size>
                        <width>250</width>
-                       <height>160</height>
+                       <height>6000</height>
                       </size>
                      </property>
                      <property name="frameShape">
@@ -681,7 +702,7 @@
                    <item>
                     <widget class="QWebView" name="webView">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                      <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -695,6 +716,18 @@
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
+                       <height>6000</height>
+                      </size>
+                     </property>
+                     <property name="sizeIncrement">
+                      <size>
+                       <width>0</width>
+                       <height>1</height>
+                      </size>
+                     </property>
+                     <property name="baseSize">
+                      <size>
+                       <width>0</width>
                        <height>160</height>
                       </size>
                      </property>
@@ -1070,7 +1103,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <property name="contextMenuPolicy">
@@ -1263,6 +1296,22 @@ p, li { white-space: pre-wrap; }
     <hint type="destinationlabel">
      <x>479</x>
      <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>urlpre</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>extraInfoGroupBox</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>790</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>474</x>
+     <y>425</y>
     </hint>
    </hints>
   </connection>

@@ -45,6 +45,7 @@ protected:
     }
 };
 
+#include <QSplitter>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow), currentReply(0){
@@ -187,15 +188,26 @@ MainWindow::MainWindow(QWidget *parent) :
     loadingMovie->start();
 
     //RSS
-    connect(ui->treeWidget, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
-            this, SLOT(itemActivated(QTreeWidgetItem*)));
+    connect(ui->treeWidget, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
+            this, SLOT(itemActivated(QTreeWidgetItem*)));    
     QStringList headerLabels;
     headerLabels << tr("Title") << tr("Link");
     ui->treeWidget->setHeaderLabels(headerLabels);
     ui->treeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
     get(QUrl("http://www.archlinux.org/feeds/news/"));
-    ui->RSSView->installEventFilter(new QTEventFilter());
     ui->treeWidget->hideColumn(0);
+
+    QSplitter *splitter = new QSplitter(ui->tabList);
+    ui->contents->removeWidget(ui->extraInfoGroupBox);
+    ui->contents->removeWidget(ui->tableWidget);
+    ui->tabList->layout()->addWidget(splitter);
+    splitter->addWidget(ui->tableWidget);
+    splitter->addWidget(ui->extraInfoGroupBox);
+    splitter->setOrientation(Qt::Vertical);
+
+    QList<int> sizes;
+    sizes << 250 << 180;
+    splitter->setSizes(sizes);
 }
 
 //RSS
@@ -217,7 +229,7 @@ void MainWindow::finished(QNetworkReply *reply){
 
 #include <QDesktopServices>
 void MainWindow::itemActivated(QTreeWidgetItem * item){
-    ui->RSSView->setUrl(item->text(0));
+    ui->textBrowser->setHtml(item->text(0));
 }
 
 void MainWindow::metaDataChanged(){
@@ -248,22 +260,26 @@ void MainWindow::parseXml(){
 
                 QTreeWidgetItem *item = new QTreeWidgetItem;
                 item->setText(1, titleString);
-                item->setText(0, linkString);
+                item->setText(0, descString);
                 ui->treeWidget->addTopLevelItem(item);
                 if(ui->treeWidget->topLevelItemCount()==1){
                     ui->treeWidget->setCurrentItem(item);
                     itemActivated(item);
                 }
+                ui->textBrowser->setHtml(descString);
 
                 titleString.clear();
                 linkString.clear();
+                descString.clear();
             }
 
         } else if (xml.isCharacters() && !xml.isWhitespace()) {
             if (currentTag == "title")
-                titleString += xml.text().toString();
+                titleString = xml.text().toString();
             else if (currentTag == "link")
                 linkString += xml.text().toString();
+            else if (currentTag == "description")
+                descString += xml.text().toString();
         }
     }
     if (xml.error() && xml.error() != QXmlStreamReader::PrematureEndOfDocumentError) {
@@ -541,6 +557,7 @@ void MainWindow::opFinished(){
 
 void MainWindow::editConfirm(){
     timerConfirm->stop();
+    ui->editConfirm->setText(tr("Confirm"));
 
     ui->editCancel->setDisabled(true);
     ui->editConfirm->setDisabled(true);

@@ -108,6 +108,7 @@ int AS::NIXEngine::execCmd(string command){
     command += " 2> ";
     command += pipePath;
     env+=command;
+    env+=command;
     int status = 0;
     ifstream output;
 

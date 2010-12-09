@@ -274,6 +274,7 @@ private:
     QString currentTag;
     QString linkString;
     QString titleString;
+    QString descString;
 
     void parseXml();
     void get(const QUrl &url);
