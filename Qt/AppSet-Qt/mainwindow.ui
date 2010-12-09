@@ -36,6 +36,9 @@
    <set>QMainWindow::AnimatedDocks</set>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <property name="leftMargin">
      <number>2</number>
@@ -335,6 +338,11 @@
                      <bold>false</bold>
                     </font>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(230, 255, 255);
+alternate-background-color: rgb(255, 220, 255);
+color: rgb(0, 0, 255);</string>
+                   </property>
                    <property name="showDropIndicator" stdset="0">
                     <bool>false</bool>
                    </property>
@@ -348,6 +356,9 @@
                     <number>2</number>
                    </property>
                    <attribute name="headerVisible">
+                    <bool>false</bool>
+                   </attribute>
+                   <attribute name="headerStretchLastSection">
                     <bool>false</bool>
                    </attribute>
                    <column>
@@ -364,6 +375,9 @@
                  </item>
                  <item>
                   <widget class="QTextBrowser" name="textBrowser">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(230, 255, 255);</string>
+                   </property>
                    <property name="openExternalLinks">
                     <bool>true</bool>
                    </property>
@@ -390,204 +404,257 @@
                <number>0</number>
               </property>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout">
-                <item>
-                 <widget class="QComboBox" name="comboBox">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="currentIndex">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>Name</string>
+               <widget class="QWidget" name="widgetTools" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(0, 0, 255);
+color: rgb(170, 255, 255);</string>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout">
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SetMaximumSize</enum>
+                 </property>
+                 <property name="margin">
+                  <number>1</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBox">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
                    </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Description</string>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(50, 50, 50);</string>
                    </property>
-                  </item>
-                  <item>
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Name</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Description</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>All</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="searchBar">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="toolTip">
+                    <string>Search</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(255, 255, 255);
+alternate-background-color: rgb(0, 170, 255);
+color: rgb(0, 0, 127);</string>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Search...</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="clearButton">
+                   <property name="toolTip">
+                    <string>Clears the search bar</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/editing/clear.png</normaloff>:/editing/clear.png</iconset>
+                   </property>
+                   <property name="autoRaise">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="text">
+                    <string>Show:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="showAll">
+                   <property name="toolTip">
+                    <string>Show all packages</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(50, 50, 50);</string>
+                   </property>
                    <property name="text">
                     <string>All</string>
                    </property>
-                  </item>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="searchBar">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="toolTip">
-                   <string>Search</string>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Search...</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QToolButton" name="clearButton">
-                  <property name="toolTip">
-                   <string>Clears the search bar</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="icons.qrc">
-                    <normaloff>:/editing/clear.png</normaloff>:/editing/clear.png</iconset>
-                  </property>
-                  <property name="autoRaise">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_2">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label">
-                  <property name="text">
-                   <string>Show:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="showAll">
-                  <property name="toolTip">
-                   <string>Show all packages</string>
-                  </property>
-                  <property name="text">
-                   <string>All</string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="showUpgradable">
-                  <property name="toolTip">
-                   <string>Show only upgradable packages</string>
-                  </property>
-                  <property name="text">
-                   <string>Upgradable</string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="showInstalled">
-                  <property name="toolTip">
-                   <string>Show only installed packages</string>
-                  </property>
-                  <property name="text">
-                   <string>Installed</string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="showNotInstalled">
-                  <property name="toolTip">
-                   <string>Show only not installed packages</string>
-                  </property>
-                  <property name="text">
-                   <string>Not Installed</string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="urlpre">
-                  <property name="toolTip">
-                   <string>Show/Hide Package Extra Informations</string>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::RightToLeft</enum>
-                  </property>
-                  <property name="text">
-                   <string>Extra Info</string>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="expertMode">
-                  <property name="toolTip">
-                   <string>Show/Hide system packages</string>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::RightToLeft</enum>
-                  </property>
-                  <property name="text">
-                   <string>Expert Mode</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="showUpgradable">
+                   <property name="toolTip">
+                    <string>Show only upgradable packages</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(50, 50, 50);</string>
+                   </property>
+                   <property name="text">
+                    <string>Upgradable</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="showInstalled">
+                   <property name="toolTip">
+                    <string>Show only installed packages</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(50, 50, 50);</string>
+                   </property>
+                   <property name="text">
+                    <string>Installed</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="showNotInstalled">
+                   <property name="toolTip">
+                    <string>Show only not installed packages</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(50, 50, 50);</string>
+                   </property>
+                   <property name="text">
+                    <string>Not Installed</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="urlpre">
+                   <property name="toolTip">
+                    <string>Show/Hide Package Extra Informations</string>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::RightToLeft</enum>
+                   </property>
+                   <property name="text">
+                    <string>Extra Info</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="expertMode">
+                   <property name="toolTip">
+                    <string>Show/Hide system packages</string>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::RightToLeft</enum>
+                   </property>
+                   <property name="text">
+                    <string>Expert Mode</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </item>
               <item>
                <layout class="QVBoxLayout" name="contents">
@@ -598,6 +665,10 @@
                     <width>700</width>
                     <height>0</height>
                    </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(230, 255, 255);
+alternate-background-color: rgb(255, 220, 255);</string>
                   </property>
                   <property name="editTriggers">
                    <set>QAbstractItemView::NoEditTriggers</set>
@@ -618,7 +689,7 @@
                    <bool>true</bool>
                   </property>
                   <property name="wordWrap">
-                   <bool>false</bool>
+                   <bool>true</bool>
                   </property>
                   <property name="cornerButtonEnabled">
                    <bool>false</bool>
@@ -681,6 +752,9 @@
                        <width>250</width>
                        <height>6000</height>
                       </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(230, 255, 255);</string>
                      </property>
                      <property name="frameShape">
                       <enum>QFrame::StyledPanel</enum>
@@ -1122,10 +1196,17 @@ p, li { white-space: pre-wrap; }
    <property name="font">
     <font>
      <pointsize>9</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="contextMenuPolicy">
     <enum>Qt::PreventContextMenu</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+border-bottom-color: rgb(0, 0, 255);
+background-color: rgb(50, 50, 50);</string>
    </property>
    <property name="iconSize">
     <size>
@@ -1171,38 +1252,6 @@ p, li { white-space: pre-wrap; }
   <include location="icons.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>clearButton</sender>
-   <signal>clicked()</signal>
-   <receiver>searchBar</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>283</x>
-     <y>49</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>192</x>
-     <y>49</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>urlpre</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>extraInfoGroupBox</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>790</x>
-     <y>50</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>474</x>
-     <y>425</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>showOffice</sender>
    <signal>clicked()</signal>
@@ -1296,22 +1345,6 @@ p, li { white-space: pre-wrap; }
     <hint type="destinationlabel">
      <x>479</x>
      <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>urlpre</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>extraInfoGroupBox</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>790</x>
-     <y>50</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>474</x>
-     <y>425</y>
     </hint>
    </hints>
   </connection>
