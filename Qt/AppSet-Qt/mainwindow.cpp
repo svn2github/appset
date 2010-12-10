@@ -56,42 +56,14 @@ MainWindow::MainWindow(QWidget *parent) :
     merging = true;
 
     QStringList headers;
-    headers.append(tr("S"));
-    headers.append(tr("Packet"));
-    headers.append(tr("Installed Version"));
-    headers.append(tr("Last Version"));
-    headers.append(tr("Description"));
+    headers << tr("S") << tr("Packet") << tr("Installed Version") << tr("Last Version") << tr("Description");
     ui->tableWidget->setColumnWidth(0,24);
     ui->tableWidget->setHorizontalHeaderLabels(headers);
 
-    QStringList installHeaders;
-    installHeaders.append(tr("S"));
-    installHeaders.append(tr("Packet"));
-    installHeaders.append(tr("Version"));
-    installHeaders.append(tr("Dependencies"));
-    installHeaders.append(tr("Download Size(MB)"));
-    installHeaders.append(tr("Progress"));
-    ui->tableInstall->setColumnWidth(0,24);
-    ui->tableInstall->setHorizontalHeaderLabels(installHeaders);
-
     QStringList updateHeaders;
-    updateHeaders.append(tr("S"));
-    updateHeaders.append(tr("Packet"));
-    updateHeaders.append(tr("Installed Version"));
-    updateHeaders.append(tr("Last Version"));
-    //updateHeaders.append(tr("Upgrade Dependencies"));
-    updateHeaders.append(tr("Download Size(MB)"));
-    updateHeaders.append(tr("Progress"));
+    updateHeaders << tr("S") << tr("Packet") << tr("Version") << tr("Dependencies") << tr("Size(MB)") << tr("Progress");
     ui->tableUpgraded->setColumnWidth(0,24);
     ui->tableUpgraded->setHorizontalHeaderLabels(updateHeaders);
-
-    QStringList removeHeaders;
-    removeHeaders.append(tr("S"));
-    removeHeaders.append(tr("Packet"));
-    removeHeaders.append(tr("Required by"));
-    removeHeaders.append(tr("Description"));
-    ui->tableRemoved->setColumnWidth(0,24);
-    ui->tableRemoved->setHorizontalHeaderLabels(removeHeaders);
 
     ui->editConfirm->setIcon(style()->standardIcon(QStyle::SP_DialogApplyButton));
     ui->editCancel->setIcon(style()->standardIcon(QStyle::SP_DialogCancelButton));
@@ -321,24 +293,24 @@ void MainWindow::aboutQt(){
 }
 
 void MainWindow::about(){
-    QMessageBox::about(this, tr("About AppSet-Qt"), tr("An advanced, distribution independent, \"SIMPLE\" and not hungry for dependencies package manager\n\nAuthor: Simone Tobia"));
+    QMessageBox::about(this, tr("About AppSet-Qt"), tr("An advanced and feature rich Package Manager Frontend\n\nAuthor: Simone Tobia"));
 }
 
 void MainWindow::refresh(){
     int rows=0;
     switch(asThread->getOp()){
-    case 1:
-        rows=ui->tableInstall->rowCount();
+    case 1: //Install
+        rows=ui->tableUpgraded->rowCount();
         for(int i=0;i<rows;++i){
-            if(completed[i+baseIndex]) continue;
+            if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()=="Remove" || completed[i+baseIndex]) continue;
 
             Package pkg;
-            pkg.setName(ui->tableInstall->item(i,1)->text().toAscii().data());
+            pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());
             float reached = as->getProgressSize(&pkg);
-            float total = ui->tableInstall->item(i,4)->text().toFloat()*1024;
+            float total = ui->tableUpgraded->item(i,4)->text().toFloat()*1024;
 
-            if(ui->tableInstall->item(i,3) && ui->tableInstall->item(i,3)->text().length()){
-                QString deps = ui->tableInstall->item(i,3)->text();
+            if(ui->tableUpgraded->item(i,3) && ui->tableUpgraded->item(i,3)->text().length()){
+                QString deps = ui->tableUpgraded->item(i,3)->text();
                 QStringList depsList = deps.split(' ');
 
                 for(QStringList::iterator it2=depsList.begin();it2!=depsList.end();it2++){
@@ -350,22 +322,22 @@ void MainWindow::refresh(){
             float speed=0;
             if(reached){
                 if(baseSizes[i]!=-1){
-                    speed=(reached-baseSizes[i])/((float)0.5);
-                    ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setFormat(QString("%p% (")+QString::number((int)speed)+" KB/s)");
+                    speed=(reached-baseSizes[i])/((float)0.25);
+                    ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat(QString("%p% (")+QString::number((int)speed)+" KB/s)");
                 }
                 baseSizes[i]=reached;
 
             }
 
             float perc = total?(reached/(float)total)*100:100;
-            ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setValue((int)perc);
+            ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue((int)perc);
 
-            if(perc>0) ui->tableInstall->scrollToItem(ui->tableInstall->item(i,0));
+            if(perc>0) ui->tableUpgraded->scrollToItem(ui->tableUpgraded->item(i,0));
 
             if(perc>=99){
-                ((QProgressBar*)ui->tableInstall->cellWidget(i,5))->setValue(100);
+                ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(100);
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat("Waiting others...");
-                ui->tableInstall->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Working"));
+                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),ui->tableUpgraded->item(i,0)->text()));
 
                 bool totalCompleted=true;
                 for(int k=0;totalCompleted && k<rows;++k){
@@ -376,8 +348,8 @@ void MainWindow::refresh(){
                     for(int k=0;k<rows;++k){
                         QLabel *label = new QLabel();
                         label->setMovie(loadingMovie);
-                        ui->tableInstall->setCellWidget(k,0,label);
-                        ((QProgressBar*)ui->tableInstall->cellWidget(k,5))->setFormat("Installing...");
+                        ui->tableUpgraded->setCellWidget(k,0,label);
+                        ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat("Installing...");
                     }
 
                     break;
@@ -388,7 +360,7 @@ void MainWindow::refresh(){
      case 2:
         rows=ui->tableUpgraded->rowCount();
         for(int i=0;i<rows;++i){
-            if(completed[i+baseIndex]) continue;
+            if(ui->tableUpgraded->item(i,0)->text()!=QString("Upgrade") || completed[i+baseIndex]) continue;
 
             Package pkg;
             pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());
@@ -398,7 +370,7 @@ void MainWindow::refresh(){
             float speed=0;
             if(reached){
                 if(baseSizes[i+baseIndex]!=-1){
-                    speed=(reached-baseSizes[i+baseIndex])/((float)0.5);
+                    speed=(reached-baseSizes[i+baseIndex])/((float)0.25);
                     ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat(QString("%p% (")+QString::number((int)speed)+" KB/s)");
                 }
                 baseSizes[i+baseIndex]=reached;
@@ -414,7 +386,7 @@ void MainWindow::refresh(){
                 completed[i+baseIndex]=true;
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(100);
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat("Waiting others...");
-                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Working"));
+                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Upgrade"));
 
 
                 bool totalCompleted=true;
@@ -442,6 +414,7 @@ void MainWindow::opFinished(){
     int op = asThread->getOp();
     int status = asThread->getStatus();
     std::list<Package*> *l = asThread->getList();
+    int rows=ui->tableUpgraded->rowCount();
 
     switch(op){
     case 1:
@@ -450,10 +423,9 @@ void MainWindow::opFinished(){
         statusI=status;
 
         if(!statusI){
-            int j=0;
-            for(std::list<Package*>::iterator it=l->begin();it!=l->end();it++){
-                ui->tableInstall->setItem(j++,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Success"));
-                delete (*it);
+            for(int i=0;i<rows;++i){
+                if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()==QString("Remove")) continue;
+                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Install"));
             }
             delete l;
         }
@@ -464,10 +436,9 @@ void MainWindow::opFinished(){
         statusU=0;
 
         if(!statusU){
-            int j=0;
-            for(std::list<Package*>::iterator it=l->begin();it!=l->end();it++){
-                ui->tableUpgraded->setItem(j++,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Success"));
-                delete (*it);
+            for(int i=0;i<rows;++i){
+                if(ui->tableUpgraded->item(i,0)->text()=="Upgrade")
+                    ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Upgrade"));
             }
             delete l;
         }
@@ -477,10 +448,9 @@ void MainWindow::opFinished(){
         statusR=status;
 
         if(!statusR){
-            int j=0;
-            for(std::list<Package*>::iterator it=l->begin();it!=l->end();it++){
-                ui->tableRemoved->setItem(j++,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Success"));
-                delete (*it);
+            for(int i=0;i<rows;++i){
+                if(ui->tableUpgraded->item(i,0)->text()==QString("Remove"))
+                    ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Remove"));
             }
             delete l;
         }
@@ -540,10 +510,6 @@ void MainWindow::opFinished(){
 
             ui->searchBar->clear();
 
-            ui->tableInstall->show();
-            ui->tableUpgraded->show();
-            ui->tableRemoved->show();
-
             modified=0;
             applyEnabler();
             ui->showAll->setChecked(true);
@@ -563,18 +529,18 @@ void MainWindow::editConfirm(){
     ui->editConfirm->setDisabled(true);
     Package *p;
 
+    int rows=ui->tableUpgraded->rowCount();
+
     if(toR){
         std::list<Package*> *prem=new std::list<Package*>();
-        for(int i=0;i<toR;++i){
-            p=new Package();
-            p->setName(ui->tableRemoved->item(i,1)->text().trimmed().toAscii().data());
-            prem->insert(prem->end(), p);
-            ui->tableRemoved->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Waiting"));
+        for(int i=0;i<rows;++i){
+            if(ui->tableUpgraded->item(i,0)->text()==QString("Remove")){
+                p=new Package();
+                p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
+                prem->insert(prem->end(), p);
+                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Remove"));
+            }
         }
-
-        ui->tableInstall->hide();
-        ui->tableUpgraded->hide();
-        ui->tableRemoved->show();
 
         asThread->setList(prem);
         asThread->setOp(3);
@@ -582,18 +548,13 @@ void MainWindow::editConfirm(){
         asThread->start();
     }else if(toI){
         std::list<Package*> *pinst=new std::list<Package*>();
-        for(int i=0;i<toI;++i){
+        for(int i=0;i<rows;++i){
+            if(ui->tableUpgraded->item(i,0)->text()==QString("Remove") || ui->tableUpgraded->item(i,0)->text()=="Upgrade") continue;
             p=new Package();
-            p->setName(ui->tableInstall->item(i,1)->text().trimmed().toAscii().data());
-            p->setSize(ui->tableInstall->item(i,0)->text().trimmed().toInt());
-            p->setRemoteVersion(ui->tableInstall->item(i,2)->text().trimmed().toAscii().data());
+            p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
             pinst->insert(pinst->end(), p);
-            ui->tableInstall->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Waiting"));
+            ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),ui->tableUpgraded->item(i,0)->text()));
         }
-
-        ui->tableInstall->show();
-        ui->tableUpgraded->hide();
-        ui->tableRemoved->hide();
 
         asThread->setList(pinst);
         asThread->setOp(1);
@@ -609,13 +570,12 @@ void MainWindow::editConfirm(){
                 pupgr->insert(pupgr->end(),p);
             }
         }
-        for(int i=0;i<toU;++i){
-            ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Waiting"));
+        rows=ui->tableUpgraded->rowCount();
+        for(int i=0;i<rows;++i){
+            if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
+                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Upgrade"));
+            }
         }
-
-        ui->tableInstall->hide();
-        ui->tableUpgraded->show();
-        ui->tableRemoved->hide();
 
         asThread->setList(pupgr);
         asThread->setOp(2);
@@ -623,7 +583,7 @@ void MainWindow::editConfirm(){
         asThread->start();
     }
 
-    if(toU || toR || toI) timerUpdate->start(500);
+    if(toU || toR || toI) timerUpdate->start(250);
 }
 
 void MainWindow::timeFilter(){
@@ -817,11 +777,7 @@ void MainWindow::confirm(){
     ui->stacked->setCurrentIndex(1);
     ui->mainToolBar->hide();
 
-    ui->tableInstall->clearContents();
-    ui->tableRemoved->clearContents();
     ui->tableUpgraded->clearContents();
-    ui->tableInstall->setRowCount(0);
-    ui->tableRemoved->setRowCount(0);
     ui->tableUpgraded->setRowCount(0);
 
     int in=0,r=0,u=0;
@@ -832,12 +788,74 @@ void MainWindow::confirm(){
         if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,1)->text().contains(expert))
             ui->tableWidget->setItem(i,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgrade"));
 
-        if(ui->tableWidget->item(i,0)->text()=="Upgrade"){
+        if(ui->tableWidget->item(i,0)->text()==QString("Remove")){
+                    ui->tableUpgraded->insertRow(r);
+                    ui->tableUpgraded->setItem(r,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
+                    ui->tableUpgraded->item(r,0)->setText("Remove");
+                    ui->tableUpgraded->setItem(r,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
+
+                    Package p;
+                    p.setName(ui->tableUpgraded->item(r,1)->text().trimmed().toAscii().data());
+                    QStringList deps;
+                    if((pkgs = as->checkDeps(&p,false))){
+                        for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+                            QString name = QString((*it)->getName().c_str()).trimmed();
+                            if(name!=QString(p.getName().c_str()))
+                                deps << name;
+                            delete(*it);
+                        }
+                        delete pkgs;
+                    }
+
+                    QProgressBar *prog=new QProgressBar();
+                    prog->setValue(0);
+                    prog->hide();
+                    ui->tableUpgraded->setCellWidget(r,5,prog);
+
+                    ui->tableUpgraded->setItem(r,3,new QTableWidgetItem(deps.join(" ")));
+                    ui->tableUpgraded->setItem(r,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,6)->text().toFloat()/1024)));
+
+                    ui->tableUpgraded->setItem(r++,2,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
+        }else if(ui->tableWidget->item(i,0)->text()=="Install"){
+            ui->tableUpgraded->insertRow(in);
+            ui->tableUpgraded->setItem(in,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
+            ui->tableUpgraded->item(in,0)->setText(ui->tableWidget->item(i,6)->text());
+            ui->tableUpgraded->setItem(in,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
+            ui->tableUpgraded->setItem(in,2,new QTableWidgetItem(*ui->tableWidget->item(i,3)));
+
+            Package p;
+            int dsize = ui->tableWidget->item(i,6)->text().toFloat();
+            p.setName(ui->tableUpgraded->item(in,1)->text().trimmed().toAscii().data());
+            QStringList deps;
+            if((pkgs = as->checkDeps(&p,true))){
+                for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+                    QString name = QString((*it)->getName().c_str()).trimmed();
+                    if(name!=QString(p.getName().c_str())){
+                        deps << name;
+                        dsize+=QString((*it)->getRemoteVersion().c_str()).toFloat()*1024;
+                    }
+                    delete(*it);
+                }
+                delete pkgs;
+            }
+
+            ui->tableUpgraded->setItem(in,3,new QTableWidgetItem(deps.join(" ")));
+
+
+            QProgressBar *prog=new QProgressBar();
+            prog->setValue(0);
+            //prog->setMaximumWidth(200);
+            ui->tableUpgraded->setCellWidget(in,5,prog);
+
+            //ui->tableUpgraded->setItem(in++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
+            ui->tableUpgraded->setItem(in++,4,new QTableWidgetItem(QString::number(dsize/(float)1024)));
+        }else if(ui->tableWidget->item(i,0)->text()=="Upgrade"){
             ui->tableUpgraded->insertRow(u);            
             ui->tableUpgraded->setItem(u,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
+            ui->tableUpgraded->item(u,0)->setText("Upgrade");
             ui->tableUpgraded->setItem(u,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
-            ui->tableUpgraded->setItem(u,2,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
-            ui->tableUpgraded->setItem(u,3,new QTableWidgetItem(*ui->tableWidget->item(i,3)));
+            ui->tableUpgraded->setItem(u,2,new QTableWidgetItem(ui->tableWidget->item(i,2)->text()+QString(" (")+ui->tableWidget->item(i,3)->text()+QString(")")));
+            //ui->tableUpgraded->setItem(u,3,new QTableWidgetItem(*ui->tableWidget->item(i,3)));
 
            /* Package p;
             p.setName(ui->tableUpgraded->item(u,1)->text().trimmed().toAscii().data());
@@ -863,84 +881,7 @@ void MainWindow::confirm(){
             ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,6)->text().toFloat()/1024)));
 
 //            ui->tableUpgraded->showRow(u++);
-        }else if(ui->tableWidget->item(i,0)->text()=="Install"){
-            ui->tableInstall->insertRow(in);
-            ui->tableInstall->setItem(in,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
-            ui->tableInstall->item(in,0)->setText(ui->tableWidget->item(i,6)->text());
-            ui->tableInstall->setItem(in,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
-            ui->tableInstall->setItem(in,2,new QTableWidgetItem(*ui->tableWidget->item(i,3)));
-
-            Package p;
-            int dsize = ui->tableWidget->item(i,6)->text().toFloat();
-            p.setName(ui->tableInstall->item(in,1)->text().trimmed().toAscii().data());
-            QStringList deps;
-            if((pkgs = as->checkDeps(&p,true))){
-                for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                    QString name = QString((*it)->getName().c_str()).trimmed();
-                    if(name!=QString(p.getName().c_str())){
-                        deps << name;
-                        dsize+=QString((*it)->getRemoteVersion().c_str()).toFloat()*1024;
-                    }
-                    delete(*it);
-                }
-                delete pkgs;
-            }
-
-            ui->tableInstall->setItem(in,3,new QTableWidgetItem(deps.join(" ")));
-
-
-            QProgressBar *prog=new QProgressBar();
-            prog->setValue(0);
-            //prog->setMaximumWidth(200);
-            ui->tableInstall->setCellWidget(in,5,prog);
-
-            //ui->tableInstall->setItem(in++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
-            ui->tableInstall->setItem(in++,4,new QTableWidgetItem(QString::number(dsize/(float)1024)));
-        }else if(ui->tableWidget->item(i,0)->text()=="Remove"){
-            ui->tableRemoved->insertRow(r);
-            ui->tableRemoved->setItem(r,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
-            ui->tableRemoved->setItem(r,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
-
-            Package p;
-            p.setName(ui->tableRemoved->item(r,1)->text().trimmed().toAscii().data());
-            QStringList deps;
-            if((pkgs = as->checkDeps(&p,false))){
-                for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                    QString name = QString((*it)->getName().c_str()).trimmed();
-                    if(name!=QString(p.getName().c_str()))
-                        deps << name;
-                    delete(*it);
-                }
-                delete pkgs;
-            }
-
-            ui->tableRemoved->setItem(r,2,new QTableWidgetItem(deps.join(" ")));
-
-            ui->tableRemoved->setItem(r++,3,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
         }
-    }
-    if(!in){
-        ui->tableInstall->hide();
-        ui->lblInstalled->hide();
-    }else{
-        ui->tableInstall->show();
-        ui->lblInstalled->show();
-    }
-
-    if(!u){
-        ui->tableUpgraded->hide();
-        ui->lblUpgraded->hide();
-    }else{
-        ui->tableUpgraded->show();
-        ui->lblUpgraded->show();
-    }
-
-    if(!r){
-        ui->tableRemoved->hide();
-        ui->lblRemoved->hide();
-    }else{
-        ui->tableRemoved->show();
-        ui->lblRemoved->show();
     }
 
     toI=in;toU=u;toR=r;
@@ -1375,7 +1316,7 @@ void MainWindow::addRows(bool checked){
 
         QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
 
-        ui->statusBar->showMessage("CHECKING UPGRADABLES", 5000);
+        ui->statusBar->showMessage("CHECKING UPGRADABLES", 3000);
 
         rows = ui->tableWidget->rowCount();
 
@@ -1489,13 +1430,13 @@ void MainWindow::addRows(bool checked){
 
     markAction->setEnabled(upgradables>0);
 
-    markAction->setText(tr("Mark all upgrades")+QString("\n(")+QString::number(upgradables)+QString(")"));
+    markAction->setText(tr("Mark all upgrades")+QString(" (")+QString::number(upgradables)+QString(")"));
 
 #ifdef unix
     int cacheSize = ((QTNIXEngine*)as)->cacheSize();
     cleanAction->setEnabled(cacheSize>0);
     if(cacheSize>0){
-        cleanAction->setText(tr("Clean cache")+QString("\n(")+QString::number(cacheSize)+QString(" MB)"));
+        cleanAction->setText(tr("Clean cache")+QString(" (")+QString::number(cacheSize)+QString(" MB)"));
     }
 #endif
 
