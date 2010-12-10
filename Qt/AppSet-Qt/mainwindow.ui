@@ -37,7 +37,7 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(227, 226, 225);</string>
+    <string notr="true">background-color: rgb(217, 214, 212);</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <property name="leftMargin">
@@ -1166,6 +1166,7 @@ color: rgb(187, 187, 187);</string>
     <string notr="true">color: rgb(187, 187, 187);
 border-bottom-color: rgb(97, 147, 207);
 background-color: rgb(50, 50, 50);
+alternate-background-color: rgb(50, 50, 50);
 border-bottom-width: 5px;
 border-bottom-style: solid;
 margin-bottom: 10px;
