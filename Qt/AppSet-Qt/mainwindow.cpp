@@ -166,7 +166,7 @@ MainWindow::MainWindow(QWidget *parent) :
     headerLabels << tr("Link") << tr("Title");
     ui->treeWidget->setHeaderLabels(headerLabels);
     ui->treeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
-    get(QUrl("http://www.archlinux.org/feeds/news/"));
+    get(QUrl("http://chakra-project.org/news/index.php?/feeds/index.rss1"));
     ui->treeWidget->hideColumn(0);
 
     QSplitter *splitter = new QSplitter(ui->tabList);
@@ -238,7 +238,7 @@ void MainWindow::parseXml(){
                     ui->treeWidget->setCurrentItem(item);
                     itemActivated(item);
                 }
-                ui->textBrowser->setHtml(descString);
+                //ui->textBrowser->setHtml(descString);
 
                 titleString.clear();
                 linkString.clear();

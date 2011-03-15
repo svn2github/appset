@@ -14,7 +14,7 @@ HEADERS += \
     trayicon.h
 
 RESOURCES += \
-    icons.qrc
+    ../AppSet-Qt/icons.qrc
 
 target.path = /usr/bin/
 target.files += appsettray-qt
