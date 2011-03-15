@@ -123,6 +123,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(applyAction,SIGNAL(triggered()),SLOT(confirm()));
     applyAction->setDisabled(true);
 
+    connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_ComputerIcon), tr("Options")),SIGNAL(triggered()),SLOT(showOptions()));
+
     connect(ui->searchBar, SIGNAL(textChanged(QString)), SLOT(timerFired(QString)));
 
     connect(ui->showUpgradable,SIGNAL(toggled(bool)),SLOT(showUpgradable(bool)));
@@ -180,6 +182,23 @@ MainWindow::MainWindow(QWidget *parent) :
     QList<int> sizes;
     sizes << 250 << 180;
     splitter->setSizes(sizes);
+
+    Options opt;
+    this->sbdelay=opt.sbdelay;
+    if(opt.startfullscreen)this->showMaximized();
+}
+
+void MainWindow::showOptions(){
+    Options opt;
+    int res = opt.exec();
+
+    if(res==QDialog::Accepted){//Accepted new options
+        //Saving new options
+        opt.writeConfigFile();
+
+        //Activating new options
+        this->sbdelay=opt.sbdelay;
+    }
 }
 
 //RSS
@@ -593,7 +612,7 @@ void MainWindow::timeFilter(){
 void MainWindow::timerFired(QString s){    
     timer2->stop();
     timer2->setSingleShot(true);
-    timer2->start(500);s="";
+    timer2->start(this->sbdelay);s="";
 }
 
 

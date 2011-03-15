@@ -144,6 +144,8 @@ public:
 #include <QXmlStreamReader>
 #include <QUrl>
 
+#include "options.h"
+
 QT_BEGIN_NAMESPACE
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -177,6 +179,8 @@ public slots:
     void showMultimedia();
     void showOffice();
     void showInternet();
+
+    void showOptions();
 
     void expertMode(bool);
     //void searchFilter(QString filter);
@@ -278,6 +282,8 @@ private:
 
     void parseXml();
     void get(const QUrl &url);
+
+    int sbdelay;
 };
 
 #endif // MAINWINDOW_H

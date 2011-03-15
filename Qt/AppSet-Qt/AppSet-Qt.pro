@@ -11,11 +11,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    options.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    options.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    options.ui
 
 INCLUDEPATH += ../../libappset ../libappset-qt
 LIBS += -L../../libappset -L../libappset-qt -lappset -lappset-qt
