@@ -168,7 +168,7 @@ MainWindow::MainWindow(QWidget *parent) :
     headerLabels << tr("Link") << tr("Title");
     ui->treeWidget->setHeaderLabels(headerLabels);
     ui->treeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
-    get(QUrl("http://chakra-project.org/news/index.php?/feeds/index.rss1"));
+    get(QUrl("http://www.archlinux.org/feeds/news/"));
     ui->treeWidget->hideColumn(0);
 
     QSplitter *splitter = new QSplitter(ui->tabList);

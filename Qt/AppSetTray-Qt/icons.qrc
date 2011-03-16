@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/pkgstatus">
+        <file>working.png</file>
+        <file>upgrade.png</file>
+    </qresource>
+    <qresource prefix="/general">
+        <file>appset.png</file>
+    </qresource>
+</RCC>

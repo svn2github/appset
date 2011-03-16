@@ -1,7 +1,7 @@
 # Maintainer: Simone Tobia <simone.tobia at gmail dot com>
 
 pkgname=appset-qt
-pkgver=0.2.0
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="An advanced, distribution independent, SIMPLE and not hungry for dependencies package manager"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="http://appset.sourceforge.net/"
 license=('GPL2')
 depends=('qt>=4.6')
 install=${pkgname}.install
-source=(http://sourceforge.net/projects/appset/files/appset-qt/0.2/$pkgver/$pkgname-$pkgver-sources.tar.gz/download)
-md5sums=(e4b39deef9911acf336d98165363b992)
+source=($pkgname-$pkgver-sources.tar.gz)
+md5sums=(84249b25431581b1f8e8d310d17a1e15)
 
 build() {
   cd $srcdir/$pkgname-$pkgver-sources

@@ -22,6 +22,6 @@
         <file>internet.png</file>
     </qresource>
     <qresource prefix="/general">
-        <file alias="appset">appset.png</file>
+        <file>appset.png</file>
     </qresource>
 </RCC>

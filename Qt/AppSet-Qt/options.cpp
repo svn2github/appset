@@ -6,7 +6,7 @@
 #include <QString>
 #include <QVector>
 
-#define F_CONF_NAME "/etc/appset-qt.conf"
+#define F_CONF_NAME "/etc/appset/appset-qt.conf"
 
 Options::Options(QWidget *parent) :
     QDialog(parent),
