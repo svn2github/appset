@@ -31,4 +31,7 @@ INSTALLS += target autostart desktop
 OTHER_FILES += \
     appsettray-qt.desktop
 
-TRANSLATIONS = appsettray-qt_it.ts
+TRANSLATIONS = appsettray-qt_it.ts \
+    appsettray-qt_de.ts \
+    appsettray-qt_nl.ts \
+    appsettray-qt_fr.ts

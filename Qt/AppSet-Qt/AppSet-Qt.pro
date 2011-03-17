@@ -43,4 +43,7 @@ INSTALLS += target \
     images \
     desktop
 
-TRANSLATIONS = appset-qt_it.ts
+TRANSLATIONS = appset-qt_it.ts \
+    appset-qt_de.ts \
+    appset-qt_nl.ts \
+    appset-qt_fr.ts

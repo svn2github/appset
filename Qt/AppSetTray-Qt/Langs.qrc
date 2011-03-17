@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/langs">
         <file>appsettray-qt_it.qm</file>
+        <file>appsettray-qt_de.qm</file>
+        <file>appsettray-qt_fr.qm</file>
+        <file>appsettray-qt_nl.qm</file>
     </qresource>
 </RCC>

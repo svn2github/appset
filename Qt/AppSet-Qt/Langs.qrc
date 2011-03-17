@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/langs">
         <file>appset-qt_it.qm</file>
+        <file>appset-qt_de.qm</file>
+        <file>appset-qt_fr.qm</file>
+        <file>appset-qt_nl.qm</file>
     </qresource>
 </RCC>
