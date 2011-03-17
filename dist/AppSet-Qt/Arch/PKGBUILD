@@ -9,8 +9,8 @@ url="http://appset.sourceforge.net/"
 license=('GPL2')
 depends=('qt>=4.6')
 install=${pkgname}.install
-source=($pkgname-$pkgver-sources.tar.gz)
-md5sums=(09d49d83208052cd8f221b145e8266a9)
+source=(http://sourceforge.net/projects/appset/files/appset-qt/0.2/$pkgver/$pkgname-$pkgver-sources.tar.gz/download)
+md5sums=(40cd816562398ebc173d69a26618b315)
 
 build() {
   cd $srcdir/$pkgname-$pkgver-sources

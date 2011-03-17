@@ -34,11 +34,11 @@ TrayIcon::TrayIcon(QObject *parent) :
     as = new AS::QTNIXEngine();
     int errno=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf","/tmp/astray.tmp",true))){
-        QMessageBox errMsg;
+        /*QMessageBox errMsg;
         errMsg.setText(tr("Error configuring system"));
         errMsg.setInformativeText(((AS::QTNIXEngine*)as)->getConfErrStr(errno));
         errMsg.setIcon(QMessageBox::Critical);
-        errMsg.exec();
+        errMsg.exec();*/
         exit(1);
     }
 #endif
