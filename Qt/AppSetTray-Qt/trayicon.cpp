@@ -53,7 +53,7 @@ TrayIcon::TrayIcon(QObject *parent) :
     connect(timer,SIGNAL(timeout()),SLOT(checkUps()));
     connect(timer2,SIGNAL(timeout()),SLOT(checkRunning()));
 
-    setToolTip("Waiting helper...");
+    setToolTip(tr("Waiting helper..."));
 
     running=false;
 }
@@ -103,7 +103,10 @@ void TrayIcon::checkUps(){
                 i--;
             }
 
-            if(i==0) str+="\nAnd others...";
+            if(i==0){
+                str+="\n";
+                str+=tr("\nAnd others...");
+            }
 
             setToolTip(QString::number(pkgs->size())+QString((pkgs->size()>1?tr(" updates available!"):tr(" update available!"))));
 
@@ -122,7 +125,7 @@ void TrayIcon::checkUps(){
 }
 
 void TrayIcon::launchAS(){
-    showMessage("Launching AppSet-Qt","Wait...",QSystemTrayIcon::Information,1000);
+    showMessage(tr("Launching AppSet-Qt"),tr("Wait..."),QSystemTrayIcon::Information,1000);
 
 #ifdef unix
     system("appset-launch.sh &");

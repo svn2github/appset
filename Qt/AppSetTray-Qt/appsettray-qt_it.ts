@@ -19,6 +19,11 @@
         <translation>Chiudi la Tray</translation>
     </message>
     <message>
+        <location filename="trayicon.cpp" line="56"/>
+        <source>Waiting helper...</source>
+        <translation>Aspettando l&apos;helper...</translation>
+    </message>
+    <message>
         <location filename="trayicon.cpp" line="63"/>
         <source>Are you sure to quit this tray?</source>
         <translation>Sei sicuro di voler chiudere questa Tray?</translation>
@@ -26,7 +31,7 @@
     <message>
         <location filename="trayicon.cpp" line="64"/>
         <source>You can restart it from desktop menu</source>
-        <translation>Puoi riavviarla la menu del desktop</translation>
+        <translation>Puoi riavviarla dal menu del desktop</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
@@ -45,21 +50,38 @@
     </message>
     <message>
         <location filename="trayicon.cpp" line="108"/>
-        <location filename="trayicon.cpp" line="110"/>
+        <source>
+And others...</source>
+        <translation>
+E altri...</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="111"/>
+        <location filename="trayicon.cpp" line="113"/>
         <source> updates available!</source>
         <translation> aggiornamenti disponibili!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="108"/>
-        <location filename="trayicon.cpp" line="110"/>
+        <location filename="trayicon.cpp" line="111"/>
+        <location filename="trayicon.cpp" line="113"/>
         <source> update available!</source>
         <translation> aggiornamento disponibile!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="113"/>
         <location filename="trayicon.cpp" line="116"/>
+        <location filename="trayicon.cpp" line="119"/>
         <source>No updates available</source>
         <translation>Nessun aggiornamento disponibile</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="128"/>
+        <source>Launching AppSet-Qt</source>
+        <translation>Avvio AppSet-Qt</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="128"/>
+        <source>Wait...</source>
+        <translation>Attendi...</translation>
     </message>
 </context>
 </TS>

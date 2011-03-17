@@ -141,6 +141,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->editCancel,SIGNAL(clicked()),SLOT(editCancel()));
     connect(ui->editConfirm,SIGNAL(clicked()),SLOT(editConfirm()));
 
+    connect(ui->clearButton,SIGNAL(clicked()),ui->searchBar,SLOT(clear()));
+
     modified=0;
 
     category = QRegExp(".*");

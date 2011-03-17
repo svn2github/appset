@@ -19,6 +19,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="trayicon.cpp" line="56"/>
+        <source>Waiting helper...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="trayicon.cpp" line="63"/>
         <source>Are you sure to quit this tray?</source>
         <translation type="unfinished"></translation>
@@ -45,20 +50,36 @@
     </message>
     <message>
         <location filename="trayicon.cpp" line="108"/>
-        <location filename="trayicon.cpp" line="110"/>
+        <source>
+And others...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="111"/>
+        <location filename="trayicon.cpp" line="113"/>
         <source> updates available!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="108"/>
-        <location filename="trayicon.cpp" line="110"/>
+        <location filename="trayicon.cpp" line="111"/>
+        <location filename="trayicon.cpp" line="113"/>
         <source> update available!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="113"/>
         <location filename="trayicon.cpp" line="116"/>
+        <location filename="trayicon.cpp" line="119"/>
         <source>No updates available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="128"/>
+        <source>Launching AppSet-Qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="128"/>
+        <source>Wait...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

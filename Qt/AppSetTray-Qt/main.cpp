@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
 
     QTranslator myappTranslator;
     myappTranslator.load(":langs/appsettray-qt_" + QLocale::system().name());
-         a.installTranslator(&myappTranslator);
+         app.installTranslator(&myappTranslator);
 
     TrayIcon tray;
     tray.show();
