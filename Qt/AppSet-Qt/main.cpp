@@ -18,11 +18,20 @@ along with AppSet; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #include <QtGui/QApplication>
+
+#include <QLocale>
+#include <QTranslator>
+
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    QTranslator myappTranslator;
+    myappTranslator.load(":langs/appset-qt_" + QLocale::system().name());
+         a.installTranslator(&myappTranslator);
+
     MainWindow w;
     w.show();
 

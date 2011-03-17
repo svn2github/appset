@@ -14,7 +14,8 @@ HEADERS += \
     trayicon.h
 
 RESOURCES += \
-    icons.qrc
+    icons.qrc \
+    Langs.qrc
 
 target.path = /usr/bin/
 target.files += appsettray-qt
@@ -29,3 +30,5 @@ INSTALLS += target autostart desktop
 
 OTHER_FILES += \
     appsettray-qt.desktop
+
+TRANSLATIONS = appsettray-qt_it.ts

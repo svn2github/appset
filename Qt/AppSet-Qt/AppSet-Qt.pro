@@ -24,7 +24,8 @@ INCLUDEPATH += ../../libappset ../libappset-qt
 LIBS += -L../../libappset -L../libappset-qt -lappset -lappset-qt
 
 RESOURCES += \
-    icons.qrc
+    icons.qrc \
+    Langs.qrc
 
 OTHER_FILES += \
     appset-launch.sh \
@@ -41,3 +42,5 @@ desktop.files += appset-qt.desktop
 INSTALLS += target \
     images \
     desktop
+
+TRANSLATIONS = appset-qt_it.ts

@@ -123,6 +123,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(applyAction,SIGNAL(triggered()),SLOT(confirm()));
     applyAction->setDisabled(true);
 
+    ui->mainToolBar->addSeparator();
+
     connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_ComputerIcon), tr("Options")),SIGNAL(triggered()),SLOT(showOptions()));
 
     connect(ui->searchBar, SIGNAL(textChanged(QString)), SLOT(timerFired(QString)));

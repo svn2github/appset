@@ -30,6 +30,10 @@ int main(int argc, char *argv[]){
 
     if (!QSystemTrayIcon::isSystemTrayAvailable()) return 1;
 
+    QTranslator myappTranslator;
+    myappTranslator.load(":langs/appsettray-qt_" + QLocale::system().name());
+         a.installTranslator(&myappTranslator);
+
     TrayIcon tray;
     tray.show();
 
