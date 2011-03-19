@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1005</width>
+    <width>1080</width>
     <height>550</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>950</width>
-    <height>550</height>
+    <height>540</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -164,41 +164,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>80</width>
-                    <height>80</height>
-                   </size>
-                  </property>
-                  <property name="toolButtonStyle">
-                   <enum>Qt::ToolButtonTextUnderIcon</enum>
-                  </property>
-                  <property name="autoRaise">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QToolButton" name="showGames">
-                  <property name="font">
-                   <font>
-                    <pointsize>9</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="text">
-                   <string>Games</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="icons.qrc">
-                    <normaloff>:/pkggroups/games.png</normaloff>:/pkggroups/games.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>80</width>
-                    <height>80</height>
+                    <width>48</width>
+                    <height>48</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -230,8 +197,41 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>80</width>
-                    <height>80</height>
+                    <width>48</width>
+                    <height>48</height>
+                   </size>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QToolButton" name="showGames">
+                  <property name="font">
+                   <font>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>Games</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="icons.qrc">
+                    <normaloff>:/pkggroups/games.png</normaloff>:/pkggroups/games.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>48</width>
+                    <height>48</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -263,8 +263,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>80</width>
-                    <height>80</height>
+                    <width>48</width>
+                    <height>48</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -275,7 +275,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="1">
+                <item row="0" column="4">
                  <widget class="QToolButton" name="showOffice">
                   <property name="font">
                    <font>
@@ -296,8 +296,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>80</width>
-                    <height>80</height>
+                    <width>48</width>
+                    <height>48</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -308,7 +308,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="2">
+                <item row="0" column="5">
                  <widget class="QToolButton" name="showSystem">
                   <property name="font">
                    <font>
@@ -329,8 +329,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>80</width>
-                    <height>80</height>
+                    <width>48</width>
+                    <height>48</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -1087,7 +1087,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1005</width>
+     <width>1080</width>
      <height>21</height>
     </rect>
    </property>
