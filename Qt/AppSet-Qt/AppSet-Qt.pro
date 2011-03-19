@@ -46,4 +46,6 @@ INSTALLS += target \
 TRANSLATIONS = appset-qt_it.ts \
     appset-qt_de.ts \
     appset-qt_nl.ts \
+    appset-qt_ca.ts \
+    appset-qt_el.ts \
     appset-qt_fr.ts

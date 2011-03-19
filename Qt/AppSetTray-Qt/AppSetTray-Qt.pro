@@ -34,4 +34,6 @@ OTHER_FILES += \
 TRANSLATIONS = appsettray-qt_it.ts \
     appsettray-qt_de.ts \
     appsettray-qt_nl.ts \
-    appsettray-qt_fr.ts
+    appsettray-qt_fr.ts \
+    appsettray-qt_el.ts \
+    appsettray-qt_ca.ts

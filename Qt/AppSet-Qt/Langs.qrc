@@ -4,5 +4,7 @@
         <file>appset-qt_de.qm</file>
         <file>appset-qt_fr.qm</file>
         <file>appset-qt_nl.qm</file>
+        <file>appset-qt_ca.qm</file>
+        <file>appset-qt_el.qm</file>
     </qresource>
 </RCC>

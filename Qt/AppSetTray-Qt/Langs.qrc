@@ -4,5 +4,7 @@
         <file>appsettray-qt_de.qm</file>
         <file>appsettray-qt_fr.qm</file>
         <file>appsettray-qt_nl.qm</file>
+        <file>appsettray-qt_ca.qm</file>
+        <file>appsettray-qt_el.qm</file>
     </qresource>
 </RCC>
