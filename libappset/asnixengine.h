@@ -55,11 +55,13 @@ namespace AS{
         virtual std::list<Package*>* queryLocal(unsigned flags, Package *package=0);
         virtual std::list<Package*>* queryRemote(unsigned flags, Package *package=0);
         virtual std::list<Package*>* checkDeps(Package *package, bool install, bool upgrade=false);
-        virtual int getProgressSize(Package *package);
+        virtual int getProgressSize(Package *package, bool deps=false);
 
         virtual int removeLock();
         virtual int cacheSize();
         virtual int cleanCache();
+
+        virtual std::string getNewsUrl(std::string lang);
     };
 
 }

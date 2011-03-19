@@ -144,6 +144,8 @@ public:
 #include <QXmlStreamReader>
 #include <QUrl>
 
+#include <QMultiMap>
+
 #include "options.h"
 
 QT_BEGIN_NAMESPACE
@@ -284,6 +286,8 @@ private:
     void get(const QUrl &url);
 
     int sbdelay;
+
+    QMultiMap<QString, QString> instaDeps;
 };
 
 #endif // MAINWINDOW_H

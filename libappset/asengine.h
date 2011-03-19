@@ -53,7 +53,7 @@ namespace AS{
         virtual std::list<Package*>* checkDeps(Package *package, bool install, bool upgrade=false) = 0;
 
         //Requires name and ksize setted
-        virtual int getProgressSize(Package *package) = 0;
+        virtual int getProgressSize(Package *package, bool deps=false) = 0;
 
         virtual void addListener(EngineListener *listener){listeners.insert(listeners.end(),listener);}
         virtual void removeListener(EngineListener *listener){listeners.remove(listener);}

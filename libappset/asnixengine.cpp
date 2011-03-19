@@ -87,8 +87,9 @@ int AS::NIXEngine::loadConfigFile(const char *path, StrMap *params, int fErrorRe
         key = line.substr(0, eqIndex);
         value = line.substr(eqIndex+1);
 
-        if( ( it = params->find(key) ) != params->end() )
-            it->second = value;
+        /*if( ( it = params->find(key) ) != params->end() )
+            it->second = value;*/
+        (*params)[key]=value;
     }
 
     confFile.close();
@@ -531,7 +532,7 @@ std::list<AS::Package*>* AS::NIXEngine::queryRemote(unsigned flags, AS::Package 
     return ret;
 }
 
-int AS::NIXEngine::getProgressSize(AS::Package *package){
+int AS::NIXEngine::getProgressSize(AS::Package *package, bool deps){
     if(!package) return 0;
 
     DIR *dpath = opendir(commands["download_path"].c_str());
@@ -546,8 +547,10 @@ int AS::NIXEngine::getProgressSize(AS::Package *package){
         std::string pname = package->getName();
 
         int pos=-1;
-        if((pos=fname.find( (pname+="-") ))!=std::string::npos){
-            pos+=pname.length();
+        if( ( pos=fname.find( (pname/*+="-"*/) ))!=std::string::npos &&
+                (deps || fname.find(package->getRemoteVersion())!= std::string::npos) ){
+            if(pos) continue;
+            pos=pname.length()+1;
             if(!isdigit(fname.at(pos))) continue;
             std::string fpath=commands["download_path"];
             fpath+=fname;
@@ -610,4 +613,11 @@ int AS::NIXEngine::cleanCache(){
     closedir(dpath);
 
     return 0;
+}
+
+std::string AS::NIXEngine::getNewsUrl(std::string lang){
+    std::string base_key = "rss_main",key = "rss_";
+    key+=lang;
+    if(((std::string)sysinfo[key]).compare("")) return sysinfo[key];
+    return sysinfo[base_key];
 }

@@ -172,7 +172,8 @@ MainWindow::MainWindow(QWidget *parent) :
     headerLabels << tr("Link") << tr("Title");
     ui->treeWidget->setHeaderLabels(headerLabels);
     ui->treeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
-    get(QUrl("http://www.archlinux.org/feeds/news/"));
+    get(QUrl(QString(((AS::QTNIXEngine*)as)->getNewsUrl(QLocale::languageToString(QLocale::system().language()).toAscii().data()).c_str())));
+    qWarning(QLocale::languageToString(QLocale::system().language()).toAscii().data());
     ui->treeWidget->hideColumn(0);
 
     QSplitter *splitter = new QSplitter(ui->tabList);
@@ -328,7 +329,11 @@ void MainWindow::refresh(){
             if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()=="Remove" || completed[i+baseIndex]) continue;
 
             Package pkg;
-            pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());
+            pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());            
+
+            QString remoteversion = ui->tableUpgraded->item(i,2)->text();
+            pkg.setRemoteVersion(remoteversion.toAscii().data());
+
             float reached = as->getProgressSize(&pkg);
             float total = ui->tableUpgraded->item(i,4)->text().toFloat()*1024;
 
@@ -338,7 +343,7 @@ void MainWindow::refresh(){
 
                 for(QStringList::iterator it2=depsList.begin();it2!=depsList.end();it2++){
                     pkg.setName((*it2).toAscii().data());
-                    reached+=as->getProgressSize(&pkg);
+                    reached+=as->getProgressSize(&pkg, true);
                 }
             }
 
@@ -387,6 +392,12 @@ void MainWindow::refresh(){
 
             Package pkg;
             pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());
+
+            QString versions = ui->tableUpgraded->item(i,2)->text();
+            QString remoteversion = versions.right(versions.size()-versions.indexOf('(')-1);
+            remoteversion = remoteversion.left(remoteversion.size()-1);
+            pkg.setRemoteVersion(remoteversion.toAscii().data());
+
             float reached = as->getProgressSize(&pkg);
             float total = ui->tableUpgraded->item(i,4)->text().toFloat()*1024;
 
@@ -537,7 +548,7 @@ void MainWindow::opFinished(){
             applyEnabler();
             ui->showAll->setChecked(true);
 
-            merging = false;            
+            merging = false;
 
             addRows();
         }else editConfirm();
@@ -736,6 +747,29 @@ void MainWindow::applyEnabler(){
 void MainWindow::install(){
     ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/install.png"),"Install"));
     modified++;
+
+    Package p;
+    std::list<AS::Package*> *pkgs;
+    p.setName(ui->tableWidget->item(currentPacket,1)->text().trimmed().toAscii().data());
+    if((pkgs = as->checkDeps(&p,true))){
+        for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+            QString name = QString((*it)->getName().c_str()).trimmed();
+            QString pname = QString(p.getName().c_str());
+            if(name!=pname){
+                for(int i=0;i<ui->tableWidget->rowCount();++i){
+                    if(ui->tableWidget->item(i,1)->text()==name){
+                        currentPacket=i;
+                        modified++;
+                        if(!instaDeps.contains(name,pname))instaDeps.insert(name, pname);
+                        this->install();
+                    }
+                }
+            }
+            delete(*it);
+        }
+        delete pkgs;
+    }
+
     applyEnabler();    
 }
 
@@ -743,10 +777,11 @@ void MainWindow::remove(){
     Package p;
     QStringList req;
     p.setName(ui->tableWidget->item(currentPacket,1)->text().trimmed().toAscii().data());
+    QString pname(p.getName().c_str());
     if((pkgs = as->checkDeps(&p,false))){
         for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
             QString name = QString((*it)->getName().c_str()).trimmed();
-            if(name!=QString(p.getName().c_str()))
+            if(name!=pname)
                 req << name;
             delete(*it);
         }
@@ -755,8 +790,8 @@ void MainWindow::remove(){
     int res = QMessageBox::Yes;
     if(req.size()){
         QMessageBox reqMes;
-        reqMes.setText(tr("Some installed packages require this:"));
-        reqMes.setInformativeText(req.join("\n")+tr("\n\nDo you want to proceed anyway?"));
+        reqMes.setText(tr("Some installed packages require") + QString(" ") + pname + QString(":"));
+        reqMes.setInformativeText(req.join("\n")+tr("\n\nDo you want to proceed anyway (removing them too)?"));
         reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         reqMes.setIcon(QMessageBox::Warning);
         res = reqMes.exec();
@@ -776,8 +811,82 @@ void MainWindow::upgrade(){
 }
 
 void MainWindow::notInstall(){
-    ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/unchecked.png"),"Remote"));
-    modified--;
+    QString dname =  ui->tableWidget->item(currentPacket,1)->text();
+    QList<QString> requirers = instaDeps.values(dname);
+
+    int res = QMessageBox::Yes;
+
+    if(requirers.size()){
+        //Ask for confirm
+        QMessageBox reqMes;
+        reqMes.setText(tr("These selected for install packages require") + QString(" ") + dname + QString(":"));
+        reqMes.setInformativeText(QStringList(requirers).join("\n")+tr("\n\nDo you want to proceed anyway (clearing them too)?"));
+        reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        reqMes.setIcon(QMessageBox::Warning);
+        res = reqMes.exec();
+    }
+
+    if(res == QMessageBox::Yes){
+        ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/unchecked.png"),"Remote"));
+        modified--;
+        for(int i=0;i<requirers.size();++i){
+            instaDeps.remove(dname,requirers.at(i));
+            for(int j=0;j<ui->tableWidget->rowCount();++j){
+                if(ui->tableWidget->item(j,1)->text() == requirers.at(i)){
+                    currentPacket = j;
+                    break;
+                }
+            }
+            this->notInstall();
+        }
+    }
+
+    Package p;
+    p.setName(dname.trimmed().toAscii().data());
+    std::list<AS::Package*> *pkgs = as->checkDeps(&p,true);
+    QMessageBox reqMes;
+    QStringList plist;
+    if(pkgs && pkgs->size()){
+        for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+            QString name = QString((*it)->getName().c_str()).trimmed();
+            if(name!=dname){
+                for(int i=0;i<ui->tableWidget->rowCount();++i){
+                    if( ui->tableWidget->item(i,1)->text()==name &&
+                          ui->tableWidget->item(i,0)->text()=="Install"){
+                        plist << name;
+                    }
+                }
+            }
+        }
+
+        if(plist.size()){
+            reqMes.setText(tr("These packages were selected as dependencies of")+QString(" ")+dname+QString(":"));
+            reqMes.setInformativeText(plist.join("\n")+tr("\n\nDo you want to clear them too?"));
+            reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+            reqMes.setIcon(QMessageBox::Question);            
+
+            int resp=0;
+            if(isExpert)
+                resp=reqMes.exec();
+            for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+                QString name = QString((*it)->getName().c_str()).trimmed();
+                if(name!=dname){
+                    for(int i=0;i<ui->tableWidget->rowCount();++i){
+                        if(ui->tableWidget->item(i,1)->text()==name){
+                            instaDeps.remove(name,dname);
+                            if(!isExpert || resp == QMessageBox::Yes){
+                                currentPacket = i;
+                                this->notInstall();
+                            }
+                        }
+                    }
+                }
+                delete(*it);
+            }
+            delete pkgs;
+        }
+    }
+
     applyEnabler();
 }
 
@@ -788,7 +897,7 @@ void MainWindow::notRemove(){
 }
 
 void MainWindow::notUpgrade(){
-    ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgradable"));
+    ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable"));
     modified--;
     applyEnabler();
 }
@@ -804,12 +913,13 @@ void MainWindow::confirm(){
     ui->tableUpgraded->setRowCount(0);
 
     int in=0,r=0,u=0;
-
-    int rows = ui->tableWidget->rowCount();
+    int rows=ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
 
-        if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,1)->text().contains(expert))
+        if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,1)->text().contains(expert)){
             ui->tableWidget->setItem(i,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgrade"));
+            modified++;
+        }
 
         if(ui->tableWidget->item(i,0)->text()==QString("Remove")){
                     ui->tableUpgraded->insertRow(r);
@@ -839,7 +949,7 @@ void MainWindow::confirm(){
                     ui->tableUpgraded->setItem(r,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,6)->text().toFloat()/1024)));
 
                     ui->tableUpgraded->setItem(r++,2,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
-        }else if(ui->tableWidget->item(i,0)->text()=="Install"){
+        }else if(ui->tableWidget->item(i,0)->text()=="Install" && instaDeps.value(ui->tableWidget->item(i,1)->text())==""){
             ui->tableUpgraded->insertRow(in);
             ui->tableUpgraded->setItem(in,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
             ui->tableUpgraded->item(in,0)->setText(ui->tableWidget->item(i,6)->text());
@@ -861,6 +971,7 @@ void MainWindow::confirm(){
                 }
                 delete pkgs;
             }
+
 
             ui->tableUpgraded->setItem(in,3,new QTableWidgetItem(deps.join(" ")));
 

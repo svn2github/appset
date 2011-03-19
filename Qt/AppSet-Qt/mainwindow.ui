@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>600</height>
+    <width>1005</width>
+    <height>550</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>950</width>
-    <height>600</height>
+    <height>550</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -36,6 +36,12 @@
    <set>QMainWindow::AnimatedDocks</set>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <property name="leftMargin">
      <number>2</number>
@@ -51,6 +57,12 @@
     </property>
     <item>
      <widget class="QStackedWidget" name="stacked">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -72,6 +84,12 @@
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="QTabWidget" name="tabWidget">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="contextMenuPolicy">
              <enum>Qt::NoContextMenu</enum>
             </property>
@@ -94,6 +112,12 @@
              <bool>true</bool>
             </property>
             <widget class="QWidget" name="tabGroups">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -140,8 +164,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>100</width>
-                    <height>100</height>
+                    <width>80</width>
+                    <height>80</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -173,8 +197,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>100</width>
-                    <height>100</height>
+                    <width>80</width>
+                    <height>80</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -206,8 +230,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>100</width>
-                    <height>100</height>
+                    <width>80</width>
+                    <height>80</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -239,8 +263,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>100</width>
-                    <height>100</height>
+                    <width>80</width>
+                    <height>80</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -272,8 +296,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>100</width>
-                    <height>100</height>
+                    <width>80</width>
+                    <height>80</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -305,8 +329,8 @@
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>100</width>
-                    <height>100</height>
+                    <width>80</width>
+                    <height>80</height>
                    </size>
                   </property>
                   <property name="toolButtonStyle">
@@ -419,6 +443,12 @@
              </layout>
             </widget>
             <widget class="QWidget" name="tabList">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
              <attribute name="icon">
               <iconset resource="icons.qrc">
                <normaloff>:/pkggroups/all.png</normaloff>:/pkggroups/all.png</iconset>
@@ -695,7 +725,7 @@
                  <widget class="QTableWidget" name="tableWidget">
                   <property name="minimumSize">
                    <size>
-                    <width>700</width>
+                    <width>650</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -758,14 +788,14 @@
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>15</height>
+                    <height>0</height>
                    </size>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
                    <item>
                     <widget class="QTextBrowser" name="infoText">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -802,7 +832,7 @@
                    <item>
                     <widget class="QWebView" name="webView">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -1057,7 +1087,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1080</width>
+     <width>1005</width>
      <height>21</height>
     </rect>
    </property>
@@ -1147,6 +1177,22 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections>
   <connection>
+   <sender>showInternet</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showInternet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>864</x>
+     <y>282</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>479</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>showOffice</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -1179,14 +1225,14 @@ p, li { white-space: pre-wrap; }
    </hints>
   </connection>
   <connection>
-   <sender>showInternet</sender>
+   <sender>showGames</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>showInternet()</slot>
+   <slot>showGames()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>864</x>
-     <y>282</y>
+     <x>479</x>
+     <y>297</y>
     </hint>
     <hint type="destinationlabel">
      <x>479</x>
@@ -1203,22 +1249,6 @@ p, li { white-space: pre-wrap; }
     <hint type="sourcelabel">
      <x>649</x>
      <y>380</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>479</x>
-     <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>showGames</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>showGames()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>479</x>
-     <y>297</y>
     </hint>
     <hint type="destinationlabel">
      <x>479</x>
