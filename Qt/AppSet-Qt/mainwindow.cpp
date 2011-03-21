@@ -30,6 +30,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <QUrl>
 #include <QDebug>
 
+#include <QDesktopServices>
+#include <QProcess>
+
 using namespace AS;
 
 class QTEventFilter:public QObject{
@@ -173,7 +176,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->setHeaderLabels(headerLabels);
     ui->treeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
     get(QUrl(QString(((AS::QTNIXEngine*)as)->getNewsUrl(QLocale::languageToString(QLocale::system().language()).toAscii().data()).c_str())));
-    qWarning(QLocale::languageToString(QLocale::system().language()).toAscii().data());
     ui->treeWidget->hideColumn(0);
 
     QSplitter *splitter = new QSplitter(ui->tabList);
@@ -190,7 +192,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     Options opt;
     this->sbdelay=opt.sbdelay;
+    this->extbrowser=opt.browser;
     if(opt.startfullscreen)this->showMaximized();
+
+    connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
+}
+
+void MainWindow::extBrowserLink(const QUrl & link){
+    if(extbrowser==""){
+        QDesktopServices::openUrl(link);
+    }else{
+        QStringList args;
+        args << link.toString();
+        QProcess::startDetached(extbrowser,args);
+    }
 }
 
 void MainWindow::showOptions(){
@@ -203,6 +218,7 @@ void MainWindow::showOptions(){
 
         //Activating new options
         this->sbdelay=opt.sbdelay;
+        this->extbrowser=opt.browser;
     }
 }
 
@@ -317,7 +333,8 @@ void MainWindow::aboutQt(){
 }
 
 void MainWindow::about(){
-    QMessageBox::about(this, tr("About AppSet-Qt"), tr("An advanced and feature rich Package Manager Frontend\n\nAuthor: Simone Tobia"));
+    QMessageBox::about(this, tr("About AppSet-Qt"), tr("An advanced and feature rich Package Manager Frontend\n\nAuthor: Simone Tobia")+
+                       QString("\n\n")+tr("A special thanks goes to the Chakra-project team for their suggestions and translations."));
 }
 
 void MainWindow::refresh(){
@@ -759,7 +776,6 @@ void MainWindow::install(){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
                     if(ui->tableWidget->item(i,1)->text()==name){
                         currentPacket=i;
-                        modified++;
                         if(!instaDeps.contains(name,pname))instaDeps.insert(name, pname);
                         this->install();
                     }
@@ -780,7 +796,7 @@ void MainWindow::remove(){
     QString pname(p.getName().c_str());
     if((pkgs = as->checkDeps(&p,false))){
         for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-            QString name = QString((*it)->getName().c_str()).trimmed();
+            QString name = QString((*it)->getName().c_str()).trimmed();            
             if(name!=pname)
                 req << name;
             delete(*it);
@@ -800,6 +816,19 @@ void MainWindow::remove(){
     if(res == QMessageBox::Yes){
         ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/remove.png"),"Remove"));
         modified++;
+
+        //Select deps too
+        for(int j=0;j<req.size();++j){
+            QString cur=req.at(j);
+            for(int i=0;i<ui->tableWidget->rowCount();++i){
+                if(ui->tableWidget->item(i,1)->text()==cur){
+                    currentPacket=i;
+                    if(!remDeps.contains(cur,pname)) remDeps.insert(cur, pname);
+                    this->remove();
+                }
+            }
+        }
+
         applyEnabler();
     }
 }
@@ -891,8 +920,82 @@ void MainWindow::notInstall(){
 }
 
 void MainWindow::notRemove(){
-    ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed"));
-    modified--;
+    QString dname =  ui->tableWidget->item(currentPacket,1)->text();
+    QList<QString> requirers = remDeps.values(dname);
+
+    int res = QMessageBox::Yes;
+
+    if(requirers.size()){
+        //Ask for confirm
+        QMessageBox reqMes;
+        reqMes.setText(tr("These selected for removal packages are required by ") + QString(" ") + dname + QString(":"));
+        reqMes.setInformativeText(QStringList(requirers).join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (clearing the removal of them too)?"));
+        reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        reqMes.setIcon(QMessageBox::Warning);
+        res = reqMes.exec();
+    }
+
+    if(res == QMessageBox::Yes){
+        ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed"));
+        modified--;
+        for(int i=0;i<requirers.size();++i){
+            remDeps.remove(dname,requirers.at(i));
+            for(int j=0;j<ui->tableWidget->rowCount();++j){
+                if(ui->tableWidget->item(j,1)->text() == requirers.at(i)){
+                    currentPacket = j;
+                    break;
+                }
+            }
+            this->notRemove();
+        }
+    }
+
+    Package p;
+    p.setName(dname.trimmed().toAscii().data());
+    /*std::list<AS::Package*> *pkgs = as->checkDeps(&p,false);
+    QMessageBox reqMes;
+    QStringList plist;
+    if(pkgs && pkgs->size()){
+        for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+            QString name = QString((*it)->getName().c_str()).trimmed();
+            if(name!=dname){
+                for(int i=0;i<ui->tableWidget->rowCount();++i){
+                    if( ui->tableWidget->item(i,1)->text()==name &&
+                          ui->tableWidget->item(i,0)->text()=="Install"){
+                        plist << name;
+                    }
+                }
+            }
+        }
+
+        if(plist.size()){
+            reqMes.setText(tr("These packages were selected for removal as dependencies of")+QString(" ")+dname+QString(":"));
+            reqMes.setInformativeText(plist.join("\n")+tr("\n\nDo you want to clear them too?"));
+            reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+            reqMes.setIcon(QMessageBox::Question);
+
+            int resp=0;
+            if(isExpert)
+                resp=reqMes.exec();
+            for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+                QString name = QString((*it)->getName().c_str()).trimmed();
+                if(name!=dname){
+                    for(int i=0;i<ui->tableWidget->rowCount();++i){
+                        if(ui->tableWidget->item(i,1)->text()==name){
+                            instaDeps.remove(name,dname);
+                            if(!isExpert || resp == QMessageBox::Yes){
+                                currentPacket = i;
+                                this->notInstall();
+                            }
+                        }
+                    }
+                }
+                delete(*it);
+            }
+            delete pkgs;
+        }
+    }*/
+
     applyEnabler();
 }
 

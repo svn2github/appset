@@ -15,6 +15,8 @@ using namespace std;
 TrayIcon::TrayIcon(QObject *parent) :
     QSystemTrayIcon(parent){
 
+    manualCheck = false;
+
     QMenu *trayMenu = new QMenu();
 
     launch=trayMenu->addAction(QIcon(":general/appset.png"),tr("Launch AppSet-Qt"));
@@ -22,7 +24,7 @@ TrayIcon::TrayIcon(QObject *parent) :
     quit=trayMenu->addAction(QApplication::style()->standardIcon(QStyle::SP_BrowserStop),tr("Quit Tray"));
 
     connect(launch,SIGNAL(triggered()),SLOT(launchAS()));
-    connect(check,SIGNAL(triggered()),SLOT(checkUps()));
+    connect(check,SIGNAL(triggered()),SLOT(manualCheckUps()));
     connect(quit,SIGNAL(triggered()),SLOT(quitter()));
     connect(this,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),SLOT(activatedSlot(QSystemTrayIcon::ActivationReason)));
 
@@ -56,6 +58,12 @@ TrayIcon::TrayIcon(QObject *parent) :
     setToolTip(tr("Waiting helper..."));
 
     running=false;
+}
+
+void TrayIcon::manualCheckUps(){
+    manualCheck=true;
+    checkUps();
+    manualCheck=false;
 }
 
 void TrayIcon::quitter(){
@@ -113,7 +121,8 @@ void TrayIcon::checkUps(){
             showMessage(QString::number(pkgs->size())+(pkgs->size()>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information,66666);
             setIcon(QIcon(":pkgstatus/upgrade.png"));
         }else{
-            showMessage("AppSetTray-Qt",tr("No updates available"),QSystemTrayIcon::Information,3000);
+            if(manualCheck)
+                showMessage("AppSetTray-Qt",tr("No updates available"),QSystemTrayIcon::Information,3000);
             setIcon(QIcon(":general/appset.png"));
 
             setToolTip(tr("No updates available"));
@@ -121,7 +130,7 @@ void TrayIcon::checkUps(){
     }
 
     timer->setSingleShot(true);
-    timer->start(running?3000:1800000);
+    timer->start(running?3000:3600000);
 }
 
 void TrayIcon::launchAS(){

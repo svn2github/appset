@@ -17,7 +17,7 @@ check_upgrade_deps=pacman -Sup --print-format "%n %s"
 download_path=/var/cache/pacman/pkg/
 tool_lock_file=/var/lib/pacman/db.lck
 
-query_filter_regexp=^[[:alpha:]][^\\ ]+\\ [[:digit:]]|-|[.]+$
+query_filter_regexp=^[^ ]+ [^ ]+$
 query_name_regexp=^[[:alpha:]][^\\ ]+
 query_lversion_regexp=[^:\\ ]+$
 query_info_name_regexp=^Name[[:space:]]+:[ ]+

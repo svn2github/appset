@@ -222,6 +222,8 @@ public slots:
     void itemActivated(QTreeWidgetItem * item);
     void error(QNetworkReply::NetworkError);
 
+    void extBrowserLink(const QUrl & link);
+
 private:
     Ui::MainWindow *ui;
 
@@ -286,8 +288,10 @@ private:
     void get(const QUrl &url);
 
     int sbdelay;
+    QString extbrowser;
 
     QMultiMap<QString, QString> instaDeps;
+    QMultiMap<QString, QString> remDeps;
 };
 
 #endif // MAINWINDOW_H

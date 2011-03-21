@@ -2,6 +2,7 @@
 #define OPTIONS_H
 
 #include <QDialog>
+#include <QString>
 
 namespace Ui {
     class Options;
@@ -18,10 +19,9 @@ public:
 
     bool startfullscreen;
     int sbdelay;
+    QString browser;
 
-
-    void loadConfigFile();
-    void writeConfigFile();
+    void writeConfigFile(bool overwrite=true);
 
 private:
     Ui::Options *ui;

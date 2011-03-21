@@ -273,7 +273,7 @@ namespace AS {
                         pkgList->insert(pkgList->end(), pkg);
                         return;
                     }
-                }
+                }                
             }
 
             delete pkg;
@@ -536,6 +536,7 @@ int AS::NIXEngine::getProgressSize(AS::Package *package, bool deps){
     if(!package) return 0;
 
     DIR *dpath = opendir(commands["download_path"].c_str());
+    if(dpath==NULL) return 0;
     dirent *dir;
     std::string fname;
     int ret=0;
@@ -575,6 +576,7 @@ int AS::NIXEngine::removeLock(){
 
 int AS::NIXEngine::cacheSize(){
     DIR *dpath = opendir(commands["download_path"].c_str());
+    if(dpath==NULL) return 0;
     dirent *dir;
     std::string fname, fpath;
     struct stat fsize;
@@ -597,6 +599,7 @@ int AS::NIXEngine::cacheSize(){
 
 int AS::NIXEngine::cleanCache(){
     DIR *dpath = opendir(commands["download_path"].c_str());
+    if(dpath==NULL) return 0;
     dirent *dir;
     std::string fname, fpath;
 

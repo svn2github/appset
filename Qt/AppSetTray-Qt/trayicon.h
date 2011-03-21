@@ -46,6 +46,7 @@ public slots:
     void activatedSlot(QSystemTrayIcon::ActivationReason ar);
     void checkUps();
     void checkRunning();
+    void manualCheckUps();
 
     void quitter();
 
@@ -60,6 +61,8 @@ private:
     QTimer *timer2;
 
     bool running;
+
+    bool manualCheck;
 
 };
 
