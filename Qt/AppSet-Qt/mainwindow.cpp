@@ -928,8 +928,8 @@ void MainWindow::notRemove(){
     if(requirers.size()){
         //Ask for confirm
         QMessageBox reqMes;
-        reqMes.setText(tr("These selected for removal packages are required by ") + QString(" ") + dname + QString(":"));
-        reqMes.setInformativeText(QStringList(requirers).join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (clearing the removal of them too)?"));
+        reqMes.setText(tr("These selected for removal packages are required by") + QString(" ") + dname + QString(":"));
+        reqMes.setInformativeText(QStringList(requirers).join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (clearing their removal too)?"));
         reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         reqMes.setIcon(QMessageBox::Warning);
         res = reqMes.exec();
@@ -952,7 +952,7 @@ void MainWindow::notRemove(){
 
     Package p;
     p.setName(dname.trimmed().toAscii().data());
-    /*std::list<AS::Package*> *pkgs = as->checkDeps(&p,false);
+    std::list<AS::Package*> *pkgs = as->checkDeps(&p,false);
     QMessageBox reqMes;
     QStringList plist;
     if(pkgs && pkgs->size()){
@@ -961,7 +961,7 @@ void MainWindow::notRemove(){
             if(name!=dname){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
                     if( ui->tableWidget->item(i,1)->text()==name &&
-                          ui->tableWidget->item(i,0)->text()=="Install"){
+                          ui->tableWidget->item(i,0)->text()=="Remove"){
                         plist << name;
                     }
                 }
@@ -969,8 +969,8 @@ void MainWindow::notRemove(){
         }
 
         if(plist.size()){
-            reqMes.setText(tr("These packages were selected for removal as dependencies of")+QString(" ")+dname+QString(":"));
-            reqMes.setInformativeText(plist.join("\n")+tr("\n\nDo you want to clear them too?"));
+            reqMes.setText(tr("These packages were selected for removal because they need")+QString(" ")+dname+QString(":"));
+            reqMes.setInformativeText(plist.join("\n")+tr("\n\nDo you want to clear their removal too?"));
             reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
             reqMes.setIcon(QMessageBox::Question);
 
@@ -982,10 +982,10 @@ void MainWindow::notRemove(){
                 if(name!=dname){
                     for(int i=0;i<ui->tableWidget->rowCount();++i){
                         if(ui->tableWidget->item(i,1)->text()==name){
-                            instaDeps.remove(name,dname);
+                            remDeps.remove(name,dname);
                             if(!isExpert || resp == QMessageBox::Yes){
                                 currentPacket = i;
-                                this->notInstall();
+                                this->notRemove();
                             }
                         }
                     }
@@ -994,7 +994,7 @@ void MainWindow::notRemove(){
             }
             delete pkgs;
         }
-    }*/
+    }
 
     applyEnabler();
 }
