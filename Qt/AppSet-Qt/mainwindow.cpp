@@ -929,7 +929,7 @@ void MainWindow::notRemove(){
         //Ask for confirm
         QMessageBox reqMes;
         reqMes.setText(tr("These selected for removal packages are required by") + QString(" ") + dname + QString(":"));
-        reqMes.setInformativeText(QStringList(requirers).join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (clearing their removal too)?"));
+        reqMes.setInformativeText(QStringList(requirers).join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (canceling their removal too)?"));
         reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         reqMes.setIcon(QMessageBox::Warning);
         res = reqMes.exec();
@@ -970,7 +970,7 @@ void MainWindow::notRemove(){
 
         if(plist.size()){
             reqMes.setText(tr("These packages were selected for removal because they need")+QString(" ")+dname+QString(":"));
-            reqMes.setInformativeText(plist.join("\n")+tr("\n\nDo you want to clear their removal too?"));
+            reqMes.setInformativeText(plist.join("\n")+QString("\n\n")+tr("Do you want to clear their removal too?"));
             reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
             reqMes.setIcon(QMessageBox::Question);
 
