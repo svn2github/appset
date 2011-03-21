@@ -4,83 +4,85 @@
 <context>
     <name>TrayIcon</name>
     <message>
-        <location filename="trayicon.cpp" line="20"/>
-        <source>Launch AppSet-Qt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="trayicon.cpp" line="21"/>
-        <source>Check for updates NOW!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="trayicon.cpp" line="22"/>
+        <source>Launch AppSet-Qt</source>
+        <translation>Start Appset-Qt</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="23"/>
+        <source>Check for updates NOW!</source>
+        <translation>Controleer NU voor opwaarderingen!</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="24"/>
         <source>Quit Tray</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Vindt geen geschikte vertaling voor &quot;Tray&quot; :(</translatorcomment>
+        <translation>Sluit Tray af</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="56"/>
+        <location filename="trayicon.cpp" line="58"/>
         <source>Waiting helper...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wachten op helper...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="63"/>
+        <location filename="trayicon.cpp" line="71"/>
         <source>Are you sure to quit this tray?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wilt u de tray zeker afsluiten?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="64"/>
+        <location filename="trayicon.cpp" line="72"/>
         <source>You can restart it from desktop menu</source>
-        <translation type="unfinished"></translation>
+        <translation>U kunt het altijd van het desktopmenu herstarten</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="84"/>
+        <location filename="trayicon.cpp" line="92"/>
         <source>AppSet-Qt is Running!</source>
-        <translation type="unfinished"></translation>
+        <translation>AppSet-Qt is Bezig!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="98"/>
+        <location filename="trayicon.cpp" line="106"/>
         <source>There are updates for:</source>
-        <translation type="unfinished"></translation>
+        <translation>Er zijn opwaarderingen voor:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="98"/>
+        <location filename="trayicon.cpp" line="106"/>
         <source>There is an update for:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="trayicon.cpp" line="108"/>
-        <source>
-And others...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="trayicon.cpp" line="111"/>
-        <location filename="trayicon.cpp" line="113"/>
-        <source> updates available!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="trayicon.cpp" line="111"/>
-        <location filename="trayicon.cpp" line="113"/>
-        <source> update available!</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is een opwaardering voor:</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="116"/>
+        <source>
+And others...</source>
+        <translation>
+En andere...</translation>
+    </message>
+    <message>
         <location filename="trayicon.cpp" line="119"/>
+        <location filename="trayicon.cpp" line="121"/>
+        <source> updates available!</source>
+        <translation> Opwaarderingen beschikbaar!</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="119"/>
+        <location filename="trayicon.cpp" line="121"/>
+        <source> update available!</source>
+        <translation> Opwaardering beschikbaar!</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="125"/>
+        <location filename="trayicon.cpp" line="128"/>
         <source>No updates available</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen opwaarderingen beschikbaar</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="128"/>
+        <location filename="trayicon.cpp" line="137"/>
         <source>Launching AppSet-Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>AppSet-Qt is aan het opstarten</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="128"/>
+        <location filename="trayicon.cpp" line="137"/>
         <source>Wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wachten...</translation>
     </message>
 </context>
 </TS>

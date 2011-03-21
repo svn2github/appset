@@ -317,7 +317,7 @@ Autor: Simone Tobia</translation>
         <location filename="mainwindow.cpp" line="337"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
         <oldsource>A special thanks goes to the Chackra-project team for their suggestions and translations.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Agraïments especials a l&apos;equip del Projecte Chakra pels seus suggeriments i traduccions.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="520"/>
@@ -347,38 +347,44 @@ Autor: Simone Tobia</translation>
     <message>
         <location filename="mainwindow.cpp" line="809"/>
         <source>Some installed packages require</source>
-        <translation type="unfinished"></translation>
+        <translation>Alguns paquets instal·lats requereixen</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="810"/>
         <source>
 
 Do you want to proceed anyway (removing them too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Voleu continuar igualment (eliminat-los també)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="851"/>
         <source>These selected for install packages require</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquests paquets instal·lats per instal·lar requereixen</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="852"/>
         <source>
 
 Do you want to proceed anyway (clearing them too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Voleu continuar igualment (netejant-los també)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="892"/>
         <source>These packages were selected as dependencies of</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquests paquets s&apos;han seleccionat com a dependències de</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="893"/>
         <source>
 
 Do you want to clear them too?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Voleu netejar-los també?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="931"/>

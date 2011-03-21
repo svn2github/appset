@@ -93,7 +93,7 @@
     <message>
         <location filename="mainwindow.ui" line="594"/>
         <source>Show:</source>
-        <translation>Afficher:</translation>
+        <translation>Afficher :</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="601"/>
@@ -317,7 +317,7 @@ Auteur : Simone Tobia</translation>
         <location filename="mainwindow.cpp" line="337"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
         <oldsource>A special thanks goes to the Chackra-project team for their suggestions and translations.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Un grand merci à l&apos;équipe du Chakra-project pour ses suggetions et traductions.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="520"/>
@@ -347,38 +347,44 @@ Auteur : Simone Tobia</translation>
     <message>
         <location filename="mainwindow.cpp" line="809"/>
         <source>Some installed packages require</source>
-        <translation type="unfinished"></translation>
+        <translation>Certains paquets requièrent</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="810"/>
         <source>
 
 Do you want to proceed anyway (removing them too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Voulez vous tout de même continuer (les supprimer également)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="851"/>
         <source>These selected for install packages require</source>
-        <translation type="unfinished"></translation>
+        <translation>Les paquets sélectionnés pour installation requièrent</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="852"/>
         <source>
 
 Do you want to proceed anyway (clearing them too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Voulez vous tout de même continuer (les nettoyer également)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="892"/>
         <source>These packages were selected as dependencies of</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces paquets ont été sélectionnés comme dépendance de</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="893"/>
         <source>
 
 Do you want to clear them too?</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Voulez vous les nettoyer également?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="931"/>
@@ -470,7 +476,7 @@ Voulez vous quand même continuer?</translation>
     <message>
         <location filename="mainwindow.cpp" line="1480"/>
         <source>PARSING INSTALLED: </source>
-        <translation>ANALYSE DES PAQUETS INSTALLES:</translation>
+        <translation>ANALYSE DES PAQUETS INSTALLES : </translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1490"/>
