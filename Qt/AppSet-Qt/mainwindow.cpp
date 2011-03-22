@@ -225,6 +225,7 @@ void MainWindow::showOptions(){
         //Activating new options
         this->sbdelay=opt.sbdelay;
         this->extbrowser=opt.browser;
+        this->showBackOut=opt.backOutput;
     }
 }
 
