@@ -9,6 +9,7 @@
 #include <QMessageBox>
 
 #include <list>
+#include <fstream>
 
 using namespace std;
 
@@ -118,7 +119,7 @@ void TrayIcon::checkUps(){
 
             setToolTip(QString::number(pkgs->size())+QString((pkgs->size()>1?tr(" updates available!"):tr(" update available!"))));
 
-            showMessage(QString::number(pkgs->size())+(pkgs->size()>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information,66666);
+            showMessage(QString::number(pkgs->size())+(pkgs->size()>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information);
             setIcon(QIcon(":pkgstatus/upgrade.png"));
         }else{
             if(manualCheck)
@@ -130,7 +131,22 @@ void TrayIcon::checkUps(){
     }
 
     timer->setSingleShot(true);
-    timer->start(running?3000:3600000);
+    ifstream conf;
+    string conf_buffer;
+    int updelay=60*60*1000;
+#ifdef unix
+    conf.open("/etc/appset/appset-qt.conf", ifstream::in);
+    if(conf.is_open()){
+        int i=0;
+        while(i!=4 && conf.good()){
+            getline (conf,conf_buffer);
+            i++;
+        }
+        updelay = atoi(conf_buffer.data())*60*1000;
+    }
+    conf.close();
+#endif
+    timer->start(running?3000:updelay);
 }
 
 void TrayIcon::launchAS(){

@@ -48,15 +48,29 @@ void Options::writeConfigFile(bool overwrite){
         browser=configs[2].trimmed();
     else{
         QString userDefined = ui->userBrowserCmd->text();
-        userDefined = (userDefined.split(' ').at(0)).trimmed();
+        //userDefined = (userDefined.split(' ').at(0)).trimmed();
         conf.write(((ui->defaultBrowser->isChecked()?QString(""):userDefined)+QString("\n")).toAscii());
         browser = ui->defaultBrowser->isChecked()?QString(""):userDefined;
+    }
+    if(found>3)
+        updelay=configs[3].toInt();
+    else{
+        conf.write((QString::number(ui->spinBox_2->value())+QString("\n")).toAscii());
+        updelay = ui->spinBox_2->value();
+    }
+    if(found>4)
+        backOutput=configs[4].toShort();
+    else{
+        conf.write((QString::number((int)ui->backOutput->isChecked())+QString("\n")).toAscii());
+        backOutput = ui->backOutput->isChecked();
     }
 
     ui->checkBox->setChecked(startfullscreen);
     ui->spinBox->setValue(sbdelay);
     ui->userBrowser->setChecked(browser!="");
     ui->userBrowserCmd->setText(browser);
+    ui->spinBox_2->setValue(updelay);
+    ui->backOutput->setChecked(backOutput);
 
     conf.close();
 }

@@ -45,6 +45,7 @@ void handler(int sig){
 int main(){
     Engine *ase;
     int counter = 0;
+    int updelay = 60*60;
 
 #ifdef unix
     ofstream pid_writer;
@@ -64,12 +65,28 @@ int main(){
     }
 
     ((NIXEngine*)ase)->removeLock();
+
+    ifstream conf;
+    string conf_buffer;
 #endif
 
     ase->update();
 
     std::list<AS::Package*> *remote, *local;
     while(true){
+#ifdef unix
+        conf.open("/etc/appset/appset-qt.conf", ifstream::in);
+        if(conf.is_open()){
+            int i=0;
+            while(i!=4 && conf.good()){
+                getline (conf,conf_buffer);
+                i++;
+            }
+            updelay = atoi(conf_buffer.data())*60;
+        }
+        conf.close();
+#endif
+
         local = ase->queryLocal(as_QUERY_ALL_INFO|as_EXPERT_QUERY);
         remote = ase->queryRemote(as_QUERY_ALL_INFO|as_EXPERT_QUERY);
 
@@ -125,23 +142,30 @@ int main(){
             rename("/tmp/ashelper-pre.out","/tmp/ashelper.out");
 #endif
 
-            struct stat s;
-            while(stat("/tmp/as.tmp",&s)==0){
-                sleep(6);
-                counter = (counter+6)%3000;
+            bool runned=false;
+            int remains = 300;
+            while(!runned && remains==300){
+                remains = sleep(300);
+                counter = (counter+300-remains);
+                struct stat s;
+                while(stat("/tmp/as.tmp",&s)==0){
+                    sleep(5);
+                    counter += 5;
+                    runned=true;
+                }
+                if(counter>=updelay){
+                    ase->update();
+                    counter = 0;
+                    runned=true;
+                }
             }
-
-            if(counter<10)ase->update();
-
-            int remains = sleep(600);
-            counter = (counter+600-remains)%3000;
 
 #ifdef unix
             unlink("/tmp/ashelper.out");
 #endif
         }else{
-            sleep(6);
-            counter = (counter+6)%3000;
+            sleep(5);
+            counter = (counter+5);
         }
     }
 

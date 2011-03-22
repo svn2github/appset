@@ -289,6 +289,7 @@ private:
 
     int sbdelay;
     QString extbrowser;
+    bool showBackOut;
 
     QMultiMap<QString, QString> instaDeps;
     QMultiMap<QString, QString> remDeps;

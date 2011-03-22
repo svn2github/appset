@@ -193,9 +193,12 @@ MainWindow::MainWindow(QWidget *parent) :
     Options opt;
     this->sbdelay=opt.sbdelay;
     this->extbrowser=opt.browser;
+    this->showBackOut=opt.backOutput;
     if(opt.startfullscreen)this->showMaximized();
 
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
+
+    ui->backGroup->setHidden(true);
 }
 
 void MainWindow::extBrowserLink(const QUrl & link){
@@ -203,8 +206,11 @@ void MainWindow::extBrowserLink(const QUrl & link){
         QDesktopServices::openUrl(link);
     }else{
         QStringList args;
+        args = extbrowser.split(' ');
+        QString browserExe = args.at(0);
+        args.removeAt(0);
         args << link.toString();
-        QProcess::startDetached(extbrowser,args);
+        QProcess::startDetached(browserExe,args);
     }
 }
 
@@ -337,7 +343,23 @@ void MainWindow::about(){
                        QString("\n\n")+tr("A special thanks goes to the Chakra-project team for their suggestions and translations."));
 }
 
+#include <QFile>
 void MainWindow::refresh(){
+    QStringList logs;
+    QFile logFile;
+
+#ifdef unix
+    if(QFile::exists("/var/log/appset.log")){
+        logFile.setFileName("/var/log/appset.log");
+#endif
+        logFile.open(QFile::ReadOnly);
+        while(!logFile.atEnd())
+            logs << logFile.readLine();
+
+        ui->backOut->setText(logs.last());
+    }
+
+
     int rows=0;
     switch(asThread->getOp()){
     case 1: //Install
@@ -484,7 +506,7 @@ void MainWindow::opFinished(){
         break;
     case 2:
         toU=0;
-        statusU=0;
+        statusU=status;
 
         if(!statusU){
             for(int i=0;i<rows;++i){
@@ -517,6 +539,7 @@ void MainWindow::opFinished(){
 
             QMessageBox done;
             status = statusI+statusR+statusU;
+
             done.setText(status?tr("Errors during operations!"):tr("Success!"));
             done.setInformativeText(status?tr("Do you want to see operations logs?"):tr("All operations completed successfully!"));
             done.setIcon(status?QMessageBox::Critical:QMessageBox::Information);
@@ -566,6 +589,9 @@ void MainWindow::opFinished(){
             ui->showAll->setChecked(true);
 
             merging = false;
+
+            ui->choicesGroup->setVisible(true);
+            ui->backGroup->setHidden(true);
 
             addRows();
         }else editConfirm();
@@ -634,7 +660,11 @@ void MainWindow::editConfirm(){
         asThread->start();
     }
 
-    if(toU || toR || toI) timerUpdate->start(250);
+    if(toU || toR || toI){
+        timerUpdate->start(250);
+        ui->choicesGroup->setHidden(true);
+        if(this->showBackOut) ui->backGroup->setVisible(true);
+    }
 }
 
 void MainWindow::timeFilter(){
@@ -836,6 +866,28 @@ void MainWindow::remove(){
 void MainWindow::upgrade(){
     ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgrade"));
     modified++;
+
+    Package p;
+    std::list<AS::Package*> *pkgs;
+    p.setName(ui->tableWidget->item(currentPacket,1)->text().trimmed().toAscii().data());
+    if((pkgs = as->checkDeps(&p,true))){
+        for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+            QString name = QString((*it)->getName().c_str()).trimmed();
+            QString pname = QString(p.getName().c_str());
+            if(name!=pname){
+                for(int i=0;i<ui->tableWidget->rowCount();++i){
+                    if(ui->tableWidget->item(i,1)->text()==name){
+                        currentPacket=i;
+                        this->install();
+                    }
+                }
+            }
+            delete(*it);
+        }
+        delete pkgs;
+    }
+
+
     applyEnabler();
 }
 
@@ -1020,7 +1072,8 @@ void MainWindow::confirm(){
     for(int i=0;i<rows;++i){
 
         if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,1)->text().contains(expert)){
-            ui->tableWidget->setItem(i,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgrade"));
+            currentPacket=i;
+            this->upgrade();
             modified++;
         }
 

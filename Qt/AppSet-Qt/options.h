@@ -20,6 +20,9 @@ public:
     bool startfullscreen;
     int sbdelay;
     QString browser;
+    bool backOutput;
+
+    int updelay;
 
     void writeConfigFile(bool overwrite=true);
 
