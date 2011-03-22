@@ -407,7 +407,7 @@ void MainWindow::refresh(){
 
             if(perc>=99){
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(100);
-                ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat("Waiting others...");
+                ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat(tr("Waiting others..."));
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),ui->tableUpgraded->item(i,0)->text()));
 
                 bool totalCompleted=true;
@@ -420,7 +420,7 @@ void MainWindow::refresh(){
                         QLabel *label = new QLabel();
                         label->setMovie(loadingMovie);
                         ui->tableUpgraded->setCellWidget(k,0,label);
-                        ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat("Installing...");
+                        ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat(tr("Installing..."));
                     }
 
                     break;
@@ -462,7 +462,7 @@ void MainWindow::refresh(){
             if(perc>=99){
                 completed[i+baseIndex]=true;
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(100);
-                ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat("Waiting others...");
+                ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setFormat(tr("Waiting others..."));
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),"Upgrade"));
 
 
@@ -476,7 +476,7 @@ void MainWindow::refresh(){
                         QLabel *label = new QLabel();
                         label->setMovie(loadingMovie);
                         ui->tableUpgraded->setCellWidget(k,0,label);
-                        ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat("Installing...");
+                        ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat(tr("Installing..."));
                     }
 
                     break;
@@ -841,7 +841,7 @@ void MainWindow::remove(){
     if(req.size()){
         QMessageBox reqMes;
         reqMes.setText(tr("Some installed packages require") + QString(" ") + pname + QString(":"));
-        reqMes.setInformativeText(req.join("\n")+tr("\n\nDo you want to proceed anyway (removing them too)?"));
+        reqMes.setInformativeText(req.join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (removing them too)?"));
         reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         reqMes.setIcon(QMessageBox::Warning);
         res = reqMes.exec();
@@ -905,7 +905,7 @@ void MainWindow::notInstall(){
         //Ask for confirm
         QMessageBox reqMes;
         reqMes.setText(tr("These selected for install packages require") + QString(" ") + dname + QString(":"));
-        reqMes.setInformativeText(QStringList(requirers).join("\n")+tr("\n\nDo you want to proceed anyway (clearing them too)?"));
+        reqMes.setInformativeText(QStringList(requirers).join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (clearing them too)?"));
         reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         reqMes.setIcon(QMessageBox::Warning);
         res = reqMes.exec();
@@ -946,7 +946,7 @@ void MainWindow::notInstall(){
 
         if(plist.size()){
             reqMes.setText(tr("These packages were selected as dependencies of")+QString(" ")+dname+QString(":"));
-            reqMes.setInformativeText(plist.join("\n")+tr("\n\nDo you want to clear them too?"));
+            reqMes.setInformativeText(plist.join("\n")+QString("\n\n")+tr("Do you want to clear them too?"));
             reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
             reqMes.setIcon(QMessageBox::Question);            
 
