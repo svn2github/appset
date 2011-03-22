@@ -33,6 +33,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <QDesktopServices>
 #include <QProcess>
 
+#include <QMenu>
+
 using namespace AS;
 
 class QTEventFilter:public QObject{
@@ -129,6 +131,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mainToolBar->addSeparator();
 
     connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_ComputerIcon), tr("Options")),SIGNAL(triggered()),SLOT(showOptions()));
+
+    ui->mainToolBar->addSeparator();
+
+    connect(ui->mainToolBar->addAction(QIcon(":general/appset.png"), tr("About")),SIGNAL(triggered()),SLOT(about()));
 
     connect(ui->searchBar, SIGNAL(textChanged(QString)), SLOT(timerFired(QString)));
 

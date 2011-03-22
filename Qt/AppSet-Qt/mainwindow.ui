@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>550</height>
+    <width>950</width>
+    <height>540</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -151,6 +151,9 @@
                  <string>Sections</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="margin">
+                  <number>2</number>
+                 </property>
                  <item>
                   <layout class="QGridLayout" name="gridLayout">
                    <item row="0" column="0">
@@ -378,8 +381,17 @@
                  <property name="sizeConstraint">
                   <enum>QLayout::SetMaximumSize</enum>
                  </property>
-                 <property name="margin">
-                  <number>0</number>
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>4</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
                  </property>
                  <item>
                   <widget class="QTreeWidget" name="treeWidget">
@@ -1155,33 +1167,6 @@ p, li { white-space: pre-wrap; }
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1080</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="contextMenuPolicy">
-    <enum>Qt::NoContextMenu</enum>
-   </property>
-   <widget class="QMenu" name="menuAbout">
-    <property name="title">
-     <string>About</string>
-    </property>
-    <addaction name="actionAbout_AppSet"/>
-    <addaction name="actionAbout_Qt"/>
-   </widget>
-   <addaction name="menuAbout"/>
-  </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="font">
     <font>
@@ -1194,15 +1179,15 @@ p, li { white-space: pre-wrap; }
     <enum>Qt::PreventContextMenu</enum>
    </property>
    <property name="movable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="allowedAreas">
-    <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
+    <set>Qt::TopToolBarArea</set>
    </property>
    <property name="iconSize">
     <size>
-     <width>21</width>
-     <height>21</height>
+     <width>24</width>
+     <height>24</height>
     </size>
    </property>
    <property name="toolButtonStyle">
