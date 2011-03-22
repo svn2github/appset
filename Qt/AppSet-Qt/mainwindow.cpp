@@ -348,16 +348,19 @@ void MainWindow::about(){
 void MainWindow::refresh(){
     QStringList logs;
     QFile logFile;
+    QByteArray preLog;
 
 #ifdef unix
     if(QFile::exists("/var/log/appset.log")){
         logFile.setFileName("/var/log/appset.log");
 #endif
         logFile.open(QFile::ReadOnly);
-        while(!logFile.atEnd())
-            logs << logFile.readLine();
+        while(!logFile.atEnd()){
+            preLog = logFile.readLine();
+            if(preLog.size()) logs.append(preLog);
+        }
 
-        ui->backOut->setText(logs.last());
+        if(logs.size()) ui->backOut->setText(logs.last());
     }
 
 

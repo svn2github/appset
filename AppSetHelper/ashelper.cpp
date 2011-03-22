@@ -143,8 +143,8 @@ int main(){
 #endif
 
             bool runned=false;
-            int remains = 300;
-            while(!runned && remains==300){
+            int remains = 0;
+            while(!runned && remains==0){
                 remains = sleep(300);
                 counter = (counter+300-remains);
                 struct stat s;
