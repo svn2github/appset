@@ -6,5 +6,6 @@
         <file>appset-qt_nl.qm</file>
         <file>appset-qt_ca.qm</file>
         <file>appset-qt_el.qm</file>
+        <file>appset-qt_es.qm</file>
     </qresource>
 </RCC>

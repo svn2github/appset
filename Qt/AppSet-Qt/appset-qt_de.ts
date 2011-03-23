@@ -9,6 +9,11 @@
         <translation>AppSet-Qt</translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="138"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.ui" line="154"/>
         <source>Sections</source>
         <translation>Auswahl</translation>
@@ -34,11 +39,6 @@
         <location filename="mainwindow.cpp" line="1381"/>
         <source>Multimedia</source>
         <translation>Multimedia</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="138"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
@@ -445,22 +445,22 @@ Wollen Sie diese auch bereinigen?</translation>
     <message>
         <location filename="mainwindow.cpp" line="1003"/>
         <source>These selected for removal packages are required by</source>
-        <translation type="unfinished"></translation>
+        <translation>Die zum Entfernen ausgewählten Pakete werden benötigt von</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1004"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wollen Sie trotzdem weitermachen (um das Entfernen der Pakete abzubrechen)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1044"/>
         <source>These packages were selected for removal because they need</source>
-        <translation type="unfinished"></translation>
+        <translation>Folgende Pakete wurden zum Entfernen markiert da sie benötigt werden von</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1045"/>
         <source>Do you want to clear their removal too?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wollen Sie diese auch bereinigen?</translation>
     </message>
     <message>
         <source>Some installed packages require this:</source>
@@ -561,19 +561,18 @@ Möchten Sie trotzdem weitermachen?</translation>
         <translation>AppSet Optionen</translation>
     </message>
     <message>
-        <location filename="options.ui" line="183"/>
-        <source>Search bar delay (ms)</source>
-        <translation>Suchzeilen-Verzögerung (ms)</translation>
+        <location filename="options.ui" line="90"/>
+        <source>Tray</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="140"/>
-        <source>Start Fullscreen</source>
-        <translation>In Vollbild starten</translation>
+        <location filename="options.ui" line="112"/>
+        <source>Updates control interval (min)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="options.ui" line="122"/>
         <source>Main Interface</source>
-        <oldsource>Main GUI</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -587,34 +586,34 @@ Möchten Sie trotzdem weitermachen?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="29"/>
-        <source>External Browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="52"/>
-        <source>Deskop default browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="61"/>
-        <source>This browser:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="90"/>
-        <source>Tray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="112"/>
-        <source>Updates control interval (min)</source>
-        <translation type="unfinished"></translation>
+        <location filename="options.ui" line="183"/>
+        <source>Search bar delay (ms)</source>
+        <translation>Suchzeilen-Verzögerung (ms)</translation>
     </message>
     <message>
         <location filename="options.ui" line="200"/>
         <source>Show packages statistics</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="140"/>
+        <source>Start Fullscreen</source>
+        <translation>In Vollbild starten</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="29"/>
+        <source>External Browser</source>
+        <translation>Externer Webbrowser</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="52"/>
+        <source>Deskop default browser</source>
+        <translation>Standart Webbrowser</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="61"/>
+        <source>This browser:</source>
+        <translation>Folgenden Webbrowser:</translation>
     </message>
 </context>
 </TS>

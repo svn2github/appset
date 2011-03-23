@@ -4,81 +4,81 @@
 <context>
     <name>TrayIcon</name>
     <message>
-        <location filename="trayicon.cpp" line="22"/>
+        <location filename="trayicon.cpp" line="23"/>
         <source>Launch AppSet-Qt</source>
         <translation>Starte Appset-Qt</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="23"/>
+        <location filename="trayicon.cpp" line="24"/>
         <source>Check for updates NOW!</source>
         <translation>JETZT nach Erneuerungen suchen!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="24"/>
+        <location filename="trayicon.cpp" line="25"/>
         <source>Quit Tray</source>
         <translation>Beenden</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="58"/>
+        <location filename="trayicon.cpp" line="59"/>
         <source>Waiting helper...</source>
         <translation>Warte auf Helfer ...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="71"/>
+        <location filename="trayicon.cpp" line="72"/>
         <source>Are you sure to quit this tray?</source>
         <translation>Sind Sie sich sicher das Programm zu beenden?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="72"/>
+        <location filename="trayicon.cpp" line="73"/>
         <source>You can restart it from desktop menu</source>
         <translation>Sie können das Programm vom Desktop-Menü neustarten</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="92"/>
+        <location filename="trayicon.cpp" line="93"/>
         <source>AppSet-Qt is Running!</source>
         <translation>AppSet-Qt arbeitet!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="106"/>
+        <location filename="trayicon.cpp" line="107"/>
         <source>There are updates for:</source>
         <translation>Es sind Erneuerungen vorhanden für:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="106"/>
+        <location filename="trayicon.cpp" line="107"/>
         <source>There is an update for:</source>
         <translation>Es ist eine Erneuerung vorhanden für:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="116"/>
+        <location filename="trayicon.cpp" line="117"/>
         <source>
 And others...</source>
         <translation>Und weitere ...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="119"/>
-        <location filename="trayicon.cpp" line="121"/>
+        <location filename="trayicon.cpp" line="120"/>
+        <location filename="trayicon.cpp" line="122"/>
         <source> updates available!</source>
         <translation>Erneuerungen verfügbar!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="119"/>
-        <location filename="trayicon.cpp" line="121"/>
+        <location filename="trayicon.cpp" line="120"/>
+        <location filename="trayicon.cpp" line="122"/>
         <source> update available!</source>
         <translation> Erneuerung verfügbar!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="125"/>
-        <location filename="trayicon.cpp" line="128"/>
+        <location filename="trayicon.cpp" line="126"/>
+        <location filename="trayicon.cpp" line="129"/>
         <source>No updates available</source>
         <translation>Keine Erneuerungen verfügbar</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="137"/>
+        <location filename="trayicon.cpp" line="153"/>
         <source>Launching AppSet-Qt</source>
         <translation>AppSet-Qt wird gestartet</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="137"/>
+        <location filename="trayicon.cpp" line="153"/>
         <source>Wait...</source>
         <translation>Warte ...</translation>
     </message>

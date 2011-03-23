@@ -9,6 +9,11 @@
         <translation>AppSet-Qt</translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="138"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.ui" line="154"/>
         <source>Sections</source>
         <translation>Onderdelen</translation>
@@ -34,11 +39,6 @@
         <location filename="mainwindow.cpp" line="1381"/>
         <source>Multimedia</source>
         <translation>Multimedia</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="138"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
@@ -103,7 +103,7 @@
     <message>
         <location filename="mainwindow.ui" line="721"/>
         <source>Clears the search bar</source>
-        <translation>Leegt de zoekbalk</translation>
+        <translation>Leegt het zoekveld</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="757"/>
@@ -299,7 +299,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="125"/>
         <location filename="mainwindow.cpp" line="1756"/>
         <source>Mark all upgrades</source>
-        <translation>Vink alle opwaarderingen aan</translation>
+        <translation>Alle opwaarderingen markeren</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="127"/>
@@ -338,7 +338,7 @@ Author: Simone Tobia</translation>
     <message>
         <location filename="mainwindow.cpp" line="353"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Speciale dank gaat uit naar het Chakra-project team voor hun suggesties en vertalingen.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="419"/>
@@ -390,7 +390,7 @@ Author: Simone Tobia</translation>
     <message>
         <location filename="mainwindow.cpp" line="853"/>
         <source>Some installed packages require</source>
-        <translation type="unfinished"></translation>
+        <translation>Sommige geïnstalleerde pakketten vereisen</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="854"/>
@@ -408,34 +408,59 @@ Author: Simone Tobia</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>
+
+Do you want to proceed anyway (removing them too)?</source>
+        <translation type="obsolete">
+
+Wilt u toch verder gaan (ze ook verwijderen)?</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="921"/>
         <source>These selected for install packages require</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze voor installatie geselecteerde pakketten vereisen</translation>
+    </message>
+    <message>
+        <source>
+
+Do you want to proceed anyway (clearing them too)?</source>
+        <translation type="obsolete">
+
+Wilt u toch verdergaan (ze ook wissen)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="962"/>
         <source>These packages were selected as dependencies of</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze pakketten werden geselecteerd als afhankelijkheden van</translation>
+    </message>
+    <message>
+        <source>
+
+Do you want to clear them too?</source>
+        <translation type="obsolete">
+
+Wilt u ze ook wissen?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1003"/>
         <source>These selected for removal packages are required by</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze voor verwijdering geselecteerde pakketten zijn vereist door</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1004"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wilt u toch verder gaan (hun verwijdering ook annuleren)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1044"/>
         <source>These packages were selected for removal because they need</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Nederlands is moeilijk hier ... omdat ze (naam pakket) nodig hebben</translatorcomment>
+        <translation>Deze pakketten werden geselecteerd voor verwijdering omdat ze ook deze nodig hebben</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1045"/>
         <source>Do you want to clear their removal too?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wilt u hun verwijdering ook wissen?</translation>
     </message>
     <message>
         <source>Some installed packages require this:</source>
@@ -537,19 +562,18 @@ Wilt u toch verder gaan?</translation>
         <translation>AppSet Opties</translation>
     </message>
     <message>
-        <location filename="options.ui" line="183"/>
-        <source>Search bar delay (ms)</source>
-        <translation>Zoekbalk vertraging (ms)</translation>
+        <location filename="options.ui" line="90"/>
+        <source>Tray</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="140"/>
-        <source>Start Fullscreen</source>
-        <translation>Start Fullscreen</translation>
+        <location filename="options.ui" line="112"/>
+        <source>Updates control interval (min)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="options.ui" line="122"/>
         <source>Main Interface</source>
-        <oldsource>Main GUI</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -563,34 +587,34 @@ Wilt u toch verder gaan?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="29"/>
-        <source>External Browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="52"/>
-        <source>Deskop default browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="61"/>
-        <source>This browser:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="90"/>
-        <source>Tray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="112"/>
-        <source>Updates control interval (min)</source>
-        <translation type="unfinished"></translation>
+        <location filename="options.ui" line="183"/>
+        <source>Search bar delay (ms)</source>
+        <translation>Zoekbalk vertraging (ms)</translation>
     </message>
     <message>
         <location filename="options.ui" line="200"/>
         <source>Show packages statistics</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="140"/>
+        <source>Start Fullscreen</source>
+        <translation>Schermvullend Starten</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="29"/>
+        <source>External Browser</source>
+        <translation>Keuze van Webbrowser</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="52"/>
+        <source>Deskop default browser</source>
+        <translation>Gebruik de standaard browser</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="61"/>
+        <source>This browser:</source>
+        <translation>Gebruik deze browser:</translation>
     </message>
 </context>
 </TS>

@@ -9,6 +9,11 @@
         <translation>AppSet-Qt</translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="138"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.ui" line="154"/>
         <source>Sections</source>
         <translation>Seccions</translation>
@@ -34,11 +39,6 @@
         <location filename="mainwindow.cpp" line="1381"/>
         <source>Multimedia</source>
         <translation>Multimèdia</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="138"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
@@ -561,19 +561,18 @@ Voleu continuar igualment?</translation>
         <translation>Opcions de l&apos;AppSet</translation>
     </message>
     <message>
-        <location filename="options.ui" line="183"/>
-        <source>Search bar delay (ms)</source>
-        <translation>Retard de la barra de cerques (ms)</translation>
+        <location filename="options.ui" line="90"/>
+        <source>Tray</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="140"/>
-        <source>Start Fullscreen</source>
-        <translation>Inicia en pantalla completa</translation>
+        <location filename="options.ui" line="112"/>
+        <source>Updates control interval (min)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="options.ui" line="122"/>
         <source>Main Interface</source>
-        <oldsource>Main GUI</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -585,6 +584,21 @@ Voleu continuar igualment?</translation>
         <location filename="options.ui" line="160"/>
         <source>Show Backend Output</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="183"/>
+        <source>Search bar delay (ms)</source>
+        <translation>Retard de la barra de cerques (ms)</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="200"/>
+        <source>Show packages statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="140"/>
+        <source>Start Fullscreen</source>
+        <translation>Inicia en pantalla completa</translation>
     </message>
     <message>
         <location filename="options.ui" line="29"/>
@@ -599,21 +613,6 @@ Voleu continuar igualment?</translation>
     <message>
         <location filename="options.ui" line="61"/>
         <source>This browser:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="90"/>
-        <source>Tray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="112"/>
-        <source>Updates control interval (min)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="200"/>
-        <source>Show packages statistics</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
