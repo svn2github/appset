@@ -64,6 +64,13 @@ void Options::writeConfigFile(bool overwrite){
         conf.write((QString::number((int)ui->backOutput->isChecked())+QString("\n")).toAscii());
         backOutput = ui->backOutput->isChecked();
     }
+    if(found>5)
+        statShow=configs[5].toShort();
+    else{
+        conf.write((QString::number((int)ui->statShow->isChecked())+QString("\n")).toAscii());
+        statShow = ui->statShow->isChecked();
+    }
+
 
     ui->checkBox->setChecked(startfullscreen);
     ui->spinBox->setValue(sbdelay);
@@ -71,6 +78,7 @@ void Options::writeConfigFile(bool overwrite){
     ui->userBrowserCmd->setText(browser);
     ui->spinBox_2->setValue(updelay);
     ui->backOutput->setChecked(backOutput);
+    ui->statShow->setChecked(statShow);
 
     conf.close();
 }

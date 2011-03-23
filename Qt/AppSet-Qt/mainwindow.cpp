@@ -200,7 +200,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->sbdelay=opt.sbdelay;
     this->extbrowser=opt.browser;
     this->showBackOut=opt.backOutput;
-    if(opt.startfullscreen)this->showMaximized();
+    if(!opt.statShow) ui->statGroup->setHidden(true);
+    if(opt.startfullscreen)this->showMaximized();    
 
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
@@ -232,6 +233,8 @@ void MainWindow::showOptions(){
         this->sbdelay=opt.sbdelay;
         this->extbrowser=opt.browser;
         this->showBackOut=opt.backOutput;
+        if(!opt.statShow) ui->statGroup->setHidden(true);
+        else ui->statGroup->setVisible(true);
     }
 }
 
@@ -826,7 +829,8 @@ void MainWindow::install(){
         delete pkgs;
     }
 
-    applyEnabler();    
+    applyEnabler();
+    ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
 void MainWindow::remove(){
@@ -871,6 +875,8 @@ void MainWindow::remove(){
 
         applyEnabler();
     }
+
+    ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
 void MainWindow::upgrade(){
@@ -899,6 +905,8 @@ void MainWindow::upgrade(){
 
 
     applyEnabler();
+
+    ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
 void MainWindow::notInstall(){
@@ -979,6 +987,8 @@ void MainWindow::notInstall(){
     }
 
     applyEnabler();
+
+    ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
 void MainWindow::notRemove(){
@@ -1059,12 +1069,14 @@ void MainWindow::notRemove(){
     }
 
     applyEnabler();
+    ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
 void MainWindow::notUpgrade(){
     ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable"));
     modified--;
     applyEnabler();
+    ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
 void MainWindow::confirm(){
@@ -1468,6 +1480,8 @@ void MainWindow::showNotInstalled(bool checked){
 void MainWindow::addRows(bool checked){
     if(!checked) return;
 
+    tpack=ipack=upack=epack=0;
+
     int rows=0,upgradables=0;
 
     ui->centralWidget->setDisabled(true);
@@ -1506,6 +1520,7 @@ void MainWindow::addRows(bool checked){
         //loadingBar->setValue(30);
 
         int i=0;
+        tpack=pkgs->size();
         ui->tableWidget->setRowCount(pkgs->size());
         for(std::list<Package*>::iterator it=pkgs->begin(); it!=pkgs->end(); it++){
             Package *pkg = *it;
@@ -1533,7 +1548,7 @@ void MainWindow::addRows(bool checked){
             if(!(i%100)){
                 loadingBar->setValue(30+i*20/pkgs->size());
                 QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
-            }
+            }            
         }
 
         delete pkgs;
@@ -1583,6 +1598,7 @@ void MainWindow::addRows(bool checked){
                 ui->tableWidget->setItem(found,0, newItem);
                 newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
                 ui->tableWidget->setItem(found,2, newItem);
+                ipack++;
             }else{
                 ui->tableWidget->insertRow(i);
                 newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
@@ -1602,6 +1618,8 @@ void MainWindow::addRows(bool checked){
                 ui->tableWidget->setItem(i,6, newItem);
                 i++;
                 rows++;
+                ipack++;
+                epack++;
             }
 
             k++;
@@ -1642,6 +1660,8 @@ void MainWindow::addRows(bool checked){
 
                     delete *upsit;
                     ups->remove(*upsit);
+
+                    upack++;
                 }
 
                 upsit=ups->begin();
@@ -1654,7 +1674,7 @@ void MainWindow::addRows(bool checked){
     }else{
         std::list<AS::Package*>::iterator it=pkgs->begin();
 
-        rows = pkgs->size();
+        tpack=rows = pkgs->size();
         ui->tableWidget->setRowCount(rows);
         int i=0;
 
@@ -1677,9 +1697,11 @@ void MainWindow::addRows(bool checked){
                     upgradables++;
                     delete *upsit;
                     ups->remove(*upsit);
+                    upack++;
                 }else{
                     newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
                     newItem->setToolTip(tr("Installed"));
+                    ipack++;
                 }
                 upsit=ups->begin();
             }else{
@@ -1700,6 +1722,7 @@ void MainWindow::addRows(bool checked){
                 newItem = new QTableWidgetItem(pkg->getRemoteVersion().c_str());
             }else{
                 newItem = new QTableWidgetItem((QString(" (")+tr("External")+QString(")")));
+                epack++;
             }
             ui->tableWidget->setItem(i,3, newItem);
 
@@ -1762,6 +1785,11 @@ void MainWindow::addRows(bool checked){
     merging = true;
 
     //ui->tableWidget->sortByColumn(1,Qt::AscendingOrder);
+
+    ui->tLabel->setText(QString::number(tpack));
+    ui->uLabel->setText(QString::number(upack));
+    ui->iLabel->setText(QString::number(ipack));
+    ui->eLabel->setText(QString::number(epack));
 
     if(ui->tabWidget->tabText(1)=="All")ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(visibleRowCount())+QString(")"));   
 }

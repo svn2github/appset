@@ -293,6 +293,11 @@ private:
 
     QMultiMap<QString, QString> instaDeps;
     QMultiMap<QString, QString> remDeps;
+
+    int tpack;
+    int ipack;
+    int upack;
+    int epack;
 };
 
 #endif // MAINWINDOW_H

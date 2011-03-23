@@ -21,6 +21,7 @@ public:
     int sbdelay;
     QString browser;
     bool backOutput;
+    bool statShow;
 
     int updelay;
 
