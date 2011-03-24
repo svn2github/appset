@@ -16,6 +16,9 @@ check_remove_deps=pacman -Rcp --print-format "%n %s"
 check_upgrade_deps=pacman -Sup --print-format "%n %s"
 download_path=/var/cache/pacman/pkg/
 tool_lock_file=/var/lib/pacman/db.lck
+install_local=pacman -U --noconfirm
+local_ext=.pkg.tar.xz
+check_local_deps=pacman -Up --print-format "%n %s"
 
 query_filter_regexp=^[^ ]+ [^ ]+$
 query_name_regexp=^[[:alpha:]][^\\ ]+

@@ -46,11 +46,11 @@ namespace AS{
     public:
         virtual int update() = 0;
         virtual int upgrade(std::list<Package*>* ignore_packages=0) = 0;
-        virtual int install(std::list<Package*>* packages) = 0;
+        virtual int install(std::list<Package*>* packages, bool local=false) = 0;
         virtual int remove(std::list<Package*>* packages) = 0;
         virtual std::list<Package*>* queryLocal(unsigned flags=0, Package *package=0) = 0;
         virtual std::list<Package*>* queryRemote(unsigned flags=0, Package *package=0) = 0;
-        virtual std::list<Package*>* checkDeps(Package *package, bool install, bool upgrade=false) = 0;
+        virtual std::list<Package*>* checkDeps(Package *package, bool install, bool upgrade=false, bool local=false) = 0;
 
         //Requires name and ksize setted
         virtual int getProgressSize(Package *package, bool deps=false) = 0;

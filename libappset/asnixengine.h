@@ -40,7 +40,7 @@ namespace AS{
 
         int loadConfigFile(const char *path, StrMap *params, int fErrorRet=1, int paramErrorRet=2);
         virtual int execCmd(std::string command);
-        int execQuery(std::list<AS::Package*>* pkgList, unsigned flags=0, AS::Package *package=0, bool remote=false);
+        int execQuery(std::list<AS::Package*>* pkgList, unsigned flags=0, AS::Package *package=0, bool remote=false, bool local=false);
     public:
         NIXEngine();
         ~NIXEngine();
@@ -50,11 +50,11 @@ namespace AS{
 
         virtual int update();
         virtual int upgrade(std::list<Package*>* ignore_packages=0);
-        virtual int install(std::list<Package*>* packages);
+        virtual int install(std::list<Package*>* packages, bool local=false);
         virtual int remove(std::list<Package*>* packages);
         virtual std::list<Package*>* queryLocal(unsigned flags, Package *package=0);
         virtual std::list<Package*>* queryRemote(unsigned flags, Package *package=0);
-        virtual std::list<Package*>* checkDeps(Package *package, bool install, bool upgrade=false);
+        virtual std::list<Package*>* checkDeps(Package *package, bool install, bool upgrade=false, bool local=false);
         virtual int getProgressSize(Package *package, bool deps=false);
 
         virtual int removeLock();
@@ -62,6 +62,7 @@ namespace AS{
         virtual int cleanCache();
 
         virtual std::string getNewsUrl(std::string lang);
+        virtual std::string getLocalExt(){return commands["local_ext"];};
     };
 
 }

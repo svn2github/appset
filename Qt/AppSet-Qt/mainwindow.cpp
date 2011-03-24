@@ -60,6 +60,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     merging = true;
 
+    local=false;
+
     QStringList headers;
     headers << tr("S") << tr("Packet") << tr("Installed Version") << tr("Last Version") << tr("Description");
     ui->tableWidget->setColumnWidth(0,24);
@@ -108,6 +110,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timerUpdate, SIGNAL(timeout()),SLOT(refresh()));
     timer->setSingleShot(true);
     connect(timer,SIGNAL(timeout()),SLOT(addRows()));
+    argsParsed=false;
     timer->start(100);
     connect(timer2,SIGNAL(timeout()),SLOT(timeFilter()));
 
@@ -124,6 +127,10 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
     markAction = ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_ArrowUp), tr("Mark all upgrades"));
     connect(markAction,SIGNAL(triggered()),SLOT(markUpgrades()));
+
+    openLocalAction = ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_DialogOpenButton),tr("Open local package"));
+    connect(openLocalAction,SIGNAL(triggered()),SLOT(openLocal()));
+
     applyAction = ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_DialogApplyButton), tr("Check and apply"));
     connect(applyAction,SIGNAL(triggered()),SLOT(confirm()));
     applyAction->setDisabled(true);
@@ -205,7 +212,50 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
-    ui->backGroup->setHidden(true);
+    ui->backGroup->setHidden(true);    
+}
+
+#include <QFileDialog>
+void MainWindow::openLocal(QString fileName){
+    //XXX More controls (type of files and applyEnabler())
+    //XXX More than 1 file
+    //XXX cmd line option
+
+    if(fileName=="")fileName=QFileDialog::getOpenFileName(this,
+        tr("Open local package"),
+        QDesktopServices::storageLocation(QDesktopServices::HomeLocation),
+        tr("Package files")+QString(" (*")+QString(((AS::QTNIXEngine*)as)->getLocalExt().c_str())+QString(")"));
+
+    if(fileName=="") return;
+
+    AS::Package pkg;
+    pkg.setName(fileName.toAscii().data());
+    std::list<Package*>* pkgs=((AS::QTNIXEngine*)as)->checkDeps(&pkg,true,false,true);
+
+    if(pkgs){
+        ui->tableWidget->setRowCount(0);
+        ui->tableWidget->clearContents();
+
+        ui->tableWidget->setRowCount(1);
+        ui->tableWidget->setItem(0,0,new QTableWidgetItem(QIcon(":pkgstatus/install.png"),"Install"));
+        ui->tableWidget->setItem(0,1, new QTableWidgetItem((*(pkgs->rbegin()))->getName().c_str()));
+        ui->tableWidget->setItem(0,3, new QTableWidgetItem(fileName));
+        ui->tableWidget->setItem(0,6,new QTableWidgetItem(QString((*(pkgs->rbegin()))->getRemoteVersion().c_str())));
+
+        delete pkgs;
+
+        local=true;
+        confirm();
+    }else{
+        QMessageBox error;
+        error.setText(tr("Error loading the specified package file!"));
+        error.setInformativeText(tr("The file")+QString(" \"")+QString(fileName)+QString("\" ")+tr("doesn't seems to be a valid package!"));
+        error.setIcon(QMessageBox::Critical);
+        error.setStandardButtons(QMessageBox::Ok);
+        error.exec();
+
+        addRows();
+    }
 }
 
 void MainWindow::extBrowserLink(const QUrl & link){
@@ -496,6 +546,30 @@ void MainWindow::refresh(){
     }
 }
 
+bool MainWindow::outcomeEvaluator(){
+    int count=ui->tableWidget->rowCount();
+    bool outcome=false;
+    for(int i=0;i<count && !outcome && (iOutcome.size() || rOutcome.size() || uOutcome.size());++i){
+        QString actual=ui->tableWidget->item(i,1)->text().trimmed();
+        if(iOutcome.contains(actual)){
+            iOutcome.removeOne(actual);
+            if(ui->tableWidget->item(i,0)->text()=="Remote")outcome=true;
+        }else if(uOutcome.contains(actual)){
+            uOutcome.removeOne(actual);
+            if(ui->tableWidget->item(i,0)->text()=="Upgradable")outcome=true;
+        }else if(rOutcome.contains(actual)){
+            rOutcome.removeOne(actual);
+            if(!(ui->tableWidget->item(i,0)->text()=="Remote"))outcome=true;
+        }
+    }
+
+    iOutcome.clear();
+    uOutcome.clear();
+    rOutcome.clear();
+
+    return outcome;
+}
+
 void MainWindow::opFinished(){
     int op = asThread->getOp();
     int status = asThread->getStatus();
@@ -550,8 +624,28 @@ void MainWindow::opFinished(){
             as->removeListener(logger);
             delete logger;
 
+            ui->stacked->setCurrentIndex(0);
+            QCoreApplication::processEvents(QEventLoop::AllEvents,500);
+            ui->mainToolBar->show();
+
+            ui->editCancel->setEnabled(true);
+            ui->editConfirm->setEnabled(true);
+
+            ui->searchBar->clear();
+
+            modified=0;
+            applyEnabler();
+            ui->showAll->setChecked(true);
+
+            merging = false;
+
+            ui->choicesGroup->setVisible(true);
+            ui->backGroup->setHidden(true);
+
+            addRows();
+
             QMessageBox done;
-            status = statusI+statusR+statusU;
+            bool status = outcomeEvaluator();//statusI+statusR+statusU;
 
             done.setText(status?tr("Errors during operations!"):tr("Success!"));
             done.setInformativeText(status?tr("Do you want to see operations logs?"):tr("All operations completed successfully!"));
@@ -586,27 +680,7 @@ void MainWindow::opFinished(){
 
                     disconnect(&logDialog);
                 }
-            }else done.show();
-
-            ui->stacked->setCurrentIndex(0);
-            QCoreApplication::processEvents(QEventLoop::AllEvents,500);
-            ui->mainToolBar->show();
-
-            ui->editCancel->setEnabled(true);
-            ui->editConfirm->setEnabled(true);
-
-            ui->searchBar->clear();
-
-            modified=0;
-            applyEnabler();
-            ui->showAll->setChecked(true);
-
-            merging = false;
-
-            ui->choicesGroup->setVisible(true);
-            ui->backGroup->setHidden(true);
-
-            addRows();
+            }else ui->statusBar->showMessage(tr("All operations completed successfully!"),5000);//done.show();
         }else editConfirm();
     }
 }
@@ -629,6 +703,8 @@ void MainWindow::editConfirm(){
                 p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
                 prem->insert(prem->end(), p);
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Remove"));
+
+                rOutcome << ui->tableUpgraded->item(i,1)->text().trimmed();
             }
         }
 
@@ -641,13 +717,17 @@ void MainWindow::editConfirm(){
         for(int i=0;i<rows;++i){
             if(ui->tableUpgraded->item(i,0)->text()==QString("Remove") || ui->tableUpgraded->item(i,0)->text()=="Upgrade") continue;
             p=new Package();
-            p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
+            if(!local)p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
+            else p->setName(ui->tableUpgraded->item(i,2)->text().trimmed().toAscii().data());
             pinst->insert(pinst->end(), p);
             ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),ui->tableUpgraded->item(i,0)->text()));
+
+            iOutcome << ui->tableUpgraded->item(i,1)->text().trimmed();
         }
 
         asThread->setList(pinst);
         asThread->setOp(1);
+        asThread->local=local;
         pkgs=pinst;
         asThread->start();
     }else if(toU){
@@ -664,6 +744,8 @@ void MainWindow::editConfirm(){
         for(int i=0;i<rows;++i){
             if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Upgrade"));
+
+                uOutcome << ui->tableUpgraded->item(i,1)->text().trimmed();
             }
         }
 
@@ -700,6 +782,8 @@ void MainWindow::editCancel(){
     as->removeListener(logger);
 
     delete logger;
+
+    if(local)addRows();
 }
 
 void MainWindow::markUpgrades(){
@@ -802,6 +886,7 @@ void MainWindow::filterPressed(){
 
 void MainWindow::applyEnabler(){
     applyAction->setEnabled(modified>0);
+    openLocalAction->setEnabled(modified==0);
 }
 
 void MainWindow::install(){
@@ -1136,12 +1221,15 @@ void MainWindow::confirm(){
 
             Package p;
             int dsize = ui->tableWidget->item(i,6)->text().toFloat();
-            p.setName(ui->tableUpgraded->item(in,1)->text().trimmed().toAscii().data());
+            if(!local)p.setName(ui->tableUpgraded->item(in,1)->text().trimmed().toAscii().data());
+            else p.setName(ui->tableWidget->item(i,3)->text().toAscii().data());
             QStringList deps;
-            if((pkgs = as->checkDeps(&p,true))){
+
+            if((pkgs = as->checkDeps(&p,true,false,local))){
                 for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
                     QString name = QString((*it)->getName().c_str()).trimmed();
-                    if(name!=QString(p.getName().c_str())){
+
+                    if(name!=ui->tableWidget->item(i,1)->text().trimmed()){
                         deps << name;
                         dsize+=QString((*it)->getRemoteVersion().c_str()).toFloat()*1024;
                     }
@@ -1480,7 +1568,16 @@ void MainWindow::showNotInstalled(bool checked){
 void MainWindow::addRows(bool checked){
     if(!checked) return;
 
+    QString param("");
+    if(!argsParsed && qApp->argc()>1){
+        param=QString((qApp->argv())[1]);
+        argsParsed=true;
+        openLocal(param);
+        return;
+    }
+
     tpack=ipack=upack=epack=0;
+    local=false;
 
     int rows=0,upgradables=0;
 
@@ -1791,7 +1888,7 @@ void MainWindow::addRows(bool checked){
     ui->iLabel->setText(QString::number(ipack));
     ui->eLabel->setText(QString::number(epack));
 
-    if(ui->tabWidget->tabText(1)=="All")ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(visibleRowCount())+QString(")"));   
+    if(ui->tabWidget->tabText(1)==tr("All"))ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(ui->tableWidget->rowCount())+QString(")"));
 }
 
 #include <sys/types.h>

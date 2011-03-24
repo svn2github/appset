@@ -50,13 +50,16 @@ class AsThread:public QThread{
     AS::EngineListener *el;
     QTableWidget *table;
     AS::Engine *as;
+
 public:
     int status;
+    bool local;
     AsThread(AS::Engine *as){
         this->l=0;
         this->op=0;
         status=0;
         this->as=as;
+        local=false;
     }
 
     int getStatus(){return status;}
@@ -72,7 +75,7 @@ public:
     void run(){
         switch(op){
         case 1:
-            status+=as->install(l);
+            status+=as->install(l,local);
             break;
         case 2:
             status+=as->upgrade(l);
@@ -224,6 +227,8 @@ public slots:
 
     void extBrowserLink(const QUrl & link);
 
+    void openLocal(QString fileName="");
+
 private:
     Ui::MainWindow *ui;
 
@@ -247,6 +252,7 @@ private:
     QAction *applyAction;
     QAction *markAction;
     QAction *cleanAction;
+    QAction *openLocalAction;
 
     int toI, toU, toR;
     int statusI, statusU, statusR;
@@ -298,6 +304,14 @@ private:
     int ipack;
     int upack;
     int epack;
+
+    int local;
+    int argsParsed;
+
+    //Outcome evaluation
+    QStringList iOutcome,rOutcome,uOutcome;
+
+    bool outcomeEvaluator();
 };
 
 #endif // MAINWINDOW_H

@@ -23,5 +23,6 @@
     </qresource>
     <qresource prefix="/general">
         <file>appset.png</file>
+        <file>loading.png</file>
     </qresource>
 </RCC>

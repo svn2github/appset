@@ -55,6 +55,10 @@ AS::NIXEngine::NIXEngine(){
     commands.insert(StrPair("tool_lock_file",""));
     commands.insert(StrPair("clean_cache",""));
 
+    commands.insert(StrPair("install_local",""));
+    commands.insert(StrPair("local_ext",""));
+    commands.insert(StrPair("check_local_deps",""));
+
     regexps.insert(StrPair("query_filter_regexp",""));
     regexps.insert(StrPair("query_name_regexp",""));
     regexps.insert(StrPair("query_lversion_regexp",""));
@@ -204,9 +208,9 @@ int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
     return status;
 }
 
-int AS::NIXEngine::install(std::list<Package*>* packages){
+int AS::NIXEngine::install(std::list<Package*>* packages, bool local){
     if(!packages) return 1;
-    string cmd(commands["install"]);
+    string cmd(local?commands["install_local"]:commands["install"]);
 
     for(std::list<Package*>::iterator it=packages->begin();it!=packages->end();it++){
         cmd += " ";
@@ -383,7 +387,7 @@ namespace AS {
     };
 }
 
-int AS::NIXEngine::execQuery(std::list<AS::Package*>* pkgList, unsigned flags, AS::Package *package, bool remote){
+int AS::NIXEngine::execQuery(std::list<AS::Package*>* pkgList, unsigned flags, AS::Package *package, bool remote, bool local){
     int status=0;
     QueryListener ql(pkgList, regexps["query_filter_regexp"].c_str(), regexps["query_name_regexp"].c_str(), regexps["query_lversion_regexp"].c_str(), remote);
     addListener(&ql);
@@ -402,7 +406,7 @@ int AS::NIXEngine::execQuery(std::list<AS::Package*>* pkgList, unsigned flags, A
 
         status = execCmd(cmd);
     }else if(flags & as_QUERY_DEPS){
-        string cmd = remote?commands["check_install_deps"]:commands["check_remove_deps"];
+        string cmd = local?commands["check_local_deps"]:remote?commands["check_install_deps"]:commands["check_remove_deps"];
 
         cmd += " ";
         cmd += package->getName();
@@ -444,12 +448,12 @@ int AS::NIXEngine::execQuery(std::list<AS::Package*>* pkgList, unsigned flags, A
     return status;
 }
 
-std::list<AS::Package*>* AS::NIXEngine::checkDeps(AS::Package *package, bool install, bool upgrade){
+std::list<AS::Package*>* AS::NIXEngine::checkDeps(AS::Package *package, bool install, bool upgrade, bool local){
     if(!package) return 0;
 
     std::list<AS::Package*>* ret = new std::list<AS::Package*>();
 
-    int status = upgrade?execQuery(ret, as_UPGRADE_DEPS, package, install):execQuery(ret, as_QUERY_DEPS, package, install);
+    int status = upgrade?execQuery(ret, as_UPGRADE_DEPS, package, install):execQuery(ret, as_QUERY_DEPS, package, install, local);
 
     if(status){
         delete ret;
