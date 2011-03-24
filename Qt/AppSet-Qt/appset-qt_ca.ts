@@ -23,38 +23,38 @@
         <location filename="mainwindow.ui" line="620"/>
         <location filename="mainwindow.ui" line="688"/>
         <location filename="mainwindow.ui" line="767"/>
-        <location filename="mainwindow.cpp" line="1461"/>
-        <location filename="mainwindow.cpp" line="1794"/>
+        <location filename="mainwindow.cpp" line="1549"/>
+        <location filename="mainwindow.cpp" line="1891"/>
         <source>All</source>
         <translation>Tot</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="206"/>
-        <location filename="mainwindow.cpp" line="1357"/>
+        <location filename="mainwindow.cpp" line="1445"/>
         <source>Games</source>
         <translation>Jocs</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="239"/>
-        <location filename="mainwindow.cpp" line="1381"/>
+        <location filename="mainwindow.cpp" line="1469"/>
         <source>Multimedia</source>
         <translation>Multimèdia</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
-        <location filename="mainwindow.cpp" line="1405"/>
+        <location filename="mainwindow.cpp" line="1493"/>
         <source>Internet</source>
         <translation>Internet</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="305"/>
-        <location filename="mainwindow.cpp" line="1393"/>
+        <location filename="mainwindow.cpp" line="1481"/>
         <source>Office</source>
         <translation>Oficina</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="338"/>
-        <location filename="mainwindow.cpp" line="1369"/>
+        <location filename="mainwindow.cpp" line="1457"/>
         <source>System</source>
         <translation>Sistema</translation>
     </message>
@@ -86,7 +86,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="683"/>
-        <location filename="mainwindow.cpp" line="64"/>
+        <location filename="mainwindow.cpp" line="66"/>
         <source>Description</source>
         <translation>Descripció</translation>
     </message>
@@ -123,8 +123,8 @@
     <message>
         <location filename="mainwindow.ui" line="518"/>
         <location filename="mainwindow.ui" line="786"/>
-        <location filename="mainwindow.cpp" line="1656"/>
-        <location filename="mainwindow.cpp" line="1696"/>
+        <location filename="mainwindow.cpp" line="1753"/>
+        <location filename="mainwindow.cpp" line="1793"/>
         <source>Upgradable</source>
         <translation>Actualitzable</translation>
     </message>
@@ -136,8 +136,8 @@
     <message>
         <location filename="mainwindow.ui" line="504"/>
         <location filename="mainwindow.ui" line="802"/>
-        <location filename="mainwindow.cpp" line="1597"/>
-        <location filename="mainwindow.cpp" line="1703"/>
+        <location filename="mainwindow.cpp" line="1694"/>
+        <location filename="mainwindow.cpp" line="1800"/>
         <source>Installed</source>
         <translation>Instal·lat</translation>
     </message>
@@ -148,8 +148,8 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="818"/>
-        <location filename="mainwindow.cpp" line="1530"/>
-        <location filename="mainwindow.cpp" line="1709"/>
+        <location filename="mainwindow.cpp" line="1627"/>
+        <location filename="mainwindow.cpp" line="1806"/>
         <source>Not Installed</source>
         <translation>No instal·lat</translation>
     </message>
@@ -208,21 +208,21 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="1240"/>
-        <location filename="mainwindow.cpp" line="1259"/>
+        <location filename="mainwindow.cpp" line="1347"/>
         <source>Cancel</source>
         <translation>Cancel·la</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1269"/>
-        <location filename="mainwindow.cpp" line="341"/>
-        <location filename="mainwindow.cpp" line="344"/>
-        <location filename="mainwindow.cpp" line="616"/>
-        <location filename="mainwindow.cpp" line="1210"/>
+        <location filename="mainwindow.cpp" line="391"/>
+        <location filename="mainwindow.cpp" line="394"/>
+        <location filename="mainwindow.cpp" line="690"/>
+        <location filename="mainwindow.cpp" line="1298"/>
         <source>Confirm</source>
         <translation>Confirma</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="137"/>
+        <location filename="mainwindow.cpp" line="144"/>
         <source>About</source>
         <translation>Quant a</translation>
     </message>
@@ -237,97 +237,123 @@ p, li { white-space: pre-wrap; }
         <translation>Quant a l&apos;AppSet</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="64"/>
-        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="66"/>
+        <location filename="mainwindow.cpp" line="71"/>
         <source>S</source>
         <translation>A</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="64"/>
-        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="66"/>
+        <location filename="mainwindow.cpp" line="71"/>
         <source>Packet</source>
         <translation>Paquet</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="64"/>
+        <location filename="mainwindow.cpp" line="66"/>
         <source>Installed Version</source>
         <translation>Versió instal·lada</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="64"/>
+        <location filename="mainwindow.cpp" line="66"/>
         <source>Last Version</source>
         <translation>Darrera versió</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="71"/>
         <source>Version</source>
         <translation>Versió</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="71"/>
         <source>Dependencies</source>
         <translation>Dependències</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="71"/>
         <source>Size(MB)</source>
         <translation>Mida(MB)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="71"/>
         <source>Progress</source>
         <translation>Progrés</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="81"/>
+        <location filename="mainwindow.cpp" line="83"/>
         <source>Errors while initializing the system!</source>
         <translation>Errors en inicialitzar el sistema!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="120"/>
+        <location filename="mainwindow.cpp" line="123"/>
         <source>Update</source>
         <translation>Actualitza</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="122"/>
-        <location filename="mainwindow.cpp" line="331"/>
-        <location filename="mainwindow.cpp" line="1762"/>
+        <location filename="mainwindow.cpp" line="125"/>
+        <location filename="mainwindow.cpp" line="381"/>
+        <location filename="mainwindow.cpp" line="1859"/>
         <source>Clean cache</source>
         <translation>Neteja la cau</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="125"/>
-        <location filename="mainwindow.cpp" line="1756"/>
+        <location filename="mainwindow.cpp" line="128"/>
+        <location filename="mainwindow.cpp" line="1853"/>
         <source>Mark all upgrades</source>
         <translation>Marca totes les actualitzacions</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="127"/>
+        <location filename="mainwindow.cpp" line="131"/>
+        <location filename="mainwindow.cpp" line="225"/>
+        <source>Open local package</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="134"/>
         <source>Check and apply</source>
         <translation>Comprova i aplica</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="133"/>
+        <location filename="mainwindow.cpp" line="140"/>
         <source>Options</source>
         <translation>Opcions</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="181"/>
+        <location filename="mainwindow.cpp" line="188"/>
         <source>Link</source>
         <translation>Enllaç</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="181"/>
+        <location filename="mainwindow.cpp" line="188"/>
         <source>Title</source>
         <translation>Títol</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="352"/>
+        <location filename="mainwindow.cpp" line="227"/>
+        <source>Package files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="251"/>
+        <source>Error loading the specified package file!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="252"/>
+        <source>The file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="252"/>
+        <source>doesn&apos;t seems to be a valid package!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="402"/>
         <source>About AppSet-Qt</source>
         <translation>Quant a l&apos;AppSet-Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="352"/>
+        <location filename="mainwindow.cpp" line="402"/>
         <source>An advanced and feature rich Package Manager Frontend
 
 Author: Simone Tobia</source>
@@ -336,76 +362,97 @@ Author: Simone Tobia</source>
 Autor: Simone Tobia</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="353"/>
+        <location filename="mainwindow.cpp" line="403"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
         <oldsource>A special thanks goes to the Chackra-project team for their suggestions and translations.</oldsource>
         <translation>Agraïments especials a l&apos;equip del Projecte Chakra pels seus suggeriments i traduccions.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="419"/>
-        <location filename="mainwindow.cpp" line="474"/>
+        <location filename="mainwindow.cpp" line="469"/>
+        <location filename="mainwindow.cpp" line="524"/>
         <source>Waiting others...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="432"/>
-        <location filename="mainwindow.cpp" line="488"/>
+        <location filename="mainwindow.cpp" line="482"/>
+        <location filename="mainwindow.cpp" line="538"/>
         <source>Installing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="556"/>
+        <location filename="mainwindow.cpp" line="650"/>
         <source>Errors during operations!</source>
         <translation>Errors durant les operacions!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="556"/>
+        <location filename="mainwindow.cpp" line="650"/>
         <source>Success!</source>
         <translation>Èxit!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="557"/>
+        <location filename="mainwindow.cpp" line="651"/>
         <source>Do you want to see operations logs?</source>
         <translation>voleu veure els registres de les operacions?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="557"/>
+        <location filename="mainwindow.cpp" line="651"/>
+        <location filename="mainwindow.cpp" line="683"/>
         <source>All operations completed successfully!</source>
         <translation>Totes les operacions completades amb èxit!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="566"/>
+        <location filename="mainwindow.cpp" line="660"/>
         <source>Continue</source>
         <translation>Continua</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="833"/>
-        <location filename="mainwindow.cpp" line="879"/>
-        <location filename="mainwindow.cpp" line="909"/>
-        <location filename="mainwindow.cpp" line="991"/>
-        <location filename="mainwindow.cpp" line="1072"/>
-        <location filename="mainwindow.cpp" line="1079"/>
+        <location filename="mainwindow.cpp" line="918"/>
+        <location filename="mainwindow.cpp" line="964"/>
+        <location filename="mainwindow.cpp" line="994"/>
+        <location filename="mainwindow.cpp" line="1076"/>
+        <location filename="mainwindow.cpp" line="1157"/>
+        <location filename="mainwindow.cpp" line="1164"/>
         <source>Pending changes:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="853"/>
+        <location filename="mainwindow.cpp" line="938"/>
         <source>Some installed packages require</source>
         <translation>Alguns paquets instal·lats requereixen</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="854"/>
+        <location filename="mainwindow.cpp" line="939"/>
         <source>Do you want to proceed anyway (removing them too)?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="922"/>
+        <location filename="mainwindow.cpp" line="1007"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="963"/>
+        <location filename="mainwindow.cpp" line="1048"/>
         <source>Do you want to clear them too?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1088"/>
+        <source>These selected for removal packages are required by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1089"/>
+        <source>Do you want to proceed anyway (canceling their removal too)?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1129"/>
+        <source>These packages were selected for removal because they need</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1130"/>
+        <source>Do you want to clear their removal too?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -417,7 +464,7 @@ Do you want to proceed anyway (removing them too)?</source>
 Voleu continuar igualment (eliminat-los també)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="921"/>
+        <location filename="mainwindow.cpp" line="1006"/>
         <source>These selected for install packages require</source>
         <translation>Aquests paquets instal·lats per instal·lar requereixen</translation>
     </message>
@@ -430,7 +477,7 @@ Do you want to proceed anyway (clearing them too)?</source>
 Voleu continuar igualment (netejant-los també)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="962"/>
+        <location filename="mainwindow.cpp" line="1047"/>
         <source>These packages were selected as dependencies of</source>
         <translation>Aquests paquets s&apos;han seleccionat com a dependències de</translation>
     </message>
@@ -441,26 +488,6 @@ Do you want to clear them too?</source>
         <translation type="obsolete">
 
 Voleu netejar-los també?</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1003"/>
-        <source>These selected for removal packages are required by</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1004"/>
-        <source>Do you want to proceed anyway (canceling their removal too)?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1044"/>
-        <source>These packages were selected for removal because they need</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1045"/>
-        <source>Do you want to clear their removal too?</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Some installed packages require this:</source>
@@ -475,80 +502,80 @@ Do you want to proceed anyway?</source>
 Voleu continuar igualment?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1224"/>
+        <location filename="mainwindow.cpp" line="1312"/>
         <source>&lt;b&gt;Size: &lt;/b&gt;</source>
         <translation>&lt;b&gt;Mida: &lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1226"/>
+        <location filename="mainwindow.cpp" line="1314"/>
         <source>&lt;b&gt;URL: &lt;/b&gt;</source>
         <translation>&lt;b&gt;URL: &lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1227"/>
+        <location filename="mainwindow.cpp" line="1315"/>
         <source>(Watch the full site)</source>
         <translation>(Mostra el lloc complet)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1229"/>
+        <location filename="mainwindow.cpp" line="1317"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Requereix: &lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1241"/>
+        <location filename="mainwindow.cpp" line="1329"/>
         <source>&lt;b&gt;Required By:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Requerit per: &lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1256"/>
+        <location filename="mainwindow.cpp" line="1344"/>
         <source>Install</source>
         <translation>Instal·la</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1257"/>
+        <location filename="mainwindow.cpp" line="1345"/>
         <source>Remove</source>
         <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1258"/>
+        <location filename="mainwindow.cpp" line="1346"/>
         <source>Upgrade</source>
         <translation>Actualitza</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1314"/>
+        <location filename="mainwindow.cpp" line="1402"/>
         <source>UPDATING DB: </source>
         <translation>ACTUALITZACIÓ DE LA BD: </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1317"/>
+        <location filename="mainwindow.cpp" line="1405"/>
         <source>UPDATING DB...</source>
         <translation>ACTUALITZACIÓ DE LA BD...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1325"/>
+        <location filename="mainwindow.cpp" line="1413"/>
         <source>DB UPDATED!</source>
         <translation>BD ACTUALITZADA!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1558"/>
+        <location filename="mainwindow.cpp" line="1655"/>
         <source>PARSING INSTALLED: </source>
         <translation>ANÀLISI DELS INSTAL·LATS: </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1568"/>
+        <location filename="mainwindow.cpp" line="1665"/>
         <source>SEARCHING CORRESPONDENCES...</source>
         <translation>CERCA DE CORRESPONDÈNCIES...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1605"/>
+        <location filename="mainwindow.cpp" line="1702"/>
         <source>Installed (external)</source>
         <translation>Instal·lat (extern)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="532"/>
-        <location filename="mainwindow.cpp" line="1611"/>
-        <location filename="mainwindow.cpp" line="1646"/>
-        <location filename="mainwindow.cpp" line="1724"/>
+        <location filename="mainwindow.cpp" line="1708"/>
+        <location filename="mainwindow.cpp" line="1743"/>
+        <location filename="mainwindow.cpp" line="1821"/>
         <source>External</source>
         <translation>Extern</translation>
     </message>
@@ -559,6 +586,21 @@ Voleu continuar igualment?</translation>
         <location filename="options.ui" line="20"/>
         <source>AppSet Options</source>
         <translation>Opcions de l&apos;AppSet</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="29"/>
+        <source>External Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="52"/>
+        <source>Deskop default browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="61"/>
+        <source>This browser:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="options.ui" line="90"/>
@@ -599,21 +641,6 @@ Voleu continuar igualment?</translation>
         <location filename="options.ui" line="140"/>
         <source>Start Fullscreen</source>
         <translation>Inicia en pantalla completa</translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="29"/>
-        <source>External Browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="52"/>
-        <source>Deskop default browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="61"/>
-        <source>This browser:</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -17,7 +17,7 @@
         <location filename="trayicon.cpp" line="25"/>
         <source>Quit Tray</source>
         <translatorcomment>Vindt geen geschikte vertaling voor &quot;Tray&quot; :(</translatorcomment>
-        <translation>Sluit Tray af</translation>
+        <translation>Sluit Systeemvakpictogram</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="59"/>
@@ -27,7 +27,7 @@
     <message>
         <location filename="trayicon.cpp" line="72"/>
         <source>Are you sure to quit this tray?</source>
-        <translation>Wilt u de tray zeker afsluiten?</translation>
+        <translation>Wilt u het systeemvakpictogram zeker afsluiten?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="73"/>
