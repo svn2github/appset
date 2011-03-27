@@ -241,9 +241,9 @@ void MainWindow::openLocal(QString fileName){
 
         ui->tableWidget->setRowCount(1);
         ui->tableWidget->setItem(0,0,new QTableWidgetItem(QIcon(":pkgstatus/install.png"),"Install"));
-        ui->tableWidget->setItem(0,1, new QTableWidgetItem((*(pkgs->rbegin()))->getName().c_str()));
-        ui->tableWidget->setItem(0,3, new QTableWidgetItem(fileName));
-        ui->tableWidget->setItem(0,6,new QTableWidgetItem(QString((*(pkgs->rbegin()))->getRemoteVersion().c_str())));
+        ui->tableWidget->setItem(0,2, new QTableWidgetItem((*(pkgs->rbegin()))->getName().c_str()));
+        ui->tableWidget->setItem(0,4, new QTableWidgetItem(fileName));
+        ui->tableWidget->setItem(0,7,new QTableWidgetItem(QString((*(pkgs->rbegin()))->getRemoteVersion().c_str())));
 
         delete pkgs;
 
@@ -437,7 +437,14 @@ void MainWindow::refresh(){
             if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()=="Remove" || completed[i+baseIndex]) continue;
 
             Package pkg;
-            pkg.setName(ui->tableUpgraded->item(i,1)->text().split('/').at(1).toAscii().data());
+            QStringList ap=ui->tableUpgraded->item(i,1)->text().split('/');
+            QString pp;
+            if(ap.size()>1){
+                pp = (ap.at(1));
+            }else{
+                pp = (ap.at(0));
+            }
+            pkg.setName(pp.toAscii().data());
 
             QString remoteversion = ui->tableUpgraded->item(i,2)->text();
             pkg.setRemoteVersion(remoteversion.toAscii().data());
@@ -724,7 +731,7 @@ void MainWindow::editConfirm(){
             if(ui->tableUpgraded->item(i,0)->text()==QString("Remove") || ui->tableUpgraded->item(i,0)->text()=="Upgrade") continue;
             p=new Package();
             if(!local)p->setName(ui->tableUpgraded->item(i,1)->toolTip().trimmed().toAscii().data());
-            else p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
+            else p->setName(ui->tableUpgraded->item(i,2)->text().trimmed().toAscii().data());
             pinst->insert(pinst->end(), p);
             ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),ui->tableUpgraded->item(i,0)->text()));
 
@@ -1223,26 +1230,31 @@ void MainWindow::confirm(){
                     ui->tableUpgraded->setItem(r,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));
 
                     ui->tableUpgraded->setItem(r++,2,new QTableWidgetItem(*ui->tableWidget->item(i,3)));
-        }else if(ui->tableWidget->item(i,0)->text()=="Install" && instaDeps.value(ui->tableWidget->item(i,2)->toolTip())==""){
+        }else if(ui->tableWidget->item(i,0)->text()=="Install" && (!ui->tableWidget->item(i,2) || instaDeps.value(ui->tableWidget->item(i,2)->toolTip())=="")){
             ui->tableUpgraded->insertRow(in);
             ui->tableUpgraded->setItem(in,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
-            ui->tableUpgraded->item(in,0)->setText(ui->tableWidget->item(i,7)->text());
             ui->tableUpgraded->setItem(in,1,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
-            ui->tableUpgraded->setItem(in,2,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
+            ui->tableUpgraded->item(in,0)->setText(ui->tableWidget->item(i,7)->text());
 
-            ui->tableUpgraded->item(in,1)->setText(ui->tableUpgraded->item(in,1)->toolTip());
+            ui->tableUpgraded->setItem(in,2,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
+            if(!local){
+                ui->tableUpgraded->item(in,1)->setText(ui->tableUpgraded->item(in,1)->toolTip());
+            }
+
+
             Package p;
-            int dsize = ui->tableWidget->item(i,7)->text().toFloat();
+            int dsize = local?0:ui->tableWidget->item(i,7)->text().toFloat();
             if(!local)p.setName(ui->tableUpgraded->item(in,1)->toolTip().trimmed().toAscii().data());
             else p.setName(ui->tableWidget->item(i,4)->text().toAscii().data());
             QStringList deps;
 
             if((pkgs = as->checkDeps(&p,true,false,local))){
                 for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                    QString name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
-
-                    if(name!=ui->tableWidget->item(i,2)->toolTip().trimmed()){
-                        deps << name;
+                    QString name;
+                    if(!local)name= QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
+                    else name= QString((*it)->getName().c_str()).trimmed();
+                    if((local && name!=ui->tableWidget->item(i,2)->text().trimmed()) || (!local && name!=ui->tableWidget->item(i,2)->toolTip().trimmed())){
+                        deps << QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
                         dsize+=QString((*it)->getRemoteVersion().c_str()).toFloat()/1024;
                     }
                     delete(*it);
@@ -1332,7 +1344,7 @@ void MainWindow::changeStatus(int row, int col){
         ui->infoText->clear();
 
         if(ui->tableWidget->item(row,0)->text()!="Installed" && ui->tableWidget->item(row,0)->text()!="Remove" )
-            ui->infoText->append(QString("<b>")+tr("Repository")+tr(": </b>")+ui->tableWidget->item(row,1)->text());
+            ui->infoText->append(QString("<b>")+tr("Repository")+QString(": </b>")+ui->tableWidget->item(row,1)->text());
 
         if(!(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove"))
             ui->infoText->append(QString(tr("<b>Size: </b>"))+ui->tableWidget->item(row,7)->text()+" KB");
