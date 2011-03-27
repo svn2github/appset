@@ -173,7 +173,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableWidget->hideColumn(6);
     ui->tableWidget->hideColumn(7);
 
-    ui->webView->installEventFilter(new QTEventFilter);
+    //ui->webView->installEventFilter(new QTEventFilter);
 
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),SLOT(aboutQt()));
     connect(ui->actionAbout_AppSet,SIGNAL(triggered()),SLOT(about()));
