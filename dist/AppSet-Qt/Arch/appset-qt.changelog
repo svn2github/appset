@@ -1,0 +1,19 @@
+0.3.4 :
+  -Repository information added (with the management of multiple sources for the same application)
+  -Option to view repository in package table
+  -Option to disable countdown for auto confirmation of changes
+  -SearchBar now got the focus after a previous search 
+
+0.3.3 :
+  -New outcome evaluation logic  
+  -Local precompiled packages installer (from main GUI, shell cmd argument or Desktop's "Open With..." menu)
+  -Loading icon
+  -Spanish translation
+
+0.3.2 :
+  -Packages statistics (enabled via options)
+  -Backend's output (enabled via options)
+  -Interval between db updates selectable by options
+  -Changes in main GUI
+  -External Browser Command now accepts arguments
+  -Bug fixed for updates operations outcome

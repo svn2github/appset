@@ -101,14 +101,18 @@ void TrayIcon::checkRunning(){
 void TrayIcon::checkUps(){
     bool running = this->running;
     if(!running){
-        list<Package*> *pkgs = as->queryLocal(as_QUERY_UPGRADABLE);
+        //list<Package*> *pkgs = as->queryLocal(as_QUERY_UPGRADABLE);
+        Package *pp=new Package(true);
+        pp->setName("");
+        std::list<Package*> *pkgs = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
+        delete pp;
 
         if(pkgs && pkgs->size()){
             QString str=pkgs->size()>1?tr("There are updates for:"):tr("There is an update for:");
             int i=30;
             for(list<Package*>::iterator it=pkgs->begin();i>0 && it!=pkgs->end();it++){
                 Package *pkg = *it;
-                str+=QString("\n- ")+QString(pkg->getName().c_str())+QString(" ")+QString(pkg->getLocalVersion().c_str());
+                str+=QString("\n- ")+QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())+QString(" ")+QString(pkg->getRemoteVersion().c_str());
                 i--;
             }
 

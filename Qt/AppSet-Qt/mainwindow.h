@@ -296,6 +296,7 @@ private:
     int sbdelay;
     QString extbrowser;
     bool showBackOut;
+    bool confirmCountdown;
 
     QMultiMap<QString, QString> instaDeps;
     QMultiMap<QString, QString> remDeps;

@@ -98,8 +98,9 @@ int main(){
                 bool found = false;
                 Package *pkg = *it;
 
-                while(!found && it2!=remote->end()){
+                while(/*!found && */it2!=remote->end()){
                     Package *pkg2 = *it2;
+
                     if(pkg2->getName().compare(pkg->getName()) == 0){
                         found = true;
                         pkg2->setLocalVersion(pkg->getLocalVersion());
@@ -124,7 +125,7 @@ int main(){
 
             it = remote->begin();
             while(it!=remote->end()){
-                Package *pkg=*it;
+                Package *pkg=*it;                
                 output << pkg->getName().c_str() << endl;
                 output << pkg->getLocalVersion().c_str() << endl;
                 output << pkg->getRemoteVersion().c_str() << endl;
@@ -132,6 +133,7 @@ int main(){
                 output << pkg->getDescription().c_str() << endl;
                 output << pkg->getURL().c_str() << endl;
                 output << boolalpha << pkg->isInstalled() << endl;
+                output << pkg->getRepository().c_str() << endl;
                 it++;
                 delete pkg;
             }
@@ -139,6 +141,7 @@ int main(){
             delete remote;
 
 #ifdef unix
+            unlink("/tmp/ashelper.out");
             rename("/tmp/ashelper-pre.out","/tmp/ashelper.out");
 #endif
 
@@ -153,7 +156,7 @@ int main(){
                     counter += 5;
                     runned=true;
                 }
-                if(counter>=updelay){
+                if(counter>=updelay && stat("/tmp/as.tmp",&s)){
                     ase->update();
                     counter = 0;
                     runned=true;

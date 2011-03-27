@@ -63,9 +63,10 @@ MainWindow::MainWindow(QWidget *parent) :
     local=false;
 
     QStringList headers;
-    headers << tr("S") << tr("Packet") << tr("Installed Version") << tr("Last Version") << tr("Description");
+    headers << tr("S") << tr("Repository") << tr("Packet") << tr("Installed Version") << tr("Last Version") << tr("Description");
     ui->tableWidget->setColumnWidth(0,24);
     ui->tableWidget->setHorizontalHeaderLabels(headers);
+    ui->tableWidget->setColumnWidth(1,100);
 
     QStringList updateHeaders;
     updateHeaders << tr("S") << tr("Packet") << tr("Version") << tr("Dependencies") << tr("Size(MB)") << tr("Progress");
@@ -165,11 +166,12 @@ MainWindow::MainWindow(QWidget *parent) :
     category.setCaseSensitivity(Qt::CaseInsensitive);
     category_exclude = QRegExp("---");
     category_exclude.setCaseSensitivity(Qt::CaseInsensitive);
-    expert = QRegExp("lib[s]*.*|.*lib[s]*|.*-lib[s]*.*|.*lib[s]*-.*|ttf-.*|.*-data");
+    expert = QRegExp("lib[^r][s]*.*|.*lib[^r][s]*|.*-lib[s]*.*|.*lib[^r][s]*-.*|ttf-.*|.*-data");
     expert.setCaseSensitivity(Qt::CaseInsensitive);
 
-    ui->tableWidget->hideColumn(5);
+    ui->tableWidget->hideColumn(1);
     ui->tableWidget->hideColumn(6);
+    ui->tableWidget->hideColumn(7);
 
     ui->webView->installEventFilter(new QTEventFilter);
 
@@ -207,19 +209,20 @@ MainWindow::MainWindow(QWidget *parent) :
     this->sbdelay=opt.sbdelay;
     this->extbrowser=opt.browser;
     this->showBackOut=opt.backOutput;
+    this->confirmCountdown=opt.confirmCountdown;
     if(!opt.statShow) ui->statGroup->setHidden(true);
-    if(opt.startfullscreen)this->showMaximized();    
+    if(opt.startfullscreen)this->showMaximized();
+    if(opt.showRepos)ui->tableWidget->showColumn(1);
+    else ui->tableWidget->hideColumn(1);
 
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
-    ui->backGroup->setHidden(true);    
+    ui->backGroup->setHidden(true);
 }
 
 #include <QFileDialog>
 void MainWindow::openLocal(QString fileName){
-    //XXX More controls (type of files and applyEnabler())
     //XXX More than 1 file
-    //XXX cmd line option
 
     if(fileName=="")fileName=QFileDialog::getOpenFileName(this,
         tr("Open local package"),
@@ -283,8 +286,11 @@ void MainWindow::showOptions(){
         this->sbdelay=opt.sbdelay;
         this->extbrowser=opt.browser;
         this->showBackOut=opt.backOutput;
+        this->confirmCountdown=opt.confirmCountdown;
         if(!opt.statShow) ui->statGroup->setHidden(true);
         else ui->statGroup->setVisible(true);
+        if(opt.showRepos)ui->tableWidget->showColumn(1);
+        else ui->tableWidget->hideColumn(1);
     }
 }
 
@@ -431,7 +437,7 @@ void MainWindow::refresh(){
             if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()=="Remove" || completed[i+baseIndex]) continue;
 
             Package pkg;
-            pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());            
+            pkg.setName(ui->tableUpgraded->item(i,1)->text().split('/').at(1).toAscii().data());
 
             QString remoteversion = ui->tableUpgraded->item(i,2)->text();
             pkg.setRemoteVersion(remoteversion.toAscii().data());
@@ -444,7 +450,7 @@ void MainWindow::refresh(){
                 QStringList depsList = deps.split(' ');
 
                 for(QStringList::iterator it2=depsList.begin();it2!=depsList.end();it2++){
-                    pkg.setName((*it2).toAscii().data());
+                    pkg.setName((*it2).split('/').at(1).toAscii().data());
                     reached+=as->getProgressSize(&pkg, true);
                 }
             }
@@ -493,7 +499,7 @@ void MainWindow::refresh(){
             if(ui->tableUpgraded->item(i,0)->text()!=QString("Upgrade") || completed[i+baseIndex]) continue;
 
             Package pkg;
-            pkg.setName(ui->tableUpgraded->item(i,1)->text().toAscii().data());
+            pkg.setName(ui->tableUpgraded->item(i,1)->text().split('/').at(1).toAscii().data());
 
             QString versions = ui->tableUpgraded->item(i,2)->text();
             QString remoteversion = versions.right(versions.size()-versions.indexOf('(')-1);
@@ -550,7 +556,7 @@ bool MainWindow::outcomeEvaluator(){
     int count=ui->tableWidget->rowCount();
     bool outcome=false;
     for(int i=0;i<count && !outcome && (iOutcome.size() || rOutcome.size() || uOutcome.size());++i){
-        QString actual=ui->tableWidget->item(i,1)->text().trimmed();
+        QString actual=ui->tableWidget->item(i,2)->toolTip().trimmed();
         if(iOutcome.contains(actual)){
             iOutcome.removeOne(actual);
             if(ui->tableWidget->item(i,0)->text()=="Remote")outcome=true;
@@ -704,7 +710,7 @@ void MainWindow::editConfirm(){
                 prem->insert(prem->end(), p);
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Remove"));
 
-                rOutcome << ui->tableUpgraded->item(i,1)->text().trimmed();
+                rOutcome << ui->tableUpgraded->item(i,1)->toolTip().trimmed();
             }
         }
 
@@ -717,12 +723,12 @@ void MainWindow::editConfirm(){
         for(int i=0;i<rows;++i){
             if(ui->tableUpgraded->item(i,0)->text()==QString("Remove") || ui->tableUpgraded->item(i,0)->text()=="Upgrade") continue;
             p=new Package();
-            if(!local)p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
-            else p->setName(ui->tableUpgraded->item(i,2)->text().trimmed().toAscii().data());
+            if(!local)p->setName(ui->tableUpgraded->item(i,1)->toolTip().trimmed().toAscii().data());
+            else p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
             pinst->insert(pinst->end(), p);
             ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),ui->tableUpgraded->item(i,0)->text()));
 
-            iOutcome << ui->tableUpgraded->item(i,1)->text().trimmed();
+            iOutcome << ui->tableUpgraded->item(i,1)->toolTip().trimmed();
         }
 
         asThread->setList(pinst);
@@ -732,20 +738,23 @@ void MainWindow::editConfirm(){
         asThread->start();
     }else if(toU){
         std::list<Package*> *pupgr=new std::list<Package*>();
-        int rows = ui->tableWidget->rowCount();
-        for(int i=0;i<rows;++i){
+        int rows = ui->tableUpgraded->rowCount();
+        /*for(int i=0;i<rows;++i){
             if(ui->tableWidget->item(i,0)->text()=="Upgradable"){
                 p=new Package();
-                p->setName(ui->tableWidget->item(i,1)->text().trimmed().toAscii().data());
+                p->setName(ui->tableWidget->item(i,2)->text().trimmed().toAscii().data());
                 pupgr->insert(pupgr->end(),p);
             }
         }
-        rows=ui->tableUpgraded->rowCount();
+        rows=ui->tableUpgraded->rowCount();*/
         for(int i=0;i<rows;++i){
             if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Upgrade"));
+                p=new Package();
+                p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
+                pupgr->insert(pupgr->end(),p);
 
-                uOutcome << ui->tableUpgraded->item(i,1)->text().trimmed();
+                uOutcome << ui->tableUpgraded->item(i,1)->toolTip().trimmed();
             }
         }
 
@@ -764,6 +773,7 @@ void MainWindow::editConfirm(){
 
 void MainWindow::timeFilter(){
     asyncFilter(ui->searchBar->text());
+    ui->searchBar->setFocus();
 }
 
 void MainWindow::timerFired(QString s){    
@@ -819,10 +829,10 @@ void MainWindow::asyncFilter(QString filter){
 
     if(index==2){
         for(int i=0;i<rows;++i){
-            if(!ui->tableWidget->item(i,1) || !ui->tableWidget->item(i,4) || (!isExpert && ui->tableWidget->item(i,1)->text().contains(expert)) ||
-               (ui->tableWidget->item(i,1)->text().contains(category_exclude) || ui->tableWidget->item(i,4)->text().contains(category_exclude))
-                || (!ui->tableWidget->item(i,1)->text().contains(category) && !ui->tableWidget->item(i,4)->text().contains(category))
-                || (!ui->tableWidget->item(i,1)->text().contains(QRegExp(filter,Qt::CaseInsensitive)) && !ui->tableWidget->item(i,4)->text().contains(QRegExp(filter,Qt::CaseInsensitive)))){
+            if(!ui->tableWidget->item(i,2) || !ui->tableWidget->item(i,5) || (!isExpert && ui->tableWidget->item(i,2)->text().contains(expert)) ||
+               (ui->tableWidget->item(i,2)->text().contains(category_exclude) || ui->tableWidget->item(i,5)->text().contains(category_exclude))
+                || (!ui->tableWidget->item(i,2)->text().contains(category) && !ui->tableWidget->item(i,5)->text().contains(category))
+                || (!ui->tableWidget->item(i,2)->text().contains(QRegExp(filter,Qt::CaseInsensitive)) && !ui->tableWidget->item(i,5)->text().contains(QRegExp(filter,Qt::CaseInsensitive)))){
                 ui->tableWidget->hideRow(i);
 
                 if(!(i%333)){
@@ -832,12 +842,12 @@ void MainWindow::asyncFilter(QString filter){
             }
         }
     }else{
-        index=index?4:1;
+        index=index?5:2;
 
         for(int i=0;i<rows;++i){
-            if(!ui->tableWidget->item(i,1) || !ui->tableWidget->item(i,4) || (!isExpert && ui->tableWidget->item(i,1)->text().contains(expert)) ||
-               (ui->tableWidget->item(i,1)->text().contains(category_exclude) || ui->tableWidget->item(i,4)->text().contains(category_exclude)) ||
-                (!ui->tableWidget->item(i,1)->text().contains(category) && !ui->tableWidget->item(i,4)->text().contains(category))
+            if(!ui->tableWidget->item(i,2) || !ui->tableWidget->item(i,5) || (!isExpert && ui->tableWidget->item(i,2)->text().contains(expert)) ||
+               (ui->tableWidget->item(i,2)->text().contains(category_exclude) || ui->tableWidget->item(i,5)->text().contains(category_exclude)) ||
+                (!ui->tableWidget->item(i,2)->text().contains(category) && !ui->tableWidget->item(i,5)->text().contains(category))
                 || !ui->tableWidget->item(i,index)->text().contains(QRegExp(filter,Qt::CaseInsensitive))){
                 ui->tableWidget->hideRow(i);
 
@@ -860,7 +870,7 @@ void MainWindow::asyncFilter(QString filter){
         }
     }*/
 
-    ui->tableWidget->sortByColumn(1,Qt::AscendingOrder);
+    ui->tableWidget->sortByColumn(2,Qt::AscendingOrder);
 
     int first=-1;
     for(int i=0;first==-1 && i<rows;++i){
@@ -895,14 +905,15 @@ void MainWindow::install(){
 
     Package p;
     std::list<AS::Package*> *pkgs;
-    p.setName(ui->tableWidget->item(currentPacket,1)->text().trimmed().toAscii().data());
+    p.setName(ui->tableWidget->item(currentPacket,2)->toolTip().trimmed().toAscii().data());
     if((pkgs = as->checkDeps(&p,true))){
         for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-            QString name = QString((*it)->getName().c_str()).trimmed();
+            //XXX
+            QString name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
             QString pname = QString(p.getName().c_str());
             if(name!=pname){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
-                    if(ui->tableWidget->item(i,1)->text()==name){
+                    if(ui->tableWidget->item(i,2)->toolTip()==name){
                         currentPacket=i;
                         if(!instaDeps.contains(name,pname))instaDeps.insert(name, pname);
                         this->install();
@@ -921,7 +932,7 @@ void MainWindow::install(){
 void MainWindow::remove(){
     Package p;
     QStringList req;
-    p.setName(ui->tableWidget->item(currentPacket,1)->text().trimmed().toAscii().data());
+    p.setName(ui->tableWidget->item(currentPacket,2)->text().trimmed().toAscii().data());
     QString pname(p.getName().c_str());
     if((pkgs = as->checkDeps(&p,false))){
         for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
@@ -950,7 +961,7 @@ void MainWindow::remove(){
         for(int j=0;j<req.size();++j){
             QString cur=req.at(j);
             for(int i=0;i<ui->tableWidget->rowCount();++i){
-                if(ui->tableWidget->item(i,1)->text()==cur){
+                if(ui->tableWidget->item(i,2)->text()==cur){
                     currentPacket=i;
                     if(!remDeps.contains(cur,pname)) remDeps.insert(cur, pname);
                     this->remove();
@@ -970,14 +981,14 @@ void MainWindow::upgrade(){
 
     Package p;
     std::list<AS::Package*> *pkgs;
-    p.setName(ui->tableWidget->item(currentPacket,1)->text().trimmed().toAscii().data());
+    p.setName(ui->tableWidget->item(currentPacket,2)->toolTip().trimmed().toAscii().data());
     if((pkgs = as->checkDeps(&p,true))){
         for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-            QString name = QString((*it)->getName().c_str()).trimmed();
+            QString name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
             QString pname = QString(p.getName().c_str());
             if(name!=pname){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
-                    if(ui->tableWidget->item(i,1)->text()==name){
+                    if(ui->tableWidget->item(i,2)->toolTip()==name){
                         currentPacket=i;
                         this->install();
                     }
@@ -995,7 +1006,7 @@ void MainWindow::upgrade(){
 }
 
 void MainWindow::notInstall(){
-    QString dname =  ui->tableWidget->item(currentPacket,1)->text();
+    QString dname =  ui->tableWidget->item(currentPacket,2)->toolTip();
     QList<QString> requirers = instaDeps.values(dname);
 
     int res = QMessageBox::Yes;
@@ -1016,7 +1027,7 @@ void MainWindow::notInstall(){
         for(int i=0;i<requirers.size();++i){
             instaDeps.remove(dname,requirers.at(i));
             for(int j=0;j<ui->tableWidget->rowCount();++j){
-                if(ui->tableWidget->item(j,1)->text() == requirers.at(i)){
+                if(ui->tableWidget->item(j,2)->toolTip() == requirers.at(i)){
                     currentPacket = j;
                     break;
                 }
@@ -1032,10 +1043,10 @@ void MainWindow::notInstall(){
     QStringList plist;
     if(pkgs && pkgs->size()){
         for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-            QString name = QString((*it)->getName().c_str()).trimmed();
+            QString name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
             if(name!=dname){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
-                    if( ui->tableWidget->item(i,1)->text()==name &&
+                    if( ui->tableWidget->item(i,2)->toolTip()==name &&
                           ui->tableWidget->item(i,0)->text()=="Install"){
                         plist << name;
                     }
@@ -1053,10 +1064,10 @@ void MainWindow::notInstall(){
             if(isExpert)
                 resp=reqMes.exec();
             for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                QString name = QString((*it)->getName().c_str()).trimmed();
+                QString name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
                 if(name!=dname){
                     for(int i=0;i<ui->tableWidget->rowCount();++i){
-                        if(ui->tableWidget->item(i,1)->text()==name){
+                        if(ui->tableWidget->item(i,2)->toolTip()==name){
                             instaDeps.remove(name,dname);
                             if(!isExpert || resp == QMessageBox::Yes){
                                 currentPacket = i;
@@ -1077,7 +1088,7 @@ void MainWindow::notInstall(){
 }
 
 void MainWindow::notRemove(){
-    QString dname =  ui->tableWidget->item(currentPacket,1)->text();
+    QString dname =  ui->tableWidget->item(currentPacket,2)->text();
     QList<QString> requirers = remDeps.values(dname);
 
     int res = QMessageBox::Yes;
@@ -1098,7 +1109,7 @@ void MainWindow::notRemove(){
         for(int i=0;i<requirers.size();++i){
             remDeps.remove(dname,requirers.at(i));
             for(int j=0;j<ui->tableWidget->rowCount();++j){
-                if(ui->tableWidget->item(j,1)->text() == requirers.at(i)){
+                if(ui->tableWidget->item(j,2)->text() == requirers.at(i)){
                     currentPacket = j;
                     break;
                 }
@@ -1117,7 +1128,7 @@ void MainWindow::notRemove(){
             QString name = QString((*it)->getName().c_str()).trimmed();
             if(name!=dname){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
-                    if( ui->tableWidget->item(i,1)->text()==name &&
+                    if( ui->tableWidget->item(i,2)->text()==name &&
                           ui->tableWidget->item(i,0)->text()=="Remove"){
                         plist << name;
                     }
@@ -1138,7 +1149,7 @@ void MainWindow::notRemove(){
                 QString name = QString((*it)->getName().c_str()).trimmed();
                 if(name!=dname){
                     for(int i=0;i<ui->tableWidget->rowCount();++i){
-                        if(ui->tableWidget->item(i,1)->text()==name){
+                        if(ui->tableWidget->item(i,2)->text()==name){
                             remDeps.remove(name,dname);
                             if(!isExpert || resp == QMessageBox::Yes){
                                 currentPacket = i;
@@ -1178,7 +1189,7 @@ void MainWindow::confirm(){
     int rows=ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
 
-        if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,1)->text().contains(expert)){
+        if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,2)->text().contains(expert)){
             currentPacket=i;
             this->upgrade();
             modified++;
@@ -1188,7 +1199,7 @@ void MainWindow::confirm(){
                     ui->tableUpgraded->insertRow(r);
                     ui->tableUpgraded->setItem(r,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
                     ui->tableUpgraded->item(r,0)->setText("Remove");
-                    ui->tableUpgraded->setItem(r,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
+                    ui->tableUpgraded->setItem(r,1,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
 
                     Package p;
                     p.setName(ui->tableUpgraded->item(r,1)->text().trimmed().toAscii().data());
@@ -1209,29 +1220,30 @@ void MainWindow::confirm(){
                     ui->tableUpgraded->setCellWidget(r,5,prog);
 
                     ui->tableUpgraded->setItem(r,3,new QTableWidgetItem(deps.join(" ")));
-                    ui->tableUpgraded->setItem(r,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,6)->text().toFloat()/1024)));
+                    ui->tableUpgraded->setItem(r,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));
 
-                    ui->tableUpgraded->setItem(r++,2,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
-        }else if(ui->tableWidget->item(i,0)->text()=="Install" && instaDeps.value(ui->tableWidget->item(i,1)->text())==""){
+                    ui->tableUpgraded->setItem(r++,2,new QTableWidgetItem(*ui->tableWidget->item(i,3)));
+        }else if(ui->tableWidget->item(i,0)->text()=="Install" && instaDeps.value(ui->tableWidget->item(i,2)->toolTip())==""){
             ui->tableUpgraded->insertRow(in);
             ui->tableUpgraded->setItem(in,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
-            ui->tableUpgraded->item(in,0)->setText(ui->tableWidget->item(i,6)->text());
-            ui->tableUpgraded->setItem(in,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
-            ui->tableUpgraded->setItem(in,2,new QTableWidgetItem(*ui->tableWidget->item(i,3)));
+            ui->tableUpgraded->item(in,0)->setText(ui->tableWidget->item(i,7)->text());
+            ui->tableUpgraded->setItem(in,1,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
+            ui->tableUpgraded->setItem(in,2,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
 
+            ui->tableUpgraded->item(in,1)->setText(ui->tableUpgraded->item(in,1)->toolTip());
             Package p;
-            int dsize = ui->tableWidget->item(i,6)->text().toFloat();
-            if(!local)p.setName(ui->tableUpgraded->item(in,1)->text().trimmed().toAscii().data());
-            else p.setName(ui->tableWidget->item(i,3)->text().toAscii().data());
+            int dsize = ui->tableWidget->item(i,7)->text().toFloat();
+            if(!local)p.setName(ui->tableUpgraded->item(in,1)->toolTip().trimmed().toAscii().data());
+            else p.setName(ui->tableWidget->item(i,4)->text().toAscii().data());
             QStringList deps;
 
             if((pkgs = as->checkDeps(&p,true,false,local))){
                 for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                    QString name = QString((*it)->getName().c_str()).trimmed();
+                    QString name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
 
-                    if(name!=ui->tableWidget->item(i,1)->text().trimmed()){
+                    if(name!=ui->tableWidget->item(i,2)->toolTip().trimmed()){
                         deps << name;
-                        dsize+=QString((*it)->getRemoteVersion().c_str()).toFloat()*1024;
+                        dsize+=QString((*it)->getRemoteVersion().c_str()).toFloat()/1024;
                     }
                     delete(*it);
                 }
@@ -1253,8 +1265,10 @@ void MainWindow::confirm(){
             ui->tableUpgraded->insertRow(u);            
             ui->tableUpgraded->setItem(u,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
             ui->tableUpgraded->item(u,0)->setText("Upgrade");
-            ui->tableUpgraded->setItem(u,1,new QTableWidgetItem(*ui->tableWidget->item(i,1)));
-            ui->tableUpgraded->setItem(u,2,new QTableWidgetItem(ui->tableWidget->item(i,2)->text()+QString(" (")+ui->tableWidget->item(i,3)->text()+QString(")")));
+            ui->tableUpgraded->setItem(u,1,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
+            ui->tableUpgraded->setItem(u,2,new QTableWidgetItem(ui->tableWidget->item(i,3)->text()+QString(" (")+ui->tableWidget->item(i,4)->text()+QString(")")));
+
+            ui->tableUpgraded->item(u,1)->setText(ui->tableUpgraded->item(u,1)->toolTip());
             //ui->tableUpgraded->setItem(u,3,new QTableWidgetItem(*ui->tableWidget->item(i,3)));
 
            /* Package p;
@@ -1278,7 +1292,7 @@ void MainWindow::confirm(){
             ui->tableUpgraded->setCellWidget(u,5,prog);
 
             //ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
-            ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,6)->text().toFloat()/1024)));
+            ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));
 
 //            ui->tableUpgraded->showRow(u++);
         }
@@ -1295,47 +1309,66 @@ void MainWindow::confirm(){
     }
 
     confirmRemaining=15;
-    ui->editConfirm->setText(tr("Confirm")+QString(" (15)"));
-    timerConfirm->start(1000);
+
+    if(confirmCountdown){
+        ui->editConfirm->setText(tr("Confirm")+QString(" (15)"));
+        timerConfirm->start(1000);
+    }else{
+        ui->editConfirm->setText(tr("Confirm"));
+    }
 }
 
 void MainWindow::changeStatus(int row, int col){    
-    if(ui->tableWidget->item(row,5) && ui->tableWidget->item(row,1)){
+    if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2)){
         if(ui->webView && ui->webView->isEnabled()){
             ui->webView->stop();
-            ui->webView->setUrl(QUrl::fromUserInput(ui->tableWidget->item(row,5)->text().trimmed()));
+            ui->webView->setUrl(QUrl::fromUserInput(ui->tableWidget->item(row,6)->text().trimmed()));
         }
         Package p;
-        p.setName(ui->tableWidget->item(row,1)->text().trimmed().toAscii().data());
+        if(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove")
+            p.setName(ui->tableWidget->item(row,2)->text().trimmed().toAscii().data());
+        else
+            p.setName(ui->tableWidget->item(row,2)->toolTip().trimmed().toAscii().data());
         ui->infoText->clear();
 
-        ui->infoText->append(QString(tr("<b>Size: </b>"))+ui->tableWidget->item(row,6)->text()+" KB");
+        if(ui->tableWidget->item(row,0)->text()!="Installed" && ui->tableWidget->item(row,0)->text()!="Remove" )
+            ui->infoText->append(QString("<b>")+tr("Repository")+tr(": </b>")+ui->tableWidget->item(row,1)->text());
 
-        ui->infoText->append(QString(tr("<b>URL: </b>"))+ui->tableWidget->item(row,5)->text());
-        ui->infoText->append(QString("<a href=\"")+ui->tableWidget->item(row,5)->text()+QString("\" >")+QString(tr("(Watch the full site)"))+QString("</a>"));
+        if(!(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove"))
+            ui->infoText->append(QString(tr("<b>Size: </b>"))+ui->tableWidget->item(row,7)->text()+" KB");
 
-        ui->infoText->append(tr("<b>Requires:</b>"));
-        if((pkgs = as->checkDeps(&p,true))){
-            for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                QString name = QString((*it)->getName().c_str()).trimmed();
-                if(name!=QString(p.getName().c_str())){
-                    ui->infoText->append(name+QString(" (")+QString((*it)->getRemoteVersion().c_str())+QString(" MB)"));
+        ui->infoText->append(QString(tr("<b>URL: </b>"))+ui->tableWidget->item(row,6)->text());
+        ui->infoText->append(QString("<a href=\"")+ui->tableWidget->item(row,6)->text()+QString("\" >")+QString(tr("(Watch the full site)"))+QString("</a>"));
+
+        if(!(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove")){
+            ui->infoText->append(tr("<b>Requires:</b>"));
+            if((pkgs = as->checkDeps(&p,true))){
+                for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+                    QString name;
+                    name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
+                    if(name!=QString(p.getName().c_str())){
+                        ui->infoText->append(name+QString(" (")+QString::number(QString((*it)->getRemoteVersion().c_str()).toInt()/1024/1024)+QString(" MB)"));
+                    }
+                    delete(*it);
                 }
-                delete(*it);
+                delete pkgs;
             }
-            delete pkgs;
-        }
-
-        ui->infoText->append(tr("<b>Required By:</b>"));
-        if((pkgs = as->checkDeps(&p,false))){
-            for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                QString name = QString((*it)->getName().c_str()).trimmed();
-                if(name!=QString(p.getName().c_str())){
-                    ui->infoText->append(name);
+        }else{
+            ui->infoText->append(tr("<b>Required By:</b>"));
+            if((pkgs = as->checkDeps(&p,false))){
+                for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+                    QString name;
+                    if(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove")
+                        name = QString((*it)->getName().c_str()).trimmed();
+                    else
+                        name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
+                    if(name!=QString(p.getName().c_str())){
+                        ui->infoText->append(name);
+                    }
+                    delete(*it);
                 }
-                delete(*it);
+                delete pkgs;
             }
-            delete pkgs;
         }
     }
 
@@ -1607,7 +1640,9 @@ void MainWindow::addRows(bool checked){
         sbu.setPB(loadingBar);
 
         as->addListener(&sbu);
-        pkgs = as->queryRemote(flags);
+        pkgs = as->queryRemote(as_QUERY_ALL_INFO | as_EXPERT_QUERY);
+        ui->tableWidget->setRowCount(pkgs->size());
+        tpack=pkgs->size();
         as->removeListener(&sbu);
 
         AsThread t2(as);
@@ -1616,27 +1651,29 @@ void MainWindow::addRows(bool checked){
 
         //loadingBar->setValue(30);
 
-        int i=0;
-        tpack=pkgs->size();
-        ui->tableWidget->setRowCount(pkgs->size());
+        int i=0;        
+
         for(std::list<Package*>::iterator it=pkgs->begin(); it!=pkgs->end(); it++){
             Package *pkg = *it;
 
             //ui->tableWidget->insertRow(i);
             newItem = new QTableWidgetItem(QIcon(":pkgstatus/unchecked.png"),"Remote");
             newItem->setToolTip(tr("Not Installed"));
-            ui->tableWidget->setItem(i,0, newItem);
-            newItem = new QTableWidgetItem(pkg->getName().c_str());
-
+            ui->tableWidget->setItem(i,0, newItem);            
+            newItem = new QTableWidgetItem(pkg->getRepository().c_str());
             ui->tableWidget->setItem(i,1, newItem);
+            //XXX change for other distributions
+            newItem = new QTableWidgetItem(pkg->getName().c_str());
+            newItem->setToolTip((QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())));
+            ui->tableWidget->setItem(i,2, newItem);
             newItem = new QTableWidgetItem(pkg->getRemoteVersion().c_str());
-            ui->tableWidget->setItem(i,3, newItem);
-            newItem = new QTableWidgetItem(pkg->getDescription().c_str());
             ui->tableWidget->setItem(i,4, newItem);
-            newItem = new QTableWidgetItem(pkg->getURL().c_str());
+            newItem = new QTableWidgetItem(pkg->getDescription().c_str());
             ui->tableWidget->setItem(i,5, newItem);
-            newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+            newItem = new QTableWidgetItem(pkg->getURL().c_str());
             ui->tableWidget->setItem(i,6, newItem);
+            newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+            ui->tableWidget->setItem(i,7, newItem);
 
             i++;
 
@@ -1659,6 +1696,7 @@ void MainWindow::addRows(bool checked){
         //as->removeListener(&sbu);
         t2.wait();
         pkgs=t2.getList();
+        ipack=pkgs->size();
 
         //loadingBar->setValue(60);
 
@@ -1673,49 +1711,59 @@ void MainWindow::addRows(bool checked){
             int found=-1;
             QTableWidgetItem* versionMatch;
             for(int index=0;index<rows;++index){
-                if(ui->tableWidget->item(index,1)->text()==QString(pkg->getName().c_str())){
-                    if(found!=-1){
-                        if((((QTNIXEngine*)as)->compareVersions(ui->tableWidget->item(index,3)->text(),versionMatch->text()))<0){
+                //XXX Installed local?
+                if(ui->tableWidget->item(index,2)->text()==QString(pkg->getName().c_str())){
+                    /*if(found!=-1){
+                        if((((QTNIXEngine*)as)->compareVersions(ui->tableWidget->item(index,4)->text(),versionMatch->text()))<0){
                             toRemove.insert(toRemove.end(),index);
                         }else{
                             toRemove.insert(toRemove.end(),found);
                             found=index;
-                            versionMatch=ui->tableWidget->item(index,3);
+                            versionMatch=ui->tableWidget->item(index,4);
                         }
                     }else{
-                        versionMatch=ui->tableWidget->item(index,3);
+                        versionMatch=ui->tableWidget->item(index,4);
                         found=index;
-                    }
+                    }*/
+                    found=index;
+                    newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
+                    newItem->setToolTip(tr("Installed"));
+                    ui->tableWidget->setItem(found,0, newItem);
+                    newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
+                    ui->tableWidget->setItem(found,3, newItem);
+
+                    //ui->tableWidget->item(found,1)->setText("");
+
+                    //ipack++;
                 }
             }
 
             if(found!=-1){
-                newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
-                newItem->setToolTip(tr("Installed"));
-                ui->tableWidget->setItem(found,0, newItem);
-                newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
-                ui->tableWidget->setItem(found,2, newItem);
-                ipack++;
+                /*
+                */;
             }else{
                 ui->tableWidget->insertRow(i);
                 newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
                 newItem->setToolTip(tr("Installed (external)"));
                 ui->tableWidget->setItem(i,0, newItem);
+                //newItem = new QTableWidgetItem(pkg->getRepository().c_str());
+                //ui->tableWidget->setItem(i,1, newItem);
                 newItem = new QTableWidgetItem(pkg->getName().c_str());
-                ui->tableWidget->setItem(i,1, newItem);
-                newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
+                newItem->setToolTip((QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())));
                 ui->tableWidget->setItem(i,2, newItem);
-                newItem = new QTableWidgetItem((QString(" (")+tr("External")+QString(")")));
+                newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
                 ui->tableWidget->setItem(i,3, newItem);
-                newItem = new QTableWidgetItem(pkg->getDescription().c_str());
+                newItem = new QTableWidgetItem((QString(" (")+tr("External")+QString(")")));
                 ui->tableWidget->setItem(i,4, newItem);
-                newItem = new QTableWidgetItem(pkg->getURL().c_str());
+                newItem = new QTableWidgetItem(pkg->getDescription().c_str());
                 ui->tableWidget->setItem(i,5, newItem);
-                newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+                newItem = new QTableWidgetItem(pkg->getURL().c_str());
                 ui->tableWidget->setItem(i,6, newItem);
+                newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+                ui->tableWidget->setItem(i,7, newItem);
                 i++;
                 rows++;
-                ipack++;
+                //ipack++;
                 epack++;
             }
 
@@ -1735,39 +1783,46 @@ void MainWindow::addRows(bool checked){
 
         rows = ui->tableWidget->rowCount();
 
-        std::list<Package*> *ups = as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
-        std::list<Package*>::iterator upsit = ups->begin();
+        Package *pp=new Package(true);
+        pp->setName("");
+        std::list<Package*> *ups = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
+        delete pp;
+        if(ups){
+            std::list<Package*>::iterator upsit = ups->begin();
+            //XXX cycle on ups instead of rows
+            for(int i=0;i<rows;++i){
+                if(ui->tableWidget->item(i,0) && (ui->tableWidget->item(i,0)->text()=="Installed" || ui->tableWidget->item(i,0)->text()=="Remove")
+                     && ui->tableWidget->item(i,3) && ui->tableWidget->item(i,4) && ui->tableWidget->item(i,4)->text()!=(QString(" (")+tr("External")+QString(")"))){
 
-        for(int i=0;i<rows;++i){
-            if(ui->tableWidget->item(i,0) && (ui->tableWidget->item(i,0)->text()=="Installed" || ui->tableWidget->item(i,0)->text()=="Remove")
-                 && ui->tableWidget->item(i,2) && ui->tableWidget->item(i,3) && ui->tableWidget->item(i,3)->text()!=(QString(" (")+tr("External")+QString(")"))){
+                    bool found=false;
+                    while(!found && upsit!=ups->end()){
+                        Package *pkgup=*upsit;
+                        if(ui->tableWidget->item(i,2)->text()==QString(pkgup->getName().c_str()) &&
+                                ui->tableWidget->item(i,1)->text()==QString(pkgup->getRepository().c_str())) found=true;
+                        else upsit++;
+                    }
+                    if(found){
+                        newItem = new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable");
+                        newItem->setToolTip(tr("Upgradable"));
+                        upgradables++;
+                        ui->tableWidget->setItem(i,0,newItem);
+                        QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
 
-                bool found=false;
-                while(!found && upsit!=ups->end()){
-                    Package *pkgup=*upsit;
-                    if(ui->tableWidget->item(i,1)->text()==pkgup->getName().c_str()) found=true;
-                    else upsit++;
+                        delete *upsit;
+                        ups->remove(*upsit);
+
+                        upack++;
+                    }
+
+                    if(ups)upsit=ups->begin();
                 }
-                if(found){
-                    newItem = new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable");
-                    newItem->setToolTip(tr("Upgradable"));
-                    upgradables++;
-                    ui->tableWidget->setItem(i,0,newItem);
-                    QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
-
-                    delete *upsit;
-                    ups->remove(*upsit);
-
-                    upack++;
-                }
-
-                upsit=ups->begin();
+                loadingBar->setValue(95+i*5/rows);
             }
-            loadingBar->setValue(95+i*5/rows);
-        }
 
+
+            delete ups;
+        }
         delete pkgs;
-        delete ups;
     }else{
         std::list<AS::Package*>::iterator it=pkgs->begin();
 
@@ -1775,44 +1830,58 @@ void MainWindow::addRows(bool checked){
         ui->tableWidget->setRowCount(rows);
         int i=0;
 
-        std::list<Package*> *ups = as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
-        std::list<Package*>::iterator upsit = ups->begin();
+        Package *pp=new Package(true);
+        pp->setName("");
+        std::list<Package*> *ups = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
+        delete pp;
+        std::list<Package*>::iterator upsit;
+        if(ups) upsit = ups->begin();
 
         while(it!=pkgs->end()){
+            bool installed=false;
             Package *pkg = *it;
 
             if(pkg->isInstalled()){
+                ipack++;
                 bool found=false;
-                while(!found && upsit!=ups->end()){
+                while(ups && !found && upsit!=ups->end()){
                     Package *pkgup=*upsit;
-                    if(pkgup->getName().compare(pkg->getName()) == 0) found=true;
+                    if(pkgup->getName().compare(pkg->getName()) == 0 &&
+                            QString(pkg->getRepository().c_str())==QString(pkgup->getRepository().c_str())) found=true;
                     else upsit++;
                 }
                 if(found){
                     newItem = new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable");
                     newItem->setToolTip(tr("Upgradable"));
                     upgradables++;
+
                     delete *upsit;
                     ups->remove(*upsit);
                     upack++;
                 }else{
                     newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
                     newItem->setToolTip(tr("Installed"));
-                    ipack++;
+                    installed=true;
                 }
-                upsit=ups->begin();
+                if(ups)upsit=ups->begin();
             }else{
                 newItem = new QTableWidgetItem(QIcon(":pkgstatus/unchecked.png"),"Remote");
                 newItem->setToolTip(tr("Not Installed"));
             }
             ui->tableWidget->setItem(i,0, newItem);
 
+            if(!installed){
+                newItem = new QTableWidgetItem(pkg->getRepository().c_str());
+                ui->tableWidget->setItem(i,1, newItem);
+            }
+
             newItem = new QTableWidgetItem(pkg->getName().c_str());
-            ui->tableWidget->setItem(i,1, newItem);
+            newItem->setToolTip((QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())));
+            ui->tableWidget->setItem(i,2, newItem);
 
             if(pkg->isInstalled()){
                 newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
-                ui->tableWidget->setItem(i,2, newItem);
+                ui->tableWidget->setItem(i,3, newItem);
             }
 
             if(pkg->getRemoteVersion().compare("NO INFO")){
@@ -1821,16 +1890,16 @@ void MainWindow::addRows(bool checked){
                 newItem = new QTableWidgetItem((QString(" (")+tr("External")+QString(")")));
                 epack++;
             }
-            ui->tableWidget->setItem(i,3, newItem);
-
-            newItem = new QTableWidgetItem(pkg->getDescription().c_str());
             ui->tableWidget->setItem(i,4, newItem);
 
-            newItem = new QTableWidgetItem(pkg->getURL().c_str());
+            newItem = new QTableWidgetItem(pkg->getDescription().c_str());
             ui->tableWidget->setItem(i,5, newItem);
 
-            newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+            newItem = new QTableWidgetItem(pkg->getURL().c_str());
             ui->tableWidget->setItem(i,6, newItem);
+
+            newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+            ui->tableWidget->setItem(i,7, newItem);
 
             i++;
 
@@ -1845,7 +1914,7 @@ void MainWindow::addRows(bool checked){
         }
 
         delete pkgs;
-        delete ups;
+        if(ups)delete ups;
     }
 
     markAction->setEnabled(upgradables>0);

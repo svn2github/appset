@@ -33,6 +33,7 @@ namespace AS{
         std::string group;
         std::string localVersion;
         std::string remoteVersion;
+        std::string repository;
 
         int ksize;
 
@@ -50,6 +51,7 @@ namespace AS{
         std::string getGroup(){return group;}
         std::string getLocalVersion(){return localVersion;}
         std::string getRemoteVersion(){return remoteVersion;}
+        std::string getRepository(){return repository;}
         int getSize(){return ksize;} //In Kbyte
         bool isInstalled(){return installed;}
         bool isQueried(){return queried;}
@@ -62,11 +64,12 @@ namespace AS{
         void setGroup(std::string group){this->group=group;}
         void setLocalVersion(std::string version){this->localVersion=version;}
         void setRemoteVersion(std::string version){this->remoteVersion=version;}
+        void setRepository(std::string repository){this->repository=repository;}
         void setInstalled(bool installed=true){this->installed=installed;}
         void setQueried(bool queried=true){this->queried=queried;}
         void setSize(int ks){ksize=ks;}
 
-        void setQueryResult(std::string description=0, std::string url=0, std::string group=0, std::string localVersion=0, std::string remoteVersion=0);
+        void setQueryResult(std::string description=0, std::string url=0, std::string group=0, std::string localVersion=0, std::string remoteVersion=0, std::string repository=0);
 
     };
 

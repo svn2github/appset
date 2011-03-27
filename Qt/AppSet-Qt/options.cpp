@@ -69,6 +69,17 @@ void Options::writeConfigFile(bool overwrite){
     else{
         conf.write((QString::number((int)ui->statShow->isChecked())+QString("\n")).toAscii());
         statShow = ui->statShow->isChecked();
+    }if(found>6)
+        confirmCountdown=configs[6].toShort();
+    else{
+        conf.write((QString::number((int)ui->confirmCountdown->isChecked())+QString("\n")).toAscii());
+        confirmCountdown=ui->confirmCountdown->isChecked();
+    }
+    if(found>7)
+        showRepos=configs[7].toShort();
+    else{
+        conf.write((QString::number((int)ui->showRepos->isChecked())+QString("\n")).toAscii());
+        showRepos=ui->showRepos->isChecked();
     }
 
 
@@ -79,6 +90,8 @@ void Options::writeConfigFile(bool overwrite){
     ui->spinBox_2->setValue(updelay);
     ui->backOutput->setChecked(backOutput);
     ui->statShow->setChecked(statShow);
+    ui->confirmCountdown->setChecked(confirmCountdown);
+    ui->showRepos->setChecked(showRepos);
 
     conf.close();
 }

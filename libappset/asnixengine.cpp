@@ -60,6 +60,7 @@ AS::NIXEngine::NIXEngine(){
     commands.insert(StrPair("check_local_deps",""));
 
     regexps.insert(StrPair("query_filter_regexp",""));
+    regexps.insert(StrPair("query_repo_sep",""));
     regexps.insert(StrPair("query_name_regexp",""));
     regexps.insert(StrPair("query_lversion_regexp",""));
     regexps.insert(StrPair("query_info_name_regexp",""));
@@ -69,6 +70,7 @@ AS::NIXEngine::NIXEngine(){
     regexps.insert(StrPair("query_info_description_regexp",""));
     regexps.insert(StrPair("query_info_url_regexp",""));
     regexps.insert(StrPair("query_info_ksize_regexp",""));
+    regexps.insert(StrPair("query_info_repo_regexp",""));
 }
 
 AS::NIXEngine::~NIXEngine(){
@@ -172,12 +174,16 @@ int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
     string tail("");
     int status=0;
     bool holding=false;
+    bool ignoring=false;
 
     if(ignore_packages && ignore_packages->size()){
         holding=commands["tool_hold_upgrades"].find('*')==std::string::npos;
         if(!holding){
-            tail+=" ";
-            tail+=commands["tool_ignore_upgrades"];
+            ignoring=commands["tool_ignore_upgrades"].find('*')==std::string::npos;
+            if(ignoring){
+                tail+=" ";
+                tail+=commands["tool_ignore_upgrades"];
+            }
         }
 
         tail+=" ";
@@ -237,12 +243,13 @@ namespace AS {
         regex_t filter;
         regex_t pkg_name;
         regex_t pkg_version;
+        char sep;
 
         std::list<AS::Package*>* pkgList;
 
         bool remote;
     public:
-        QueryListener(std::list<AS::Package*>* pkgList, const char *filter, const char *pkgNameFilter, const char *pkgVersionFilter, bool remote=false){
+        QueryListener(std::list<AS::Package*>* pkgList, const char *filter, const char *pkgNameFilter, const char *pkgVersionFilter, bool remote=false,char sep='/'){
             regcomp(&this->filter, filter, REG_EXTENDED);
             regcomp(&pkg_name, pkgNameFilter, REG_EXTENDED);
             regcomp(&pkg_version, pkgVersionFilter, REG_EXTENDED);
@@ -250,6 +257,8 @@ namespace AS {
             this->pkgList = pkgList;
 
             this->remote = remote;
+
+            this->sep=sep;
         }
 
         ~QueryListener(){
@@ -260,17 +269,20 @@ namespace AS {
 
         void step(const char *content){
             regmatch_t match;
-            string cstr(content), pname, version;
+            string cstr(content), pname, version, repo;
             AS::Package *pkg = new AS::Package(!remote);
 
             if(!regexec(&filter, content, 1, &match, 0)){
                 if(!regexec(&pkg_name, content, 1, &match, 0)){
                     pname = cstr.substr(match.rm_so, match.rm_eo-match.rm_so);
+                    repo=pname.substr(0,pname.find(sep));
+                    pname=pname.substr(pname.find(sep)+1);
 
                     if(!regexec(&pkg_version, content, 1, &match, 0)){
                         version = cstr.substr(match.rm_so, match.rm_eo-match.rm_so);
 
                         pkg->setName(pname);
+                        pkg->setRepository(repo);
                         if(remote) pkg->setRemoteVersion(version);
                         else pkg->setLocalVersion(version);
 
@@ -292,6 +304,7 @@ namespace AS {
         regex_t pkg_description;
         regex_t pkg_url;
         regex_t pkg_size;
+        regex_t pkg_repo;
 
         regex_t lib_filter;
 
@@ -303,7 +316,7 @@ namespace AS {
         bool expert;
     public:
         QueryInfoListener(std::list<AS::Package*>* pkgList, const char *pkgNameFilter, const char *pkgVersionFilter, const char *pkgGroupFilter,
-                          const char *pkgLicenseFilter, const char *pkgDescFilter, const char *pkgUrlFilter, const char *pkgSizeFilter,bool remote=false, bool expert=false){
+                          const char *pkgLicenseFilter, const char *pkgDescFilter, const char *pkgUrlFilter, const char *pkgSizeFilter,const char *pkgRepoFilter,bool remote=false, bool expert=false){
             regcomp(&pkg_name, pkgNameFilter, REG_EXTENDED);
             regcomp(&pkg_version, pkgVersionFilter, REG_EXTENDED);
             regcomp(&pkg_group, pkgGroupFilter, REG_EXTENDED);
@@ -311,6 +324,7 @@ namespace AS {
             regcomp(&pkg_description, pkgDescFilter, REG_EXTENDED);
             regcomp(&pkg_url, pkgUrlFilter, REG_EXTENDED);
             regcomp(&pkg_size, pkgSizeFilter, REG_EXTENDED);
+            regcomp(&pkg_repo, pkgRepoFilter, REG_EXTENDED);
             regcomp(&lib_filter, "lib[s]*.*|.*lib[s]*|.*-lib[s]*.*|.*lib[s]*-.*|ttf-.*|.*-data", REG_EXTENDED);
 
             this->pkgList = pkgList;
@@ -329,6 +343,7 @@ namespace AS {
             regfree(&pkg_description);
             regfree(&pkg_url);
             regfree(&pkg_size);
+            regfree(&pkg_repo);
             regfree(&lib_filter);
         }
 
@@ -336,8 +351,7 @@ namespace AS {
             regmatch_t match,aux;
             string cstr(content), value;
 
-
-            if(!regexec(&pkg_name, content, 1, &match, 0)){
+            if(!regexec(&pkg_repo, content, 1, &match, 0)){
                 if(!expert && !regexec(&lib_filter, content, 1, &aux, 0)){
                     discard=true;
                     return;
@@ -348,12 +362,19 @@ namespace AS {
                 AS::Package *pkg = new AS::Package(!remote);
 
                 value = cstr.substr(match.rm_eo);
-
-                pkg->setName(value);
+                pkg->setRepository(value);
 
                 pkgList->insert(pkgList->end(), pkg);
             }else if(discard){
                 return;
+            }else if(!regexec(&pkg_name, content, 1, &match, 0)){
+                value = cstr.substr(match.rm_eo);
+                if(!remote || pkgList->empty()){
+                    AS::Package *pkg = new AS::Package(!remote);
+                    pkg->setName(value);
+                    pkgList->insert(pkgList->end(), pkg);
+                }else
+                    (*(pkgList->rbegin()))->setName(value);
             }else if(!regexec(&pkg_version, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
                 if(remote)(*(pkgList->rbegin()))->setRemoteVersion(value);
@@ -392,9 +413,10 @@ int AS::NIXEngine::execQuery(std::list<AS::Package*>* pkgList, unsigned flags, A
     QueryListener ql(pkgList, regexps["query_filter_regexp"].c_str(), regexps["query_name_regexp"].c_str(), regexps["query_lversion_regexp"].c_str(), remote);
     addListener(&ql);
 
-    if(flags & as_QUERY_UPGRADABLE){
-        status = execCmd(commands["query_upgradable"]);
-    }else if(flags & as_QUERY_BY_NAME){
+    //if(flags & as_QUERY_UPGRADABLE){
+        //status = execCmd(commands["query_upgradable"]);
+    //}else
+    if(flags & as_QUERY_BY_NAME){
         string cmd = remote?commands["query_remote_byname"]:commands["query_local_byname"];
 
         if(package){
@@ -423,24 +445,27 @@ int AS::NIXEngine::execQuery(std::list<AS::Package*>* pkgList, unsigned flags, A
 
     removeListener(&ql);
 
-    if(flags & as_QUERY_ALL_INFO){
+    if((flags & as_QUERY_ALL_INFO) || ((flags & as_QUERY_UPGRADABLE))){
         QueryInfoListener qil(pkgList, regexps["query_info_name_regexp"].c_str(), regexps["query_info_version_regexp"].c_str(), regexps["query_info_group_regexp"].c_str(),
                               regexps["query_info_license_regexp"].c_str(), regexps["query_info_description_regexp"].c_str(), regexps["query_info_url_regexp"].c_str(),
-                              regexps["query_info_ksize_regexp"].c_str(), remote, flags & as_EXPERT_QUERY);
+                              regexps["query_info_ksize_regexp"].c_str(),regexps["query_info_repo_regexp"].c_str(), remote, flags & as_EXPERT_QUERY);
 
         addListener(&qil);
 
-        string cmd = remote?commands["query_remote_info_byname"]:commands["query_local_info_byname"];
+        if(flags & as_QUERY_UPGRADABLE)status = execCmd(commands["query_upgradable"]);
+        else{
+            string cmd = remote?commands["query_remote_info_byname"]:commands["query_local_info_byname"];
 
-        if(package){
-            cmd += " ";
-            cmd += package->getName();            
+            if(package){
+                cmd += " ";
+                cmd += package->getName();
+            }
+
+            //cmd += " | grep -E -e \"Name|Description|Version|URL\"";
+            //if(!()) cmd += " | grep -E -v -e \"lib[s]*.*|.*lib[s]*|.*-lib[s]*.*|.*lib[s]*-.*|multilib[s]*.*|.*multilib[s]*|.*-multilib[s]*.*|.*multilib[s]*-.*|ttf-.*\"";
+
+            status = execCmd(cmd);
         }
-
-        //cmd += " | grep -E -e \"Name|Description|Version|URL\"";
-        //if(!()) cmd += " | grep -E -v -e \"lib[s]*.*|.*lib[s]*|.*-lib[s]*.*|.*lib[s]*-.*|multilib[s]*.*|.*multilib[s]*|.*-multilib[s]*.*|.*multilib[s]*-.*|ttf-.*\"";
-
-        status = execCmd(cmd);
 
         removeListener(&qil);
     }
@@ -520,8 +545,10 @@ std::list<AS::Package*>* AS::NIXEngine::queryRemote(unsigned flags, AS::Package 
             case 6:
                 pkg->setInstalled(buffer.compare("false"));
                 break;
+            case 7:
+                pkg->setRepository(buffer);
             }
-            part = (part+1)%7;
+            part = (part+1)%8;
         }
         if(output.is_open()) output.close();
     }else{

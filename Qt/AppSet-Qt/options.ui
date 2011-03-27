@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>304</width>
-    <height>352</height>
+    <width>362</width>
+    <height>377</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -198,6 +198,37 @@
          <widget class="QLabel" name="label_7">
           <property name="text">
            <string>Show packages statistics</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QCheckBox" name="confirmCountdown">
+          <property name="text">
+           <string notr="true"/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Enable countdown to auto-confirm changes</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QCheckBox" name="showRepos">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>Show repository column in packages table</string>
           </property>
          </widget>
         </item>

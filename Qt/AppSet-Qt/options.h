@@ -22,6 +22,8 @@ public:
     QString browser;
     bool backOutput;
     bool statShow;
+    bool confirmCountdown;
+    bool showRepos;
 
     int updelay;
 
