@@ -98,6 +98,10 @@ void TrayIcon::checkRunning(){
     running = status!=0?false:true;
 }
 
+bool compareRepos(Package *p1, Package *p2){
+    return p1->getRepository().compare(p2->getRepository())<0;
+}
+#include <cctype>
 void TrayIcon::checkUps(){
     bool running = this->running;
     if(!running){
@@ -105,6 +109,7 @@ void TrayIcon::checkUps(){
         Package *pp=new Package(true);
         pp->setName("");
         std::list<Package*> *pkgs = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
+        pkgs->sort(compareRepos);
         delete pp;
 
         if(pkgs && pkgs->size()){

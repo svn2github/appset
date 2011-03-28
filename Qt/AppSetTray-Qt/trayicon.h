@@ -63,7 +63,6 @@ private:
     bool running;
 
     bool manualCheck;
-
 };
 
 #endif // TRAYICON_H
