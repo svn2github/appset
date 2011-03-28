@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "trayicon.h"
 
 int main(int argc, char *argv[]){
-    sleep(6);
+    sleep(8);
 
     QApplication app(argc,argv);
 
