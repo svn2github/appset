@@ -189,7 +189,9 @@ int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
         tail+=" ";
         bool first=true;
         for(std::list<Package*>::iterator it=ignore_packages->begin();it!=ignore_packages->end();it++){
-            if(!first) tail += ",";
+            if(!first)
+                if(ignoring)tail += ",";
+                else tail += " ";
             tail += (*it)->getName();
             first=false;
         }

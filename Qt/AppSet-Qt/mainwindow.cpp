@@ -1487,7 +1487,7 @@ void MainWindow::showGames(){
     ui->tabWidget->setCurrentIndex(1);
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/games.png"));
     asyncFilter("@@");    
-    ui->tabWidget->setTabText(1, tr("Games")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
+    ui->tabWidget->setTabText(1, tr("Games") );
 }
 
 void MainWindow::showSystem(){
@@ -1499,7 +1499,7 @@ void MainWindow::showSystem(){
 
     asyncFilter("@@");
 
-    ui->tabWidget->setTabText(1, tr("System")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
+    ui->tabWidget->setTabText(1, tr("System") );
 }
 
 void MainWindow::showMultimedia(){
@@ -1511,7 +1511,7 @@ void MainWindow::showMultimedia(){
 
     asyncFilter("@@");
 
-    ui->tabWidget->setTabText(1, tr("Multimedia")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
+    ui->tabWidget->setTabText(1, tr("Multimedia") );
 }
 
 void MainWindow::showOffice(){
@@ -1523,7 +1523,7 @@ void MainWindow::showOffice(){
 
     asyncFilter("@@");
 
-    ui->tabWidget->setTabText(1, tr("Office")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
+    ui->tabWidget->setTabText(1, tr("Office") );
 }
 
 void MainWindow::showInternet(){
@@ -1535,7 +1535,7 @@ void MainWindow::showInternet(){
 
     asyncFilter("@@");
 
-    ui->tabWidget->setTabText(1, tr("Internet")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
+    ui->tabWidget->setTabText(1, tr("Internet") );
 }
 
 void MainWindow::showUpgradable(bool checked){
@@ -1591,7 +1591,7 @@ void MainWindow::showAllCat(){
 
     if(ui->tabWidget->tabText(1)!="All") asyncFilter("@@");
 
-    ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(visibleRowCount())+QString(")"));
+    ui->tabWidget->setTabText(1, tr("All") );
 }
 
 void MainWindow::showNotInstalled(bool checked){
@@ -1969,7 +1969,9 @@ void MainWindow::addRows(bool checked){
     ui->iLabel->setText(QString::number(ipack));
     ui->eLabel->setText(QString::number(epack));
 
-    if(ui->tabWidget->tabText(1)==tr("All"))ui->tabWidget->setTabText(1, tr("All")+QString(" (")+QString::number(ui->tableWidget->rowCount())+QString(")"));
+    if(ui->tabWidget->tabText(1)==tr("All"))ui->tabWidget->setTabText(1, tr("All"));
+
+    //XXX Check tool status
 }
 
 #include <sys/types.h>

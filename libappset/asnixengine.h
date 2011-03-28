@@ -63,6 +63,8 @@ namespace AS{
 
         virtual std::string getNewsUrl(std::string lang);
         virtual std::string getLocalExt(){return commands["local_ext"];};
+
+        virtual std::string getTool(){return sysinfo["tool"];};
     };
 
 }
