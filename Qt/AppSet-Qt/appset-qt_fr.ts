@@ -312,7 +312,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="132"/>
         <location filename="mainwindow.cpp" line="228"/>
         <source>Open local package</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir un paquet local</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="135"/>
@@ -337,22 +337,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="230"/>
         <source>Package files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichers paquet</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="254"/>
         <source>Error loading the specified package file!</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur de chargement du fichier paquet spécifié!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="255"/>
         <source>The file</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="255"/>
         <source>doesn&apos;t seems to be a valid package!</source>
-        <translation type="unfinished"></translation>
+        <translation>ne semble pas être un paquet valide!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="408"/>

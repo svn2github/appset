@@ -1,8 +1,8 @@
 0.3.4 :
-  -Repository information added to avoid incorect behaviours (with the management of multiple sources for the same application)
+  -Repository information added to avoid incorect behaviours (with the management of multiple sources for the same application)  
   -Option to view repository in package table
   -Option to disable countdown for auto confirmation of changes  
-  -SearchBar now got the focus after a previous search 
+  -SearchBar now got the focus after a previous search
   -Web Preview now is navigable
   -Tray now shows "repo/package last_version" entries ordered by repo
 

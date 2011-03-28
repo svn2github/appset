@@ -39,47 +39,47 @@
         <translation>AppSet-Qt è in esecuzione!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="111"/>
+        <location filename="trayicon.cpp" line="116"/>
         <source>There are updates for:</source>
         <translation>Ci sono aggiornamenti per:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="111"/>
+        <location filename="trayicon.cpp" line="116"/>
         <source>There is an update for:</source>
         <translation>C&apos;è un aggiornamento per:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="121"/>
+        <location filename="trayicon.cpp" line="126"/>
         <source>
 And others...</source>
         <translation>
 E altri...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="124"/>
-        <location filename="trayicon.cpp" line="126"/>
+        <location filename="trayicon.cpp" line="129"/>
+        <location filename="trayicon.cpp" line="131"/>
         <source> updates available!</source>
         <translation> aggiornamenti disponibili!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="124"/>
-        <location filename="trayicon.cpp" line="126"/>
+        <location filename="trayicon.cpp" line="129"/>
+        <location filename="trayicon.cpp" line="131"/>
         <source> update available!</source>
         <translation> aggiornamento disponibile!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="130"/>
-        <location filename="trayicon.cpp" line="133"/>
+        <location filename="trayicon.cpp" line="135"/>
+        <location filename="trayicon.cpp" line="138"/>
         <source>No updates available</source>
         <translation>Nessun aggiornamento disponibile</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="157"/>
+        <location filename="trayicon.cpp" line="162"/>
         <source>Launching AppSet-Qt</source>
         <translation>Avvio AppSet-Qt</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="157"/>
+        <location filename="trayicon.cpp" line="162"/>
         <source>Wait...</source>
         <translation>Attendi...</translation>
     </message>

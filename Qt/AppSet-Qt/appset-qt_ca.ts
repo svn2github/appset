@@ -11,7 +11,7 @@
     <message>
         <location filename="mainwindow.ui" line="138"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicia</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="154"/>
@@ -72,12 +72,12 @@
     <message>
         <location filename="mainwindow.ui" line="477"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Estadístiques</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="490"/>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="678"/>
@@ -191,7 +191,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="1133"/>
         <source>Backend Output:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortida del dorsal:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1208"/>
@@ -312,7 +312,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="132"/>
         <location filename="mainwindow.cpp" line="228"/>
         <source>Open local package</source>
-        <translation type="unfinished"></translation>
+        <translation>Obre paquet local</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="135"/>
@@ -337,22 +337,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="230"/>
         <source>Package files</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtxers de paquet</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="254"/>
         <source>Error loading the specified package file!</source>
-        <translation type="unfinished"></translation>
+        <translation>Error en carregar el fitxer de paquet especificat!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="255"/>
         <source>The file</source>
-        <translation type="unfinished"></translation>
+        <translation>El fitxer</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="255"/>
         <source>doesn&apos;t seems to be a valid package!</source>
-        <translation type="unfinished"></translation>
+        <translation>no sembla ser un paquet vàlid!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="408"/>
@@ -378,13 +378,13 @@ Autor: Simone Tobia</translation>
         <location filename="mainwindow.cpp" line="482"/>
         <location filename="mainwindow.cpp" line="537"/>
         <source>Waiting others...</source>
-        <translation type="unfinished"></translation>
+        <translation>Esperant altres...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="495"/>
         <location filename="mainwindow.cpp" line="551"/>
         <source>Installing...</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;està instal·lant...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="663"/>
@@ -420,7 +420,7 @@ Autor: Simone Tobia</translation>
         <location filename="mainwindow.cpp" line="1175"/>
         <location filename="mainwindow.cpp" line="1182"/>
         <source>Pending changes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Canvis pendents:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="956"/>
@@ -430,37 +430,37 @@ Autor: Simone Tobia</translation>
     <message>
         <location filename="mainwindow.cpp" line="957"/>
         <source>Do you want to proceed anyway (removing them too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voleu continuar igualment (eliminat-los també)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1025"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voleu continuar igualment (netejant-los també)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1066"/>
         <source>Do you want to clear them too?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voleu netejar-los també?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1106"/>
         <source>These selected for removal packages are required by</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquests paquets seleccionats per eliminar els requereix</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1107"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voleu continuar igualment (cancel·lant també la seva supressió)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1147"/>
         <source>These packages were selected for removal because they need</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;han seleccionat aquests paquets per a eliminar perque necessiten</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1148"/>
         <source>Do you want to clear their removal too?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voleu netejar també la seva supressió?</translation>
     </message>
     <message>
         <source>
@@ -597,42 +597,42 @@ Voleu continuar igualment?</translation>
     <message>
         <location filename="options.ui" line="29"/>
         <source>External Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Navegador extern</translation>
     </message>
     <message>
         <location filename="options.ui" line="52"/>
         <source>Deskop default browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Navegador de l&apos;escriptori per omissió</translation>
     </message>
     <message>
         <location filename="options.ui" line="61"/>
         <source>This browser:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest navegador:</translation>
     </message>
     <message>
         <location filename="options.ui" line="90"/>
         <source>Tray</source>
-        <translation type="unfinished"></translation>
+        <translation>Safata</translation>
     </message>
     <message>
         <location filename="options.ui" line="112"/>
         <source>Updates control interval (min)</source>
-        <translation type="unfinished"></translation>
+        <translation>Interval del control d&apos;actualitzacions (min)</translation>
     </message>
     <message>
         <location filename="options.ui" line="122"/>
         <source>Main Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Interfície principal</translation>
     </message>
     <message>
         <location filename="options.ui" line="147"/>
         <source>Shows Backend Output during operations</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra la sortida del dorsal durant les operacions</translation>
     </message>
     <message>
         <location filename="options.ui" line="160"/>
         <source>Show Backend Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra la sortida del dorsal</translation>
     </message>
     <message>
         <location filename="options.ui" line="183"/>
@@ -642,7 +642,7 @@ Voleu continuar igualment?</translation>
     <message>
         <location filename="options.ui" line="200"/>
         <source>Show packages statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra les estadístiques dels paquets</translation>
     </message>
     <message>
         <location filename="options.ui" line="217"/>

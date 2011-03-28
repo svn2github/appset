@@ -312,7 +312,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="132"/>
         <location filename="mainwindow.cpp" line="228"/>
         <source>Open local package</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokaal pakket openen</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="135"/>
@@ -337,22 +337,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="230"/>
         <source>Package files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pakketbestanden</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="254"/>
         <source>Error loading the specified package file!</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout tijdens het laden van het specifieke pakketbestand!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="255"/>
         <source>The file</source>
-        <translation type="unfinished"></translation>
+        <translation>Het bestand</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="255"/>
         <source>doesn&apos;t seems to be a valid package!</source>
-        <translation type="unfinished"></translation>
+        <translation>lijkt geen geldig pakket te zijn!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="408"/>
@@ -388,7 +388,7 @@ Author: Simone Tobia</translation>
     <message>
         <location filename="mainwindow.cpp" line="663"/>
         <source>Errors during operations!</source>
-        <translation>Fouten tijdens de wijzigingen!</translation>
+        <translation>Fouten tijdens de bewerkingen!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="663"/>
@@ -404,7 +404,7 @@ Author: Simone Tobia</translation>
         <location filename="mainwindow.cpp" line="664"/>
         <location filename="mainwindow.cpp" line="696"/>
         <source>All operations completed successfully!</source>
-        <translation>Alle wijzigingen zijn succesvol afgerond!</translation>
+        <translation>Alle bewerkingen zijn succesvol afgerond!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="673"/>
