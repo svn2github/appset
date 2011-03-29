@@ -148,8 +148,8 @@ int main(){
             bool runned=false;
             int remains = 0;
             while(!runned && remains==0){
-                remains = sleep(300);
-                counter = (counter+300-remains);
+                remains = sleep(5);
+                counter = (counter+5-remains);
                 struct stat s;
                 while(stat("/tmp/as.tmp",&s)==0){
                     sleep(5);

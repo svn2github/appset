@@ -1721,7 +1721,7 @@ void MainWindow::addRows(bool checked){
             Package *pkg = *it;
 
             int found=-1;
-            QTableWidgetItem* versionMatch;
+            //QTableWidgetItem* versionMatch;
             for(int index=0;index<rows;++index){
                 //XXX Installed local?
                 if(ui->tableWidget->item(index,2)->text()==QString(pkg->getName().c_str())){

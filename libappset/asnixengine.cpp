@@ -160,7 +160,7 @@ int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath, boo
 }
 
 int AS::NIXEngine::saveConfig(const char *distName, const char *toolName, const char *confWrapperPath, const char *confFilePath){
-
+    distName=toolName=confWrapperPath=confFilePath=0;
 
     return configure(confFilePath);
 }
@@ -189,9 +189,10 @@ int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
         tail+=" ";
         bool first=true;
         for(std::list<Package*>::iterator it=ignore_packages->begin();it!=ignore_packages->end();it++){
-            if(!first)
+            if(!first){
                 if(ignoring)tail += ",";
                 else tail += " ";
+            }
             tail += (*it)->getName();
             first=false;
         }
@@ -397,7 +398,7 @@ namespace AS {
                 value = cstr.substr(match.rm_eo);
 
                 int ksize=-1;
-                for(int j=0;ksize==-1 && j<value.length();++j){
+                for(int j=0;ksize==-1 && j<((unsigned)value.length());++j){
                     if(*(value.c_str()+j)=='.'){
                         value=value.substr(0,j);
                         ksize=atoi(value.c_str());
@@ -493,7 +494,7 @@ std::list<AS::Package*>* AS::NIXEngine::checkDeps(AS::Package *package, bool ins
 std::list<AS::Package*>* AS::NIXEngine::queryLocal(unsigned flags, AS::Package *package){
     std::list<AS::Package*>* ret = new std::list<AS::Package*>();
 
-    int status = execQuery(ret, flags, package, false);
+    execQuery(ret, flags, package, false);
 
     return ret;
 }
@@ -615,7 +616,7 @@ int AS::NIXEngine::cacheSize(){
     struct stat fsize;
     float ret=0;
 
-    while(dir=readdir(dpath)){
+    while((dir=readdir(dpath))){
         fname=string(dir->d_name);
         fpath=commands["download_path"];
         fpath += fname;
@@ -636,7 +637,7 @@ int AS::NIXEngine::cleanCache(){
     dirent *dir;
     std::string fname, fpath;
 
-    while(dir=readdir(dpath)){
+    while((dir=readdir(dpath))){
         fname=string(dir->d_name);
         fpath=commands["download_path"];
         fpath += fname;
