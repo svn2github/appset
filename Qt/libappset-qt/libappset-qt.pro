@@ -11,3 +11,9 @@ unix{
 
 INCLUDEPATH += ../../libappset
 LIBS += -L../../libappset -lappset
+
+HEADERS += \
+    communityrepomodel.h
+
+SOURCES += \
+    communityrepomodel.cpp

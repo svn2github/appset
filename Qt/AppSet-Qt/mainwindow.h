@@ -37,6 +37,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <QEventLoop>
 
+#include <QCompleter>
+
+#ifdef unix
+#include "communityrepomodel.h"
+#endif
+
 namespace Ui {
     class MainWindow;
 }
@@ -229,6 +235,7 @@ public slots:
 
     void openLocal(QString fileName="");
 
+    void comInfoRetrieved(AS::Package *pkg);
 private:
     Ui::MainWindow *ui;
 
@@ -313,6 +320,8 @@ private:
     QStringList iOutcome,rOutcome,uOutcome;
 
     bool outcomeEvaluator();
+
+    QCompleter *pcomp;
 };
 
 #endif // MAINWINDOW_H

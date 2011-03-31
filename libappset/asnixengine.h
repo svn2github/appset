@@ -36,11 +36,17 @@ namespace AS{
         StrMap commands;
         StrMap regexps;
 
+        StrMap community;
+
         std::string pipePath;
 
         int loadConfigFile(const char *path, StrMap *params, int fErrorRet=1, int paramErrorRet=2);
         virtual int execCmd(std::string command);
         int execQuery(std::list<AS::Package*>* pkgList, unsigned flags=0, AS::Package *package=0, bool remote=false, bool local=false);
+
+        //Community stuff
+        bool community_enabled;
+        int execComQuery(std::list<AS::Package*>* pkgList, std::string pattern, bool info=false);
     public:
         NIXEngine();
         ~NIXEngine();
@@ -65,6 +71,12 @@ namespace AS{
         virtual std::string getLocalExt(){return commands["local_ext"];};
 
         virtual std::string getTool(){return sysinfo["tool"];};
+
+        //Community stuff
+        virtual bool isCommunityEnabled(){return community_enabled;};
+        virtual std::list<Package*>* com_search(std::string pattern);
+        virtual std::list<Package*>* com_info(std::string pattern);
+        virtual std::string getCommunityName(){return community["community_name"];};
     };
 
 }

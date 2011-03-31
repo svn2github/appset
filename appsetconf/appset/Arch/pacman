@@ -32,3 +32,5 @@ query_info_description_regexp=^Description[[:space:]]+:[ ]+
 query_info_url_regexp=^URL[[:space:]]+:[ ]+
 query_info_ksize_regexp=^Download[[:space:]]Size[[:space:]]+:[ ]+
 query_info_repo_regexp=^Repository[[:space:]]+:[ ]+
+
+community_tool=packer

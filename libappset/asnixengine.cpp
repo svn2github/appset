@@ -71,6 +71,17 @@ AS::NIXEngine::NIXEngine(){
     regexps.insert(StrPair("query_info_url_regexp",""));
     regexps.insert(StrPair("query_info_ksize_regexp",""));
     regexps.insert(StrPair("query_info_repo_regexp",""));
+
+    commands.insert(StrPair("community_tool",""));
+
+    community.insert(StrPair("community_name",""));
+    community.insert(StrPair("install",""));
+    community.insert(StrPair("remove",""));
+    community.insert(StrPair("upgrade",""));
+    community.insert(StrPair("search",""));
+    community.insert(StrPair("query_info",""));
+
+    community_enabled=false;
 }
 
 AS::NIXEngine::~NIXEngine(){
@@ -136,7 +147,7 @@ int AS::NIXEngine::execCmd(string command){
 }
 
 int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath, bool force){
-    string path;
+    string path,com_path;
     int ret = 0;
 
     if( ( ret = loadConfigFile(confFilePath, &sysinfo) ) ) return ret;
@@ -144,6 +155,7 @@ int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath, boo
     path = sysinfo["as_conf_path"];
     path.append(sysinfo["distribution"]);
     path.append("/");
+    com_path=path;
     path.append(sysinfo["tool"]);
 
     if( ( ret = loadConfigFile(path.c_str(), &commands, 3, 4) ) ) return ret;
@@ -155,6 +167,9 @@ int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath, boo
     if( mkfifo(pipePath, 0700) ) return 8;
 
     this->pipePath = string(pipePath);
+
+    com_path.append(commands["community_tool"]);
+    community_enabled=loadConfigFile(com_path.c_str(), &community)==0;
 
     return 0;
 }
@@ -657,4 +672,119 @@ std::string AS::NIXEngine::getNewsUrl(std::string lang){
     key+=lang;
     if(((std::string)sysinfo[key]).compare("")) return sysinfo[key];
     return sysinfo[base_key];
+}
+
+std::list<AS::Package*>* AS::NIXEngine::com_search(std::string pattern){
+    std::list<AS::Package*>* ret = new std::list<AS::Package*>();
+
+    execComQuery(ret, pattern, false);
+
+    return ret;
+}
+
+std::list<AS::Package*>* AS::NIXEngine::com_info(std::string pattern){
+    std::list<AS::Package*>* ret = new std::list<AS::Package*>();
+
+    execComQuery(ret, pattern, true);
+
+    return ret;
+}
+
+class ComQueryListener : public AS::EngineListener{
+    regex_t filter;
+    regex_t pkg_name;
+    regex_t pkg_version;
+    char sep;
+
+    bool descr;
+
+    std::list<AS::Package*>* pkgList;
+public:
+    ComQueryListener(std::list<AS::Package*>* pkgList, const char *filter, const char *pkgNameFilter, const char *pkgVersionFilter, char sep='/'){
+        regcomp(&this->filter, filter, REG_EXTENDED);
+        regcomp(&pkg_name, pkgNameFilter, REG_EXTENDED);
+        regcomp(&pkg_version, pkgVersionFilter, REG_EXTENDED);
+
+        this->pkgList = pkgList;
+
+        this->sep=sep;
+
+        descr=false;
+    }
+
+    ~ComQueryListener(){
+        regfree(&filter);
+        regfree(&pkg_name);
+        regfree(&pkg_version);
+    }
+
+    void step(const char *content){
+        if(descr){
+            pkgList->back()->setDescription(content);
+            descr=false;
+            return;
+        }
+
+        regmatch_t match;
+        string cstr(content), pname, version, repo;
+        AS::Package *pkg = new AS::Package(true);
+
+        if(!regexec(&filter, content, 1, &match, 0)){
+            if(!regexec(&pkg_name, content, 1, &match, 0)){
+                pname = cstr.substr(match.rm_so, match.rm_eo-match.rm_so);
+                repo=pname.substr(0,pname.find(sep));
+                pname=pname.substr(pname.find(sep)+1);
+
+                if(!regexec(&pkg_version, content, 1, &match, 0)){
+                    version = cstr.substr(match.rm_so, match.rm_eo-match.rm_so);
+
+                    pkg->setName(pname);
+                    pkg->setRepository(repo);
+                    pkg->setRemoteVersion(version);
+
+                    pkgList->insert(pkgList->end(), pkg);
+                    descr=true;
+                    return;
+                }
+            }
+        }
+
+        delete pkg;
+    }
+};
+
+int AS::NIXEngine::execComQuery(std::list<AS::Package *> *pkgList, std::string pattern, bool info){    
+    int status=0;
+
+    if(!info){
+        ComQueryListener ql(pkgList, regexps["query_filter_regexp"].c_str(), regexps["query_name_regexp"].c_str(), regexps["query_lversion_regexp"].c_str());
+        addListener(&ql);
+        string cmd = community["search"];
+
+        cmd += " \"";
+        cmd += pattern;
+        cmd += "\"";
+
+        status = execCmd(cmd);
+
+        removeListener(&ql);
+    }else{
+        QueryInfoListener qil(pkgList, regexps["query_info_name_regexp"].c_str(), regexps["query_info_version_regexp"].c_str(), regexps["query_info_group_regexp"].c_str(),
+                              regexps["query_info_license_regexp"].c_str(), regexps["query_info_description_regexp"].c_str(), regexps["query_info_url_regexp"].c_str(),
+                              regexps["query_info_ksize_regexp"].c_str(),regexps["query_info_repo_regexp"].c_str(), true, as_EXPERT_QUERY);
+
+        addListener(&qil);
+
+
+        string cmd = community["query_info"];
+
+        cmd += " ";
+        cmd += pattern;
+
+        status = execCmd(cmd);
+
+        removeListener(&qil);
+    }
+
+    return status;
 }

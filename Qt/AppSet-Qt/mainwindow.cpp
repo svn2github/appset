@@ -62,6 +62,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     local=false;
 
+    pcomp=0;
+
     QStringList headers;
     headers << tr("S") << tr("Repository") << tr("Packet") << tr("Installed Version") << tr("Last Version") << tr("Description");
     ui->tableWidget->setColumnWidth(0,24);
@@ -218,6 +220,37 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
     ui->backGroup->setHidden(true);
+
+#ifdef unix
+    if(((AS::QTNIXEngine*)as)->isCommunityEnabled()){
+        ui->tabWidget->setTabText(2, QString(((AS::QTNIXEngine*)as)->getCommunityName().c_str()));
+
+        CommunityRepoModel *crm=new CommunityRepoModel(0,(AS::QTNIXEngine*)as);
+        ui->tableCommunity->setModel(crm);
+        connect(ui->lineEditCommunity,SIGNAL(textChanged(QString)),crm,SLOT(setPattern(QString)));
+
+        connect(ui->tableCommunity->selectionModel(),SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),crm,SLOT(selectionChangedSlot(QModelIndex,QModelIndex)));
+
+        QSplitter *splitter2 = new QSplitter(ui->tabCommunity);
+        ui->contents->removeWidget(ui->extraInfoGroupBox_2);
+        ui->contents->removeWidget(ui->tableCommunity);
+        ui->tabCommunity->layout()->addWidget(splitter2);
+        splitter2->addWidget(ui->tableCommunity);
+        splitter2->addWidget(ui->extraInfoGroupBox_2);
+        splitter2->setOrientation(Qt::Vertical);
+
+        QList<int> sizes;
+        sizes << 250 << 180;
+        splitter2->setSizes(sizes);
+        connect(crm,SIGNAL(pkgInfoRetrieved(AS::Package*)),SLOT(comInfoRetrieved(AS::Package*)));
+    }else{
+        ui->tabCommunity->hide();
+    }
+#endif
+}
+
+void MainWindow::comInfoRetrieved(AS::Package *pkg){
+    ui->webView_2->setUrl(QUrl(pkg->getURL().c_str()));
 }
 
 #include <QFileDialog>
@@ -489,9 +522,9 @@ void MainWindow::refresh(){
 
                 if(totalCompleted){
                     for(int k=0;k<rows;++k){
-                        QLabel *label = new QLabel();
+                        /*QLabel *label = new QLabel();
                         label->setMovie(loadingMovie);
-                        ui->tableUpgraded->setCellWidget(k,0,label);
+                        ui->tableUpgraded->setCellWidget(k,0,label);*/
                         ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat(tr("Installing..."));
                     }
 
@@ -545,9 +578,9 @@ void MainWindow::refresh(){
 
                 if(totalCompleted){
                     for(int k=0;k<rows;++k){
-                        QLabel *label = new QLabel();
+                        /*QLabel *label = new QLabel();
                         label->setMovie(loadingMovie);
-                        ui->tableUpgraded->setCellWidget(k,0,label);
+                        ui->tableUpgraded->setCellWidget(k,0,label);*/
                         ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat(tr("Installing..."));
                     }
 
@@ -816,7 +849,7 @@ void MainWindow::markUpgrades(){
 void MainWindow::searchTermChanged(int x){
     asyncFilter(ui->searchBar->text());x=0;
 }
-
+#include <QCompleter>
 void MainWindow::asyncFilter(QString filter){
     timer2->stop();
     int rows = ui->tableWidget->rowCount();
@@ -892,6 +925,19 @@ void MainWindow::asyncFilter(QString filter){
     }
 
     loadingBar->setValue(0);
+
+    //XXX Better completer
+    /*QStringList pnames;
+    for(int i=0;i<rows;++i){
+        if(!(ui->tableWidget->isRowHidden(i)))
+            pnames << ui->tableWidget->item(i,2)->text();
+    }
+    if(pcomp)delete pcomp;
+    pcomp=new QCompleter(pnames,ui->searchBar);
+    pcomp->setCaseSensitivity(Qt::CaseInsensitive);
+    ui->searchBar->setCompleter(pcomp);*/
+
+
 }
 
 void MainWindow::filterPressed(){
