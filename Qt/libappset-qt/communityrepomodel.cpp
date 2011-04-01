@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "communityrepomodel.h"
 
 CommunityRepoModel::CommunityRepoModel(QStringList headers, QObject *parent, AS::QTNIXEngine *engine) :
-    QAbstractTableModel(parent), engine(engine), headers(headers), merged(false)
+    QAbstractTableModel(parent), engine(engine), headers(headers)
 {
     pkgs=0;
     ipkgs=0;
@@ -118,8 +118,6 @@ void CommunityRepoModel::setPattern(QString pattern){
         endInsertRows();
 
         if(plist)delete plist;
-
-        merged=false;
     }
 
     mergeInstalled();
@@ -128,15 +126,18 @@ void CommunityRepoModel::setPattern(QString pattern){
 }
 
 void CommunityRepoModel::setInstalledPackages(std::list<AS::Package *> *pkgs){
-    if(ipkgs) ipkgs->clear();
+    if(ipkgs){
+        ipkgs->clear();
+        delete ipkgs;
+        ipkgs=0;
+    }
     ipkgs=pkgs;
-    merged=false;
 
-    mergeInstalled();
+    //mergeInstalled();
+    setPattern(pattern);
 }
 #include <QStringList>
 void CommunityRepoModel::mergeInstalled(){
-    if(merged)return;
     if(ipkgs && ipkgs->size()){
         if(pkgs && pkgs->size()){
             for(unsigned int i=0;i<pkgs->size();++i){
@@ -162,5 +163,5 @@ void CommunityRepoModel::mergeInstalled(){
             endInsertRows()*/;
         }
     }
-    merged=true;
+
 }

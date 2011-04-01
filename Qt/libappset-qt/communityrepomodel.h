@@ -23,7 +23,6 @@ class CommunityRepoModel : public QAbstractTableModel
     QStringList headers;
 
     void mergeInstalled();
-    bool merged;
 public:
     explicit CommunityRepoModel(QStringList headers, QObject *parent = 0, AS::QTNIXEngine *engine=0);
 

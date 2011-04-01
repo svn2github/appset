@@ -704,12 +704,14 @@ int AS::NIXEngine::com_install(std::string pattern){
     cmd += " ";
     cmd += pattern;
 
-    /*if(exec.find('*')!=exec.npos){
-        exec += "\"";
-        exec += cmd;
-        exec += "\"";
-        cmd = exec;
-    }*/
+    return execCmd(cmd);
+}
+
+int AS::NIXEngine::com_remove(std::string pattern){
+    string cmd(community["remove"]);
+
+    cmd += " ";
+    cmd += pattern;
 
     return execCmd(cmd);
 }

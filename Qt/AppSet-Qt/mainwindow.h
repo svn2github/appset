@@ -97,6 +97,10 @@ public:
             break;
         case 6:
             status+=((AS::QTNIXEngine*)as)->com_install(pattern.toAscii().data());
+            break;
+        case 7:
+            status+=((AS::QTNIXEngine*)as)->com_remove(pattern.toAscii().data());
+            break;
         }
     }
 };
@@ -205,6 +209,7 @@ public slots:
     void install(bool community=false);
 
     void installCom();
+    void removeCom();
 
     void remove(bool community=false);
     void upgrade(bool community=false);
@@ -343,6 +348,8 @@ private:
     bool outcomeEvaluator();
 
     QCompleter *pcomp;
+
+    void comCommon(int op);
 
 
 signals:

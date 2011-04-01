@@ -283,9 +283,10 @@ void MainWindow::comContinued(){
     ui->comWait->setVisible(true);
     ui->stacked->setCurrentIndex(0);
 
+    merging=false;
     addRows();
 
-    ui->lineEditCommunity->setText("");
+    //ui->lineEditCommunity->setText("");
 }
 
 void MainWindow::comInfoRetrieved(AS::Package *pkg){
@@ -1038,6 +1039,14 @@ void MainWindow::applyEnabler(){
 }
 
 void MainWindow::installCom(){
+    comCommon(6);
+}
+
+void MainWindow::removeCom(){
+    comCommon(7);
+}
+
+void MainWindow::comCommon(int op){
     ui->stacked->setCurrentIndex(2);
 
     logger=new ASLogger();
@@ -1045,18 +1054,19 @@ void MainWindow::installCom(){
 
     timerUpdateCom->start(150);
 
-    asComThread->setOp(6);
+    ui->mainToolBar->setHidden(true);
+    ui->comWait->setVisible(true);
+
+    asComThread->setOp(op);
     asComThread->pattern=ui->tableCommunity->model()->data(
                 ui->tableCommunity->model()->index(currentPacket,1)).toString();
     asComThread->start();
-
-    ui->mainToolBar->setHidden(true);
-    ui->comWait->setVisible(true);
 }
 
 void MainWindow::comOpFinished(){
     timerUpdateCom->stop();
     as->removeListener(logger);
+    delete logger;
     refreshCom();
     ui->comContinue->setVisible(true);
     ui->comWait->setHidden(true);
@@ -1601,15 +1611,13 @@ void MainWindow::showMenu(const QModelIndex & newSelection){
     QMenu menu(this);
     QAction install(QIcon(":pkgstatus/install.png"),tr("Install"),this);
     QAction remove(QIcon(":pkgstatus/remove.png"),tr("Remove"),this);
-    QAction upgrade(style()->standardIcon(QStyle::SP_ArrowUp),tr("Upgrade"),this);
     QAction cancel(style()->standardIcon(QStyle::SP_DialogDiscardButton),tr("Cancel"),this);
     QList<QAction*>actions;
 
     currentPacket = newSelection.row();
 
     connect(&install, SIGNAL(triggered()),SLOT(installCom()));
-    connect(&remove, SIGNAL(triggered(bool)),SLOT(remove(bool)));
-    connect(&upgrade, SIGNAL(triggered(bool)),SLOT(upgrade(bool)));
+    connect(&remove, SIGNAL(triggered()),SLOT(removeCom()));
 
     QAbstractItemModel *model = ui->tableCommunity->model();
     QString text(model->data(model->index(currentPacket,0)).toString());
@@ -1617,7 +1625,6 @@ void MainWindow::showMenu(const QModelIndex & newSelection){
     if(text=="Install" || text=="Upgrade" || text=="Remove") actions.append(&cancel);
     else{
         actions.append(&install);
-        actions.append(&upgrade);
         actions.append(&remove);
     }
 
@@ -1625,25 +1632,18 @@ void MainWindow::showMenu(const QModelIndex & newSelection){
 
     if(text=="Remote"){
         remove.setDisabled(true);
-        upgrade.setDisabled(true);
-    }else if(text=="Upgradable"){
-        install.setDisabled(true);
     }else if(text=="Installed"){
         install.setDisabled(true);
-        upgrade.setDisabled(true);
     }else if(text=="Remove"){
         connect(&cancel,SIGNAL(triggered(bool)),SLOT(notRemove(bool)));
     }else if(text=="Install"){
         connect(&cancel,SIGNAL(triggered(bool)),SLOT(notInstall(bool)));
-    }else if(text=="Upgrade"){
-        connect(&cancel,SIGNAL(triggered(bool)),SLOT(notUpgrade(bool)));
     }
 
     menu.exec(QCursor::pos());
 
     disconnect(&install, SIGNAL(triggered()),this,SLOT(installCom()));
-    disconnect(&remove, SIGNAL(triggered(bool)),this,SLOT(remove(bool)));
-    disconnect(&upgrade, SIGNAL(triggered(bool)),this,SLOT(upgrade(bool)));
+    disconnect(&remove, SIGNAL(triggered()),this,SLOT(removeCom()));
     disconnect(&cancel, SIGNAL(triggered(bool)),0,0);
 }
 
