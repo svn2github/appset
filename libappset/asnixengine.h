@@ -76,6 +76,7 @@ namespace AS{
         virtual bool isCommunityEnabled(){return community_enabled;};
         virtual std::list<Package*>* com_search(std::string pattern);
         virtual std::list<Package*>* com_info(std::string pattern);
+        virtual int com_install(std::string pattern);
         virtual std::string getCommunityName(){return community["community_name"];};
     };
 

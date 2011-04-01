@@ -80,6 +80,7 @@ AS::NIXEngine::NIXEngine(){
     community.insert(StrPair("upgrade",""));
     community.insert(StrPair("search",""));
     community.insert(StrPair("query_info",""));
+    //community.insert(StrPair("cmd_exec",""));
 
     community_enabled=false;
 }
@@ -147,7 +148,7 @@ int AS::NIXEngine::execCmd(string command){
 }
 
 int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath, bool force){
-    string path,com_path;
+    string path,com_path,tool_check;
     int ret = 0;
 
     if( ( ret = loadConfigFile(confFilePath, &sysinfo) ) ) return ret;
@@ -169,7 +170,10 @@ int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath, boo
     this->pipePath = string(pipePath);
 
     com_path.append(commands["community_tool"]);
-    community_enabled=loadConfigFile(com_path.c_str(), &community)==0;
+    tool_check=string("which ");
+    tool_check.append(commands["community_tool"]);
+    tool_check.append(" >/dev/null 2>/dev/null");
+    community_enabled=(system(tool_check.c_str())==0) && (loadConfigFile(com_path.c_str(), &community)==0);
 
     return 0;
 }
@@ -677,7 +681,11 @@ std::string AS::NIXEngine::getNewsUrl(std::string lang){
 std::list<AS::Package*>* AS::NIXEngine::com_search(std::string pattern){
     std::list<AS::Package*>* ret = new std::list<AS::Package*>();
 
-    execComQuery(ret, pattern, false);
+    std::string com_pattern="\"";
+    com_pattern+=pattern;
+    com_pattern+="\"";
+
+    execComQuery(ret, com_pattern, false);
 
     return ret;
 }
@@ -688,6 +696,22 @@ std::list<AS::Package*>* AS::NIXEngine::com_info(std::string pattern){
     execComQuery(ret, pattern, true);
 
     return ret;
+}
+
+int AS::NIXEngine::com_install(std::string pattern){
+    string cmd(community["install"]), exec(community["cmd_exec"]);
+
+    cmd += " ";
+    cmd += pattern;
+
+    /*if(exec.find('*')!=exec.npos){
+        exec += "\"";
+        exec += cmd;
+        exec += "\"";
+        cmd = exec;
+    }*/
+
+    return execCmd(cmd);
 }
 
 class ComQueryListener : public AS::EngineListener{
@@ -727,7 +751,7 @@ public:
 
         regmatch_t match;
         string cstr(content), pname, version, repo;
-        AS::Package *pkg = new AS::Package(true);
+        AS::Package *pkg = new AS::Package(false);
 
         if(!regexec(&filter, content, 1, &match, 0)){
             if(!regexec(&pkg_name, content, 1, &match, 0)){

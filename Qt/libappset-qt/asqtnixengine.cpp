@@ -33,8 +33,11 @@ int AS::QTNIXEngine::execCmd(std::string command){
 
     process.start(command.c_str());    
 
-    while(!process.waitForFinished(1000)){
+    int actual=50;
+    while(!process.waitForFinished(actual)){
         if(process.state()==QProcess::NotRunning) break;
+        if(!process.canReadLine()) actual=(actual+100)%1000;
+        else actual=50;
         while(process.canReadLine()){
             notifyListeners(QString(process.readLine().data()).trimmed().toAscii().data());
         }

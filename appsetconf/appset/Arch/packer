@@ -1,6 +1,7 @@
 community_name=AUR
 search=packer -Ss --auronly
 query_info=packer -Si --auronly
-install=packer -S
-remove=packer -R
-upgrade=packer -S
+install=packer -S --noconfirm --auronly
+remove=packer -R --noconfirm --auronly
+upgrade=packer -S --noconfirm --auronly
+cmd_exec=xterm -e

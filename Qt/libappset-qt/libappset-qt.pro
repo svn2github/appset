@@ -17,3 +17,6 @@ HEADERS += \
 
 SOURCES += \
     communityrepomodel.cpp
+
+RESOURCES += \
+    icons.qrc

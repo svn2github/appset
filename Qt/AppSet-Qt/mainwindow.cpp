@@ -91,9 +91,10 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 #endif
 
-    asThread = new AsThread(as);
 
+    asThread = new AsThread(as);
     connect(asThread,SIGNAL(finished()),SLOT(opFinished()));
+
 
     loadingDialog = new QDialog(this);
     loadingBar = new QProgressBar(loadingDialog);
@@ -114,7 +115,7 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->setSingleShot(true);
     connect(timer,SIGNAL(timeout()),SLOT(addRows()));
     argsParsed=false;
-    timer->start(100);
+
     connect(timer2,SIGNAL(timeout()),SLOT(timeFilter()));
 
     timerConfirm = new QTimer();
@@ -223,19 +224,25 @@ MainWindow::MainWindow(QWidget *parent) :
 
 #ifdef unix
     if(((AS::QTNIXEngine*)as)->isCommunityEnabled()){
+
+        asComThread = new AsThread(as);
+        connect(asComThread,SIGNAL(finished()),SLOT(comOpFinished()));
+
         ui->tabWidget->setTabText(2, QString(((AS::QTNIXEngine*)as)->getCommunityName().c_str()));
 
-        CommunityRepoModel *crm=new CommunityRepoModel(0,(AS::QTNIXEngine*)as);
-        ui->tableCommunity->setModel(crm);
-        connect(ui->lineEditCommunity,SIGNAL(textChanged(QString)),crm,SLOT(setPattern(QString)));
+        QStringList headers;
+        headers << tr("S") << tr("Name") << tr("Installed Version") << tr("Last Version") << tr("Description");
 
-        connect(ui->tableCommunity->selectionModel(),SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),crm,SLOT(selectionChangedSlot(QModelIndex,QModelIndex)));
+        CommunityRepoModel *crm=new CommunityRepoModel(headers,0,(AS::QTNIXEngine*)as);
+        ui->tableCommunity->setModel(crm);        
+
+        ui->tableCommunity->setColumnWidth(0,24);
 
         QSplitter *splitter2 = new QSplitter(ui->tabCommunity);
         ui->contents->removeWidget(ui->extraInfoGroupBox_2);
-        ui->contents->removeWidget(ui->tableCommunity);
+        ui->contents->removeWidget(ui->groupCom);
         ui->tabCommunity->layout()->addWidget(splitter2);
-        splitter2->addWidget(ui->tableCommunity);
+        splitter2->addWidget(ui->groupCom);
         splitter2->addWidget(ui->extraInfoGroupBox_2);
         splitter2->setOrientation(Qt::Vertical);
 
@@ -243,14 +250,70 @@ MainWindow::MainWindow(QWidget *parent) :
         sizes << 250 << 180;
         splitter2->setSizes(sizes);
         connect(crm,SIGNAL(pkgInfoRetrieved(AS::Package*)),SLOT(comInfoRetrieved(AS::Package*)));
+
+        connect(this,SIGNAL(installedPackagesUpdated(std::list<AS::Package*>*)),crm,SLOT(setInstalledPackages(std::list<AS::Package*>*)));
+
+        connect(ui->tableCommunity,SIGNAL(clicked(QModelIndex)),SLOT(showMenu(QModelIndex)));
+
+        timerComSearch = new QTimer();
+        timerUpdateCom = new QTimer();
+        connect(timerComSearch,SIGNAL(timeout()),SLOT(comTimeFilter()));
+        connect(ui->lineEditCommunity,SIGNAL(textChanged(QString)),SLOT(comTimerFired(QString)));
+        connect(this,SIGNAL(comPatternUpdated(QString)),crm,SLOT(setPattern(QString)));
+        connect(crm,SIGNAL(dataUpdated()),SLOT(comTableUpdated()));
+
+        connect(ui->tableCommunity->selectionModel(),SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),crm,SLOT(selectionChangedSlot(QModelIndex,QModelIndex)));
+
+        connect(timerUpdateCom,SIGNAL(timeout()),SLOT(refreshCom()));
+
+        ui->comContinue->setHidden(true);
+
+        connect(ui->comContinueButton,SIGNAL(clicked()),SLOT(comContinued()));
     }else{
-        ui->tabCommunity->hide();
+        ui->tabWidget->removeTab(2);
     }
 #endif
+
+    timer->start(100);
+}
+
+void MainWindow::comContinued(){
+    ui->comContinue->setHidden(true);
+    ui->mainToolBar->setVisible(true);
+    ui->comWait->setVisible(true);
+    ui->stacked->setCurrentIndex(0);
+
+    addRows();
+
+    ui->lineEditCommunity->setText("");
 }
 
 void MainWindow::comInfoRetrieved(AS::Package *pkg){
     ui->webView_2->setUrl(QUrl(pkg->getURL().c_str()));
+}
+#include <QFile>
+#include <QScrollBar>
+void MainWindow::refreshCom(){
+    QStringList logs;
+    QFile logFile;
+    QByteArray preLog;
+
+#ifdef unix
+    if(QFile::exists("/var/log/appset.log")){
+        logFile.setFileName("/var/log/appset.log");
+#endif
+        logFile.open(QFile::ReadOnly);
+        while(!logFile.atEnd()){
+            preLog = logFile.readLine();
+            if(preLog.size()) logs.append(preLog);
+        }
+
+        if(logs.size()) ui->backOut_2->setText(logs.join("\n"));
+
+
+        QScrollBar *bar = ui->backOut_2->verticalScrollBar();
+        bar->setValue(bar->maximum());
+    }
 }
 
 #include <QFileDialog>
@@ -415,9 +478,16 @@ void MainWindow::error(QNetworkReply::NetworkError){
 
 void MainWindow::cleanCache(){
 #ifdef unix
-    ((AS::QTNIXEngine*)as)->cleanCache();
-    cleanAction->setDisabled(true);
-    cleanAction->setText(tr("Clean cache"));
+    QMessageBox con;
+    con.setText(tr("Are you sure to clean the cache?"));
+    con.setIcon(QMessageBox::Question);
+    con.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+
+    if(con.exec()==QMessageBox::Yes){
+        ((AS::QTNIXEngine*)as)->cleanCache();
+        cleanAction->setDisabled(true);
+        cleanAction->setText(tr("Clean cache"));
+    }
 #endif
 }
 
@@ -822,6 +892,21 @@ void MainWindow::timerFired(QString s){
     timer2->start(this->sbdelay);s="";
 }
 
+void MainWindow::comTimeFilter(){
+    emit comPatternUpdated(ui->lineEditCommunity->text());    
+}
+
+void MainWindow::comTableUpdated(){
+    if(ui->tableCommunity->model()->rowCount()){
+        ui->tableCommunity->selectRow(0);
+    }
+}
+
+void MainWindow::comTimerFired(QString s){
+    timerComSearch->stop();
+    timerComSearch->setSingleShot(true);
+    timerComSearch->start(this->sbdelay);s="";
+}
 
 void MainWindow::editCancel(){
     timerConfirm->stop();
@@ -926,7 +1011,7 @@ void MainWindow::asyncFilter(QString filter){
 
     loadingBar->setValue(0);
 
-    //XXX Better completer
+    //XXX Need better completer
     /*QStringList pnames;
     for(int i=0;i<rows;++i){
         if(!(ui->tableWidget->isRowHidden(i)))
@@ -952,7 +1037,32 @@ void MainWindow::applyEnabler(){
     openLocalAction->setEnabled(modified==0);
 }
 
-void MainWindow::install(){
+void MainWindow::installCom(){
+    ui->stacked->setCurrentIndex(2);
+
+    logger=new ASLogger();
+    as->addListener(logger);
+
+    timerUpdateCom->start(150);
+
+    asComThread->setOp(6);
+    asComThread->pattern=ui->tableCommunity->model()->data(
+                ui->tableCommunity->model()->index(currentPacket,1)).toString();
+    asComThread->start();
+
+    ui->mainToolBar->setHidden(true);
+    ui->comWait->setVisible(true);
+}
+
+void MainWindow::comOpFinished(){
+    timerUpdateCom->stop();
+    as->removeListener(logger);
+    refreshCom();
+    ui->comContinue->setVisible(true);
+    ui->comWait->setHidden(true);
+}
+
+void MainWindow::install(bool community){
     ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/install.png"),"Install"));
     modified++;
 
@@ -982,7 +1092,9 @@ void MainWindow::install(){
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
-void MainWindow::remove(){
+void MainWindow::remove(bool community){
+    if(community)return;
+
     Package p;
     QStringList req;
     p.setName(ui->tableWidget->item(currentPacket,2)->text().trimmed().toAscii().data());
@@ -1028,7 +1140,8 @@ void MainWindow::remove(){
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
-void MainWindow::upgrade(){
+void MainWindow::upgrade(bool community){
+    if(community)return;
     ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgrade"));
     modified++;
 
@@ -1058,7 +1171,8 @@ void MainWindow::upgrade(){
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
-void MainWindow::notInstall(){
+void MainWindow::notInstall(bool community){
+    if(community)return;
     QString dname =  ui->tableWidget->item(currentPacket,2)->toolTip();
     QList<QString> requirers = instaDeps.values(dname);
 
@@ -1140,7 +1254,8 @@ void MainWindow::notInstall(){
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
-void MainWindow::notRemove(){
+void MainWindow::notRemove(bool community){
+    if(community)return;
     QString dname =  ui->tableWidget->item(currentPacket,2)->text();
     QList<QString> requirers = remDeps.values(dname);
 
@@ -1221,7 +1336,8 @@ void MainWindow::notRemove(){
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 }
 
-void MainWindow::notUpgrade(){
+void MainWindow::notUpgrade(bool community){
+    if(community)return;
     ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable"));
     modified--;
     applyEnabler();
@@ -1430,7 +1546,7 @@ void MainWindow::changeStatus(int row, int col){
         }
     }
 
-    if(col==0){
+    if(col==0){ //XXXGeneralize
         QMenu menu(this);
         QAction install(QIcon(":pkgstatus/install.png"),tr("Install"),this);
         QAction remove(QIcon(":pkgstatus/remove.png"),tr("Remove"),this);
@@ -1480,6 +1596,57 @@ void MainWindow::changeStatus(int row, int col){
     }
 }
 
+void MainWindow::showMenu(const QModelIndex & newSelection){
+    if(newSelection.column())return;
+    QMenu menu(this);
+    QAction install(QIcon(":pkgstatus/install.png"),tr("Install"),this);
+    QAction remove(QIcon(":pkgstatus/remove.png"),tr("Remove"),this);
+    QAction upgrade(style()->standardIcon(QStyle::SP_ArrowUp),tr("Upgrade"),this);
+    QAction cancel(style()->standardIcon(QStyle::SP_DialogDiscardButton),tr("Cancel"),this);
+    QList<QAction*>actions;
+
+    currentPacket = newSelection.row();
+
+    connect(&install, SIGNAL(triggered()),SLOT(installCom()));
+    connect(&remove, SIGNAL(triggered(bool)),SLOT(remove(bool)));
+    connect(&upgrade, SIGNAL(triggered(bool)),SLOT(upgrade(bool)));
+
+    QAbstractItemModel *model = ui->tableCommunity->model();
+    QString text(model->data(model->index(currentPacket,0)).toString());
+
+    if(text=="Install" || text=="Upgrade" || text=="Remove") actions.append(&cancel);
+    else{
+        actions.append(&install);
+        actions.append(&upgrade);
+        actions.append(&remove);
+    }
+
+    menu.addActions(actions);
+
+    if(text=="Remote"){
+        remove.setDisabled(true);
+        upgrade.setDisabled(true);
+    }else if(text=="Upgradable"){
+        install.setDisabled(true);
+    }else if(text=="Installed"){
+        install.setDisabled(true);
+        upgrade.setDisabled(true);
+    }else if(text=="Remove"){
+        connect(&cancel,SIGNAL(triggered(bool)),SLOT(notRemove(bool)));
+    }else if(text=="Install"){
+        connect(&cancel,SIGNAL(triggered(bool)),SLOT(notInstall(bool)));
+    }else if(text=="Upgrade"){
+        connect(&cancel,SIGNAL(triggered(bool)),SLOT(notUpgrade(bool)));
+    }
+
+    menu.exec(QCursor::pos());
+
+    disconnect(&install, SIGNAL(triggered()),this,SLOT(installCom()));
+    disconnect(&remove, SIGNAL(triggered(bool)),this,SLOT(remove(bool)));
+    disconnect(&upgrade, SIGNAL(triggered(bool)),this,SLOT(upgrade(bool)));
+    disconnect(&cancel, SIGNAL(triggered(bool)),0,0);
+}
+
 void MainWindow::updateDB(){
     ui->centralWidget->setDisabled(true);
     ui->mainToolBar->setDisabled(true);    
@@ -1527,7 +1694,12 @@ int MainWindow::visibleRowCount(){
     return ret;
 }
 
-void MainWindow::showGames(){
+void MainWindow::showGames(bool community){
+    if(community){
+        ui->lineEditCommunity->setText("game|fps|fly");
+        return;
+    }
+
     category.setPattern("rpg|fps|game|games|race|racing|funny|shooter");
     category_exclude.setPattern("configuration[s]*|kernel|driver[s]*|firmware[s]*|libraries|library|protocol[s]*|dns|debug|traceroute|povray|screenshooter");
     ui->tabWidget->setCurrentIndex(1);
@@ -1693,6 +1865,8 @@ void MainWindow::addRows(bool checked){
     for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);
     //ui->tableWidget->setRowCount(0);
 
+    std::list<AS::Package*> *ipkgs=new std::list<AS::Package*>();
+
     if(!merging || (pkgs=as->queryRemote(as_MERGE_QUERIES))==0){
         StatusBarUpdater sbu(ui->statusBar);
         sbu.setPB(loadingBar);
@@ -1764,7 +1938,7 @@ void MainWindow::addRows(bool checked){
         rows = ui->tableWidget->rowCount();
         QList<int> toRemove;
         for(std::list<Package*>::iterator it=pkgs->begin(); it!=pkgs->end(); it++){
-            Package *pkg = *it;
+            Package *pkg = *it;            
 
             int found=-1;
             //QTableWidgetItem* versionMatch;
@@ -1800,6 +1974,7 @@ void MainWindow::addRows(bool checked){
                 /*
                 */;
             }else{
+                ipkgs->push_back(new AS::Package(*pkg));
                 ui->tableWidget->insertRow(i);
                 newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
                 newItem->setToolTip(tr("Installed (external)"));
@@ -1900,7 +2075,7 @@ void MainWindow::addRows(bool checked){
             Package *pkg = *it;
 
             if(pkg->isInstalled()){
-                ipack++;
+                ipack++;                
                 bool found=false;
                 while(ups && !found && upsit!=ups->end()){
                     Package *pkgup=*upsit;
@@ -1945,6 +2120,7 @@ void MainWindow::addRows(bool checked){
             if(pkg->getRemoteVersion().compare("NO INFO")){
                 newItem = new QTableWidgetItem(pkg->getRemoteVersion().c_str());
             }else{
+                ipkgs->push_back(new AS::Package(*pkg));
                 newItem = new QTableWidgetItem((QString(" (")+tr("External")+QString(")")));
                 epack++;
             }
@@ -2016,6 +2192,8 @@ void MainWindow::addRows(bool checked){
     ui->eLabel->setText(QString::number(epack));
 
     if(ui->tabWidget->tabText(1)==tr("All"))ui->tabWidget->setTabText(1, tr("All"));
+
+    emit installedPackagesUpdated(ipkgs);
 
     //XXX Check tool status
 }

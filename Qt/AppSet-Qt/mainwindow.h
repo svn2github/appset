@@ -55,11 +55,11 @@ class AsThread:public QThread{
     std::list<AS::Package*> *l;
     AS::EngineListener *el;
     QTableWidget *table;
-    AS::Engine *as;
-
+    AS::Engine *as;    
 public:
     int status;
     bool local;
+    QString pattern;
     AsThread(AS::Engine *as){
         this->l=0;
         this->op=0;
@@ -95,6 +95,8 @@ public:
         case 5:
             l=as->queryRemote(as_QUERY_ALL_INFO | as_EXPERT_QUERY);
             break;
+        case 6:
+            status+=((AS::QTNIXEngine*)as)->com_install(pattern.toAscii().data());
         }
     }
 };
@@ -106,6 +108,7 @@ public:
     ASLogger(){
 #ifdef unix
         logFile.open("/var/log/appset.log");
+        logFile.write("",1);
 #endif
     }
     ~ASLogger(){
@@ -184,7 +187,7 @@ public slots:
     void showInstalled(bool checked=true);
     void showNotInstalled(bool checked=true);
 
-    void showGames();
+    void showGames(bool community=false);
     void showAllCat();
     void showSystem();
     void showMultimedia();
@@ -199,12 +202,15 @@ public slots:
     void searchTermChanged(int);
     void markUpgrades();
 
-    void install();
-    void remove();
-    void upgrade();
-    void notInstall();
-    void notRemove();
-    void notUpgrade();
+    void install(bool community=false);
+
+    void installCom();
+
+    void remove(bool community=false);
+    void upgrade(bool community=false);
+    void notInstall(bool community=false);
+    void notRemove(bool community=false);
+    void notUpgrade(bool community=false);
     void confirm();
 
     void cleanCache();
@@ -215,7 +221,11 @@ public slots:
     void timerFired(QString);
     void timeFilter();
 
+    void comTimerFired(QString);
+    void comTimeFilter();
+
     void refresh();
+    void refreshCom();
 
     void opFinished();
 
@@ -223,6 +233,9 @@ public slots:
     void about();
 
     void confirmTimeout();
+
+    void comOpFinished();
+    void comContinued();
 
     //RSS
     void finished(QNetworkReply *reply);
@@ -236,6 +249,9 @@ public slots:
     void openLocal(QString fileName="");
 
     void comInfoRetrieved(AS::Package *pkg);
+    void comTableUpdated();
+
+    void showMenu(const QModelIndex & newSelection);
 private:
     Ui::MainWindow *ui;
 
@@ -244,6 +260,9 @@ private:
     QTimer *timer;
     QTimer *timer2;
     QTimer *timerUpdate;
+
+    QTimer *timerComSearch;
+    QTimer *timerUpdateCom;
 
     QTimer *timerConfirm;
     int confirmRemaining;
@@ -271,7 +290,9 @@ private:
     bool isExpert;
 
     AsThread *asThread;
-
+#ifdef unix
+    AsThread *asComThread;
+#endif
     QDialog *loadingDialog;
     QProgressBar *loadingBar;
 
@@ -322,6 +343,11 @@ private:
     bool outcomeEvaluator();
 
     QCompleter *pcomp;
+
+
+signals:
+    void installedPackagesUpdated(std::list<AS::Package*> *);
+    void comPatternUpdated(QString);
 };
 
 #endif // MAINWINDOW_H
