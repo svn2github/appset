@@ -12,6 +12,7 @@
     </qresource>
     <qresource prefix="/editing">
         <file>clear.png</file>
+        <file>search.png</file>
     </qresource>
     <qresource prefix="/pkggroups">
         <file>all.png</file>

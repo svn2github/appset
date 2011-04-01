@@ -101,6 +101,9 @@ public:
         case 7:
             status+=((AS::QTNIXEngine*)as)->com_remove(pattern.toAscii().data());
             break;
+        case 8:
+            status+=((AS::QTNIXEngine*)as)->com_upgrade(pattern.toAscii().data());
+            break;
         }
     }
 };
@@ -210,6 +213,7 @@ public slots:
 
     void installCom();
     void removeCom();
+    void upgradeCom();
 
     void remove(bool community=false);
     void upgrade(bool community=false);
@@ -257,6 +261,8 @@ public slots:
     void comTableUpdated();
 
     void showMenu(const QModelIndex & newSelection);
+
+    void clearComLine();
 private:
     Ui::MainWindow *ui;
 

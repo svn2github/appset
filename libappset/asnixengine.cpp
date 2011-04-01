@@ -716,6 +716,15 @@ int AS::NIXEngine::com_remove(std::string pattern){
     return execCmd(cmd);
 }
 
+int AS::NIXEngine::com_upgrade(std::string pattern){
+    string cmd(community["upgrade"]);
+
+    /*cmd += " ";
+    cmd += pattern;*/
+
+    return execCmd(cmd);
+}
+
 class ComQueryListener : public AS::EngineListener{
     regex_t filter;
     regex_t pkg_name;

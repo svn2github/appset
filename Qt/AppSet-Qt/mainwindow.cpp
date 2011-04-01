@@ -257,8 +257,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
         timerComSearch = new QTimer();
         timerUpdateCom = new QTimer();
-        connect(timerComSearch,SIGNAL(timeout()),SLOT(comTimeFilter()));
-        connect(ui->lineEditCommunity,SIGNAL(textChanged(QString)),SLOT(comTimerFired(QString)));
+        //connect(timerComSearch,SIGNAL(timeout()),SLOT(comTimeFilter()));
+        //connect(ui->lineEditCommunity,SIGNAL(textChanged(QString)),SLOT(comTimerFired(QString)));
         connect(this,SIGNAL(comPatternUpdated(QString)),crm,SLOT(setPattern(QString)));
         connect(crm,SIGNAL(dataUpdated()),SLOT(comTableUpdated()));
 
@@ -269,12 +269,21 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->comContinue->setHidden(true);
 
         connect(ui->comContinueButton,SIGNAL(clicked()),SLOT(comContinued()));
+        connect(ui->lineEditCommunity,SIGNAL(returnPressed()),SLOT(comTimeFilter()));
+        connect(ui->comSearch,SIGNAL(clicked()),SLOT(comTimeFilter()));
+        connect(ui->comClear,SIGNAL(clicked()),SLOT(clearComLine()));
+        connect(ui->comUpgrade,SIGNAL(clicked()),SLOT(upgradeCom()));
     }else{
         ui->tabWidget->removeTab(2);
     }
 #endif
 
     timer->start(100);
+}
+
+void MainWindow::clearComLine(){
+    ui->lineEditCommunity->clear();
+    comTimeFilter();
 }
 
 void MainWindow::comContinued(){
@@ -307,7 +316,8 @@ void MainWindow::refreshCom(){
         while(!logFile.atEnd()){
             preLog = logFile.readLine();
             if(preLog.size()) logs.append(preLog);
-        }
+            if(logs.size()>60)logs.removeFirst();
+        }        
 
         if(logs.size()) ui->backOut_2->setText(logs.join("\n"));
 
@@ -1042,6 +1052,10 @@ void MainWindow::installCom(){
     comCommon(6);
 }
 
+void MainWindow::upgradeCom(){
+    comCommon(8);
+}
+
 void MainWindow::removeCom(){
     comCommon(7);
 }
@@ -1058,7 +1072,7 @@ void MainWindow::comCommon(int op){
     ui->comWait->setVisible(true);
 
     asComThread->setOp(op);
-    asComThread->pattern=ui->tableCommunity->model()->data(
+    if(op!=8)asComThread->pattern=ui->tableCommunity->model()->data(
                 ui->tableCommunity->model()->index(currentPacket,1)).toString();
     asComThread->start();
 }

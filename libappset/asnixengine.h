@@ -78,6 +78,7 @@ namespace AS{
         virtual std::list<Package*>* com_info(std::string pattern);
         virtual int com_install(std::string pattern);
         virtual int com_remove(std::string pattern);
+        virtual int com_upgrade(std::string pattern);
         virtual std::string getCommunityName(){return community["community_name"];};
     };
 
