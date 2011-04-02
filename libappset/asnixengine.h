@@ -80,6 +80,7 @@ namespace AS{
         virtual int com_remove(std::string pattern);
         virtual int com_upgrade(std::string pattern);
         virtual std::string getCommunityName(){return community["community_name"];};
+        virtual std::string getCommunityToolName(){return commands["community_tool"];};
     };
 
 }

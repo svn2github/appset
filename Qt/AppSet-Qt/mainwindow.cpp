@@ -98,13 +98,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
     loadingDialog = new QDialog(this);
     loadingBar = new QProgressBar(loadingDialog);
+    loadingStatus = new QLabel(loadingDialog);
     loadingDialog->setLayout(new QHBoxLayout());
     QLabel *lblLoading = new QLabel(loadingDialog);
+    QWidget *rloading = new QWidget(loadingDialog);
     lblLoading->setPixmap(QPixmap(":/general/loading.png"));;
     lblLoading->setScaledContents(true);
     lblLoading->setFixedSize(loadingBar->height()*2,loadingBar->height()*2);
     loadingDialog->layout()->addWidget(lblLoading);
-    loadingDialog->layout()->addWidget(loadingBar);
+    loadingDialog->layout()->addWidget(rloading);
+    rloading->setLayout(new QVBoxLayout());
+
+    rloading->layout()->addWidget(loadingBar);
+    rloading->layout()->addWidget(loadingStatus);
 
     flags = as_QUERY_ALL_INFO | as_EXPERT_QUERY;
 
@@ -183,8 +189,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     isExpert = false;
 
-    loadingMovie = new QMovie(":/pkgstatus/loading.gif");
-    loadingMovie->start();
+    /*loadingMovie = new QMovie(":/pkgstatus/loading.gif");
+    loadingMovie->start();*/
 
     //RSS
     connect(ui->treeWidget, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
@@ -273,8 +279,10 @@ MainWindow::MainWindow(QWidget *parent) :
         connect(ui->comSearch,SIGNAL(clicked()),SLOT(comTimeFilter()));
         connect(ui->comClear,SIGNAL(clicked()),SLOT(clearComLine()));
         connect(ui->comUpgrade,SIGNAL(clicked()),SLOT(upgradeCom()));
+
+        connect(crm,SIGNAL(dataUpdated()),ui->Searching,SLOT(hide()));
     }else{
-        ui->tabWidget->removeTab(2);
+        ui->tabWidget->removeTab(2);        
     }
 #endif
 
@@ -517,10 +525,9 @@ void MainWindow::confirmTimeout(){
 void MainWindow::aboutQt(){
     QMessageBox::aboutQt(this);
 }
-
+#include "about.h"
 void MainWindow::about(){
-    QMessageBox::about(this, tr("About AppSet-Qt"), tr("An advanced and feature rich Package Manager Frontend\n\nAuthor: Simone Tobia")+
-                       QString("\n\n")+tr("A special thanks goes to the Chakra-project team for their suggestions and translations."));
+    ab.exec();
 }
 
 #include <QFile>
@@ -904,6 +911,9 @@ void MainWindow::timerFired(QString s){
 }
 
 void MainWindow::comTimeFilter(){
+    emit searching();
+    ui->Searching->setVisible(true);
+    QCoreApplication::processEvents(QEventLoop::AllEvents,500);
     emit comPatternUpdated(ui->lineEditCommunity->text());    
 }
 
@@ -1869,6 +1879,8 @@ void MainWindow::addRows(bool checked){
 
     timer2->stop();
 
+    loadingStatus->setText(tr("Loading packages..."));
+
     QCoreApplication::processEvents(QEventLoop::AllEvents, 500);
 
     QTableWidgetItem *newItem;
@@ -1880,6 +1892,8 @@ void MainWindow::addRows(bool checked){
     //ui->tableWidget->setRowCount(0);
 
     std::list<AS::Package*> *ipkgs=new std::list<AS::Package*>();
+
+
 
     if(!merging || (pkgs=as->queryRemote(as_MERGE_QUERIES))==0){
         StatusBarUpdater sbu(ui->statusBar);
@@ -1946,7 +1960,8 @@ void MainWindow::addRows(bool checked){
 
         //loadingBar->setValue(60);
 
-        ui->statusBar->showMessage(tr("SEARCHING CORRESPONDENCES..."));
+        //ui->statusBar->showMessage(tr("SEARCHING CORRESPONDENCES..."));
+        loadingStatus->setText(tr("Searching correspondeces..."));
 
         int k=0;
         rows = ui->tableWidget->rowCount();
@@ -2026,7 +2041,8 @@ void MainWindow::addRows(bool checked){
 
         QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
 
-        ui->statusBar->showMessage("CHECKING UPGRADABLES", 3000);
+        //ui->statusBar->showMessage("CHECKING UPGRADABLES", 3000);
+        loadingStatus->setText(tr("Checking upgradables"));
 
         rows = ui->tableWidget->rowCount();
 
@@ -2208,6 +2224,10 @@ void MainWindow::addRows(bool checked){
     if(ui->tabWidget->tabText(1)==tr("All"))ui->tabWidget->setTabText(1, tr("All"));
 
     emit installedPackagesUpdated(ipkgs);
+
+    if(!((AS::QTNIXEngine*)as)->isCommunityEnabled())
+    ui->statusBar->showMessage(tr("To enable external packages support you have to install")+QString(" ")+
+                               QString(((AS::QTNIXEngine*)as)->getCommunityToolName().c_str()),5000);
 
     //XXX Check tool status
 }

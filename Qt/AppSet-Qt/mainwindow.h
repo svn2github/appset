@@ -50,6 +50,8 @@ namespace Ui {
 #include <QStatusBar>
 #include <QCoreApplication>
 
+#include "about.h"
+
 class AsThread:public QThread{
     int op;
     std::list<AS::Package*> *l;
@@ -357,10 +359,17 @@ private:
 
     void comCommon(int op);
 
+    About ab;
+
+    QLabel *loadingStatus;
+
+    QDialog *searchingDialog;
 
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);
+    void searching();
+
 };
 
 #endif // MAINWINDOW_H
