@@ -1048,7 +1048,7 @@
                <normaloff>:/general/community.png</normaloff>:/general/community.png</iconset>
              </attribute>
              <attribute name="title">
-              <string>Page</string>
+              <string notr="true"/>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_12">
               <item>

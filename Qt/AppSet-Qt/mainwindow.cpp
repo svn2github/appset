@@ -1063,7 +1063,14 @@ void MainWindow::installCom(){
 }
 
 void MainWindow::upgradeCom(){
-    comCommon(8);
+    QMessageBox con;
+    con.setText(tr("Are you sure to upgrade ALL external packages?"));
+    con.setIcon(QMessageBox::Question);
+    con.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+
+    if(con.exec()==QMessageBox::Yes){
+        comCommon(8);
+    }
 }
 
 void MainWindow::removeCom(){

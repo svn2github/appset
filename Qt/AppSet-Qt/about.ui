@@ -23,6 +23,9 @@
    <iconset resource="icons.qrc">
     <normaloff>:/general/appset.png</normaloff>:/general/appset.png</iconset>
   </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="horizontalGroupBox">
@@ -112,6 +115,15 @@ Author: Simone Tobia</string>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QWebView" name="webView">
+        <property name="toolTip">
+         <string notr="true"/>
+        </property>
+        <property name="statusTip">
+         <string notr="true"/>
+        </property>
+        <property name="locale">
+         <locale language="English" country="UnitedStates"/>
+        </property>
         <property name="url">
          <url>
           <string>http://appset.altervista.org/index-it.htm</string>
