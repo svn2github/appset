@@ -29,3 +29,9 @@
   -Changes in main GUI
   -External Browser Command now accepts arguments
   -Bug fixed for updates operations outcome
+
+0.3.0-1 : Localization support
+
+0.2.X : Embedded browser and feed-reader, helper daemon and tray icon
+
+0.1.X : Basic functions to handle packages
