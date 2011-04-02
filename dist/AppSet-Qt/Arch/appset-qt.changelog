@@ -5,6 +5,7 @@
     *Remove AUR packages (one at a time from the AUR specialized GUI - more than one with the normal GUI)
     *Upgrade AUR packages (all in the same time)
     *Automatic activation based on the presence of packer (the backend)
+    *A button to show all external installed packages
   -Clean cache command now requires a confirmation from the user
 
 0.3.4 :

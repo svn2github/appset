@@ -150,18 +150,17 @@ void CommunityRepoModel::mergeInstalled(){
                     }
                 }
             }
-        }else{
-            /*if(pkgs) delete pkgs;
-
-            pkgs=new std::vector<AS::Package*>();
-            beginInsertRows(QModelIndex(),0,ipkgs->size()-1);
-            for(std::list<AS::Package*>::iterator it=ipkgs->begin();it!=ipkgs->end();it++){
-
-                pkgs->push_back(*it);
-
-            }
-            endInsertRows()*/;
         }
     }
 
+}
+
+void CommunityRepoModel::listInstalled(){
+    setPattern("");
+    pkgs=new std::vector<AS::Package*>();
+    beginInsertRows(QModelIndex(),0,ipkgs->size()-1);
+    for(std::list<AS::Package*>::iterator it=ipkgs->begin();it!=ipkgs->end();it++){
+        pkgs->push_back(*it);
+    }
+    endInsertRows();
 }

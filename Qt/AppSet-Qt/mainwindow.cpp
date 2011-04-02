@@ -52,6 +52,7 @@ protected:
 
 #include <QSplitter>
 #include <QWidgetList>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow), currentReply(0){
@@ -281,6 +282,7 @@ MainWindow::MainWindow(QWidget *parent) :
         connect(ui->comUpgrade,SIGNAL(clicked()),SLOT(upgradeCom()));
 
         connect(crm,SIGNAL(dataUpdated()),ui->Searching,SLOT(hide()));
+        connect(ui->comInstalled,SIGNAL(clicked()),crm,SLOT(listInstalled()));
     }else{
         ui->tabWidget->removeTab(2);        
     }

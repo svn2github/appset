@@ -42,7 +42,7 @@ public slots:
     void setPattern(QString pattern);
 
     void setInstalledPackages(std::list<AS::Package*> *pkgs);
-
+    void listInstalled();
 };
 
 #endif // COMMUNITYREPOMODEL_H
