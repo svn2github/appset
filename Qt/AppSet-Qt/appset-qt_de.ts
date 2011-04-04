@@ -153,22 +153,12 @@ Autor: Simone Tobia</translation>
         <translation>Nur erneuerbare Pakete anzeigen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1070"/>
-        <source>List Installed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1142"/>
-        <source>Searching...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.ui" line="1577"/>
         <source>Backend&apos;s output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1607"/>
+        <location filename="mainwindow.ui" line="1604"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -177,12 +167,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1632"/>
+        <location filename="mainwindow.ui" line="1629"/>
         <source>Wait for the end of operations in order to continue ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1659"/>
+        <location filename="mainwindow.ui" line="1656"/>
         <source>Read the backend&apos;s output and click Continue</source>
         <translation type="unfinished"></translation>
     </message>
@@ -245,8 +235,18 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="1070"/>
+        <source>List Installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.ui" line="1115"/>
         <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1142"/>
+        <source>Searching...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -310,12 +310,12 @@ p, li { white-space: pre-wrap; }
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1746"/>
+        <location filename="mainwindow.ui" line="1743"/>
         <source>About Qt...</source>
         <translation>Über Qt ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1755"/>
+        <location filename="mainwindow.ui" line="1752"/>
         <source>About AppSet</source>
         <translation>Über AppSet</translation>
     </message>
@@ -348,7 +348,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="69"/>
         <location filename="mainwindow.cpp" line="1552"/>
         <source>Repository</source>
-        <translation type="unfinished"></translation>
+        <translation>Repository</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="75"/>
@@ -397,7 +397,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="142"/>
         <location filename="mainwindow.cpp" line="345"/>
         <source>Open local package</source>
-        <translation type="unfinished"></translation>
+        <translation>Öffne lokales Paket</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="145"/>
@@ -422,22 +422,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="347"/>
         <source>Package files</source>
-        <translation type="unfinished"></translation>
+        <translation>Paketdateien</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="371"/>
         <source>Error loading the specified package file!</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Laden der ausgewählten Paketdatei!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="372"/>
         <source>The file</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Datei</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="372"/>
         <source>doesn&apos;t seems to be a valid package!</source>
-        <translation type="unfinished"></translation>
+        <translation>scheint kein gültiges Paket zu sein!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="503"/>
@@ -447,11 +447,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="1069"/>
         <source>Are you sure to upgrade ALL external packages?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1891"/>
-        <source>Loading packages...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -520,7 +515,7 @@ Autor: Simone Tobia</translation>
         <translation>Alle Vorgänge wurden erfolgreich erledigt!</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1682"/>
+        <location filename="mainwindow.ui" line="1679"/>
         <location filename="mainwindow.cpp" line="796"/>
         <source>Continue</source>
         <translation>Weiter</translation>
@@ -679,6 +674,11 @@ Möchten Sie trotzdem weitermachen?</translation>
         <translation>DB ERNEUERT!</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="1891"/>
+        <source>Loading packages...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="1961"/>
         <source>PARSING INSTALLED: </source>
         <translation>VERARBEITE INSTALLIERTE PAKETE: </translation>
@@ -716,7 +716,7 @@ Möchten Sie trotzdem weitermachen?</translation>
     <message>
         <location filename="options.ui" line="112"/>
         <source>Updates control interval (min)</source>
-        <translation>Erneuerungen-Überprüfungsinterval (min)</translation>
+        <translation>Erneuerungen-Überprüfungsintervall (min)</translation>
     </message>
     <message>
         <location filename="options.ui" line="122"/>
@@ -746,12 +746,12 @@ Möchten Sie trotzdem weitermachen?</translation>
     <message>
         <location filename="options.ui" line="217"/>
         <source>Enable countdown to auto-confirm changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch Veränderungen akzeptieren</translation>
     </message>
     <message>
         <location filename="options.ui" line="231"/>
         <source>Show repository column in packages table</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige Repository-Spalte in der Pakettabelle</translation>
     </message>
     <message>
         <location filename="options.ui" line="140"/>
@@ -766,7 +766,7 @@ Möchten Sie trotzdem weitermachen?</translation>
     <message>
         <location filename="options.ui" line="52"/>
         <source>Deskop default browser</source>
-        <translation>Standart Webbrowser</translation>
+        <translation>Standard-Webbrowser</translation>
     </message>
     <message>
         <location filename="options.ui" line="61"/>

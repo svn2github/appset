@@ -153,22 +153,12 @@ Author: Simone Tobia</translation>
         <translation>Toon enkel opwaardeerbare pakketten</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1070"/>
-        <source>List Installed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1142"/>
-        <source>Searching...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.ui" line="1577"/>
         <source>Backend&apos;s output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1607"/>
+        <location filename="mainwindow.ui" line="1604"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -177,12 +167,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1632"/>
+        <location filename="mainwindow.ui" line="1629"/>
         <source>Wait for the end of operations in order to continue ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1659"/>
+        <location filename="mainwindow.ui" line="1656"/>
         <source>Read the backend&apos;s output and click Continue</source>
         <translation type="unfinished"></translation>
     </message>
@@ -245,8 +235,18 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="1070"/>
+        <source>List Installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.ui" line="1115"/>
         <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1142"/>
+        <source>Searching...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -310,12 +310,12 @@ p, li { white-space: pre-wrap; }
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1746"/>
+        <location filename="mainwindow.ui" line="1743"/>
         <source>About Qt...</source>
         <translation>Over Qt...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1755"/>
+        <location filename="mainwindow.ui" line="1752"/>
         <source>About AppSet</source>
         <translation>Over AppSet</translation>
     </message>
@@ -348,7 +348,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="69"/>
         <location filename="mainwindow.cpp" line="1552"/>
         <source>Repository</source>
-        <translation type="unfinished"></translation>
+        <translation>Repository</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="75"/>
@@ -450,11 +450,6 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1891"/>
-        <source>Loading packages...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="1973"/>
         <source>Searching correspondeces...</source>
         <translation type="unfinished"></translation>
@@ -519,7 +514,7 @@ Author: Simone Tobia</translation>
         <translation>Alle bewerkingen zijn succesvol afgerond!</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1682"/>
+        <location filename="mainwindow.ui" line="1679"/>
         <location filename="mainwindow.cpp" line="796"/>
         <source>Continue</source>
         <translation>Verder gaan</translation>
@@ -679,6 +674,11 @@ Wilt u toch verder gaan?</translation>
         <translation>DB OPGEWAARDEERD!</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="1891"/>
+        <source>Loading packages...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="1961"/>
         <source>PARSING INSTALLED: </source>
         <translatorcomment>Ik vind geen geschikte vertaling voor parsing :(</translatorcomment>
@@ -747,12 +747,12 @@ Wilt u toch verder gaan?</translation>
     <message>
         <location filename="options.ui" line="217"/>
         <source>Enable countdown to auto-confirm changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Aftellen inschakelen voor het auto-bevestigen van veranderingen</translation>
     </message>
     <message>
         <location filename="options.ui" line="231"/>
         <source>Show repository column in packages table</source>
-        <translation type="unfinished"></translation>
+        <translation>Repositorykolom tonen in pakkettabellen</translation>
     </message>
     <message>
         <location filename="options.ui" line="140"/>

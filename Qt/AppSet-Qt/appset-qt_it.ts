@@ -168,7 +168,7 @@ Autore: Simone Tobia</translation>
         <translation>Output del backend:</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1607"/>
+        <location filename="mainwindow.ui" line="1604"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -181,12 +181,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Attesa dell&apos;inizializzazione del backend...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1632"/>
+        <location filename="mainwindow.ui" line="1629"/>
         <source>Wait for the end of operations in order to continue ...</source>
         <translation>Attendi la fine delle operazioni per poter continuare...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1659"/>
+        <location filename="mainwindow.ui" line="1656"/>
         <source>Read the backend&apos;s output and click Continue</source>
         <translation>Leggi l&apos;output del backend e fai click su Continua</translation>
     </message>
@@ -318,12 +318,12 @@ p, li { white-space: pre-wrap; }
         <translation>Informazioni</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1746"/>
+        <location filename="mainwindow.ui" line="1743"/>
         <source>About Qt...</source>
         <translation>Informazioni su Qt...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1755"/>
+        <location filename="mainwindow.ui" line="1752"/>
         <source>About AppSet</source>
         <translation>Informazioni su AppSet</translation>
     </message>
@@ -616,7 +616,7 @@ Autore: Simone Tobia</translation>
         <translation>Tutte le operazioni completate con successo!</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1682"/>
+        <location filename="mainwindow.ui" line="1679"/>
         <location filename="mainwindow.cpp" line="796"/>
         <source>Continue</source>
         <translation>Continua</translation>
