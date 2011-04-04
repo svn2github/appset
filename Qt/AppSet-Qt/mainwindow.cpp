@@ -230,12 +230,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->backGroup->setHidden(true);
 
 #ifdef unix
+    ui->tabWidget->setTabText(2, QString(((AS::QTNIXEngine*)as)->getCommunityName().c_str()));
+
+    QSplitter *splitter2 = new QSplitter(ui->tabCommunity);
+    ui->contents->removeWidget(ui->extraInfoGroupBox_2);
+    ui->contents->removeWidget(ui->groupCom);
+    ui->tabCommunity->layout()->addWidget(splitter2);
+    splitter2->addWidget(ui->groupCom);
+    splitter2->addWidget(ui->extraInfoGroupBox_2);
+    splitter2->setOrientation(Qt::Vertical);
     if(((AS::QTNIXEngine*)as)->isCommunityEnabled()){
 
         asComThread = new AsThread(as);
-        connect(asComThread,SIGNAL(finished()),SLOT(comOpFinished()));
-
-        ui->tabWidget->setTabText(2, QString(((AS::QTNIXEngine*)as)->getCommunityName().c_str()));
+        connect(asComThread,SIGNAL(finished()),SLOT(comOpFinished()));        
 
         QStringList headers;
         headers << tr("S") << tr("Name") << tr("Installed Version") << tr("Last Version") << tr("Description");
@@ -245,13 +252,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
         ui->tableCommunity->setColumnWidth(0,24);
 
-        QSplitter *splitter2 = new QSplitter(ui->tabCommunity);
-        ui->contents->removeWidget(ui->extraInfoGroupBox_2);
-        ui->contents->removeWidget(ui->groupCom);
-        ui->tabCommunity->layout()->addWidget(splitter2);
-        splitter2->addWidget(ui->groupCom);
-        splitter2->addWidget(ui->extraInfoGroupBox_2);
-        splitter2->setOrientation(Qt::Vertical);
 
         QList<int> sizes;
         sizes << 250 << 180;
@@ -284,7 +284,13 @@ MainWindow::MainWindow(QWidget *parent) :
         connect(crm,SIGNAL(dataUpdated()),ui->Searching,SLOT(hide()));
         connect(ui->comInstalled,SIGNAL(clicked()),crm,SLOT(listInstalled()));
     }else{
-        ui->tabWidget->removeTab(2);        
+        //ui->tabWidget->removeTab(2);
+        splitter2->setHidden(true);
+        ui->comTools->setHidden(true);
+        QLabel *com_support=new QLabel(tr("To enable external packages support you have to install")+QString(" ")+
+                                      QString(((AS::QTNIXEngine*)as)->getCommunityToolName().c_str()),ui->tabCommunity);
+        com_support->setStyleSheet("color: rgb(170, 0, 0);font: 75 italic 14pt \"Sans Serif\";");
+        ui->tabCommunity->layout()->addWidget(com_support);
     }
 #endif
 

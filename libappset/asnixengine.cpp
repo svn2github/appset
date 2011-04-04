@@ -173,7 +173,8 @@ int AS::NIXEngine::configure(const char *confFilePath, const char *pipePath, boo
     tool_check=string("which ");
     tool_check.append(commands["community_tool"]);
     tool_check.append(" >/dev/null 2>/dev/null");
-    community_enabled=(system(tool_check.c_str())==0) && (loadConfigFile(com_path.c_str(), &community)==0);
+    bool community_tool=commands["community_tool"].find('*')==std::string::npos;
+    community_enabled=community_tool && (loadConfigFile(com_path.c_str(), &community)==0) && (system(tool_check.c_str())==0);
 
     return 0;
 }
