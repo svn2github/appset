@@ -33,6 +33,10 @@ QString AppItem::description() const{
     return m_description;
 }
 
+QString AppItem::deps() const{
+    return m_deps;
+}
+
 int AppItem::dsize() const{
     return m_dsize;
 }
@@ -80,6 +84,13 @@ void AppItem::setRepo(const QString &repo){
     if(repo!=m_status){
         m_repo=repo;
         emit repoChanged();
+    }
+}
+
+void AppItem::setDeps(const QString &deps){
+    if(deps!=m_deps){
+        m_deps=deps;
+        emit depsChanged();
     }
 }
 

@@ -1100,6 +1100,7 @@ void MainWindow::asyncFilter(QString filter){
             app->setRVersionStr(tr("Last Version"));
             app->setDSizeStr(tr("Size"));
             app->setRepoStr(tr("Repository"));
+            app->setDeps(app->status()=="Installed"||app->status()=="Remove"?tr("Required by"):tr("Requires"));
 
             appsList.append(app);
         }
@@ -1197,7 +1198,7 @@ void MainWindow::install(bool community){
                         if(!instaDeps.contains(name,pname)){
                             currentPacket=i;
                             instaDeps.insert(name, pname);
-                            this->install();
+                            this->install(true);
                         }
                     }
                 }
@@ -1210,12 +1211,10 @@ void MainWindow::install(bool community){
     applyEnabler();
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 
-    if(enhanced)asyncFilter();
+    if(enhanced && !community)asyncFilter();
 }
 
 void MainWindow::remove(bool community){
-    if(community)return;
-
     Package p;
     QStringList req;
     p.setName(ui->tableWidget->item(currentPacket,2)->text().trimmed().toAscii().data());
@@ -1250,7 +1249,7 @@ void MainWindow::remove(bool community){
                 if(ui->tableWidget->item(i,2)->text()==cur){
                     currentPacket=i;
                     if(!remDeps.contains(cur,pname)) remDeps.insert(cur, pname);
-                    this->remove();
+                    this->remove(true);
                 }
             }
         }
@@ -1260,11 +1259,10 @@ void MainWindow::remove(bool community){
 
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 
-    if(enhanced)asyncFilter();
+    if(enhanced && !community)asyncFilter();
 }
 
 void MainWindow::upgrade(bool community){
-    if(community)return;
     ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(style()->standardIcon(QStyle::SP_ArrowUp),"Upgrade"));
     modified++;
 
@@ -1279,7 +1277,7 @@ void MainWindow::upgrade(bool community){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
                     if(ui->tableWidget->item(i,2)->toolTip()==name){
                         currentPacket=i;
-                        this->install();
+                        this->install(true);
                     }
                 }
             }
@@ -1293,11 +1291,10 @@ void MainWindow::upgrade(bool community){
 
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 
-    if(enhanced)asyncFilter();
+    if(enhanced && !community)asyncFilter();
 }
 
 void MainWindow::notInstall(bool community){
-    if(community)return;
     QString dname =  ui->tableWidget->item(currentPacket,2)->toolTip();
     QList<QString> requirers = instaDeps.values(dname);
 
@@ -1324,7 +1321,7 @@ void MainWindow::notInstall(bool community){
                     break;
                 }
             }
-            this->notInstall();
+            this->notInstall(true);
         }
     }
 
@@ -1363,7 +1360,7 @@ void MainWindow::notInstall(bool community){
                             instaDeps.remove(name,dname);
                             if(!isExpert || resp == QMessageBox::Yes){
                                 currentPacket = i;
-                                this->notInstall();
+                                this->notInstall(true);
                             }
                         }
                     }
@@ -1378,11 +1375,10 @@ void MainWindow::notInstall(bool community){
 
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 
-    if(enhanced)asyncFilter();
+    if(enhanced && !community)asyncFilter();
 }
 
 void MainWindow::notRemove(bool community){
-    if(community)return;
     QString dname =  ui->tableWidget->item(currentPacket,2)->text();
     QList<QString> requirers = remDeps.values(dname);
 
@@ -1409,7 +1405,7 @@ void MainWindow::notRemove(bool community){
                     break;
                 }
             }
-            this->notRemove();
+            this->notRemove(true);
         }
     }
 
@@ -1448,7 +1444,7 @@ void MainWindow::notRemove(bool community){
                             remDeps.remove(name,dname);
                             if(!isExpert || resp == QMessageBox::Yes){
                                 currentPacket = i;
-                                this->notRemove();
+                                this->notRemove(true);
                             }
                         }
                     }
@@ -1462,11 +1458,10 @@ void MainWindow::notRemove(bool community){
     applyEnabler();
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
 
-    if(enhanced)asyncFilter();
+    if(enhanced && !community)asyncFilter();
 }
 
 void MainWindow::notUpgrade(bool community){
-    if(community)return;
     ui->tableWidget->setItem(currentPacket,0,new QTableWidgetItem(QIcon(":pkgstatus/upgrade.png"),"Upgradable"));
     modified--;
     applyEnabler();
@@ -1621,6 +1616,34 @@ void MainWindow::confirm(){
     }
 }
 
+QString MainWindow::getDeps(QString pname, bool remote){
+    QString ret;
+    AS::Package p(!remote);
+    p.setName(pname.trimmed().toAscii().data());
+    if((pkgs = as->checkDeps(&p,remote))){
+        for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
+            QString name;
+            if(p.isInstalled())
+                name = QString((*it)->getName().c_str()).trimmed();
+            else
+                name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
+            if(name!=pname){
+                ret.append(name);
+
+                if(remote){
+                    int ksize=QString((*it)->getRemoteVersion().c_str()).toInt()/1024;
+                    ret.append(QString(" (")+QString::number(ksize)+QString(" KB)"));
+                }
+
+                ret.append("\n");
+            }
+            delete(*it);
+        }
+        delete pkgs;
+    }
+    return ret;
+}
+
 void MainWindow::changeStatus(int row, int col){    
     if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2)){
         if(ui->urlpre->isChecked() && ui->webView && ui->webView->isEnabled()){
@@ -1640,38 +1663,15 @@ void MainWindow::changeStatus(int row, int col){
         if(!(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove"))
             ui->infoText->append(QString("<b>"+tr("Size")+QString(": </b>"))+ui->tableWidget->item(row,7)->text()+" KB");
 
-        ui->infoText->append(QString("<b>"+tr("URL")+QString(": </b>"))+ui->tableWidget->item(row,6)->text());
+        ui->infoText->append(QString("<b>")+tr("URL")+QString(": </b>")+ui->tableWidget->item(row,6)->text());
         ui->infoText->append(QString("<a href=\"")+ui->tableWidget->item(row,6)->text()+QString("\" >")+QString(tr("(Watch the full site)"))+QString("</a>"));
 
         if(!(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove")){
-            ui->infoText->append(tr("<b>Requires:</b>"));
-            if((pkgs = as->checkDeps(&p,true))){
-                for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                    QString name;
-                    name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
-                    if(name!=QString(p.getName().c_str())){
-                        ui->infoText->append(name+QString(" (")+QString::number(QString((*it)->getRemoteVersion().c_str()).toInt()/1024/1024)+QString(" MB)"));
-                    }
-                    delete(*it);
-                }
-                delete pkgs;
-            }
+            ui->infoText->append(QString("<b>")+tr("Requires")+QString(":</b>"));
+            ui->infoText->append(getDeps(p.getName().c_str(),true));
         }else{
-            ui->infoText->append(tr("<b>Required By:</b>"));
-            if((pkgs = as->checkDeps(&p,false))){
-                for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
-                    QString name;
-                    if(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove")
-                        name = QString((*it)->getName().c_str()).trimmed();
-                    else
-                        name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
-                    if(name!=QString(p.getName().c_str())){
-                        ui->infoText->append(name);
-                    }
-                    delete(*it);
-                }
-                delete pkgs;
-            }
+            ui->infoText->append(QString("<b>")+tr("Required by")+QString(":<b>"));
+            ui->infoText->append(getDeps(p.getName().c_str(),false));
         }
     }
 

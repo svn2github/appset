@@ -279,6 +279,8 @@ public slots:
 
     void resizeEvent(QResizeEvent *e);
     void saveUrlPre();
+
+    QString getDeps(QString pname, bool remote);
 private:
     QDeclarativeView *view;
     QSplitter *mainSplitter;

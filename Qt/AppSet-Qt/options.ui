@@ -317,5 +317,21 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>enhancedGraph</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>showRepos</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>23</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>59</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>

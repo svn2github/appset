@@ -88,6 +88,8 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     app.state = page.state = 'Details'
+                    var remote = app.s!="Installed" && app.s!="Remove";
+                    depsContents.text = appset.getDeps(remote?(repo+"/"+name):name, remote).replace(/\n/g,", ")
                     listView.currentIndex=index
                     if(app.s=="Remote" || app.s=="Install"){
                         lversionid.opacity=lversionstrid.opacity=0
@@ -115,7 +117,9 @@ Rectangle {
                     gr2.position=0.5
                 }
             }
-
+            Column{
+                x: 10; y: 10
+                id:topThings
             Row {
                 id: topLayout
                 x: 10; y: 10; height: appImage.height; width: parent.width
@@ -145,7 +149,7 @@ Rectangle {
                         anchors.top: name.bottom;elide:"ElideRight";color: "lightgrey" }
 
                     Row{
-                        spacing: 10
+                        spacing: 4
                         id: extraInfo
                         opacity: app.detailsOpacity
 
@@ -163,7 +167,7 @@ Rectangle {
 
                         Text {
                             text: lversionstr+":"
-                            font.pointSize: 9; font.bold: true                            
+                            font.pointSize: 9; font.bold: true
                             id: lversionstrid
                         }
 
@@ -184,6 +188,16 @@ Rectangle {
                         }
 
                         Text {
+                            text:  dsizestr+":"
+                            font.pointSize: 9; font.bold: true
+                        }
+
+                        Text {
+                            text: sizeFormat()
+                            font.pointSize: 9
+                        }
+
+                        Text {
                             text: "URL:"
                             font.pointSize: 9; font.bold: true
                         }
@@ -201,75 +215,79 @@ Rectangle {
                             }
 
                         }
-                    }                    
+                    }
 
                     Row{
                         spacing: 3;
-                        opacity: app.detailsOpacity && filterInstalled()                        
+                        opacity: app.detailsOpacity
 
                         Text {
-                            text:  dsizestr+":"
+                            text:  deps+":"
                             font.pointSize: 9; font.bold: true
                         }
 
                         Text {
-                            text: sizeFormat()
+                            text: ""
                             font.pointSize: 9
+                            wrapMode: Text.WordWrap
+                            width:  parent.parent.width-appImage.width-5
+                            id: depsContents
                         }
                     }
-
-                    Row{
-                        spacing: 3;
-                        TextButton {
-                            opacity: app.detailsOpacity && (s=="Remote")
-                            text: qsTr("Install")
-                            onClicked: {
-                                appset.setCurrentRow(i);
-                                appset.install();
-                                app.preS=app.s
-                                app.s="Install"
-                            }
-                        }
-                        TextButton {
-                            opacity: app.detailsOpacity && (s=="Upgradable" || s=="Installed")
-                            text: qsTr("Remove")
-                            onClicked: {
-                                appset.setCurrentRow(i);
-                                appset.remove();
-                                app.preS=app.s
-                                app.s="Remove"
-                            }
-                        }
-                        TextButton {
-                            opacity: app.detailsOpacity && (s=="Upgradable")
-                            text: qsTr("Upgrade")
-                            onClicked: {
-                                appset.setCurrentRow(i);
-                                appset.upgrade();
-                                app.preS=app.s
-                                app.s="Upgrade"
-                            }
-                        }
-                        TextButton {
-                            opacity: app.detailsOpacity && (s=="Install" || s=="Remove" || s=="Upgrade")
-                            text: qsTr("Cancel")
-                            onClicked: {
-                                appset.setCurrentRow(i);
-                                if(app.s=="Upgrade")appset.notUpgrade()
-                                else if(app.s=="Remove")appset.notRemove()
-                                else if(app.s=="Install")appset.notInstall()
-                                app.s=app.preS
-                            }
-                        }
-                    }
-
                 }
-            }            
+            }
+            Row{
+                id:buttons
+                spacing: 3;
+                x: 10; y: 10
+                TextButton {
+                    opacity: app.detailsOpacity && (s=="Remote")
+                    text: qsTr("Install")
+                    onClicked: {
+                        appset.setCurrentRow(i);
+                        appset.install();
+                        app.preS=app.s
+                        app.s="Install"
+                    }
+                }
+                TextButton {
+                    opacity: app.detailsOpacity && (s=="Upgradable" || s=="Installed")
+                    text: qsTr("Remove")
+                    onClicked: {
+                        appset.setCurrentRow(i);
+                        appset.remove();
+                        app.preS=app.s
+                        app.s="Remove"
+                    }
+                }
+                TextButton {
+                    opacity: app.detailsOpacity && (s=="Upgradable")
+                    text: qsTr("Upgrade")
+                    onClicked: {
+                        appset.setCurrentRow(i);
+                        appset.upgrade();
+                        app.preS=app.s
+                        app.s="Upgrade"
+                    }
+                }
+                TextButton {
+                    opacity: app.detailsOpacity && (s=="Install" || s=="Remove" || s=="Upgrade")
+                    text: qsTr("Cancel")
+                    onClicked: {
+                        appset.setCurrentRow(i);
+                        if(app.s=="Upgrade")appset.notUpgrade()
+                        else if(app.s=="Remove")appset.notRemove()
+                        else if(app.s=="Install")appset.notInstall()
+                        app.s=app.preS
+                    }
+                }
+            }
+            }
 
             Item {
                 id: details
-                x: 10; width: parent.width - 20
-                anchors { top: topLayout.bottom; topMargin: 10; bottom: parent.bottom; bottomMargin: 10 }
+                x: 5; width: parent.width - 20
+                anchors { top: topThings.bottom; topMargin: 10; bottom: parent.bottom; bottomMargin: 10 }
                 opacity: app.detailsOpacity
 
 
@@ -308,7 +326,7 @@ Rectangle {
                         anchors.fill: parent
                         onClicked: flick.contentY+=52;
                     }
-                }                
+                }
             }
 
             TextButton {
@@ -347,7 +365,8 @@ Rectangle {
     }
 
     function closeDetails(){
-        listView.currentItem.state=""
+        if(listView.count)
+            listView.currentItem.state=""
     }
 
     GridView {

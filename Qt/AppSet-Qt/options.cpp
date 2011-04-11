@@ -14,6 +14,8 @@ Options::Options(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->showRepos->setDisabled(ui->enhancedGraph->isChecked());
+
     extraInfo=true;
 
     writeConfigFile(false);

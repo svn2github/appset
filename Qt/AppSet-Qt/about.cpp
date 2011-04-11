@@ -6,6 +6,8 @@ About::About(QWidget *parent) :
     ui(new Ui::About)
 {
     ui->setupUi(this);
+
+    ui->webView->setUrl(QUrl("http://appset.altervista.org/index.htm"));
 }
 
 About::~About()

@@ -191,7 +191,7 @@ int AS::NIXEngine::update(){
 }
 
 int AS::NIXEngine::toolUpgrade(){
-    return execCmd(commands["tool_post_up_cmd."]);
+    return execCmd(commands["tool_post_up_cmd"]);
 }
 
 int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){

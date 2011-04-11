@@ -15,6 +15,7 @@ class AppItem : public QObject
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
     Q_PROPERTY(int dsize READ dsize WRITE setDSize NOTIFY dSizeChanged)
     Q_PROPERTY(QString repo READ repo WRITE setRepo NOTIFY repoChanged)
+    Q_PROPERTY(QString deps READ deps WRITE setDeps NOTIFY depsChanged)
 
     Q_PROPERTY(int i READ i WRITE setI NOTIFY iChanged)
 
@@ -50,6 +51,9 @@ public:
     QString repo() const;
     void setRepo(const QString &repo);
 
+    QString deps() const;
+    void setDeps(const QString &deps);
+
     int i() const;
     void setI(const int &i);
 
@@ -74,6 +78,7 @@ signals:
     void iChanged();
     void dSizeChanged();
     void repoChanged();
+    void depsChanged();
 
     void lversionstrChanged();
     void rversionstrChanged();
@@ -89,6 +94,7 @@ private:
     int m_index;
     int m_dsize;
     QString m_repo;
+    QString m_deps;
 
     QString m_lversionstr;
     QString m_rversionstr;

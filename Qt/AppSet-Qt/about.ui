@@ -144,7 +144,7 @@ Author: Simone Tobia</string>
         </property>
         <property name="url">
          <url>
-          <string>http://appset.altervista.org/index.htm</string>
+          <string>about:blank</string>
          </url>
         </property>
        </widget>
