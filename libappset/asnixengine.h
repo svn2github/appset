@@ -62,6 +62,7 @@ namespace AS{
         virtual std::list<Package*>* queryRemote(unsigned flags, Package *package=0);
         virtual std::list<Package*>* checkDeps(Package *package, bool install, bool upgrade=false, bool local=false);
         virtual int getProgressSize(Package *package, bool deps=false);
+        virtual int toolUpgrade();
 
         virtual int removeLock();
         virtual int cacheSize();

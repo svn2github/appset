@@ -19,6 +19,7 @@ tool_lock_file=/var/lib/pacman/db.lck
 install_local=pacman -U --noconfirm
 local_ext=.pkg.tar.xz
 check_local_deps=pacman -Up --print-format "%r/%n %s"
+tool_post_up_cmd=pacman-db-upgrade
 
 query_filter_regexp=^[^ ]+ [^ ]+$
 query_repo_sep=/

@@ -54,6 +54,7 @@ AS::NIXEngine::NIXEngine(){
     commands.insert(StrPair("download_path",""));
     commands.insert(StrPair("tool_lock_file",""));
     commands.insert(StrPair("clean_cache",""));
+    commands.insert(StrPair("tool_post_up_cmd",""));
 
     commands.insert(StrPair("install_local",""));
     commands.insert(StrPair("local_ext",""));
@@ -187,6 +188,10 @@ int AS::NIXEngine::saveConfig(const char *distName, const char *toolName, const 
 
 int AS::NIXEngine::update(){
     return execCmd(commands["update"]);
+}
+
+int AS::NIXEngine::toolUpgrade(){
+    return execCmd(commands["tool_post_up_cmd."]);
 }
 
 int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){

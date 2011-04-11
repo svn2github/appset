@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/appsView">
+        <file>AppsView.qml</file>
+        <file>TextButton.qml</file>
+        <file>moreUp.png</file>
+        <file>moreDown.png</file>
+        <file alias="Installed">appset.png</file>
+        <file alias="Remote">uninstalled.png</file>
+        <file alias="Upgrade">upgradable.png</file>
+        <file alias="Install">appInstall.png</file>
+        <file alias="Remove">appRemove.png</file>
+        <file alias="Upgradable">appUpgradable.png</file>
+    </qresource>
+</RCC>

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network xml webkit
+QT       += core gui network xml webkit declarative
 
 TARGET = appset-qt
 TEMPLATE = app
@@ -13,11 +13,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     options.cpp \
-    about.cpp
+    about.cpp \
+    appitem.cpp
 
 HEADERS  += mainwindow.h \
     options.h \
-    about.h
+    about.h \
+    appitem.h
 
 FORMS    += mainwindow.ui \
     options.ui \
@@ -28,11 +30,13 @@ LIBS += -L../../libappset -L../libappset-qt -lappset -lappset-qt
 
 RESOURCES += \
     icons.qrc \
-    Langs.qrc
+    Langs.qrc \
+    QML.qrc
 
 OTHER_FILES += \
     appset-launch.sh \
-    appset-qt.desktop
+    appset-qt.desktop \
+    AppsView.qml
 
 unix: QMAKE_COPY = "cp -fp"
 

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
+    <width>1058</width>
     <height>540</height>
    </rect>
   </property>
@@ -1040,6 +1040,21 @@
                 </item>
                </layout>
               </item>
+              <item>
+               <widget class="QWidget" name="anim" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_14"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
              </layout>
             </widget>
             <widget class="QWidget" name="tabCommunity">
@@ -1173,7 +1188,7 @@
                    <item>
                     <widget class="QTableView" name="tableCommunity">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -1882,6 +1897,22 @@ p, li { white-space: pre-wrap; }
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>urlpre</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveUrlPre()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>889</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>528</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>showGames()</slot>
@@ -1891,5 +1922,6 @@ p, li { white-space: pre-wrap; }
   <slot>showInternet()</slot>
   <slot>showOffice()</slot>
   <slot>showGames(bool)</slot>
+  <slot>saveUrlPre()</slot>
  </slots>
 </ui>

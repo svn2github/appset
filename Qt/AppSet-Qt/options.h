@@ -24,10 +24,12 @@ public:
     bool statShow;
     bool confirmCountdown;
     bool showRepos;
+    bool enhanced;
+    bool extraInfo;
 
     int updelay;
 
-    void writeConfigFile(bool overwrite=true);
+    void writeConfigFile(bool overwrite=true, bool extraInfo=false);
 
 private:
     Ui::Options *ui;

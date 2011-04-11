@@ -14,10 +14,12 @@ Options::Options(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    extraInfo=true;
+
     writeConfigFile(false);
 }
 
-void Options::writeConfigFile(bool overwrite){
+void Options::writeConfigFile(bool overwrite, bool ei){
     if(overwrite && QFile::exists(F_CONF_NAME))
         QFile::remove(F_CONF_NAME);
 
@@ -81,6 +83,17 @@ void Options::writeConfigFile(bool overwrite){
         conf.write((QString::number((int)ui->showRepos->isChecked())+QString("\n")).toAscii());
         showRepos=ui->showRepos->isChecked();
     }
+    if(found>8)
+        enhanced=configs[8].toShort();
+    else{
+        conf.write((QString::number((int)ui->enhancedGraph->isChecked())+QString("\n")).toAscii());
+        enhanced=ui->enhancedGraph->isChecked();
+    }
+    if(found>9 && !ei)
+        extraInfo=configs[9].toShort();
+    else{
+        conf.write((QString::number((int)extraInfo)+QString("\n")).toAscii());
+    }
 
 
     ui->checkBox->setChecked(startfullscreen);
@@ -92,6 +105,8 @@ void Options::writeConfigFile(bool overwrite){
     ui->statShow->setChecked(statShow);
     ui->confirmCountdown->setChecked(confirmCountdown);
     ui->showRepos->setChecked(showRepos);
+    ui->enhancedGraph->setChecked(enhanced);
+    ui->standardGraph->setChecked(!enhanced);
 
     conf.close();
 }

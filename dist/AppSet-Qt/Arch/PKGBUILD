@@ -12,7 +12,7 @@ optdepends=('packer: for AUR support')
 install=${pkgname}.install
 changelog=$pkgname.changelog
 source=(http://sourceforge.net/projects/appset/files/appset-qt/0.4/$pkgver/$pkgname-$pkgver-sources.tar.gz/download)
-md5sums=()
+md5sums=(4d0500ae33c8250dfa24c9b696ba7e30)
 
 build() {
   cd $srcdir/$pkgname-$pkgver-sources

@@ -169,6 +169,15 @@ public:
 
 #include "options.h"
 
+#include "appitem.h"
+#include <qdeclarativeengine.h>
+#include <qdeclarativecontext.h>
+#include <qdeclarative.h>
+#include <qdeclarativeitem.h>
+#include <qdeclarativeview.h>
+
+#include <QSplitter>
+
 QT_BEGIN_NAMESPACE
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -265,7 +274,15 @@ public slots:
     void showMenu(const QModelIndex & newSelection);
 
     void clearComLine();
+
+    void setCurrentRow(int row){currentPacket=row;}
+
+    void resizeEvent(QResizeEvent *e);
+    void saveUrlPre();
 private:
+    QDeclarativeView *view;
+    QSplitter *mainSplitter;
+
     Ui::MainWindow *ui;
 
     AS::Engine *as;
@@ -365,6 +382,10 @@ private:
 
     QDialog *searchingDialog;
 
+    QList<QObject*> appsList;
+    bool enhanced;
+
+    void upgrade_tool();
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);

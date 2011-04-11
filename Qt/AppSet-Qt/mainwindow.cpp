@@ -59,6 +59,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
+    view=0;
+
     merging = true;
 
     local=false;
@@ -203,17 +205,17 @@ MainWindow::MainWindow(QWidget *parent) :
     get(QUrl(QString(((AS::QTNIXEngine*)as)->getNewsUrl(QLocale::languageToString(QLocale::system().language()).toAscii().data()).c_str())));
     ui->treeWidget->hideColumn(0);
 
-    QSplitter *splitter = new QSplitter(ui->tabList);
+    mainSplitter = new QSplitter(ui->tabList);
     ui->contents->removeWidget(ui->extraInfoGroupBox);
     ui->contents->removeWidget(ui->tableWidget);
-    ui->tabList->layout()->addWidget(splitter);
-    splitter->addWidget(ui->tableWidget);
-    splitter->addWidget(ui->extraInfoGroupBox);
-    splitter->setOrientation(Qt::Vertical);
+    ui->tabList->layout()->addWidget(mainSplitter);
+    mainSplitter->addWidget(ui->tableWidget);
+    mainSplitter->addWidget(ui->extraInfoGroupBox);
+    mainSplitter->setOrientation(Qt::Vertical);
 
     QList<int> sizes;
     sizes << 250 << 180;
-    splitter->setSizes(sizes);
+    mainSplitter->setSizes(sizes);
 
     Options opt;
     this->sbdelay=opt.sbdelay;
@@ -224,6 +226,9 @@ MainWindow::MainWindow(QWidget *parent) :
     if(opt.startfullscreen)this->showMaximized();
     if(opt.showRepos)ui->tableWidget->showColumn(1);
     else ui->tableWidget->hideColumn(1);
+    enhanced=opt.enhanced;
+    if(enhanced)ui->urlpre->setHidden(true);
+    ui->urlpre->setChecked(opt.extraInfo);
 
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
@@ -397,6 +402,12 @@ void MainWindow::extBrowserLink(const QUrl & link){
     }
 }
 
+void MainWindow::saveUrlPre(){
+    Options opt;
+    opt.extraInfo=ui->urlpre->isChecked();
+    opt.writeConfigFile(true,true);
+}
+
 void MainWindow::showOptions(){
     Options opt;
     int res = opt.exec();
@@ -414,6 +425,18 @@ void MainWindow::showOptions(){
         else ui->statGroup->setVisible(true);
         if(opt.showRepos)ui->tableWidget->showColumn(1);
         else ui->tableWidget->hideColumn(1);
+        enhanced=opt.enhanced;
+        mainSplitter->setHidden(enhanced);
+
+        if(enhanced && !view)asyncFilter();
+        if(!enhanced && view){
+            delete view;
+            view=0;
+        }
+
+        ui->urlpre->setHidden(enhanced);
+
+        if(view)view->setVisible(enhanced);
     }
 }
 
@@ -953,10 +976,14 @@ void MainWindow::editCancel(){
 void MainWindow::markUpgrades(){
     int rows = ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
-        if(ui->tableWidget->item(i,0)->text()=="Upgradable"){
+        if(ui->tableWidget->item(i,0)->text()=="Upgradable"){            
             currentPacket=i;
             upgrade();
         }
+    }
+    for(int i=0;i<appsList.count();++i){
+        if(((AppItem*)appsList.at(i))->status()=="Upgradable")
+            ((AppItem*)appsList.at(i))->setStatus("Upgrade");
     }
 }
 
@@ -1051,7 +1078,48 @@ void MainWindow::asyncFilter(QString filter){
     pcomp->setCaseSensitivity(Qt::CaseInsensitive);
     ui->searchBar->setCompleter(pcomp);*/
 
+    if(enhanced){
+        if(view)QMetaObject::invokeMethod(view->rootObject(),"closeDetails");
+        appsList.clear();
+        for(int i=0;i<rows;++i){
+            if(ui->tableWidget->isRowHidden(i))continue;
 
+            AppItem *app = new AppItem();
+
+            app->setName(ui->tableWidget->item(i,2)->text());
+            app->setAppUrl(ui->tableWidget->item(i,6)->text());
+            app->setDescription(ui->tableWidget->item(i,5)->text());
+            app->setLVersion(ui->tableWidget->item(i,3)->text());
+            app->setRVersion(ui->tableWidget->item(i,4)->text());
+            app->setRepo(ui->tableWidget->item(i,1)->text());
+            app->setStatus(ui->tableWidget->item(i,0)->text());
+            app->setI(i);
+            app->setDSize(ui->tableWidget->item(i,7)->text().toInt());
+
+            app->setLVersionStr(tr("Installed Version"));
+            app->setRVersionStr(tr("Last Version"));
+            app->setDSizeStr(tr("Size"));
+            app->setRepoStr(tr("Repository"));
+
+            appsList.append(app);
+        }
+        if(!view){
+            view=new QDeclarativeView;
+            view->rootContext()->setContextProperty("appsModel",QVariant::fromValue(appsList));
+            view->rootContext()->setContextProperty("appset",this);
+            view->setSource(QUrl("qrc:/appsView/AppsView.qml"));
+            view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+            mainSplitter->setHidden(true);
+            ui->anim->layout()->addWidget(view);
+        }else{
+            view->rootContext()->setContextProperty("appsModel",QVariant::fromValue(appsList));
+        }
+    }
+
+}
+
+void MainWindow::resizeEvent(QResizeEvent *e){
+    if(view)QMetaObject::invokeMethod(view->rootObject(),"closeDetails");
 }
 
 void MainWindow::filterPressed(){
@@ -1125,10 +1193,12 @@ void MainWindow::install(bool community){
             QString pname = QString(p.getName().c_str());
             if(name!=pname){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
-                    if(ui->tableWidget->item(i,2)->toolTip()==name){
-                        currentPacket=i;
-                        if(!instaDeps.contains(name,pname))instaDeps.insert(name, pname);
-                        this->install();
+                    if(ui->tableWidget->item(i,2)->toolTip()==name){                        
+                        if(!instaDeps.contains(name,pname)){
+                            currentPacket=i;
+                            instaDeps.insert(name, pname);
+                            this->install();
+                        }
                     }
                 }
             }
@@ -1139,6 +1209,8 @@ void MainWindow::install(bool community){
 
     applyEnabler();
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
+
+    if(enhanced)asyncFilter();
 }
 
 void MainWindow::remove(bool community){
@@ -1187,6 +1259,8 @@ void MainWindow::remove(bool community){
     }
 
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
+
+    if(enhanced)asyncFilter();
 }
 
 void MainWindow::upgrade(bool community){
@@ -1218,6 +1292,8 @@ void MainWindow::upgrade(bool community){
     applyEnabler();
 
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
+
+    if(enhanced)asyncFilter();
 }
 
 void MainWindow::notInstall(bool community){
@@ -1301,6 +1377,8 @@ void MainWindow::notInstall(bool community){
     applyEnabler();
 
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
+
+    if(enhanced)asyncFilter();
 }
 
 void MainWindow::notRemove(bool community){
@@ -1383,6 +1461,8 @@ void MainWindow::notRemove(bool community){
 
     applyEnabler();
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
+
+    if(enhanced)asyncFilter();
 }
 
 void MainWindow::notUpgrade(bool community){
@@ -1543,7 +1623,7 @@ void MainWindow::confirm(){
 
 void MainWindow::changeStatus(int row, int col){    
     if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2)){
-        if(ui->webView && ui->webView->isEnabled()){
+        if(ui->urlpre->isChecked() && ui->webView && ui->webView->isEnabled()){
             ui->webView->stop();
             ui->webView->setUrl(QUrl::fromUserInput(ui->tableWidget->item(row,6)->text().trimmed()));
         }
@@ -1558,9 +1638,9 @@ void MainWindow::changeStatus(int row, int col){
             ui->infoText->append(QString("<b>")+tr("Repository")+QString(": </b>")+ui->tableWidget->item(row,1)->text());
 
         if(!(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove"))
-            ui->infoText->append(QString(tr("<b>Size: </b>"))+ui->tableWidget->item(row,7)->text()+" KB");
+            ui->infoText->append(QString("<b>"+tr("Size")+QString(": </b>"))+ui->tableWidget->item(row,7)->text()+" KB");
 
-        ui->infoText->append(QString(tr("<b>URL: </b>"))+ui->tableWidget->item(row,6)->text());
+        ui->infoText->append(QString("<b>"+tr("URL")+QString(": </b>"))+ui->tableWidget->item(row,6)->text());
         ui->infoText->append(QString("<a href=\"")+ui->tableWidget->item(row,6)->text()+QString("\" >")+QString(tr("(Watch the full site)"))+QString("</a>"));
 
         if(!(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove")){
@@ -1866,7 +1946,6 @@ void MainWindow::showNotInstalled(bool checked){
 
     asyncFilter();
 }
-
 void MainWindow::addRows(bool checked){
     if(!checked) return;
 
@@ -1908,7 +1987,7 @@ void MainWindow::addRows(bool checked){
 
     std::list<AS::Package*> *ipkgs=new std::list<AS::Package*>();
 
-
+    bool tool_up=false;
 
     if(!merging || (pkgs=as->queryRemote(as_MERGE_QUERIES))==0){
         StatusBarUpdater sbu(ui->statusBar);
@@ -1941,7 +2020,8 @@ void MainWindow::addRows(bool checked){
             newItem = new QTableWidgetItem(pkg->getName().c_str());
             newItem->setToolTip((QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())));
             ui->tableWidget->setItem(i,2, newItem);
-            newItem = new QTableWidgetItem(pkg->getRemoteVersion().c_str());
+            newItem = new QTableWidgetItem(pkg->getRemoteVersion().c_str());            
+            ui->tableWidget->setItem(i,3, new QTableWidgetItem(""));
             ui->tableWidget->setItem(i,4, newItem);
             newItem = new QTableWidgetItem(pkg->getDescription().c_str());
             ui->tableWidget->setItem(i,5, newItem);
@@ -1982,7 +2062,10 @@ void MainWindow::addRows(bool checked){
         rows = ui->tableWidget->rowCount();
         QList<int> toRemove;
         for(std::list<Package*>::iterator it=pkgs->begin(); it!=pkgs->end(); it++){
-            Package *pkg = *it;            
+            Package *pkg = *it;
+
+            newItem = new QTableWidgetItem("");
+            ui->tableWidget->setItem(i,1, newItem);
 
             int found=-1;
             //QTableWidgetItem* versionMatch;
@@ -2022,9 +2105,9 @@ void MainWindow::addRows(bool checked){
                 ui->tableWidget->insertRow(i);
                 newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
                 newItem->setToolTip(tr("Installed (external)"));
-                ui->tableWidget->setItem(i,0, newItem);
-                //newItem = new QTableWidgetItem(pkg->getRepository().c_str());
-                //ui->tableWidget->setItem(i,1, newItem);
+                ui->tableWidget->setItem(i,0, newItem);                
+                newItem = new QTableWidgetItem(pkg->getRepository().c_str());
+                ui->tableWidget->setItem(i,1, newItem);
                 newItem = new QTableWidgetItem(pkg->getName().c_str());
                 newItem->setToolTip((QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())));
                 ui->tableWidget->setItem(i,2, newItem);
@@ -2090,6 +2173,11 @@ void MainWindow::addRows(bool checked){
                         ups->remove(*upsit);
 
                         upack++;
+
+                        if(ui->tableWidget->item(i,2)->text()==QString(((AS::QTNIXEngine*)as)->getTool().c_str())){
+                            tool_up=true;
+                            currentPacket=i;
+                        }
                     }
 
                     if(ups)upsit=ups->begin();
@@ -2136,6 +2224,11 @@ void MainWindow::addRows(bool checked){
                     delete *upsit;
                     ups->remove(*upsit);
                     upack++;
+
+                    if(((AS::QTNIXEngine*)as)->getTool().compare(pkg->getName()) == 0){
+                        tool_up = true;
+                        currentPacket = i;
+                    }
                 }else{
                     newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
                     newItem->setToolTip(tr("Installed"));
@@ -2149,9 +2242,11 @@ void MainWindow::addRows(bool checked){
             ui->tableWidget->setItem(i,0, newItem);
 
             if(!installed){
-                newItem = new QTableWidgetItem(pkg->getRepository().c_str());
-                ui->tableWidget->setItem(i,1, newItem);
+                newItem = new QTableWidgetItem(pkg->getRepository().c_str());                
+            }else{
+                newItem = new QTableWidgetItem("");
             }
+            ui->tableWidget->setItem(i,1, newItem);
 
             newItem = new QTableWidgetItem(pkg->getName().c_str());
             newItem->setToolTip((QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())));
@@ -2160,6 +2255,8 @@ void MainWindow::addRows(bool checked){
             if(pkg->isInstalled()){
                 newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
                 ui->tableWidget->setItem(i,3, newItem);
+            }else{
+                ui->tableWidget->setItem(i,3, new QTableWidgetItem(""));
             }
 
             if(pkg->getRemoteVersion().compare("NO INFO")){
@@ -2243,8 +2340,44 @@ void MainWindow::addRows(bool checked){
     if(!((AS::QTNIXEngine*)as)->isCommunityEnabled())
     ui->statusBar->showMessage(tr("To enable external packages support you have to install")+QString(" ")+
                                QString(((AS::QTNIXEngine*)as)->getCommunityToolName().c_str()),5000);
+    else
+        ui->statusBar->showMessage("");
+
+
 
     //XXX Check tool status
+    if(tool_up) upgrade_tool();
+
+    loadingStatus->setText("");
+}
+
+void MainWindow::upgrade_tool(){
+#ifdef unix
+    QMessageBox con;
+    con.setText(tr("The main backend")+QString(" (")+QString(((AS::QTNIXEngine*)as)->getTool().c_str())+QString(") ")+
+                tr("is not up to date. You have to upgrade it in order to continue with other operations.")+QString("\n")+
+                tr("Do you want to proceed now?"));
+    con.setIcon(QMessageBox::Question);
+    con.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+
+    if(con.exec()==QMessageBox::Yes){
+        bool preExpert=isExpert;
+        isExpert=true;
+        upgrade();
+        confirm();
+        editConfirm();
+        isExpert=preExpert;
+        loadingStatus->setText(tr("Running backend's post upgrade command"));
+        loadingBar->show();
+        loadingBar->setValue(50);
+        ((AS::QTNIXEngine*)as)->toolUpgrade();
+        loadingStatus->setText("");
+        loadingBar->hide();
+        loadingBar->setValue(0);
+    }else{
+        QCoreApplication::quit();
+    }
+#endif
 }
 
 #include <sys/types.h>
