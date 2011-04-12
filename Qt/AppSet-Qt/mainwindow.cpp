@@ -978,13 +978,15 @@ void MainWindow::markUpgrades(){
     for(int i=0;i<rows;++i){
         if(ui->tableWidget->item(i,0)->text()=="Upgradable"){            
             currentPacket=i;
-            upgrade();
+            upgrade(true);
         }
     }
     for(int i=0;i<appsList.count();++i){
         if(((AppItem*)appsList.at(i))->status()=="Upgradable")
             ((AppItem*)appsList.at(i))->setStatus("Upgrade");
     }
+
+    asyncFilter();
 }
 
 void MainWindow::searchTermChanged(int x){
@@ -2312,8 +2314,10 @@ void MainWindow::addRows(bool checked){
     QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
 
     ui->showAll->setChecked(true);
-    ui->tableWidget->setSortingEnabled(true);
-    asyncFilter();
+    if(!tool_up){
+        ui->tableWidget->setSortingEnabled(true);
+        asyncFilter();
+    }
     //timer2->start();
 
     QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
