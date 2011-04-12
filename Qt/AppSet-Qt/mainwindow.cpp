@@ -1101,6 +1101,7 @@ void MainWindow::asyncFilter(QString filter){
             app->setDSizeStr(tr("Size"));
             app->setRepoStr(tr("Repository"));
             app->setDeps(app->status()=="Installed"||app->status()=="Remove"?tr("Required by"):tr("Requires"));
+            app->setCloseStr(tr("Close"));
 
             appsList.append(app);
         }

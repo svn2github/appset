@@ -109,7 +109,7 @@ void TrayIcon::checkUps(){
         Package *pp=new Package(true);
         pp->setName("");
         std::list<Package*> *pkgs = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
-        pkgs->sort(compareRepos);
+        if(pkgs && pkgs->size()>1)pkgs->sort(compareRepos);
         delete pp;
 
         if(pkgs && pkgs->size()){

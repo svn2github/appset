@@ -333,7 +333,7 @@ Rectangle {
                 y: 10
                 anchors { right: background.right; rightMargin: 10 }
                 opacity: app.detailsOpacity
-                text: qsTr("Close")
+                text: closestr
 
                 onClicked: app.state = page.state = '';
             }

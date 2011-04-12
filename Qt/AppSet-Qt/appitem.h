@@ -23,6 +23,7 @@ class AppItem : public QObject
     Q_PROPERTY(QString rversionstr READ rversionstr WRITE setRVersionStr NOTIFY rversionstrChanged)
     Q_PROPERTY(QString dsizestr READ dsizestr WRITE setDSizeStr NOTIFY dsizestrChanged)
     Q_PROPERTY(QString repostr READ repostr WRITE setRepoStr NOTIFY repostrChanged)
+    Q_PROPERTY(QString closestr READ closestr WRITE setCloseStr NOTIFY closestrChanged)
 public:
     explicit AppItem(QObject *parent = 0);
     //AppItem(const QString &name, const QString &lversion, const QString &rversion, const QString &appUrl, const QString &picture, const QString &description);
@@ -68,6 +69,9 @@ public:
 
     QString repostr() const{return m_repostr;}
     void setRepoStr(const QString &repostr){this->m_repostr=repostr;emit repostrChanged();};
+
+    QString closestr() const{return m_closestr;}
+    void setCloseStr(const QString &closestr){this->m_closestr=closestr;emit closestrChanged();};
 signals:
     void nameChanged();
     void lversionChanged();
@@ -84,6 +88,7 @@ signals:
     void rversionstrChanged();
     void dsizestrChanged();
     void repostrChanged();
+    void closestrChanged();
 private:
     QString m_name;
     QString m_lversion;
@@ -100,6 +105,7 @@ private:
     QString m_rversionstr;
     QString m_dsizestr;
     QString m_repostr;
+    QString m_closestr;
 };
 
 #endif // APPITEM_H
