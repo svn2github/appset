@@ -9,8 +9,9 @@
   -AppSet version in about dialog
   -Localization bug fixed for about dialog (automatic switch between English and Italian)
   -ExtraInfo option now is saved 
-  -Main backend (pacman) upgrade check and tool post upgrade command (pacman-db-upgrade)
+  -Main backend (pacman) upgrade check and backend post upgrade command (pacman-db-upgrade)
   -Bug fixed for dependencies check
+  -Flickering in progress window bug fixed
 
 0.4.0 :
   -Basic support to AUR using packer as backend:

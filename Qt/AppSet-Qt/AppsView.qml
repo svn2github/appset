@@ -242,7 +242,7 @@ Rectangle {
                 x: 10; y: 10
                 TextButton {
                     opacity: app.detailsOpacity && (s=="Remote")
-                    text: qsTr("Install")
+                    text: installstr
                     onClicked: {
                         appset.setCurrentRow(i);
                         appset.install();
@@ -252,7 +252,7 @@ Rectangle {
                 }
                 TextButton {
                     opacity: app.detailsOpacity && (s=="Upgradable" || s=="Installed")
-                    text: qsTr("Remove")
+                    text: removestr
                     onClicked: {
                         appset.setCurrentRow(i);
                         appset.remove();
@@ -262,7 +262,7 @@ Rectangle {
                 }
                 TextButton {
                     opacity: app.detailsOpacity && (s=="Upgradable")
-                    text: qsTr("Upgrade")
+                    text: updatestr
                     onClicked: {
                         appset.setCurrentRow(i);
                         appset.upgrade();

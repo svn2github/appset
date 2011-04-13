@@ -58,7 +58,7 @@ And others...</source>
         <location filename="trayicon.cpp" line="129"/>
         <location filename="trayicon.cpp" line="131"/>
         <source> updates available!</source>
-        <translation>Erneuerungen verfügbar!</translation>
+        <translation> Erneuerungen verfügbar!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="129"/>

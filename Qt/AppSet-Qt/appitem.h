@@ -24,6 +24,9 @@ class AppItem : public QObject
     Q_PROPERTY(QString dsizestr READ dsizestr WRITE setDSizeStr NOTIFY dsizestrChanged)
     Q_PROPERTY(QString repostr READ repostr WRITE setRepoStr NOTIFY repostrChanged)
     Q_PROPERTY(QString closestr READ closestr WRITE setCloseStr NOTIFY closestrChanged)
+    Q_PROPERTY(QString installstr READ installstr WRITE setInstallStr NOTIFY installstrChanged)
+    Q_PROPERTY(QString updatestr READ updatestr WRITE setUpdateStr NOTIFY updatestrChanged)
+    Q_PROPERTY(QString removestr READ removestr WRITE setRemoveStr NOTIFY removestrChanged)
 public:
     explicit AppItem(QObject *parent = 0);
     //AppItem(const QString &name, const QString &lversion, const QString &rversion, const QString &appUrl, const QString &picture, const QString &description);
@@ -72,6 +75,15 @@ public:
 
     QString closestr() const{return m_closestr;}
     void setCloseStr(const QString &closestr){this->m_closestr=closestr;emit closestrChanged();};
+
+    QString installstr() const{return m_installstr;}
+    void setInstallStr(const QString &installstr){this->m_installstr=installstr;emit installstrChanged();};
+
+    QString updatestr() const{return m_updatestr;}
+    void setUpdateStr(const QString &updatestr){this->m_updatestr=updatestr;emit updatestrChanged();};
+
+    QString removestr() const{return m_removestr;}
+    void setRemoveStr(const QString &removestr){this->m_removestr=removestr;emit removestrChanged();};
 signals:
     void nameChanged();
     void lversionChanged();
@@ -89,6 +101,9 @@ signals:
     void dsizestrChanged();
     void repostrChanged();
     void closestrChanged();
+    void installstrChanged();
+    void updatestrChanged();
+    void removestrChanged();
 private:
     QString m_name;
     QString m_lversion;
@@ -106,6 +121,9 @@ private:
     QString m_dsizestr;
     QString m_repostr;
     QString m_closestr;
+    QString m_installstr;
+    QString m_updatestr;
+    QString m_removestr;
 };
 
 #endif // APPITEM_H

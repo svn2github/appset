@@ -582,6 +582,7 @@ void MainWindow::refresh(){
 
 
     int rows=0;
+    bool scrolled=false;
     switch(asThread->getOp()){
     case 1: //Install
         rows=ui->tableUpgraded->rowCount();
@@ -627,7 +628,10 @@ void MainWindow::refresh(){
             float perc = total?(reached/(float)total)*100:100;
             ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue((int)perc);
 
-            if(perc>0) ui->tableUpgraded->scrollToItem(ui->tableUpgraded->item(i,0));
+            if(perc>0 && !scrolled){
+                ui->tableUpgraded->scrollToItem(ui->tableUpgraded->item(i,0));
+                scrolled=true;
+            }
 
             if(perc>=99){
                 ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue(100);
@@ -681,7 +685,10 @@ void MainWindow::refresh(){
             float perc = total?(reached/(float)total)*100:100;
             ((QProgressBar*)ui->tableUpgraded->cellWidget(i,5))->setValue((int)perc);
 
-            if(perc>0) ui->tableUpgraded->scrollToItem(ui->tableUpgraded->item(i,0));
+            if(perc>0 && !scrolled){
+                ui->tableUpgraded->scrollToItem(ui->tableUpgraded->item(i,0));
+                scrolled=true;
+            }
 
             if(perc>=99){
                 completed[i+baseIndex]=true;
@@ -981,12 +988,15 @@ void MainWindow::markUpgrades(){
             upgrade(true);
         }
     }
-    for(int i=0;i<appsList.count();++i){
-        if(((AppItem*)appsList.at(i))->status()=="Upgradable")
-            ((AppItem*)appsList.at(i))->setStatus("Upgrade");
-    }
 
-    asyncFilter();
+    if(enhanced){
+        for(int i=0;i<appsList.count();++i){
+            if(((AppItem*)appsList.at(i))->status()=="Upgradable")
+                ((AppItem*)appsList.at(i))->setStatus("Upgrade");
+        }
+
+        asyncFilter();
+    }
 }
 
 void MainWindow::searchTermChanged(int x){
@@ -1016,7 +1026,7 @@ void MainWindow::asyncFilter(QString filter){
                (ui->tableWidget->item(i,2)->text().contains(category_exclude) || ui->tableWidget->item(i,5)->text().contains(category_exclude))
                 || (!ui->tableWidget->item(i,2)->text().contains(category) && !ui->tableWidget->item(i,5)->text().contains(category))
                 || (!ui->tableWidget->item(i,2)->text().contains(QRegExp(filter,Qt::CaseInsensitive)) && !ui->tableWidget->item(i,5)->text().contains(QRegExp(filter,Qt::CaseInsensitive)))){
-                ui->tableWidget->hideRow(i);
+                ui->tableWidget->hideRow(i);                                
 
                 if(!(i%333)){
                     loadingBar->setValue(i*100/(float)rows);
@@ -1055,16 +1065,18 @@ void MainWindow::asyncFilter(QString filter){
 
     ui->tableWidget->sortByColumn(2,Qt::AscendingOrder);
 
-    int first=-1;
-    for(int i=0;first==-1 && i<rows;++i){
-        if(first==-1 && !(ui->tableWidget->isRowHidden(i))){
-            first=i;
+    if(!enhanced){
+        int first=-1;
+        for(int i=0;first==-1 && i<rows;++i){
+            if(first==-1 && !(ui->tableWidget->isRowHidden(i))){
+                first=i;
+            }
         }
-    }
 
-    if(first!=-1){
-        changeStatus(first,4);
-        ui->tableWidget->selectRow(first);
+        if(first!=-1){
+            changeStatus(first,4);
+            ui->tableWidget->selectRow(first);
+        }
     }
 
     loadingBar->setValue(0);
@@ -1104,6 +1116,9 @@ void MainWindow::asyncFilter(QString filter){
             app->setRepoStr(tr("Repository"));
             app->setDeps(app->status()=="Installed"||app->status()=="Remove"?tr("Required by"):tr("Requires"));
             app->setCloseStr(tr("Close"));
+            app->setInstallStr(tr("Install"));
+            app->setUpdateStr(tr("Upgrade"));
+            app->setRemoveStr(tr("Remove"));
 
             appsList.append(app);
         }
@@ -1280,7 +1295,9 @@ void MainWindow::upgrade(bool community){
                 for(int i=0;i<ui->tableWidget->rowCount();++i){
                     if(ui->tableWidget->item(i,2)->toolTip()==name){
                         currentPacket=i;
-                        this->install(true);
+                        QString status=ui->tableWidget->item(i,0)->text();
+                        if(status=="Upgradable" || status=="Upgrade") this->upgrade(true);
+                        else this->install(true);
                     }
                 }
             }
@@ -1469,6 +1486,8 @@ void MainWindow::notUpgrade(bool community){
     modified--;
     applyEnabler();
     ui->statusBar->showMessage(tr("Pending changes:")+QString::number(modified),2000);
+
+    if(enhanced && !community)asyncFilter();
 }
 
 void MainWindow::confirm(){
