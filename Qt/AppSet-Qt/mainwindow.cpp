@@ -37,19 +37,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 using namespace AS;
 
-class QTEventFilter:public QObject{
-protected:
-    bool eventFilter(QObject *obj, QEvent *ev){
-        if(!obj) return false;
-        if(ev->type()==QEvent::MouseButtonDblClick ||
-           ev->type()==QEvent::MouseButtonPress ||
-           ev->type()==QEvent::MouseButtonRelease ||
-           ev->type()==QEvent::KeyPress ||
-           ev->type()==QEvent::KeyRelease) return true;
-        return false;
-    }
-};
-
 #include <QSplitter>
 #include <QWidgetList>
 
@@ -1129,12 +1116,22 @@ void MainWindow::asyncFilter(QString filter){
             view->setSource(QUrl("qrc:/appsView/AppsView.qml"));
             view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
             mainSplitter->setHidden(true);
-            ui->anim->layout()->addWidget(view);
+            ui->anim->layout()->addWidget(view);            
         }else{
             view->rootContext()->setContextProperty("appsModel",QVariant::fromValue(appsList));
         }
     }
 
+}
+
+void MainWindow::installWheel(QObject *ob){
+    QTEventFilter *filter=new QTEventFilter;
+    ob->installEventFilter(filter);
+    connect(filter,SIGNAL(wheel(int)),this,SLOT(wheel(int)));
+}
+
+void MainWindow::wheel(int delta){
+    if(view)QMetaObject::invokeMethod(view->rootObject(),"wheel",Q_ARG(QVariant,delta));
 }
 
 void MainWindow::resizeEvent(QResizeEvent *e){

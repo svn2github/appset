@@ -183,6 +183,29 @@ class QTreeWidget;
 class QTreeWidgetItem;
 QT_END_NAMESPACE
 
+class QTEventFilter:public QObject{
+    Q_OBJECT
+protected:
+    bool eventFilter(QObject *obj, QEvent *ev){
+        if(!obj) return false;
+        /*if(ev->type()==QEvent::MouseButtonDblClick ||
+           ev->type()==QEvent::MouseButtonPress ||
+           ev->type()==QEvent::MouseButtonRelease ||
+           ev->type()==QEvent::KeyPress ||
+           ev->type()==QEvent::KeyRelease) return true;*/
+
+        if(ev->type()==QEvent::Wheel){
+            QWheelEvent* e=((QWheelEvent*)ev);
+            if(e->orientation()==Qt::Vertical){
+                emit wheel(e->delta());
+            }
+        }
+        return false;
+    }
+signals:
+    void wheel(int delta);
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -281,6 +304,9 @@ public slots:
     void saveUrlPre();
 
     QString getDeps(QString pname, bool remote);
+
+    void wheel(int delta);
+    void installWheel(QObject *ob);
 private:
     QDeclarativeView *view;
     QSplitter *mainSplitter;

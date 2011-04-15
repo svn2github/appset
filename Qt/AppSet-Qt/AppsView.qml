@@ -48,6 +48,11 @@ Rectangle {
             height: listView.cellHeight
             z: 0
 
+            function wheel(delta){
+                if(delta>0)flick.contentY-=flick.atYBeginning?0:10
+                else flick.contentY+=flick.atYEnd?0:10
+            }
+
             Rectangle {
                 id: background
                 x: 2; y: 2; width: parent.width - x*2; height: parent.height - y*2
@@ -94,6 +99,7 @@ Rectangle {
                     if(app.s=="Remote" || app.s=="Install"){
                         lversionid.opacity=lversionstrid.opacity=0
                     }
+                    appset.installWheel(appWeb.parent)
                 }
                 hoverEnabled: true
                 onHoveredChanged: {
@@ -298,14 +304,13 @@ Rectangle {
                     contentHeight: appWeb.height
                     clip: true
 
-
                     WebView{
                         url: "about:blank"
                         height: 2000
                         width: parent.width-20
                         x:10
                         id: appWeb
-                    }
+                    }                    
                 }
 
                 Image {
@@ -367,6 +372,11 @@ Rectangle {
     function closeDetails(){
         if(listView.count)
             listView.currentItem.state=""
+    }
+
+    function wheel(delta){
+        if(listView.count && listView.currentItem.state=="Details")
+            listView.currentItem.wheel(delta)
     }
 
     GridView {
