@@ -2260,11 +2260,7 @@ void MainWindow::addRows(bool checked){
             }
             ui->tableWidget->setItem(i,0, newItem);
 
-            if(!installed){
-                newItem = new QTableWidgetItem(pkg->getRepository().c_str());                
-            }else{
-                newItem = new QTableWidgetItem("");
-            }
+            newItem = new QTableWidgetItem(pkg->getRepository().c_str());
             ui->tableWidget->setItem(i,1, newItem);
 
             newItem = new QTableWidgetItem(pkg->getName().c_str());
