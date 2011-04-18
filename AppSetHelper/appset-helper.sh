@@ -9,7 +9,7 @@ case "$1" in
         start)
                 stat_busy "Starting appset-helper"
 
-                nice -n 10 appset-helper &
+                nice -n 15 appset-helper &
 
                 stat_done
         ;;

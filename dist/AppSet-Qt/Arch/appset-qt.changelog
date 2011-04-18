@@ -1,3 +1,7 @@
+0.4.2 :
+  -Installed packages repository information
+  -lower niceness (10 -> 15) for appset-helper daemon
+
 0.4.1 :
   -New packets view for main repos using QML:
     *more apps listed with the same win size
