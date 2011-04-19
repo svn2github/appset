@@ -2358,8 +2358,9 @@ void MainWindow::addRows(bool checked){
     emit installedPackagesUpdated(ipkgs);
 
     if(!((AS::QTNIXEngine*)as)->isCommunityEnabled())
-    ui->statusBar->showMessage(tr("To enable external packages support you have to install")+QString(" ")+
-                               QString(((AS::QTNIXEngine*)as)->getCommunityToolName().c_str()),5000);
+        if(((AS::QTNIXEngine*)as)->getCommunityToolName().find("*")==std::string::npos)
+            ui->statusBar->showMessage(tr("To enable external packages support you have to install")+QString(" ")+
+                                       QString(((AS::QTNIXEngine*)as)->getCommunityToolName().c_str()),5000);
     else
         ui->statusBar->showMessage("");
 
