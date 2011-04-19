@@ -284,8 +284,9 @@ MainWindow::MainWindow(QWidget *parent) :
         com_support->setStyleSheet("color: rgb(170, 0, 0);font: 75 italic 14pt \"Sans Serif\";");
         ui->tabCommunity->layout()->addWidget(com_support);
         if(((AS::QTNIXEngine*)as)->getCommunityToolName().find("*")!=std::string::npos)
-                ui->tabCommunity->setHidden(true);
+                ui->tabWidget->removeTab(2);
     }
+
 #endif
 
     timer->start(100);
