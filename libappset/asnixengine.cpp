@@ -403,7 +403,7 @@ namespace AS {
                 return;
             }else if(!regexec(&pkg_name, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
-                if(!remote || pkgList->empty()){
+                if(!remote || pkgList->empty() || firstName){
                     AS::Package *pkg = new AS::Package(!remote);
                     pkg->setName(value);
                     pkgList->insert(pkgList->end(), pkg);
