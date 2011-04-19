@@ -283,6 +283,8 @@ MainWindow::MainWindow(QWidget *parent) :
                                       QString(((AS::QTNIXEngine*)as)->getCommunityToolName().c_str()),ui->tabCommunity);
         com_support->setStyleSheet("color: rgb(170, 0, 0);font: 75 italic 14pt \"Sans Serif\";");
         ui->tabCommunity->layout()->addWidget(com_support);
+        if(((AS::QTNIXEngine*)as)->getCommunityToolName().compare("*")==0)
+                ui->tabCommunity->setHidden(true);
     }
 #endif
 
