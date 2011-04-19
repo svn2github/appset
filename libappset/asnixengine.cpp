@@ -342,6 +342,8 @@ namespace AS {
 
         bool discard;
         bool expert;
+
+        bool firstName;
     public:
         QueryInfoListener(std::list<AS::Package*>* pkgList, const char *pkgNameFilter, const char *pkgVersionFilter, const char *pkgGroupFilter,
                           const char *pkgLicenseFilter, const char *pkgDescFilter, const char *pkgUrlFilter, const char *pkgSizeFilter,const char *pkgRepoFilter,bool remote=false, bool expert=false){
@@ -361,6 +363,8 @@ namespace AS {
             this->expert = expert;
 
             discard=false;
+
+            firstName=false;
         }
 
         ~QueryInfoListener(){
@@ -386,13 +390,15 @@ namespace AS {
                 }
 
                 discard=false;
-
-                AS::Package *pkg = new AS::Package(!remote);
-
                 value = cstr.substr(match.rm_eo);
-                pkg->setRepository(value);
 
-                pkgList->insert(pkgList->end(), pkg);
+                if(!firstName){
+                    AS::Package *pkg = new AS::Package(!remote);
+                    pkg->setRepository(value);
+                    pkgList->insert(pkgList->end(), pkg);
+                }else{
+                    (*(pkgList->rbegin()))->setRepository(value);
+                }
             }else if(discard){
                 return;
             }else if(!regexec(&pkg_name, content, 1, &match, 0)){
@@ -401,6 +407,7 @@ namespace AS {
                     AS::Package *pkg = new AS::Package(!remote);
                     pkg->setName(value);
                     pkgList->insert(pkgList->end(), pkg);
+                    firstName=true;
                 }else
                     (*(pkgList->rbegin()))->setName(value);
             }else if(!regexec(&pkg_version, content, 1, &match, 0)){
