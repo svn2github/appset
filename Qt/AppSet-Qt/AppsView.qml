@@ -162,13 +162,13 @@ Rectangle {
                         Text {
                             text:  repostr+":"
                             font.pointSize: 9; font.bold: true
-                            opacity: app.detailsOpacity && filterInstalled()
+                            opacity: app.detailsOpacity
                         }
 
                         Text {
                             text: repo
                             font.pointSize: 9
-                            opacity: app.detailsOpacity && filterInstalled()
+                            opacity: app.detailsOpacity
                         }
 
                         Text {
