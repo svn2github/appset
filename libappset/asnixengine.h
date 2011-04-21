@@ -73,6 +73,8 @@ namespace AS{
 
         virtual std::string getTool(){return sysinfo["tool"];};
 
+        static int getBytesSize(std::string ssize);
+
         //Community stuff
         virtual bool isCommunityEnabled(){return community_enabled;};
         virtual std::list<Package*>* com_search(std::string pattern);

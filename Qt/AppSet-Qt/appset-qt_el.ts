@@ -59,38 +59,38 @@ Author: Simone Tobia</source>
         <location filename="mainwindow.ui" line="620"/>
         <location filename="mainwindow.ui" line="688"/>
         <location filename="mainwindow.ui" line="767"/>
-        <location filename="mainwindow.cpp" line="1950"/>
+        <location filename="mainwindow.cpp" line="1954"/>
         <location filename="mainwindow.cpp" line="2357"/>
         <source>All</source>
         <translation>Όλα</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="206"/>
-        <location filename="mainwindow.cpp" line="1846"/>
+        <location filename="mainwindow.cpp" line="1850"/>
         <source>Games</source>
         <translation>Παιχνίδια</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="239"/>
-        <location filename="mainwindow.cpp" line="1870"/>
+        <location filename="mainwindow.cpp" line="1874"/>
         <source>Multimedia</source>
         <translation>Πολυμέσα</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
-        <location filename="mainwindow.cpp" line="1894"/>
+        <location filename="mainwindow.cpp" line="1898"/>
         <source>Internet</source>
         <translation>Διαδίκτυο</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="305"/>
-        <location filename="mainwindow.cpp" line="1882"/>
+        <location filename="mainwindow.cpp" line="1886"/>
         <source>Office</source>
         <translation>Γραφείο</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="338"/>
-        <location filename="mainwindow.cpp" line="1858"/>
+        <location filename="mainwindow.cpp" line="1862"/>
         <source>System</source>
         <translation>Σύστημα</translation>
     </message>
@@ -192,8 +192,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="518"/>
         <location filename="mainwindow.ui" line="786"/>
-        <location filename="mainwindow.cpp" line="2186"/>
-        <location filename="mainwindow.cpp" line="2240"/>
+        <location filename="mainwindow.cpp" line="2190"/>
+        <location filename="mainwindow.cpp" line="2244"/>
         <source>Upgradable</source>
         <translation>Αναβαθμίσιμα</translation>
     </message>
@@ -205,8 +205,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="504"/>
         <location filename="mainwindow.ui" line="802"/>
-        <location filename="mainwindow.cpp" line="2108"/>
-        <location filename="mainwindow.cpp" line="2253"/>
+        <location filename="mainwindow.cpp" line="2112"/>
+        <location filename="mainwindow.cpp" line="2257"/>
         <source>Installed</source>
         <translation>Εγκατεστημένα</translation>
     </message>
@@ -217,8 +217,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="818"/>
-        <location filename="mainwindow.cpp" line="2034"/>
-        <location filename="mainwindow.cpp" line="2259"/>
+        <location filename="mainwindow.cpp" line="2038"/>
+        <location filename="mainwindow.cpp" line="2263"/>
         <source>Not Installed</source>
         <translation>Μη Εγκατεστημένα</translation>
     </message>
@@ -302,18 +302,18 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="1521"/>
-        <location filename="mainwindow.cpp" line="1702"/>
-        <location filename="mainwindow.cpp" line="1752"/>
+        <location filename="mainwindow.cpp" line="1706"/>
+        <location filename="mainwindow.cpp" line="1756"/>
         <source>Cancel</source>
         <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1550"/>
-        <location filename="mainwindow.cpp" line="537"/>
         <location filename="mainwindow.cpp" line="540"/>
-        <location filename="mainwindow.cpp" line="849"/>
-        <location filename="mainwindow.cpp" line="1631"/>
-        <location filename="mainwindow.cpp" line="1634"/>
+        <location filename="mainwindow.cpp" line="543"/>
+        <location filename="mainwindow.cpp" line="852"/>
+        <location filename="mainwindow.cpp" line="1635"/>
+        <location filename="mainwindow.cpp" line="1638"/>
         <source>Confirm</source>
         <translation>Επιβεβαίωση</translation>
     </message>
@@ -348,21 +348,21 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="58"/>
         <location filename="mainwindow.cpp" line="240"/>
-        <location filename="mainwindow.cpp" line="1100"/>
+        <location filename="mainwindow.cpp" line="1103"/>
         <source>Installed Version</source>
         <translation>Εγκατεστημένη Έκδοση</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="58"/>
         <location filename="mainwindow.cpp" line="240"/>
-        <location filename="mainwindow.cpp" line="1101"/>
+        <location filename="mainwindow.cpp" line="1104"/>
         <source>Last Version</source>
         <translation>Τελευταία Έκδοση</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="58"/>
-        <location filename="mainwindow.cpp" line="1103"/>
-        <location filename="mainwindow.cpp" line="1680"/>
+        <location filename="mainwindow.cpp" line="1106"/>
+        <location filename="mainwindow.cpp" line="1684"/>
         <source>Repository</source>
         <translation>Αποθετήριο</translation>
     </message>
@@ -398,7 +398,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="125"/>
-        <location filename="mainwindow.cpp" line="526"/>
+        <location filename="mainwindow.cpp" line="529"/>
         <location filename="mainwindow.cpp" line="2323"/>
         <source>Clean cache</source>
         <translation>Καθαρισμός λανθάνουσας μνήμης</translation>
@@ -411,7 +411,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="131"/>
-        <location filename="mainwindow.cpp" line="343"/>
+        <location filename="mainwindow.cpp" line="346"/>
         <source>Open local package</source>
         <translation>Άνοιγμα τοπικού πακέτου</translation>
     </message>
@@ -442,70 +442,70 @@ p, li { white-space: pre-wrap; }
         <translation>Για να ενεργοποιήσετε την υποστήριξη εξωτερικών πακέτων πρέπει να εγκαταστησετε</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="345"/>
+        <location filename="mainwindow.cpp" line="348"/>
         <source>Package files</source>
         <translation>Αρχεία πακέτου</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="369"/>
+        <location filename="mainwindow.cpp" line="372"/>
         <source>Error loading the specified package file!</source>
         <translation>Σφάλμα κατά τη φόρτωση του συγκεκριμένου αρχείου!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="370"/>
+        <location filename="mainwindow.cpp" line="373"/>
         <source>The file</source>
         <translation>Το αρχείο</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="370"/>
+        <location filename="mainwindow.cpp" line="373"/>
         <source>doesn&apos;t seems to be a valid package!</source>
         <translation>δεν φαίνεται να είναι ένα έγκυρο πακέτο!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="519"/>
+        <location filename="mainwindow.cpp" line="522"/>
         <source>Are you sure to clean the cache?</source>
         <translation>Θα θέλατε σίγουρα να καθαρίσετε τη λανθάνουσα μνήμη;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1102"/>
-        <location filename="mainwindow.cpp" line="1683"/>
+        <location filename="mainwindow.cpp" line="1105"/>
+        <location filename="mainwindow.cpp" line="1687"/>
         <source>Size</source>
         <translation>Μέγεθος</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1104"/>
-        <location filename="mainwindow.cpp" line="1692"/>
+        <location filename="mainwindow.cpp" line="1107"/>
+        <location filename="mainwindow.cpp" line="1696"/>
         <source>Required by</source>
         <translation>Απαιτείται από</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1104"/>
-        <location filename="mainwindow.cpp" line="1689"/>
+        <location filename="mainwindow.cpp" line="1107"/>
+        <location filename="mainwindow.cpp" line="1693"/>
         <source>Requires</source>
         <translation>Απαιτεί</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1105"/>
+        <location filename="mainwindow.cpp" line="1108"/>
         <source>Close</source>
         <translation>Κλείσιμο</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1159"/>
+        <location filename="mainwindow.cpp" line="1162"/>
         <source>Are you sure to upgrade ALL external packages?</source>
         <translation>Θα θέλατε σίγουρα να αναβαθμίσετε ΟΛΑ τα εξωτερικά πακέτα;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1685"/>
+        <location filename="mainwindow.cpp" line="1689"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2078"/>
+        <location filename="mainwindow.cpp" line="2082"/>
         <source>Searching correspondeces...</source>
         <translation>Αναζήτηση αντιστοιχιών...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2162"/>
+        <location filename="mainwindow.cpp" line="2166"/>
         <source>Checking upgradables</source>
         <translation>Έλεγχος πακέτων που απαιτούν αναβάθμιση</translation>
     </message>
@@ -546,71 +546,71 @@ Author: Simone Tobia</source>
         <translation type="obsolete">Ένα ξεχωριστό ευχαριστώ στην ομάδα του Chakra Project για τις εισηγήσεις και μεταφράσεις τους.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="625"/>
-        <location filename="mainwindow.cpp" line="683"/>
+        <location filename="mainwindow.cpp" line="628"/>
+        <location filename="mainwindow.cpp" line="686"/>
         <source>Waiting others...</source>
         <translation>Σε αναμονή άλλων...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="638"/>
-        <location filename="mainwindow.cpp" line="697"/>
+        <location filename="mainwindow.cpp" line="641"/>
+        <location filename="mainwindow.cpp" line="700"/>
         <source>Installing...</source>
         <translation>Εγκατάσταση...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="809"/>
+        <location filename="mainwindow.cpp" line="812"/>
         <source>Errors during operations!</source>
         <translation>Σφάλματα κατά τις ενέργειες!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="809"/>
+        <location filename="mainwindow.cpp" line="812"/>
         <source>Success!</source>
         <translation>Επιτυχία!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="810"/>
+        <location filename="mainwindow.cpp" line="813"/>
         <source>Do you want to see operations logs?</source>
         <translation>Θα θέλατε να δείτε τα αρχεία καταγραφής των ενεργειών;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="810"/>
-        <location filename="mainwindow.cpp" line="842"/>
+        <location filename="mainwindow.cpp" line="813"/>
+        <location filename="mainwindow.cpp" line="845"/>
         <source>All operations completed successfully!</source>
         <translation>Όλες οι ενέργειες ολοκληρώθηκαν με επιτυχία!</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1696"/>
-        <location filename="mainwindow.cpp" line="819"/>
+        <location filename="mainwindow.cpp" line="822"/>
         <source>Continue</source>
         <translation>Συνέχεια</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1227"/>
-        <location filename="mainwindow.cpp" line="1275"/>
-        <location filename="mainwindow.cpp" line="1309"/>
-        <location filename="mainwindow.cpp" line="1393"/>
-        <location filename="mainwindow.cpp" line="1476"/>
-        <location filename="mainwindow.cpp" line="1485"/>
+        <location filename="mainwindow.cpp" line="1230"/>
+        <location filename="mainwindow.cpp" line="1278"/>
+        <location filename="mainwindow.cpp" line="1313"/>
+        <location filename="mainwindow.cpp" line="1397"/>
+        <location filename="mainwindow.cpp" line="1480"/>
+        <location filename="mainwindow.cpp" line="1489"/>
         <source>Pending changes:</source>
         <translation>Αλλαγές σε εκκρεμότητα:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1249"/>
+        <location filename="mainwindow.cpp" line="1252"/>
         <source>Some installed packages require</source>
         <translation>Ορισμένα εγκατεστημένα πακέτα απαιτούν</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1250"/>
+        <location filename="mainwindow.cpp" line="1253"/>
         <source>Do you want to proceed anyway (removing them too)?</source>
         <translation>Θα θέλατε να προχωρήσετε ούτως ή άλλως (αφαιρόντας και αυτά);</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1324"/>
+        <location filename="mainwindow.cpp" line="1328"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
         <translation>Θα θέλατε να προχωρήσετε ούτως ή άλλως (καθαρίζοντας και αυτά);</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1365"/>
+        <location filename="mainwindow.cpp" line="1369"/>
         <source>Do you want to clear them too?</source>
         <translation>Θα θέλατε να τα καθαρίσετε και αυτά;</translation>
     </message>
@@ -623,7 +623,7 @@ Do you want to proceed anyway (removing them too)?</source>
 Θα θέλατε να προχωρήσετε ούτως ή άλλως (αφαιρόντας και αυτά);</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1323"/>
+        <location filename="mainwindow.cpp" line="1327"/>
         <source>These selected for install packages require</source>
         <translation>Τα επιλεγμένα προς εγκατάσταση πακέτα απαιτούν</translation>
     </message>
@@ -636,7 +636,7 @@ Do you want to proceed anyway (clearing them too)?</source>
 Θα θέλατε να προχωρήσετε ούτως ή άλλως (καθαρίζοντας και αυτά);</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1364"/>
+        <location filename="mainwindow.cpp" line="1368"/>
         <source>These packages were selected as dependencies of</source>
         <translation>Αυτά τα πακέτα έχουν επιλεγεί σαν εξαρτήσεις των</translation>
     </message>
@@ -649,22 +649,22 @@ Do you want to clear them too?</source>
 Θα θέλατε να τα καθαρίσετε και αυτά;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1407"/>
+        <location filename="mainwindow.cpp" line="1411"/>
         <source>These selected for removal packages are required by</source>
         <translation>Τα επιλεγμένα αυτά πακέτα για αφαίρεση απαιτούνται από</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1408"/>
+        <location filename="mainwindow.cpp" line="1412"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
         <translation>Θα θέλατε να προχωρήσετε ούτως ή άλλως (ακυρώνοντας την αφαίρεση και αυτών);</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1448"/>
+        <location filename="mainwindow.cpp" line="1452"/>
         <source>These packages were selected for removal because they need</source>
         <translation>Τα πακέτα αυτά έχουν επιλεγεί για αφαίρεση επειδή απαιτούν</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1449"/>
+        <location filename="mainwindow.cpp" line="1453"/>
         <source>Do you want to clear their removal too?</source>
         <translation>Θα θέλατε επίσης να καθαρίσετε την αφαίρεση τους;</translation>
     </message>
@@ -687,7 +687,7 @@ Do you want to proceed anyway?</source>
         <translation type="obsolete">&lt;b&gt;URL: &lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1686"/>
+        <location filename="mainwindow.cpp" line="1690"/>
         <source>(Watch the full site)</source>
         <translation>(Παρακολούθηση της πλήρης σελίδας</translation>
     </message>
@@ -700,47 +700,47 @@ Do you want to proceed anyway?</source>
         <translation type="obsolete">&lt;b&gt;Απαιτείται από:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1106"/>
-        <location filename="mainwindow.cpp" line="1699"/>
-        <location filename="mainwindow.cpp" line="1750"/>
+        <location filename="mainwindow.cpp" line="1109"/>
+        <location filename="mainwindow.cpp" line="1703"/>
+        <location filename="mainwindow.cpp" line="1754"/>
         <source>Install</source>
         <translation>Εγκατάσταση</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1108"/>
-        <location filename="mainwindow.cpp" line="1700"/>
-        <location filename="mainwindow.cpp" line="1751"/>
+        <location filename="mainwindow.cpp" line="1111"/>
+        <location filename="mainwindow.cpp" line="1704"/>
+        <location filename="mainwindow.cpp" line="1755"/>
         <source>Remove</source>
         <translation>Αφαίρεση</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1107"/>
-        <location filename="mainwindow.cpp" line="1701"/>
+        <location filename="mainwindow.cpp" line="1110"/>
+        <location filename="mainwindow.cpp" line="1705"/>
         <source>Upgrade</source>
         <translation>Αναβάθμιση</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1798"/>
+        <location filename="mainwindow.cpp" line="1802"/>
         <source>UPDATING DB: </source>
         <translation>ΕΝΗΜΕΡΩΣΗ ΒΑΣΗΣ ΔΕΔΟΜΕΝΩΝ:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1801"/>
+        <location filename="mainwindow.cpp" line="1805"/>
         <source>UPDATING DB...</source>
         <translation>ΕΝΗΜΕΡΩΣΗ ΒΑΣΗΣ ΔΕΔΟΜΕΝΩΝ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1809"/>
+        <location filename="mainwindow.cpp" line="1813"/>
         <source>DB UPDATED!</source>
         <translation>Η ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ ΕΝΗΜΕΡΩΘΗΚΕ!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1995"/>
+        <location filename="mainwindow.cpp" line="1999"/>
         <source>Loading packages...</source>
         <translation>Φόρτωση πακέτων...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2066"/>
+        <location filename="mainwindow.cpp" line="2070"/>
         <source>PARSING INSTALLED: </source>
         <translation>ΑΝΑΛΥΣΗ ΕΓΚΑΤΕΣΤΗΜΕΝΩΝ:</translation>
     </message>
@@ -749,14 +749,14 @@ Do you want to proceed anyway?</source>
         <translation type="obsolete">ΑΝΑΖΗΤΗΣΗ ΑΝΤΙΣΤΟΙΧΕΙΩΝ...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2126"/>
+        <location filename="mainwindow.cpp" line="2130"/>
         <source>Installed (external)</source>
         <translation>Εγκατεστημένο (εξωτερικό)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="532"/>
-        <location filename="mainwindow.cpp" line="2135"/>
-        <location filename="mainwindow.cpp" line="2175"/>
+        <location filename="mainwindow.cpp" line="2139"/>
+        <location filename="mainwindow.cpp" line="2179"/>
         <location filename="mainwindow.cpp" line="2285"/>
         <source>External</source>
         <translation>Εξωτερικό</translation>

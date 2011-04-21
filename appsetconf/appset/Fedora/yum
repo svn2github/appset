@@ -31,7 +31,7 @@ query_info_group_regexp=^Groups[[:space:]]+:[ ]+
 query_info_license_regexp=^Licenses[[:space:]]+:[ ]+
 query_info_description_regexp=^Description[[:space:]]+:[ ]+
 query_info_url_regexp=^URL[[:space:]]+:[ ]+
-query_info_ksize_regexp=^Download[[:space:]]Size[[:space:]]+:[ ]+
+query_info_ksize_regexp=^Size[[:space:]]+:[ ]+
 query_info_repo_regexp=^Repo[[:space:]]+:[ ]+
 
 community_tool=*

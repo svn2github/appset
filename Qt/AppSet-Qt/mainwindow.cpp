@@ -2050,7 +2050,7 @@ void MainWindow::addRows(bool checked){
             ui->tableWidget->setItem(i,5, newItem);
             newItem = new QTableWidgetItem(pkg->getURL().c_str());
             ui->tableWidget->setItem(i,6, newItem);
-            newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+            newItem = new QTableWidgetItem(QString::number(pkg->getSize()/1024));
             ui->tableWidget->setItem(i,7, newItem);
 
             i++;
@@ -2142,7 +2142,7 @@ void MainWindow::addRows(bool checked){
                 ui->tableWidget->setItem(i,5, newItem);
                 newItem = new QTableWidgetItem(pkg->getURL().c_str());
                 ui->tableWidget->setItem(i,6, newItem);
-                newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+                newItem = new QTableWidgetItem(QString::number(pkg->getSize()/1024));
                 ui->tableWidget->setItem(i,7, newItem);
                 i++;
                 rows++;
@@ -2293,7 +2293,7 @@ void MainWindow::addRows(bool checked){
             newItem = new QTableWidgetItem(pkg->getURL().c_str());
             ui->tableWidget->setItem(i,6, newItem);
 
-            newItem = new QTableWidgetItem(QString::number(pkg->getSize()));
+            newItem = new QTableWidgetItem(QString::number(pkg->getSize()/1024));
             ui->tableWidget->setItem(i,7, newItem);
 
             i++;

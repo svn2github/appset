@@ -265,6 +265,25 @@ int AS::NIXEngine::remove(std::list<Package*>* packages){
 
     return execCmd(cmd);
 }
+
+int AS::NIXEngine::getBytesSize(std::string ssize){
+    char order=ssize.at(ssize.length()-1);
+    int converted=atoi(ssize.substr(0,ssize.find(' ')).c_str());
+    switch(order){
+    case 'G':
+        converted*=1024*1024*1024;
+        break;
+    case 'M':
+        converted*=1024*1024;
+        break;
+    case 'k':
+        converted*=1024;
+        break;
+    }
+
+    return converted;
+}
+
 #include <sstream>
 namespace AS {
     class QueryListener : public AS::EngineListener{
@@ -313,19 +332,7 @@ namespace AS {
                         pkg->setRepository(repo);
 
                         if(version.find(' ')!=std::string::npos){
-                            char order=version.at(version.length()-1);
-                            int converted=atoi(version.substr(0,version.find(' ')-1).c_str());
-                            switch(order){
-                            case 'G':
-                                converted*=1024*1024*1024;
-                                break;
-                            case 'M':
-                                converted*=1024*1024;
-                                break;
-                            case 'k':
-                                converted*=1024;
-                                break;
-                            }
+                            int converted = AS::NIXEngine::getBytesSize(version);
 
                             std::ostringstream versionstream;
                             versionstream << converted;
@@ -450,16 +457,22 @@ namespace AS {
                 (*(pkgList->rbegin()))->setURL(value);
             }else if(!regexec(&pkg_size, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
+                int converted=0;
 
-                int ksize=-1;
-                for(int j=0;ksize==-1 && j<((unsigned)value.length());++j){
-                    if(*(value.c_str()+j)=='.'){
-                        value=value.substr(0,j);
-                        ksize=atoi(value.c_str());
+                if(value.find(' ')!=std::string::npos){
+                    converted = AS::NIXEngine::getBytesSize(value);
+                }else{
+                    int ksize=-1;
+                    for(int j=0;ksize==-1 && j<((unsigned)value.length());++j){
+                        if(*(value.c_str()+j)=='.'){
+                            value=value.substr(0,j);
+                            ksize=atoi(value.c_str());
+                            converted=ksize*1024;
+                        }
                     }
                 }
 
-                (*(pkgList->rbegin()))->setSize(ksize);
+                (*(pkgList->rbegin()))->setSize(converted);
             }
         }
     };
