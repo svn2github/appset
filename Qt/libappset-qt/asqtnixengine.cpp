@@ -31,7 +31,11 @@ int AS::QTNIXEngine::execCmd(std::string command){
 
     process.setProcessChannelMode(QProcess::MergedChannels);
 
-    process.start(command.c_str());    
+    QProcess yesProcess;
+    yesProcess.setStandardOutputProcess(&process);
+    yesProcess.start("yes");
+
+    process.start(command.c_str());
 
     int actual=50;
     while(!process.waitForFinished(actual)){
@@ -48,6 +52,8 @@ int AS::QTNIXEngine::execCmd(std::string command){
     }
 
     process.waitForFinished();
+
+    yesProcess.close();
 
     return process.exitCode();
 }

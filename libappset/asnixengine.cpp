@@ -664,24 +664,7 @@ int AS::NIXEngine::cacheSize(){
 }
 
 int AS::NIXEngine::cleanCache(){
-    DIR *dpath = opendir(commands["download_path"].c_str());
-    if(dpath==NULL) return 0;
-    dirent *dir;
-    std::string fname, fpath;
-
-    while((dir=readdir(dpath))){
-        fname=string(dir->d_name);
-        fpath=commands["download_path"];
-        fpath += fname;
-
-        if(!fname.compare(".") || !fname.compare("..")) continue;
-
-        unlink(fpath.c_str());
-    }
-
-    closedir(dpath);
-
-    return 0;
+    return execCmd(commands["clean_cache"]);
 }
 
 std::string AS::NIXEngine::getNewsUrl(std::string lang){

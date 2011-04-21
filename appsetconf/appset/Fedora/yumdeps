@@ -1,0 +1,4 @@
+#!/bin/sh
+LANG=en_US
+
+echo -e "n\n" | yum -C install $1 | egrep ".*i[3-6].*[0-9]+[[:space:]][kMG]$|.*noarch.*[0-9]+[[:space:]][kMG]$" | awk '{ print $1 " " $5 " " $6 }'
