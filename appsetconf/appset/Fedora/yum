@@ -1,7 +1,7 @@
 update=yum check-update
-upgrade=yum -Cy update
-install=yum -Cy install
-remove=yum -Cy remove
+upgrade=yum -y update
+install=yum -y install
+remove=yum -y remove
 clean_cache=yum -y clean all
 query_upgradable=yum check-update
 query_local_byname=yum -C list installed
