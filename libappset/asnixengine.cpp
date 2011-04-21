@@ -265,7 +265,7 @@ int AS::NIXEngine::remove(std::list<Package*>* packages){
 
     return execCmd(cmd);
 }
-
+#include <sstream>
 namespace AS {
     class QueryListener : public AS::EngineListener{
         regex_t filter;
@@ -311,6 +311,28 @@ namespace AS {
 
                         pkg->setName(pname);
                         pkg->setRepository(repo);
+
+                        if(version.find(' ')!=std::string::npos){
+                            char order=version.at(version.length()-1);
+                            int converted=atoi(version.substr(0,version.find(' ')-1).c_str());
+                            switch(order){
+                            case 'G':
+                                converted*=1024*1024*1024;
+                                break;
+                            case 'M':
+                                converted*=1024*1024;
+                                break;
+                            case 'k':
+                                converted*=1024;
+                                break;
+                            }
+
+                            std::ostringstream versionstream;
+                            versionstream << converted;
+
+                            version=versionstream.str();
+                        }
+
                         if(remote) pkg->setRemoteVersion(version);
                         else pkg->setLocalVersion(version);
 

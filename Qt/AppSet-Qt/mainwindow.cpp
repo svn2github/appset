@@ -1296,7 +1296,8 @@ void MainWindow::upgrade(bool community){
                     if(ui->tableWidget->item(i,2)->toolTip()==name){
                         currentPacket=i;
                         QString status=ui->tableWidget->item(i,0)->text();
-                        if(status=="Upgradable" || status=="Upgrade") this->upgrade(true);
+                        if(status=="Upgrade" || status=="Install") continue;
+                        if(status=="Upgradable") this->upgrade(true);
                         else this->install(true);
                     }
                 }
