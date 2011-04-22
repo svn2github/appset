@@ -55,6 +55,7 @@ AS::NIXEngine::NIXEngine(){
     commands.insert(StrPair("tool_lock_file",""));
     commands.insert(StrPair("clean_cache",""));
     commands.insert(StrPair("tool_post_up_cmd",""));
+    commands.insert(StrPair("tool_rm_repo",""));
 
     commands.insert(StrPair("install_local",""));
     commands.insert(StrPair("local_ext",""));
@@ -213,12 +214,15 @@ int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
 
         tail+=" ";
         bool first=true;
+        bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
         for(std::list<Package*>::iterator it=ignore_packages->begin();it!=ignore_packages->end();it++){
             if(!first){
                 if(ignoring)tail += ",";
                 else tail += " ";
             }
-            tail += (*it)->getName();
+            std::string pname=(*it)->getName();
+            if(trr) pname=pname.substr(pname.find_first_of('/'));
+            tail += pname;
             first=false;
         }
 
@@ -246,9 +250,12 @@ int AS::NIXEngine::install(std::list<Package*>* packages, bool local){
     if(!packages) return 1;
     string cmd(local?commands["install_local"]:commands["install"]);
 
+    bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
     for(std::list<Package*>::iterator it=packages->begin();it!=packages->end();it++){
         cmd += " ";
-        cmd += (*it)->getName();
+        std::string pname=(*it)->getName();
+        if(trr) pname=pname.substr(pname.find_first_of('/'));
+        cmd += pname;
     }
 
     return execCmd(cmd);
@@ -258,9 +265,12 @@ int AS::NIXEngine::remove(std::list<Package*>* packages){
     if(!packages) return 1;
     string cmd(commands["remove"]);
 
+    bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
     for(std::list<Package*>::iterator it=packages->begin();it!=packages->end();it++){
         cmd += " ";
-        cmd += (*it)->getName();
+        std::string pname=(*it)->getName();
+        if(trr) pname=pname.substr(pname.find_first_of('/'));
+        cmd += pname;
     }
 
     return execCmd(cmd);
@@ -277,6 +287,7 @@ int AS::NIXEngine::getBytesSize(std::string ssize){
         converted*=1024*1024;
         break;
     case 'k':
+    case 'K':
         converted*=1024;
         break;
     }
@@ -548,6 +559,12 @@ std::list<AS::Package*>* AS::NIXEngine::checkDeps(AS::Package *package, bool ins
 
     std::list<AS::Package*>* ret = new std::list<AS::Package*>();
 
+    bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
+    if(trr){
+        std::string pname=package->getName();
+        pname=pname.substr(pname.find_first_of('/'));
+        package->setName(pname);
+    }
     int status = upgrade?execQuery(ret, as_UPGRADE_DEPS, package, install):execQuery(ret, as_QUERY_DEPS, package, install, local);
 
     if(status){
@@ -561,6 +578,12 @@ std::list<AS::Package*>* AS::NIXEngine::checkDeps(AS::Package *package, bool ins
 std::list<AS::Package*>* AS::NIXEngine::queryLocal(unsigned flags, AS::Package *package){
     std::list<AS::Package*>* ret = new std::list<AS::Package*>();
 
+    bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
+    if(trr){
+        std::string pname=package->getName();
+        pname=pname.substr(pname.find_first_of('/'));
+        package->setName(pname);
+    }
     execQuery(ret, flags, package, false);
 
     return ret;

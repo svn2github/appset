@@ -147,6 +147,7 @@ int main(){
 
             bool runned=false;
             int remains = 0;
+            bool upreq=false;
             while(!runned && remains==0){
                 remains = sleep(5);
                 counter = (counter+5-remains);
@@ -156,15 +157,19 @@ int main(){
                     counter += 5;
                     runned=true;
                 }
-                if(counter>=updelay && stat("/tmp/as.tmp",&s)){
+                upreq=stat("/tmp/asupreq.tmp",&s)==0;
+                if((counter>=updelay || upreq) && stat("/tmp/as.tmp",&s)){
                     ase->update();
                     counter = 0;
-                    runned=true;
+                    runned=true;                    
                 }
             }
 
 #ifdef unix
             unlink("/tmp/ashelper.out");
+            if(upreq){
+                unlink("/tmp/asupreq.tmp");
+            }
 #endif
         }else{
             sleep(5);

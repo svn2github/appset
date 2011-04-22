@@ -10,6 +10,8 @@
 
 #include <list>
 #include <fstream>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 using namespace std;
 
@@ -63,6 +65,7 @@ TrayIcon::TrayIcon(QObject *parent) :
 
 void TrayIcon::manualCheckUps(){
     manualCheck=true;
+    if(!running) showMessage(tr("Checking updates"),tr("Waiting for updates from helper daemon..."),QSystemTrayIcon::Information,6000);
     checkUps();
     manualCheck=false;
 }
@@ -106,6 +109,23 @@ void TrayIcon::checkUps(){
     bool running = this->running;
     if(!running){
         //list<Package*> *pkgs = as->queryLocal(as_QUERY_UPGRADABLE);
+#ifdef unix
+        ofstream upreq;
+        upreq.open("/tmp/asupreq.tmp");
+        upreq.write("upreq",6);
+        upreq.close();
+        int tried=0;
+        struct stat s;
+        while(stat("/tmp/asupreq.tmp",&s)==0 && tried<6){
+            sleep(5);
+            tried++;
+        }
+        tried=0;
+        while(stat("/tmp/ashelper.out",&s) && tried<6){
+            sleep(5);
+            tried++;
+        }
+#endif
         Package *pp=new Package(true);
         pp->setName("");
         std::list<Package*> *pkgs = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
@@ -128,7 +148,8 @@ void TrayIcon::checkUps(){
 
             setToolTip(QString::number(pkgs->size())+QString((pkgs->size()>1?tr(" updates available!"):tr(" update available!"))));
 
-            showMessage(QString::number(pkgs->size())+(pkgs->size()>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information);
+            if(manualCheck)
+                showMessage(QString::number(pkgs->size())+(pkgs->size()>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information);
             setIcon(QIcon(":pkgstatus/upgrade.png"));
         }else{
             if(manualCheck)

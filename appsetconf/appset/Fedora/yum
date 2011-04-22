@@ -20,6 +20,7 @@ install_local=yum install -y
 local_ext=.rpm
 check_local_deps=sh /etc/appset/Fedora/yumdeps
 tool_post_up_cmd=*
+tool_rm_repo=/
 
 query_filter_regexp=^[^ ]+ [^ ]+$
 query_repo_sep=/
