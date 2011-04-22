@@ -1668,6 +1668,9 @@ QString MainWindow::getDeps(QString pname, bool remote){
 }
 
 void MainWindow::changeStatus(int row, int col){    
+    if(row==currentPacket && row)return;
+    currentPacket = row;
+
     if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2)){
         if(ui->urlpre->isChecked() && ui->webView && ui->webView->isEnabled()){
             ui->webView->stop();
@@ -1706,7 +1709,7 @@ void MainWindow::changeStatus(int row, int col){
         QAction cancel(style()->standardIcon(QStyle::SP_DialogDiscardButton),tr("Cancel"),this);
         QList<QAction*>actions;
 
-        currentPacket = row;
+
 
         connect(&install, SIGNAL(triggered()),SLOT(install()));
         connect(&remove, SIGNAL(triggered()),SLOT(remove()));

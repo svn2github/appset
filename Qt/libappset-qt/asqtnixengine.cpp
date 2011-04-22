@@ -35,9 +35,25 @@ int AS::QTNIXEngine::execCmd(std::string command){
     yesProcess.setStandardOutputProcess(&process);
     yesProcess.start("yes");
 
-    QStringList args(QString(command.c_str()).split(' '));
-    QString exec=args.at(0);
-    args.removeAt(0),
+    QString cmd(command.c_str());
+    QStringList args;
+    QString exec;
+
+    int i1=cmd.indexOf('"')-1;
+    if(i1>=0){
+        int i2=cmd.lastIndexOf('"')+1;
+        QString aux(cmd);
+        aux.remove(i1,cmd.length());
+        args=(aux.split(' '));
+        aux=cmd;
+        aux.remove(0,i2+1);
+        args << cmd.mid(i1+2,i2-i1-3) << aux.split(' ');
+    }else{
+        args=(cmd.split(' '));
+    }
+
+    exec=args.at(0);
+    args.removeAt(0);
 
     process.start(exec,args);
 
