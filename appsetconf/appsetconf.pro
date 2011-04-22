@@ -2,10 +2,10 @@ TEMPLATE = subdirs
 
 OTHER_FILES += \
     appset.conf \
-#    appset/Arch/pacman \
-#    appset/Arch/packer \
-    appset/Fedora/yum \
-    appset/Fedora/yumdeps
+    appset/Arch/pacman \
+    appset/Arch/packer \
+    #appset/Fedora/yum \
+    #appset/Fedora/yumdeps
 
 configuration.path = /etc
 configuration.files += appset.conf

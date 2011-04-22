@@ -328,24 +328,17 @@ namespace AS {
         void step(const char *content){
             regmatch_t match;
             string cstr(content), pname, version, repo;
-            AS::Package *pkg = new AS::Package(!remote);            
-
-            cout << content << endl;
+            AS::Package *pkg = new AS::Package(!remote);
 
             if(!regexec(&filter, content, 1, &match, 0)){
-                cout << "BOIA" << endl;
                 if(!regexec(&pkg_name, content, 1, &match, 0)){
                     pname = cstr.substr(match.rm_so, match.rm_eo-match.rm_so);
                     repo=pname.substr(0,pname.find(sep));
                     pname=pname.substr(pname.find(sep)+1);
 
-                    cout << pname << endl;
-
                     if(!regexec(&pkg_version, content, 1, &match, 0)){
                         //version = cstr.substr(match.rm_so, match.rm_eo-match.rm_so);
                         version = cstr.substr(cstr.find_first_of(' ')+1);
-
-                        cout << version << endl;
 
                         pkg->setName(pname);
                         pkg->setRepository(repo);
