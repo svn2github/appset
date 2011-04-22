@@ -44,6 +44,8 @@ namespace AS{
         virtual int execCmd(std::string command);
         int execQuery(std::list<AS::Package*>* pkgList, unsigned flags=0, AS::Package *package=0, bool remote=false, bool local=false);
 
+        std::string filterRepo(const std::string &str);
+
         //Community stuff
         bool community_enabled;
         int execComQuery(std::list<AS::Package*>* pkgList, std::string pattern, bool info=false);

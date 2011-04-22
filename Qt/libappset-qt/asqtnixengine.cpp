@@ -35,7 +35,11 @@ int AS::QTNIXEngine::execCmd(std::string command){
     yesProcess.setStandardOutputProcess(&process);
     yesProcess.start("yes");
 
-    process.start(command.c_str());
+    QStringList args(QString(command.c_str()).split(' '));
+    QString exec=args.at(0);
+    args.removeAt(0),
+
+    process.start(exec,args);
 
     int actual=50;
     while(!process.waitForFinished(actual)){
@@ -48,7 +52,8 @@ int AS::QTNIXEngine::execCmd(std::string command){
     }
 
     while(process.canReadLine()){
-        notifyListeners(QString(process.readLine().data()).trimmed().toAscii().data());
+        QString line(process.readLine().data());
+        notifyListeners(line.trimmed().toAscii().data());
     }
 
     process.waitForFinished();

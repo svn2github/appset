@@ -22,10 +22,10 @@ check_local_deps=sh /etc/appset/Fedora/yumdeps
 tool_post_up_cmd=*
 tool_rm_repo=/
 
-query_filter_regexp=^[^ ]+ [^ ]+$
+query_filter_regexp=^[[:graph:]]+/[[:graph:]]+ [^ ]+
 query_repo_sep=/
-query_name_regexp=^[[:alpha:]][^\\ ]+
-query_lversion_regexp=[^:\\ ]+$
+query_name_regexp=^[^\\ ]+
+query_lversion_regexp=[^:\\ ]+
 query_info_name_regexp=^Name[[:space:]]+:[ ]+
 query_info_version_regexp=^Version[[:space:]]+:[ ]+
 query_info_group_regexp=^Groups[[:space:]]+:[ ]+
