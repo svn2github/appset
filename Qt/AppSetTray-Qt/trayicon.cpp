@@ -66,6 +66,7 @@ TrayIcon::TrayIcon(QObject *parent) :
 void TrayIcon::manualCheckUps(){
     manualCheck=true;
     if(!running) showMessage(tr("Checking updates"),tr("Waiting for updates from helper daemon..."),QSystemTrayIcon::Information,6000);
+    QCoreApplication::processEvents(QEventLoop::AllEvents,500);
     checkUps();
     manualCheck=false;
 }
@@ -117,11 +118,13 @@ void TrayIcon::checkUps(){
         int tried=0;
         struct stat s;
         while(stat("/tmp/asupreq.tmp",&s)==0 && tried<6){
+            QCoreApplication::processEvents(QEventLoop::AllEvents,500);
             sleep(5);
             tried++;
         }
         tried=0;
         while(stat("/tmp/ashelper.out",&s) && tried<6){
+            QCoreApplication::processEvents(QEventLoop::AllEvents,500);
             sleep(5);
             tried++;
         }

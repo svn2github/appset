@@ -48,6 +48,12 @@ int main(){
     int updelay = 60*60;
 
 #ifdef unix
+    unlink("/tmp/ashelper.tmp");
+    unlink("/tmp/ashelper.out");
+    unlink("/tmp/astray.tmp");
+    unlink("/tmp/asupreq.tmp");
+    unlink("/tmp/as.tmp");
+
     ofstream pid_writer;
     pid_writer.open("/var/run/ashelper.pid");
     pid_writer << getpid();
@@ -67,10 +73,10 @@ int main(){
     ((NIXEngine*)ase)->removeLock();
 
     ifstream conf;
-    string conf_buffer;
+    string conf_buffer;    
 #endif
 
-    ase->update();
+    //ase->update();
 
     std::list<AS::Package*> *remote, *local;
     while(true){
@@ -158,7 +164,7 @@ int main(){
                     runned=true;
                 }
                 upreq=stat("/tmp/asupreq.tmp",&s)==0;
-                if((counter>=updelay || upreq) && stat("/tmp/as.tmp",&s)){
+                if((/*counter>=updelay || */upreq) && stat("/tmp/as.tmp",&s)){
                     ase->update();
                     counter = 0;
                     runned=true;                    

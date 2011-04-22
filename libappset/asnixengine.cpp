@@ -562,7 +562,7 @@ std::list<AS::Package*>* AS::NIXEngine::checkDeps(AS::Package *package, bool ins
 
     bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
     if(trr){
-        package->setName(filterRepo(package->getName()));
+        if(package)package->setName(filterRepo(package->getName()));
     }
     int status = upgrade?execQuery(ret, as_UPGRADE_DEPS, package, install):execQuery(ret, as_QUERY_DEPS, package, install, local);
 
@@ -579,7 +579,7 @@ std::list<AS::Package*>* AS::NIXEngine::queryLocal(unsigned flags, AS::Package *
 
     bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
     if(trr){
-        package->setName(filterRepo(package->getName()));
+        if(package)package->setName(filterRepo(package->getName()));
     }
     execQuery(ret, flags, package, false);
 
