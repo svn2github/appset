@@ -65,7 +65,7 @@ TrayIcon::TrayIcon(QObject *parent) :
 
 void TrayIcon::manualCheckUps(){
     manualCheck=true;
-    if(!running) showMessage(tr("Checking updates"),tr("Waiting for updates from helper daemon..."),QSystemTrayIcon::Information,6000);
+    //if(!running) showMessage(tr("Checking updates"),tr("Waiting for updates from helper daemon..."),QSystemTrayIcon::Information,6000);
     QCoreApplication::processEvents(QEventLoop::AllEvents,500);
     checkUps();
     manualCheck=false;
@@ -111,7 +111,7 @@ void TrayIcon::checkUps(){
     if(!running){
         //list<Package*> *pkgs = as->queryLocal(as_QUERY_UPGRADABLE);
 #ifdef unix
-        ofstream upreq;
+        /*ofstream upreq;
         upreq.open("/tmp/asupreq.tmp");
         upreq.write("upreq",6);
         upreq.close();
@@ -127,7 +127,7 @@ void TrayIcon::checkUps(){
             QCoreApplication::processEvents(QEventLoop::AllEvents,500);
             sleep(5);
             tried++;
-        }
+        }*/
 #endif
         Package *pp=new Package(true);
         pp->setName("");
