@@ -36,6 +36,7 @@ int AS::QTNIXEngine::execCmd(std::string command){
     yesProcess.start("yes");
 
     QString cmd(command.c_str());
+    cmd = cmd.trimmed();
     QStringList args;
     QString exec;
 
