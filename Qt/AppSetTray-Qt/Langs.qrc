@@ -7,5 +7,6 @@
         <file>appsettray-qt_ca.qm</file>
         <file>appsettray-qt_el.qm</file>
         <file>appsettray-qt_es.qm</file>
+        <file>appsettray-qt_pl.qm</file>
     </qresource>
 </RCC>
