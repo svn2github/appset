@@ -48,7 +48,8 @@ int AS::QTNIXEngine::execCmd(std::string command){
         args=(aux.split(' '));
         aux=cmd;
         aux.remove(0,i2+1);
-        args << cmd.mid(i1+2,i2-i1-3) << aux.split(' ');
+        args << cmd.mid(i1+2,i2-i1-3);
+        if(aux.length())args<< aux.split(' ');
     }else{
         args=(cmd.split(' '));
     }

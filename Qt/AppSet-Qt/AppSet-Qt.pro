@@ -56,4 +56,5 @@ TRANSLATIONS = appset-qt_it.ts \
     appset-qt_ca.ts \
     appset-qt_el.ts \
     appset-qt_es.ts \
-    appset-qt_fr.ts
+    appset-qt_fr.ts \
+    appset-qt_pl.ts

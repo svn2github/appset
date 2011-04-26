@@ -1668,7 +1668,7 @@ QString MainWindow::getDeps(QString pname, bool remote){
 }
 
 void MainWindow::changeStatus(int row, int col){    
-    if(row==currentPacket && row)return;
+    if(col && row==currentPacket && row)return;
     currentPacket = row;
 
     if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2)){

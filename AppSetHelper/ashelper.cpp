@@ -153,7 +153,7 @@ int main(){
 
             bool runned=false;
             int remains = 0;
-            bool upreq=false;
+            //bool upreq=false;
             while(!runned && remains==0){
                 remains = sleep(5);
                 counter = (counter+5-remains);
@@ -163,7 +163,7 @@ int main(){
                     counter += 5;
                     runned=true;
                 }
-                &&upreq=stat("/tmp/asupreq.tmp",&s)==0;
+                //upreq=stat("/tmp/asupreq.tmp",&s)==0;
                 if((counter>=updelay/* || upreq*/) && stat("/tmp/as.tmp",&s)){
                     ase->update();
                     counter = 0;

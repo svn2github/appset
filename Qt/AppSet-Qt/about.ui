@@ -97,7 +97,7 @@ Author: Simone Tobia</string>
            <item row="0" column="1">
             <widget class="QLabel" name="version">
              <property name="text">
-              <string notr="true">0.4.2</string>
+              <string notr="true">0.4.3</string>
              </property>
             </widget>
            </item>

@@ -732,11 +732,7 @@ std::string AS::NIXEngine::getNewsUrl(std::string lang){
 std::list<AS::Package*>* AS::NIXEngine::com_search(std::string pattern){
     std::list<AS::Package*>* ret = new std::list<AS::Package*>();
 
-    std::string com_pattern="\"";
-    com_pattern+=pattern;
-    com_pattern+="\"";
-
-    execComQuery(ret, com_pattern, false);
+    execComQuery(ret, pattern, false);
 
     return ret;
 }
