@@ -11,14 +11,14 @@ query_remote_info_byname=yum -C info
 tool_ignore_upgrades=*
 tool_hold_upgrades=*
 tool_unhold_upgrades=*
-check_install_deps=sh /etc/appset/Fedora/yumdeps
+check_install_deps=sh /etc/appset/Fedora/yumdeps install
 check_remove_deps=pacman -Rcp --print-format "%r/%n %s"
-check_upgrade_deps=sh /etc/appset/Fedora/yumdeps
+check_upgrade_deps=sh /etc/appset/Fedora/yumdeps update
 download_path=/var/cache/pacman/pkg/
 tool_lock_file=/var/lib/pacman/db.lck
 install_local=yum install -y
 local_ext=.rpm
-check_local_deps=sh /etc/appset/Fedora/yumdeps
+check_local_deps=sh /etc/appset/Fedora/yumdeps install
 tool_post_up_cmd=*
 tool_rm_repo=/
 

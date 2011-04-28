@@ -1240,7 +1240,7 @@ void MainWindow::remove(bool community){
     if((pkgs = as->checkDeps(&p,false))){
         for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
             QString name = QString((*it)->getName().c_str()).trimmed();            
-            if(name!=pname)
+            if(name!=pname && !remDeps.contains(name))
                 req << name;
             delete(*it);
         }
@@ -1264,10 +1264,14 @@ void MainWindow::remove(bool community){
         for(int j=0;j<req.size();++j){
             QString cur=req.at(j);
             for(int i=0;i<ui->tableWidget->rowCount();++i){
-                if(ui->tableWidget->item(i,2)->text()==cur){
-                    currentPacket=i;
-                    if(!remDeps.contains(cur,pname)) remDeps.insert(cur, pname);
-                    this->remove(true);
+                if(ui->tableWidget->item(i,2)->text()==cur){                    
+                    if(!remDeps.contains(cur,pname)){
+                        currentPacket=i;
+                        QString status=ui->tableWidget->item(i,0)->text();
+                        if(status=="Remove") continue;
+                        remDeps.insert(cur, pname);
+                        this->remove(true);
+                    }
                 }
             }
         }
