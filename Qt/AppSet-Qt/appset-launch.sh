@@ -4,7 +4,7 @@ PROGRAM_TO_LAUNCH=$1
 
 : ${PROGRAM_TO_LAUNCH:="appset-qt"}
 
-pgrep $PROGRAM_TO_LAUNCH
+pgrep $PROGRAM_TO_LAUNCH > /dev/null
 
 if [ "$?" == "0" ]; then
         appset-minimizer
