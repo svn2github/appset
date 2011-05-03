@@ -16,27 +16,28 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit Tray</source>
-        <translation type="unfinished">Zakończ</translation>
+        <translation>Zakończ</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="61"/>
         <source>Waiting helper...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Tak naprawdę to nie wiem jak to przetłumaczyć!</translatorcomment>
+        <translation>Oczekiwanie pomocnika...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="76"/>
         <source>Are you sure to quit this tray?</source>
-        <translation type="unfinished">Czy na pewno chcesz zakończyć?</translation>
+        <translation>Czy na pewno chcesz zakończyć?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="77"/>
         <source>You can restart it from desktop menu</source>
-        <translation type="unfinished">Możesz ponownie uruchomić z menu</translation>
+        <translation>Możesz ponownie uruchomić z menu</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="97"/>
         <source>AppSet-Qt is Running!</source>
-        <translation type="unfinished">AppSet-Qt jest uruchomiony!</translation>
+        <translation>AppSet-Qt jest uruchomiony!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="139"/>
@@ -52,19 +53,20 @@
         <location filename="trayicon.cpp" line="149"/>
         <source>
 And others...</source>
-        <translation type="unfinished">I inne...</translation>
+        <translation>
+I inne...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="152"/>
         <location filename="trayicon.cpp" line="155"/>
         <source> updates available!</source>
-        <translation type="unfinished"> aktualizacje są dostępne!</translation>
+        <translation> aktualizacje są dostępne!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="152"/>
         <location filename="trayicon.cpp" line="155"/>
         <source> update available!</source>
-        <translation type="unfinished"> aktualizacja jest dostępna!</translation>
+        <translation> aktualizacja jest dostępna!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="159"/>

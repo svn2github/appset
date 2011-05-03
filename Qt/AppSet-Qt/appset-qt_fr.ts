@@ -59,38 +59,38 @@ Auteur : Simone Tobia</translation>
         <location filename="mainwindow.ui" line="620"/>
         <location filename="mainwindow.ui" line="688"/>
         <location filename="mainwindow.ui" line="767"/>
-        <location filename="mainwindow.cpp" line="1957"/>
-        <location filename="mainwindow.cpp" line="2360"/>
+        <location filename="mainwindow.cpp" line="1961"/>
+        <location filename="mainwindow.cpp" line="2364"/>
         <source>All</source>
         <translation>Tout</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="206"/>
-        <location filename="mainwindow.cpp" line="1853"/>
+        <location filename="mainwindow.cpp" line="1857"/>
         <source>Games</source>
         <translation>Jeux</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="239"/>
-        <location filename="mainwindow.cpp" line="1877"/>
+        <location filename="mainwindow.cpp" line="1881"/>
         <source>Multimedia</source>
         <translation>Multimédia</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
-        <location filename="mainwindow.cpp" line="1901"/>
+        <location filename="mainwindow.cpp" line="1905"/>
         <source>Internet</source>
         <translation>Internet</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="305"/>
-        <location filename="mainwindow.cpp" line="1889"/>
+        <location filename="mainwindow.cpp" line="1893"/>
         <source>Office</source>
         <translation>Bureautique</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="338"/>
-        <location filename="mainwindow.cpp" line="1865"/>
+        <location filename="mainwindow.cpp" line="1869"/>
         <source>System</source>
         <translation>Système</translation>
     </message>
@@ -192,8 +192,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="518"/>
         <location filename="mainwindow.ui" line="786"/>
-        <location filename="mainwindow.cpp" line="2193"/>
-        <location filename="mainwindow.cpp" line="2247"/>
+        <location filename="mainwindow.cpp" line="2197"/>
+        <location filename="mainwindow.cpp" line="2251"/>
         <source>Upgradable</source>
         <translation>A mettre à jour</translation>
     </message>
@@ -205,8 +205,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="504"/>
         <location filename="mainwindow.ui" line="802"/>
-        <location filename="mainwindow.cpp" line="2115"/>
-        <location filename="mainwindow.cpp" line="2260"/>
+        <location filename="mainwindow.cpp" line="2119"/>
+        <location filename="mainwindow.cpp" line="2264"/>
         <source>Installed</source>
         <translation>Installé(s)</translation>
     </message>
@@ -217,8 +217,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="818"/>
-        <location filename="mainwindow.cpp" line="2041"/>
-        <location filename="mainwindow.cpp" line="2266"/>
+        <location filename="mainwindow.cpp" line="2045"/>
+        <location filename="mainwindow.cpp" line="2270"/>
         <source>Not Installed</source>
         <translation>Non installé(s)</translation>
     </message>
@@ -302,8 +302,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="1521"/>
-        <location filename="mainwindow.cpp" line="1709"/>
-        <location filename="mainwindow.cpp" line="1759"/>
+        <location filename="mainwindow.cpp" line="1713"/>
+        <location filename="mainwindow.cpp" line="1763"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
@@ -312,8 +312,8 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="540"/>
         <location filename="mainwindow.cpp" line="543"/>
         <location filename="mainwindow.cpp" line="852"/>
-        <location filename="mainwindow.cpp" line="1635"/>
-        <location filename="mainwindow.cpp" line="1638"/>
+        <location filename="mainwindow.cpp" line="1639"/>
+        <location filename="mainwindow.cpp" line="1642"/>
         <source>Confirm</source>
         <translation>Confirmer</translation>
     </message>
@@ -362,7 +362,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="58"/>
         <location filename="mainwindow.cpp" line="1106"/>
-        <location filename="mainwindow.cpp" line="1687"/>
+        <location filename="mainwindow.cpp" line="1691"/>
         <source>Repository</source>
         <translation>Dépôt</translation>
     </message>
@@ -399,13 +399,13 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="125"/>
         <location filename="mainwindow.cpp" line="529"/>
-        <location filename="mainwindow.cpp" line="2326"/>
+        <location filename="mainwindow.cpp" line="2330"/>
         <source>Clean cache</source>
         <translation>Nettoyer le cache</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="128"/>
-        <location filename="mainwindow.cpp" line="2320"/>
+        <location filename="mainwindow.cpp" line="2324"/>
         <source>Mark all upgrades</source>
         <translation>Cocher toutes les mises à jour</translation>
     </message>
@@ -437,7 +437,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="282"/>
-        <location filename="mainwindow.cpp" line="2365"/>
+        <location filename="mainwindow.cpp" line="2369"/>
         <source>To enable external packages support you have to install</source>
         <translation>Pour activer la gestion des paquets externes vous devez installer</translation>
     </message>
@@ -468,19 +468,19 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1105"/>
-        <location filename="mainwindow.cpp" line="1690"/>
+        <location filename="mainwindow.cpp" line="1694"/>
         <source>Size</source>
         <translation>Taille</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1107"/>
-        <location filename="mainwindow.cpp" line="1699"/>
+        <location filename="mainwindow.cpp" line="1703"/>
         <source>Required by</source>
         <translation>Requis par</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1107"/>
-        <location filename="mainwindow.cpp" line="1696"/>
+        <location filename="mainwindow.cpp" line="1700"/>
         <source>Requires</source>
         <translation>Requiert</translation>
     </message>
@@ -495,37 +495,37 @@ p, li { white-space: pre-wrap; }
         <translation>Etes vous sûr de vouloir mettre à jour TOUS les paquets externes?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1692"/>
+        <location filename="mainwindow.cpp" line="1696"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2085"/>
+        <location filename="mainwindow.cpp" line="2089"/>
         <source>Searching correspondeces...</source>
         <translation>Recherche des correspondances...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2169"/>
+        <location filename="mainwindow.cpp" line="2173"/>
         <source>Checking upgradables</source>
         <translation>Vérification des mises à jour</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2381"/>
+        <location filename="mainwindow.cpp" line="2385"/>
         <source>The main backend</source>
         <translation>Programme principal d&apos;arrière plan</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2382"/>
+        <location filename="mainwindow.cpp" line="2386"/>
         <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
         <translation>n&apos;est pas à jour. Vous devez le mettre à jour avant toute autre opération.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2383"/>
+        <location filename="mainwindow.cpp" line="2387"/>
         <source>Do you want to proceed now?</source>
         <translation>Voulez vous réaliser l&apos;opération maintenant?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2394"/>
+        <location filename="mainwindow.cpp" line="2398"/>
         <source>Running backend&apos;s post upgrade command</source>
         <translation>Execution des commandes d&apos;après-installation</translation>
     </message>
@@ -587,11 +587,11 @@ Auteur : Simone Tobia</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1230"/>
-        <location filename="mainwindow.cpp" line="1278"/>
-        <location filename="mainwindow.cpp" line="1313"/>
-        <location filename="mainwindow.cpp" line="1397"/>
-        <location filename="mainwindow.cpp" line="1480"/>
-        <location filename="mainwindow.cpp" line="1489"/>
+        <location filename="mainwindow.cpp" line="1282"/>
+        <location filename="mainwindow.cpp" line="1317"/>
+        <location filename="mainwindow.cpp" line="1401"/>
+        <location filename="mainwindow.cpp" line="1484"/>
+        <location filename="mainwindow.cpp" line="1493"/>
         <source>Pending changes:</source>
         <translation>Changements en attente :</translation>
     </message>
@@ -606,12 +606,12 @@ Auteur : Simone Tobia</translation>
         <translation>Voulez-vous tout de même continuer (les supprimer également)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1328"/>
+        <location filename="mainwindow.cpp" line="1332"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
         <translation>Voulez-vous tout de même continuer (les nettoyer également)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1369"/>
+        <location filename="mainwindow.cpp" line="1373"/>
         <source>Do you want to clear them too?</source>
         <translation>Voule-vous les nettoyer également?</translation>
     </message>
@@ -624,7 +624,7 @@ Do you want to proceed anyway (removing them too)?</source>
 Voulez vous tout de même continuer (les supprimer également)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1327"/>
+        <location filename="mainwindow.cpp" line="1331"/>
         <source>These selected for install packages require</source>
         <translation>Les paquets sélectionnés pour installation requièrent</translation>
     </message>
@@ -637,7 +637,7 @@ Do you want to proceed anyway (clearing them too)?</source>
 Voulez vous tout de même continuer (les nettoyer également)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1368"/>
+        <location filename="mainwindow.cpp" line="1372"/>
         <source>These packages were selected as dependencies of</source>
         <translation>Ces paquets ont été sélectionnés comme dépendance de</translation>
     </message>
@@ -650,22 +650,22 @@ Do you want to clear them too?</source>
 Voulez vous les nettoyer également?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1411"/>
+        <location filename="mainwindow.cpp" line="1415"/>
         <source>These selected for removal packages are required by</source>
         <translation>Ces paquets sélectionnés sont requis par</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1412"/>
+        <location filename="mainwindow.cpp" line="1416"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
         <translation>Voulez-vous tout de même continuer (annuler leur suppression)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1452"/>
+        <location filename="mainwindow.cpp" line="1456"/>
         <source>These packages were selected for removal because they need</source>
         <translation>Cas paquets ont été sélectionnés pour supression car ils dépendent de</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1453"/>
+        <location filename="mainwindow.cpp" line="1457"/>
         <source>Do you want to clear their removal too?</source>
         <translation>Voulez-vous nettoyer le cache de ces paquets?</translation>
     </message>
@@ -690,7 +690,7 @@ Voulez vous quand même continuer?</translation>
         <translation type="obsolete">&lt;b&gt;URL: &lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1693"/>
+        <location filename="mainwindow.cpp" line="1697"/>
         <source>(Watch the full site)</source>
         <translation>(Afficher le site web complet)</translation>
     </message>
@@ -704,46 +704,46 @@ Voulez vous quand même continuer?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1109"/>
-        <location filename="mainwindow.cpp" line="1706"/>
-        <location filename="mainwindow.cpp" line="1757"/>
+        <location filename="mainwindow.cpp" line="1710"/>
+        <location filename="mainwindow.cpp" line="1761"/>
         <source>Install</source>
         <translation>Installer</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1111"/>
-        <location filename="mainwindow.cpp" line="1707"/>
-        <location filename="mainwindow.cpp" line="1758"/>
+        <location filename="mainwindow.cpp" line="1711"/>
+        <location filename="mainwindow.cpp" line="1762"/>
         <source>Remove</source>
         <translation>Supprimer</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1110"/>
-        <location filename="mainwindow.cpp" line="1708"/>
+        <location filename="mainwindow.cpp" line="1712"/>
         <source>Upgrade</source>
         <translation>Mettre à jour</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1805"/>
+        <location filename="mainwindow.cpp" line="1809"/>
         <source>UPDATING DB: </source>
         <translation>MISE A JOUR DE LA BASE DE DONNEE :</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1808"/>
+        <location filename="mainwindow.cpp" line="1812"/>
         <source>UPDATING DB...</source>
         <translation>MISE A JOUR DES BASES DE DONNEES...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1816"/>
+        <location filename="mainwindow.cpp" line="1820"/>
         <source>DB UPDATED!</source>
         <translation>BASES DE DONNEES MISES A JOUR!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2002"/>
+        <location filename="mainwindow.cpp" line="2006"/>
         <source>Loading packages...</source>
         <translation>Chargement des paquets...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2073"/>
+        <location filename="mainwindow.cpp" line="2077"/>
         <source>PARSING INSTALLED: </source>
         <translation>ANALYSE DES PAQUETS INSTALLES : </translation>
     </message>
@@ -752,15 +752,15 @@ Voulez vous quand même continuer?</translation>
         <translation type="obsolete">RECHERCHE DES CORRESPONDANCES...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2133"/>
+        <location filename="mainwindow.cpp" line="2137"/>
         <source>Installed (external)</source>
         <translation>Installé (extrene)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="532"/>
-        <location filename="mainwindow.cpp" line="2142"/>
-        <location filename="mainwindow.cpp" line="2182"/>
-        <location filename="mainwindow.cpp" line="2288"/>
+        <location filename="mainwindow.cpp" line="2146"/>
+        <location filename="mainwindow.cpp" line="2186"/>
+        <location filename="mainwindow.cpp" line="2292"/>
         <source>External</source>
         <translation>Externe</translation>
     </message>
