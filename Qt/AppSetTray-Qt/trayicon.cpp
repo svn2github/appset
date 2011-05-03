@@ -191,7 +191,11 @@ void TrayIcon::launchAS(){
 }
 
 void TrayIcon::activatedSlot(QSystemTrayIcon::ActivationReason ar){
-    if(ar==QSystemTrayIcon::Trigger) launchAS();
+    if(ar==QSystemTrayIcon::Trigger){
+        checkRunning();
+        if(!running)
+            launchAS();
+    }
 }
 
 

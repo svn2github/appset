@@ -156,6 +156,7 @@ void CommunityRepoModel::mergeInstalled(){
 }
 
 void CommunityRepoModel::listInstalled(){
+    if(!ipkgs || ipkgs->size()==0) return;
     setPattern("");
     pkgs=new std::vector<AS::Package*>();
     beginInsertRows(QModelIndex(),0,ipkgs->size()-1);

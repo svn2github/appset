@@ -310,7 +310,7 @@ void MainWindow::comContinued(){
 }
 
 void MainWindow::comInfoRetrieved(AS::Package *pkg){
-    ui->webView_2->setUrl(QUrl(pkg->getURL().c_str()));
+    if(pkg) ui->webView_2->setUrl(QUrl(pkg->getURL().c_str()));
 }
 #include <QFile>
 #include <QScrollBar>
