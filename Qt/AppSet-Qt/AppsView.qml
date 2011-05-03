@@ -41,8 +41,11 @@ Rectangle {
             id: app
 
             property real detailsOpacity : 0
+            property real fastOpacity : 0
             property string s: status
             property string preS: status
+
+            property real shifted: 0;
 
             width: listView.cellWidth
             height: listView.cellHeight
@@ -104,10 +107,12 @@ Rectangle {
                 hoverEnabled: true
                 onHoveredChanged: {
                     if(app.state=="Details")return;
-                    if(containsMouse)
-                        background.border.color="darkgrey"
-                    else
-                        background.border.color="black"
+                    if(containsMouse){
+                        app.shifted=(app.x+app.width+app.width/2)>listView.width?app.x-listView.cellWidth*3/4:app.x;
+                        app.state="Hovered"
+                    }else{
+                        app.state=""
+                    }
                 }
                 onPressed: {
                     if(app.state=="Details")return;
@@ -141,15 +146,66 @@ Rectangle {
                     width: background.width - appImage.width - 20; height: appImage.height
                     spacing: 2
 
-                    Text {
-                        text: name
-                        wrapMode: Text.WordWrap
-                        elide:"ElideRight"
-                        font.bold: true; font.pointSize: 11;
-                        color: "white"
-                        width: parent.width-5
-                        id: appName
+                    Row{
+
+                        id:fastButtons
+                        spacing: 10;
+                        x: 0; y: 0
+                        width:parent.width-5;
+
+                        Text {
+                            text: name
+                            wrapMode: Text.WordWrap
+                            elide:"ElideRight"
+                            font.bold: true; font.pointSize: 11;
+                            color: "white"
+                            //width: parent.parent.width-5
+                            id: appName
+                        }
+
+                        TextButton {
+                            opacity: (app.fastOpacity || app.detailsOpacity) && (s=="Remote")
+                            text: installstr
+                            onClicked: {
+                                appset.setCurrentRow(i);
+                                appset.install();
+                                app.preS=app.s
+                                app.s="Install"
+                            }
+                        }
+                        TextButton {
+                            opacity: (app.fastOpacity || app.detailsOpacity) && (s=="Upgradable" || s=="Installed")
+                            text: removestr
+                            onClicked: {
+                                appset.setCurrentRow(i);
+                                appset.remove();
+                                app.preS=app.s
+                                app.s="Remove"
+                            }
+                        }
+                        TextButton {
+                            opacity: (app.fastOpacity || app.detailsOpacity) && (s=="Upgradable")
+                            text: updatestr
+                            onClicked: {
+                                appset.setCurrentRow(i);
+                                appset.upgrade();
+                                app.preS=app.s
+                                app.s="Upgrade"
+                            }
+                        }
+                        TextButton {
+                            opacity: (app.fastOpacity || app.detailsOpacity) && (s=="Install" || s=="Remove" || s=="Upgrade")
+                            text: qsTr("Cancel")
+                            onClicked: {
+                                appset.setCurrentRow(i);
+                                if(app.s=="Upgrade")appset.notUpgrade()
+                                else if(app.s=="Remove")appset.notRemove()
+                                else if(app.s=="Install")appset.notInstall()
+                                app.s=app.preS
+                            }
+                        }
                     }
+
 
                     Text { id: methodText; text: description; wrapMode: Text.WordWrap; width: parent.width-2;
                         anchors.top: name.bottom;elide:"ElideRight";color: "lightgrey" }
@@ -241,53 +297,7 @@ Rectangle {
                         }
                     }
                 }
-            }
-            Row{
-                id:buttons
-                spacing: 3;
-                x: 10; y: 10
-                TextButton {
-                    opacity: app.detailsOpacity && (s=="Remote")
-                    text: installstr
-                    onClicked: {
-                        appset.setCurrentRow(i);
-                        appset.install();
-                        app.preS=app.s
-                        app.s="Install"
-                    }
-                }
-                TextButton {
-                    opacity: app.detailsOpacity && (s=="Upgradable" || s=="Installed")
-                    text: removestr
-                    onClicked: {
-                        appset.setCurrentRow(i);
-                        appset.remove();
-                        app.preS=app.s
-                        app.s="Remove"
-                    }
-                }
-                TextButton {
-                    opacity: app.detailsOpacity && (s=="Upgradable")
-                    text: updatestr
-                    onClicked: {
-                        appset.setCurrentRow(i);
-                        appset.upgrade();
-                        app.preS=app.s
-                        app.s="Upgrade"
-                    }
-                }
-                TextButton {
-                    opacity: app.detailsOpacity && (s=="Install" || s=="Remove" || s=="Upgrade")
-                    text: qsTr("Cancel")
-                    onClicked: {
-                        appset.setCurrentRow(i);
-                        if(app.s=="Upgrade")appset.notUpgrade()
-                        else if(app.s=="Remove")appset.notRemove()
-                        else if(app.s=="Install")appset.notInstall()
-                        app.s=app.preS
-                    }
-                }
-            }
+            }            
             }
 
             Item {
@@ -362,10 +372,16 @@ Rectangle {
                         target: appWeb
                         height: appWeb.contentsSize.height
                     }
+                },
+                State {
+                    name: "Hovered"
+                    PropertyChanges { target: background; border.color: "darkgrey"}
+                    PropertyChanges { target: app; width: listView.cellWidth*7/4; z:5; x:app.shifted}
+                    PropertyChanges { target: app; fastOpacity: 1}
                 }
             ]
 
-            transitions: Transition { NumberAnimation { duration: 180; properties: "detailsOpacity,x,z,contentY,height,width,font.pointSize" } }
+            transitions: Transition { NumberAnimation { duration: 180; properties: "fastOpacity,detailsOpacity,x,z,contentY,height,width,font.pointSize" } }
         }
     }
 
