@@ -289,7 +289,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
 #endif
 
+    inModal=false;
+
     timer->start(100);
+}
+
+void MainWindow::hideEvent(QHideEvent *e){
+    loadingDialog->hide();
 }
 
 void MainWindow::clearComLine(){
@@ -399,7 +405,10 @@ void MainWindow::saveUrlPre(){
 }
 
 void MainWindow::showOptions(){
-    Options opt;
+    if(!this->isVisible())return;
+
+    Options opt(this);
+    inModal=true;
     int res = opt.exec();
 
     if(res==QDialog::Accepted){//Accepted new options
@@ -428,6 +437,8 @@ void MainWindow::showOptions(){
 
         if(view)view->setVisible(enhanced);
     }
+
+    inModal=false;
 }
 
 //RSS
@@ -548,7 +559,9 @@ void MainWindow::aboutQt(){
 }
 #include "about.h"
 void MainWindow::about(){
+    inModal=true;
     ab.exec();
+    inModal=false;
 }
 
 #include <QFile>
@@ -1006,7 +1019,7 @@ void MainWindow::asyncFilter(QString filter){
 
     int index = ui->comboBox->currentIndex();
 
-    loadingDialog->show();
+    if(this->isVisible())loadingDialog->show();
 
     ui->centralWidget->setEnabled(false);
 
@@ -1672,10 +1685,9 @@ QString MainWindow::getDeps(QString pname, bool remote){
 }
 
 void MainWindow::changeStatus(int row, int col){    
-    if(col && row==currentPacket && row)return;
-    currentPacket = row;
+    if(col && row==currentPacket && row)return;    
 
-    if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2)){
+    if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2) && row!=currentPacket){
         if(ui->urlpre->isChecked() && ui->webView && ui->webView->isEnabled()){
             ui->webView->stop();
             ui->webView->setUrl(QUrl::fromUserInput(ui->tableWidget->item(row,6)->text().trimmed()));
@@ -1704,6 +1716,8 @@ void MainWindow::changeStatus(int row, int col){
             ui->infoText->append(getDeps(p.getName().c_str(),false));
         }
     }
+
+    currentPacket = row;
 
     if(col==0){ //XXXGeneralize
         QMenu menu(this);
@@ -1735,18 +1749,25 @@ void MainWindow::changeStatus(int row, int col){
             upgrade.setDisabled(true);
         }else if(text=="Upgradable"){
             install.setDisabled(true);
+            install.setVisible(false);
         }else if(text=="Installed"){
             install.setDisabled(true);
             upgrade.setDisabled(true);
-        }else if(text=="Remove"){
-            connect(&cancel,SIGNAL(triggered()),SLOT(notRemove()));
-        }else if(text=="Install"){
-            connect(&cancel,SIGNAL(triggered()),SLOT(notInstall()));
-        }else if(text=="Upgrade"){
-            connect(&cancel,SIGNAL(triggered()),SLOT(notUpgrade()));
         }
 
-        menu.exec(QCursor::pos());
+        if(text=="Remote"){
+            this->install();
+        }else if(text=="Installed"){
+            this->remove();
+        }else if(text=="Remove"){
+            this->notRemove();
+        }else if(text=="Install"){
+            this->notInstall();
+        }else if(text=="Upgrade"){
+            this->notUpgrade();
+        }else{
+            menu.exec(QCursor::pos());
+        }
 
         disconnect(&install, SIGNAL(triggered()),this,SLOT(install()));
         disconnect(&remove, SIGNAL(triggered()),this,SLOT(remove()));
@@ -1996,7 +2017,7 @@ void MainWindow::addRows(bool checked){
     ui->mainToolBar->setDisabled(true);
 
     //ui->stacked->setCurrentIndex(2);
-    loadingDialog->show();
+    if(this->isVisible())loadingDialog->show();
     loadingBar->setValue(0);
 
     ui->tableWidget->setSortingEnabled(false);

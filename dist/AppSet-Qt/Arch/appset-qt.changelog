@@ -1,3 +1,8 @@
+0.4.4 :
+  -Launcher now hides/shows appset's main GUI when already running (clicking tray when already running hides appset, then shows)
+  -Simplified actions for standard view (e.g. install/remove actions with one click, withouth showing a redundant context menu)
+  -AUR/CCR "list installed" action with no results crash bug fixed
+
 0.4.3 :
   -Generalization of packages size output interpretation for pacman 3.5.2
   -Polish translation

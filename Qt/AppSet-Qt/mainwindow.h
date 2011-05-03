@@ -217,6 +217,7 @@ public:
     void filterPressed();
     void applyEnabler();
 
+    bool inModal;
 
 public slots:
     void addRows(bool checked=true);
@@ -307,7 +308,10 @@ public slots:
 
     void wheel(int delta);
     void installWheel(QObject *ob);
+
+    void hideEvent(QHideEvent *e);
 private:
+
     QDeclarativeView *view;
     QSplitter *mainSplitter;
 
