@@ -182,10 +182,8 @@ void TrayIcon::checkUps(){
     timer->start(running?3000:updelay);
 }
 
-void TrayIcon::launchAS(){
-    checkRunning();
-    if(!running)
-        showMessage(tr("Launching AppSet-Qt"),tr("Wait..."),QSystemTrayIcon::Information,1000);
+void TrayIcon::launchAS(){    
+    showMessage(tr("Launching AppSet-Qt"),tr("Wait..."),QSystemTrayIcon::Information,1000);
 
 #ifdef unix
     system("appset-launch.sh &");
@@ -194,7 +192,9 @@ void TrayIcon::launchAS(){
 
 void TrayIcon::activatedSlot(QSystemTrayIcon::ActivationReason ar){
     if(ar==QSystemTrayIcon::Trigger){        
-        launchAS();
+        checkRunning();
+        if(!running)
+            launchAS();
     }
 }
 

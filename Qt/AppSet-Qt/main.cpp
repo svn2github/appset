@@ -33,8 +33,8 @@ MainWindow *w;
 
 void handler(int sig){
     if(sig==SIGUSR1){
-        if(w->isVisible() && !w->inModal)w->hide();
-        else w->show();
+        /*if(w->isVisible() && !w->inModal)w->hide();
+        else w->show();*/
         return;
     }
 }
