@@ -425,4 +425,32 @@ signals:
 
 };
 
+
+#include <sys/stat.h>
+#include <QFile>
+class ASHider:public QThread{
+    Q_OBJECT
+
+    MainWindow *w;
+signals:
+    void hide();
+    void show();
+public:
+     ASHider(MainWindow *w){this->w=w;}
+     void run(){
+#if defined Q_OS_UNIX
+        ::umask(0);
+         mkfifo("/tmp/asmin",S_IWOTH);
+         QFile p("/tmp/asmin");
+         while(true){
+             p.open(QIODevice::ReadOnly);
+             p.readLine();
+             p.close();
+             if(w->isVisible() && !w->inModal) emit hide();
+             else emit show();
+             QCoreApplication::processEvents(QEventLoop::AllEvents,500);
+         }
+#endif
+     }
+};
 #endif // MAINWINDOW_H

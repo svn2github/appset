@@ -60,6 +60,12 @@ int main(int argc, char *argv[])
     sa.sa_flags=sa.sa_flags & (~SA_SIGINFO);
     if(sigaction(SIGUSR1,&sa,0)) perror(0);
 
+    ASHider hider(w);
+    hider.start();
+
+    hider.connect(&hider,SIGNAL(hide()),w,SLOT(hide()));
+    hider.connect(&hider,SIGNAL(show()),w,SLOT(show()));
+
     a.exec();
 
     delete w;

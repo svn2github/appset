@@ -379,7 +379,9 @@ void MainWindow::openLocal(QString fileName){
         error.setInformativeText(tr("The file")+QString(" \"")+QString(fileName)+QString("\" ")+tr("doesn't seems to be a valid package!"));
         error.setIcon(QMessageBox::Critical);
         error.setStandardButtons(QMessageBox::Ok);
+        inModal=true;
         error.exec();
+        inModal=false;
 
         addRows();
     }
@@ -534,11 +536,13 @@ void MainWindow::cleanCache(){
     con.setIcon(QMessageBox::Question);
     con.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
 
+    inModal=true;
     if(con.exec()==QMessageBox::Yes){
         ((AS::QTNIXEngine*)as)->cleanCache();
         cleanAction->setDisabled(true);
         cleanAction->setText(tr("Clean cache"));
     }
+    inModal=false;
 #endif
 }
 
@@ -827,7 +831,9 @@ void MainWindow::opFinished(){
             done.setIcon(status?QMessageBox::Critical:QMessageBox::Information);
             done.setStandardButtons(status?QMessageBox::Yes|QMessageBox::No:QMessageBox::Ok);
             if(status){
+                inModal=true;
                 int showLogs = done.exec();
+                inModal=false;
 
                 if(showLogs==QMessageBox::Yes){
                     QDialog logDialog;
@@ -851,7 +857,9 @@ void MainWindow::opFinished(){
 
                     logDialog.setFixedSize(450,300);
 
+                    inModal=true;
                     logDialog.exec();
+                    inModal=false;
 
                     disconnect(&logDialog);
                 }
@@ -1176,9 +1184,11 @@ void MainWindow::upgradeCom(){
     con.setIcon(QMessageBox::Question);
     con.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
 
+    inModal=true;
     if(con.exec()==QMessageBox::Yes){
         comCommon(8);
     }
+    inModal=false;
 }
 
 void MainWindow::removeCom(){
@@ -1266,7 +1276,9 @@ void MainWindow::remove(bool community){
         reqMes.setInformativeText(req.join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (removing them too)?"));
         reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         reqMes.setIcon(QMessageBox::Warning);
+        inModal=true;
         res = reqMes.exec();
+        inModal=false;
     }
 
     if(res == QMessageBox::Yes){
@@ -1345,7 +1357,9 @@ void MainWindow::notInstall(bool community){
         reqMes.setInformativeText(QStringList(requirers).join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (clearing them too)?"));
         reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         reqMes.setIcon(QMessageBox::Warning);
+        inModal=true;
         res = reqMes.exec();
+        inModal=false;
     }
 
     if(res == QMessageBox::Yes){
@@ -1388,8 +1402,11 @@ void MainWindow::notInstall(bool community){
             reqMes.setIcon(QMessageBox::Question);            
 
             int resp=0;
-            if(isExpert)
+            if(isExpert){
+                inModal=true;
                 resp=reqMes.exec();
+                inModal=false;
+            }
             for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
                 QString name = QString((*it)->getRepository().c_str()).trimmed()+QString("/")+QString((*it)->getName().c_str()).trimmed();
                 if(name!=dname){
@@ -1429,7 +1446,9 @@ void MainWindow::notRemove(bool community){
         reqMes.setInformativeText(QStringList(requirers).join("\n")+QString("\n\n")+tr("Do you want to proceed anyway (canceling their removal too)?"));
         reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         reqMes.setIcon(QMessageBox::Warning);
+        inModal=true;
         res = reqMes.exec();
+        inModal=false;
     }
 
     if(res == QMessageBox::Yes){
@@ -1472,8 +1491,11 @@ void MainWindow::notRemove(bool community){
             reqMes.setIcon(QMessageBox::Question);
 
             int resp=0;
-            if(isExpert)
+            if(isExpert){
+                inModal=true;
                 resp=reqMes.exec();
+                inModal=false;
+            }
             for(std::list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
                 QString name = QString((*it)->getName().c_str()).trimmed();
                 if(name!=dname){
@@ -2409,6 +2431,7 @@ void MainWindow::upgrade_tool(){
     con.setIcon(QMessageBox::Question);
     con.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
 
+    inModal=true;
     if(con.exec()==QMessageBox::Yes){
         bool preExpert=isExpert;
         isExpert=true;
@@ -2426,6 +2449,7 @@ void MainWindow::upgrade_tool(){
     }else{
         QCoreApplication::quit();
     }
+    inModal=false;
 #endif
 }
 
