@@ -1,24 +1,25 @@
 #! /bin/sh
 
-PROGRAM_TO_LAUNCH=$1
-
-: ${PROGRAM_TO_LAUNCH:="appset-qt"}
-
-pgrep $PROGRAM_TO_LAUNCH > /dev/null
-
-if [ "$?" == "0" ]; then
+if [ "$#" == "0" ]; then
+    pgrep appset-qt > /dev/null
+    if [ "$?" == "0" ]; then
         echo h > /tmp/asmin
-else
+    else
+        appset-qt &
+    fi
+elif [ "$1" == "--hidden" ]; then
+    appset-qt --hidden &
+elif [ $# -ge 1 ]; then
         if [ -e /usr/bin/kdesu ]; then
-            kdesu -d --noignorebutton -i "/usr/share/icons/appset/appset.png" -c $PROGRAM_TO_LAUNCH $2 &
+            kdesu -d --noignorebutton -i "/usr/share/icons/appset/appset.png" -c "appset-qt $1 $2 $3"
         elif [ -e /usr/bin/gksu ]; then
-            gksu -D "/usr/share/applications/appset-qt.desktop" $PROGRAM_TO_LAUNCH $2 &
+            gksu -D "/usr/share/applications/appset-qt.desktop" "appset-qt $1 $2 $3"
         elif [ -e /usr/bin/beesu ]; then
-            beesu $PROGRAM_TO_LAUNCH $2 &
+            beesu "appset-qt $1 $2 $3"
         elif [ -e /usr/bin/xdg-su ]; then
-            xdg-su -c "$PROGRAM_TO_LAUNCH $2" &
+            xdg-su -c "appset-qt $1 $2 $3"
         else
-            xterm -e "sudo $PROGRAM_TO_LAUNCH $2"
+            xterm -e "sudo appset-qt $1 $2 $3"
         fi
 fi
 

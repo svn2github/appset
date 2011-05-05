@@ -29,16 +29,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 using namespace std;
 
-MainWindow *w;
-
-void handler(int sig){
-    if(sig==SIGUSR1){
-        /*if(w->isVisible() && !w->inModal)w->hide();
-        else w->show();*/
-        return;
-    }
-}
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -47,26 +37,14 @@ int main(int argc, char *argv[])
     myappTranslator.load(":langs/appset-qt_" + QLocale::system().name());
          a.installTranslator(&myappTranslator);
 
-    w=new MainWindow();
-    w->show();
+    MainWindow w;
+    //w.show();
 
-    ofstream pid_writer;
-    pid_writer.open("/var/run/appset.pid");
-    pid_writer << getpid();
-    if(pid_writer.is_open()) pid_writer.close();
-
-    struct sigaction sa;
-    sa.sa_handler=&handler;
-    sa.sa_flags=sa.sa_flags & (~SA_SIGINFO);
-    if(sigaction(SIGUSR1,&sa,0)) perror(0);
-
-    ASHider hider(w);
+    ASHider hider(&w);
     hider.start();
 
-    hider.connect(&hider,SIGNAL(hide()),w,SLOT(hide()));
-    hider.connect(&hider,SIGNAL(show()),w,SLOT(show()));
+    hider.connect(&hider,SIGNAL(hide()),&w,SLOT(hide()));
+    hider.connect(&hider,SIGNAL(show()),&w,SLOT(show()));
 
-    a.exec();
-
-    delete w;
+    return a.exec();
 }

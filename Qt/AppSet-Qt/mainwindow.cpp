@@ -71,7 +71,10 @@ MainWindow::MainWindow(QWidget *parent) :
 #ifdef unix
     as = new AS::QTNIXEngine();
     int errno=0;
-    if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf"))){
+    pp=privilegedExecuter(qApp->argc(),qApp->argv());
+    bool privileged=pp>0 && pp!=9;
+    argsParsed=pp!=4 && pp!=0;
+    if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf",privileged?"/tmp/as.tmp":"/tmp/asuser.tmp",!privileged))){
         QMessageBox errMsg;
         errMsg.setText(tr("Errors while initializing the system!"));
         errMsg.setInformativeText(((AS::QTNIXEngine*)as)->getConfErrStr(errno));
@@ -109,8 +112,7 @@ MainWindow::MainWindow(QWidget *parent) :
     timerUpdate = new QTimer();
     connect(timerUpdate, SIGNAL(timeout()),SLOT(refresh()));
     timer->setSingleShot(true);
-    connect(timer,SIGNAL(timeout()),SLOT(addRows()));
-    argsParsed=false;
+    connect(timer,SIGNAL(timeout()),SLOT(addRows()));    
 
     connect(timer2,SIGNAL(timeout()),SLOT(timeFilter()));
 
@@ -120,7 +122,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->centralWidget->setDisabled(true);
     ui->mainToolBar->setDisabled(true);
 
-    connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_BrowserReload), tr("Update")), SIGNAL(triggered()), SLOT(updateDB()));
+    connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_BrowserReload), tr("Update")), SIGNAL(triggered()), SLOT(getUpPrivileges()));
 #ifdef unix
     cleanAction = ui->mainToolBar->addAction(QIcon(":editing/clear.png"), tr("Clean cache"), this, SLOT(cleanCache()));
     cleanAction->setDisabled(true);    
@@ -155,7 +157,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),SLOT(searchTermChanged(int)));
 
     connect(ui->editCancel,SIGNAL(clicked()),SLOT(editCancel()));
-    connect(ui->editConfirm,SIGNAL(clicked()),SLOT(editConfirm()));
+    //connect(ui->editConfirm,SIGNAL(clicked()),SLOT(editConfirm()));
+    connect(ui->editConfirm,SIGNAL(clicked()),SLOT(getPrivileges()));
 
     connect(ui->clearButton,SIGNAL(clicked()),ui->searchBar,SLOT(clear()));
 
@@ -267,7 +270,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
         ui->comContinue->setHidden(true);
 
-        connect(ui->comContinueButton,SIGNAL(clicked()),SLOT(comContinued()));
+        connect(ui->comContinueButton,SIGNAL(clicked()),qApp,SLOT(quit()));
         connect(ui->lineEditCommunity,SIGNAL(returnPressed()),SLOT(comTimeFilter()));
         connect(ui->comSearch,SIGNAL(clicked()),SLOT(comTimeFilter()));
         connect(ui->comClear,SIGNAL(clicked()),SLOT(clearComLine()));
@@ -285,13 +288,208 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->tabCommunity->layout()->addWidget(com_support);
         if(((AS::QTNIXEngine*)as)->getCommunityToolName().find("*")!=std::string::npos)
                 ui->tabWidget->removeTab(2);
-    }
+    }    
 
+    if(pp!=9 && pp!=5)this->show();
+    else this->hide();
 #endif
 
     inModal=false;
 
+    priv = new QProcess(this);
+
     timer->start(100);
+}
+
+void MainWindow::getUpPrivileges(){
+    this->setEnabled(false);
+
+    priv = new QProcess(this);
+    QStringList args;
+    args << "--update";
+
+    priv->start(QString("appset-launch.sh"),args);
+
+    connect(priv,SIGNAL(finished(int)),SLOT(outUpPrivileged(int)));
+}
+
+void MainWindow::getPrivileges(){
+    int rows=ui->tableUpgraded->rowCount();
+    QFile ifile(local?"/tmp/aslocal":"/tmp/asinstall");
+    ifile.open(QIODevice::WriteOnly|QIODevice::Text);
+    QTextStream asfiler;
+
+    QFile ufile("/tmp/asupgrade");
+    ufile.open(QIODevice::WriteOnly|QIODevice::Text);
+
+    QFile rfile("/tmp/asremove");
+    rfile.open(QIODevice::WriteOnly|QIODevice::Text);
+    for(int i=0;i<rows;++i){
+        if(ui->tableUpgraded->item(i,0)->text()=="Remove"){
+            asfiler.setDevice(&rfile);
+        }else if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
+            asfiler.setDevice(&ufile);
+        }else{
+            asfiler.setDevice(&ifile);
+        }
+        asfiler << ui->tableUpgraded->item(i,1)->text() << "\t-\t" << ui->tableUpgraded->item(i,0)->text() << "\t-\t";
+        asfiler << ui->tableUpgraded->item(i,2)->text() << "\t-\t" << ui->tableUpgraded->item(i,3)->text() << "\t-\t" << ui->tableUpgraded->item(i,4)->text() << "\n";
+    }
+    ifile.close();
+    rfile.close();
+    ufile.close();
+
+    int ii=toI,rr=toR,uu=toU;
+    editConfirm();
+    toR=0;
+    editConfirm();
+    toI=0;
+    editConfirm();
+    toU=0;
+    this->setEnabled(false);
+
+    priv = new QProcess(this);
+    QStringList args;
+    if(local){
+        args << "--local";
+    }else{
+        if(ii)args << "--install";
+        if(uu)args << "--upgrade";
+        if(rr)args << "--remove";
+    }
+    priv->start(QString("appset-launch.sh"),args);
+
+    connect(priv,SIGNAL(finished(int)),SLOT(outPrivileged(int)));
+}
+
+void MainWindow::getComPrivileges(){
+    int ii=toI,rr=toR,uu=toU;
+
+    QFile ifile("/tmp/ascom");
+    ifile.open(QIODevice::WriteOnly|QIODevice::Text);
+    QTextStream asfiler(&ifile);
+    asfiler << comPattern << "\n";
+    ifile.close();
+
+    this->setEnabled(false);
+
+    QStringList args;
+    if(ii)args << "--cominstall";
+    if(uu)args << "--comupgrade";
+    if(rr)args << "--comremove";
+    priv->start(QString("appset-launch.sh"),args);
+
+    connect(priv,SIGNAL(finished(int)),SLOT(outComPrivileged(int)));
+}
+
+void MainWindow::outUpPrivileged(int out){
+    this->setEnabled(true);
+
+    addRows(true);
+
+    priv->disconnect(SIGNAL(finished(int)),this,SLOT(outUpPrivileged(int)));
+}
+
+void MainWindow::outComPrivileged(int out){
+    this->setEnabled(true);
+
+    refreshCom();
+    comContinued();
+
+    QFile::remove("/tmp/ascom");
+    priv->disconnect(SIGNAL(finished(int)),this,SLOT(outComPrivileged(int)));
+}
+
+void MainWindow::outPrivileged(int out){
+    this->setEnabled(true);
+    opFinished();
+
+    QFile::remove("/tmp/asinstall");
+    QFile::remove("/tmp/asupgrade");
+    QFile::remove("/tmp/asremove");
+
+    priv->disconnect(SIGNAL(finished(int)),this,SLOT(outPrivileged(int)));
+}
+
+int MainWindow::argInterpreter(QString arg){
+    if(arg=="--install") return 1;
+    if(arg=="--remove") return 2;
+    if(arg=="--upgrade") return 3;
+    if(arg=="--local") return 4;
+    if(arg=="--cominstall") return 6;
+    if(arg=="--comremove") return 7;
+    if(arg=="--comupgrade") return 8;
+    if(arg=="--update") return 5;
+    if(arg=="--hidden") return 9;
+    return 0;
+}
+
+int MainWindow::privilegedExecuter(int argc, char *argv[]){
+    if(argc<2)return 0;
+    int actual = 1, i=0; QString opString;
+    toR=toU=toI=0;
+    while(argc>actual){
+        opString=argv[actual];
+        int op=argInterpreter(opString);
+        if(op>=1 && op<=4){
+            if(op==4)local=true;
+
+            opString.remove('-');
+            ui->stacked->setCurrentIndex(1);
+
+            ui->tableUpgraded->hideColumn(2);
+            ui->tableUpgraded->hideColumn(3);
+            ui->tableUpgraded->hideColumn(4);
+            ui->mainToolBar->hide();
+            ui->choicesGroup->hide();
+            ui->line->hide();
+            ui->label_5->hide();
+            ui->tableCommunity->setColumnWidth(1,250);
+            this->setFixedWidth(550);
+            this->setFixedHeight(350);
+
+            QFile file(QString("/tmp/as")+opString);
+            file.open(QIODevice::ReadOnly | QIODevice::Text);
+            QTextStream packages(&file);
+            QString line = packages.readLine();
+
+            while(!line.isNull()){
+                if(op==1 || op==4)toI++;
+                else if(op==2)toR++;
+                else if(op==3)toU++;
+
+                QStringList args=line.split("\t-\t");
+                ui->tableUpgraded->insertRow(i);
+                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(QString(":/pkgstatus/")+opString+".png"),args.at(1)));
+                ui->tableUpgraded->setItem(i,1,new QTableWidgetItem(args.at(0)));
+                ui->tableUpgraded->setItem(i,2,new QTableWidgetItem(args.at(2)));
+                ui->tableUpgraded->setItem(i,3,new QTableWidgetItem(args.at(3)));
+                ui->tableUpgraded->setItem(i,4,new QTableWidgetItem(args.at(4)));
+                QProgressBar *prog=new QProgressBar();
+                prog->setValue(0);
+                ui->tableUpgraded->setCellWidget(i,5,prog);
+                i++;
+
+                line = packages.readLine();
+            }
+
+            file.close();
+        }else if(op>=6 && op<=8){
+            QFile ifile("/tmp/ascom");
+            ifile.open(QIODevice::ReadOnly|QIODevice::Text);
+            QTextStream asfiler(&ifile);
+            comPattern=asfiler.readLine().trimmed();
+
+            this->setFixedWidth(700);
+            this->setFixedHeight(400);
+
+            return op;
+        }else return op;
+
+        actual++;
+    }    
+
+    return 1;
 }
 
 void MainWindow::hideEvent(QHideEvent *e){
@@ -554,7 +752,8 @@ void MainWindow::confirmTimeout(){
 
         ui->editConfirm->setText(tr("Confirm"));
 
-        editConfirm();
+        //editConfirm();
+        getPrivileges();
     }else ui->editConfirm->setText(tr("Confirm")+QString(" (")+QString::number(confirmRemaining)+QString(")"));
 }
 
@@ -750,59 +949,59 @@ bool MainWindow::outcomeEvaluator(){
 }
 
 void MainWindow::opFinished(){
-    int op = asThread->getOp();
-    int status = asThread->getStatus();
-    std::list<Package*> *l = asThread->getList();
-    int rows=ui->tableUpgraded->rowCount();
+    int op = 1;
+    if(pp!=9 && pp){
+        timerUpdate->stop();
+        op=asThread->getOp();
+        int status = asThread->getStatus();
+        std::list<Package*> *l = asThread->getList();
+        int rows=ui->tableUpgraded->rowCount();
 
-    switch(op){
-    case 1:
-        baseIndex = toI;
-        toI=0;
-        statusI=status;
+        switch(op){
+        case 1:
+            baseIndex = toI;
+            toI=0;
+            statusI=status;
 
-        if(!statusI){
-            for(int i=0;i<rows;++i){
-                if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()==QString("Remove")) continue;
-                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Install"));
+            if(!statusI){
+                for(int i=0;i<rows;++i){
+                    if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()==QString("Remove")) continue;
+                    ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Install"));
+                }
+                delete l;
             }
-            delete l;
+
+            break;
+        case 2:
+            toU=0;
+            statusU=status;
+
+            if(!statusU){
+                for(int i=0;i<rows;++i){
+                    if(ui->tableUpgraded->item(i,0)->text()=="Upgrade")
+                        ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Upgrade"));
+                }
+                delete l;
+            }
+            break;
+        case 3:
+            toR=0;
+            statusR=status;
+
+            if(!statusR){
+                for(int i=0;i<rows;++i){
+                    if(ui->tableUpgraded->item(i,0)->text()==QString("Remove"))
+                        ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Remove"));
+                }
+                delete l;
+            }
+            break;
         }
 
-        break;
-    case 2:
-        toU=0;
-        statusU=status;
-
-        if(!statusU){
-            for(int i=0;i<rows;++i){
-                if(ui->tableUpgraded->item(i,0)->text()=="Upgrade")
-                    ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Upgrade"));
-            }
-            delete l;
-        }
-        break;
-    case 3:
-        toR=0;
-        statusR=status;
-
-        if(!statusR){
-            for(int i=0;i<rows;++i){
-                if(ui->tableUpgraded->item(i,0)->text()==QString("Remove"))
-                    ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Remove"));
-            }
-            delete l;
-        }
-        break;
     }
 
-    timerUpdate->stop();
-
     if(op>0&&op<4){
-        if(!toI && !toU && !toR){
-            as->removeListener(logger);
-            delete logger;
-
+        if(pp==9 || !pp){
             ui->stacked->setCurrentIndex(0);
             QCoreApplication::processEvents(QEventLoop::AllEvents,500);
             ui->mainToolBar->show();
@@ -864,7 +1063,13 @@ void MainWindow::opFinished(){
                     disconnect(&logDialog);
                 }
             }else ui->statusBar->showMessage(tr("All operations completed successfully!"),5000);//done.show();
-        }else editConfirm();
+        }else if((!toI && !toU && !toR)){
+            as->removeListener(logger);
+            delete logger;
+            qApp->quit();
+        }else{
+            editConfirm();
+        }
     }
 }
 
@@ -891,16 +1096,18 @@ void MainWindow::editConfirm(){
             }
         }
 
-        asThread->setList(prem);
-        asThread->setOp(3);
-        pkgs=prem;
-        asThread->start();
+        if(pp!=9 && pp){
+            asThread->setList(prem);
+            asThread->setOp(3);
+            pkgs=prem;
+            asThread->start();
+        }
     }else if(toI){
         std::list<Package*> *pinst=new std::list<Package*>();
         for(int i=0;i<rows;++i){
             if(ui->tableUpgraded->item(i,0)->text()==QString("Remove") || ui->tableUpgraded->item(i,0)->text()=="Upgrade") continue;
             p=new Package();
-            if(!local)p->setName(ui->tableUpgraded->item(i,1)->toolTip().trimmed().toAscii().data());
+            if(!local)p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
             else p->setName(ui->tableUpgraded->item(i,2)->text().trimmed().toAscii().data());
             pinst->insert(pinst->end(), p);
             ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),ui->tableUpgraded->item(i,0)->text()));
@@ -908,11 +1115,13 @@ void MainWindow::editConfirm(){
             iOutcome << ui->tableUpgraded->item(i,1)->toolTip().trimmed();
         }
 
-        asThread->setList(pinst);
-        asThread->setOp(1);
-        asThread->local=local;
-        pkgs=pinst;
-        asThread->start();
+        if(pp!=9 && pp){
+            asThread->setList(pinst);
+            asThread->setOp(1);
+            asThread->local=local;
+            pkgs=pinst;
+            asThread->start();
+        }
     }else if(toU){
         std::list<Package*> *pupgr=new std::list<Package*>();
         int rows = ui->tableUpgraded->rowCount();
@@ -935,16 +1144,21 @@ void MainWindow::editConfirm(){
             }
         }
 
-        asThread->setList(pupgr);
-        asThread->setOp(2);
-        pkgs=pupgr;
-        asThread->start();
+        if(pp!=9 && pp){
+            asThread->setList(pupgr);
+            asThread->setOp(2);
+            pkgs=pupgr;
+            asThread->start();
+        }
     }
 
-    if(toU || toR || toI){
-        timerUpdate->start(250);
+    if(toU || toR || toI){        
         ui->choicesGroup->setHidden(true);
-        if(this->showBackOut) ui->backGroup->setVisible(true);
+
+        if(pp!=9 && pp){
+            timerUpdate->start(250);
+            if(this->showBackOut) ui->backGroup->setVisible(true);
+        }
     }
 }
 
@@ -983,10 +1197,6 @@ void MainWindow::editCancel(){
 
     ui->stacked->setCurrentIndex(0);
     ui->mainToolBar->show();
-
-    as->removeListener(logger);
-
-    delete logger;
 
     if(local)addRows();
 }
@@ -1175,7 +1385,13 @@ void MainWindow::applyEnabler(){
 }
 
 void MainWindow::installCom(){
-    comCommon(6);
+    if(!pp || pp==9){
+        toI=1;
+        comPattern=ui->tableCommunity->model()->data(ui->tableCommunity->model()->index(currentPacket,1)).toString();
+        getComPrivileges();
+    }else{
+        comCommon(6);
+    }
 }
 
 void MainWindow::upgradeCom(){
@@ -1186,13 +1402,21 @@ void MainWindow::upgradeCom(){
 
     inModal=true;
     if(con.exec()==QMessageBox::Yes){
-        comCommon(8);
+        //comCommon(8);
+        toU=1;
+        getComPrivileges();
     }
     inModal=false;
 }
 
 void MainWindow::removeCom(){
-    comCommon(7);
+    if(!pp || pp==9){
+        toR=1;
+        comPattern=ui->tableCommunity->model()->data(ui->tableCommunity->model()->index(currentPacket,1)).toString();
+        getComPrivileges();
+    }else{
+        comCommon(7);
+    }
 }
 
 void MainWindow::comCommon(int op){
@@ -1207,16 +1431,15 @@ void MainWindow::comCommon(int op){
     ui->comWait->setVisible(true);
 
     asComThread->setOp(op);
-    if(op!=8)asComThread->pattern=ui->tableCommunity->model()->data(
-                ui->tableCommunity->model()->index(currentPacket,1)).toString();
+    if(op!=8)asComThread->pattern=this->comPattern;
     asComThread->start();
 }
 
 void MainWindow::comOpFinished(){
     timerUpdateCom->stop();
-    as->removeListener(logger);
-    delete logger;
-    refreshCom();
+    //as->removeListener(logger);
+    //delete logger;
+    //refreshCom();
     ui->comContinue->setVisible(true);
     ui->comWait->setHidden(true);
 }
@@ -1531,9 +1754,10 @@ void MainWindow::notUpgrade(bool community){
 }
 
 void MainWindow::confirm(){
-    logger=new ASLogger();
-    as->addListener(logger);
-
+    ui->tableUpgraded->hideColumn(5);
+    ui->tableUpgraded->setColumnWidth(1,300);
+    ui->tableUpgraded->setColumnWidth(2,150);
+    ui->tableUpgraded->setColumnWidth(3,400);
     ui->stacked->setCurrentIndex(1);
     ui->mainToolBar->hide();
 
@@ -1543,7 +1767,6 @@ void MainWindow::confirm(){
     int in=0,r=0,u=0;
     int rows=ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
-
         if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,2)->text().contains(expert)){
             currentPacket=i;
             this->upgrade();
@@ -1568,11 +1791,6 @@ void MainWindow::confirm(){
                         }
                         delete pkgs;
                     }
-
-                    QProgressBar *prog=new QProgressBar();
-                    prog->setValue(0);
-                    prog->hide();
-                    ui->tableUpgraded->setCellWidget(r,5,prog);
 
                     ui->tableUpgraded->setItem(r,3,new QTableWidgetItem(deps.join(" ")));
                     ui->tableUpgraded->setItem(r,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));
@@ -1613,12 +1831,6 @@ void MainWindow::confirm(){
 
             ui->tableUpgraded->setItem(in,3,new QTableWidgetItem(deps.join(" ")));
 
-
-            QProgressBar *prog=new QProgressBar();
-            prog->setValue(0);
-            //prog->setMaximumWidth(200);
-            ui->tableUpgraded->setCellWidget(in,5,prog);
-
             //ui->tableUpgraded->setItem(in++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
             ui->tableUpgraded->setItem(in++,4,new QTableWidgetItem(QString::number(dsize/(float)1024)));
         }else if(ui->tableWidget->item(i,0)->text()=="Upgrade"){
@@ -1646,12 +1858,8 @@ void MainWindow::confirm(){
 
             ui->tableUpgraded->setItem(u,4,new QTableWidgetItem(deps.join(" ")));*/
 
-            QProgressBar *prog=new QProgressBar();
-            prog->setValue(0);
-            //prog->setMaximumWidth(200);
-            ui->tableUpgraded->setCellWidget(u,5,prog);
-
             //ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
+            ui->tableUpgraded->setItem(u,3,new QTableWidgetItem(""));
             ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));
 
 //            ui->tableUpgraded->showRow(u++);
@@ -1659,14 +1867,7 @@ void MainWindow::confirm(){
     }
 
     toI=in;toU=u;toR=r;
-    statusI=statusU=statusR=0;
-    baseIndex=0;
-    baseSizes.reserve(in+u);
-    completed.reserve(in+u);
-    for(int k=0;k<in+u;++k){
-        baseSizes[k]=-1;
-        completed[k]=false;
-    }
+    statusI=statusU=statusR=0;    
 
     confirmRemaining=15;
 
@@ -1845,30 +2046,26 @@ void MainWindow::updateDB(){
 
     QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 
-    StatusBarUpdater *sbu = new StatusBarUpdater(ui->statusBar);
-    sbu->setPB(loadingBar);
-    //loadingDialog->show();
-    sbu->setStepping(1);
-    sbu->setPreMessage(tr("UPDATING DB: "));
+    loadingDialog->show();
+    loadingBar->setValue(25);
+    loadingStatus->setText(tr("UPDATING DB: "));
 
-
-    ui->statusBar->showMessage(tr("UPDATING DB..."),5000);
-
-    as->addListener(sbu);
+    //as->addListener(sbu);
     as->update();
-    as->removeListener(sbu);
+    //as->removeListener(sbu);
 
     //ui->showUpgradable->setChecked(true);
 
-    ui->statusBar->showMessage(tr("DB UPDATED!"),5000);
+    loadingBar->setValue(60);
+    loadingStatus->setText(tr("DB UPDATED!"));
 
-    //loadingDialog->hide();
     modified=0;
     applyEnabler();
 
     merging = false;
 
-    addRows(true);
+    //addRows(true);
+    qApp->quit();
 }
 
 void MainWindow::expertMode(bool mode){
@@ -2022,6 +2219,27 @@ void MainWindow::showNotInstalled(bool checked){
 void MainWindow::addRows(bool checked){
     if(!checked) return;
 
+    if(pp>=1 && pp<=3){
+        baseIndex=0;
+        baseSizes.reserve(toI+toU);
+        completed.reserve(toI+toU);
+        logger=new ASLogger();
+        as->addListener(logger);
+        for(int k=0;k<toI+toU;++k){
+            baseSizes[k]=-1;
+            completed[k]=false;
+        }
+        editConfirm();
+        return;
+    }else if(pp>=6 && pp<=8){
+        comCommon(pp); //upgrade com
+        return;
+    }else if(pp==5){
+        this->hide();
+        updateDB();
+        return;
+    }
+
     QString param("");
     if(!argsParsed && qApp->argc()>1){
         param=QString((qApp->argv())[1]);
@@ -2119,16 +2337,9 @@ void MainWindow::addRows(bool checked){
 
         sbu.setPreMessage(tr("PARSING INSTALLED: "));
         sbu.setStepping(60);
-        //as->addListener(&sbu);
-        //pkgs = as->queryLocal(flags);
-        //as->removeListener(&sbu);
         t2.wait();
         pkgs=t2.getList();
         ipack=pkgs->size();
-
-        //loadingBar->setValue(60);
-
-        //ui->statusBar->showMessage(tr("SEARCHING CORRESPONDENCES..."));
         loadingStatus->setText(tr("Searching correspondeces..."));
 
         int k=0;
@@ -2414,9 +2625,6 @@ void MainWindow::addRows(bool checked){
     else
         ui->statusBar->showMessage("");
 
-
-
-    //XXX Check tool status
     if(tool_up) upgrade_tool();
 
     loadingStatus->setText("");
@@ -2463,8 +2671,10 @@ void MainWindow::upgrade_tool(){
 MainWindow::~MainWindow(){
     delete ui;
 
-#ifdef unix
+#ifdef unix    
     delete (AS::QTNIXEngine*)as;
+
+    if(pp && pp!=9)return;
 
     std::ifstream helper_pid;
     helper_pid.open("/var/run/ashelper.pid");

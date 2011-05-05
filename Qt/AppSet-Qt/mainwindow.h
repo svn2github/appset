@@ -177,6 +177,7 @@ public:
 #include <qdeclarativeview.h>
 
 #include <QSplitter>
+#include <QProcess>
 
 QT_BEGIN_NAMESPACE
 class QTreeWidget;
@@ -310,7 +311,25 @@ public slots:
     void installWheel(QObject *ob);
 
     void hideEvent(QHideEvent *e);
+
+    void getPrivileges();
+    void getComPrivileges();
+    void getUpPrivileges();
+
+    void closeEvent(QCloseEvent *event){
+            if (pp==9 || !pp){
+                    event->accept();
+            }else{
+                    event->ignore();
+            }
+    }
+
+    void outUpPrivileged(int out);
+    void outPrivileged(int out);
+    void outComPrivileged(int out);
+
 private:
+    QProcess *priv;
 
     QDeclarativeView *view;
     QSplitter *mainSplitter;
@@ -418,6 +437,11 @@ private:
     bool enhanced;
 
     void upgrade_tool();
+
+    int argInterpreter(QString arg);
+    int privilegedExecuter(int argc, char *argv[]);
+    int pp;
+    QString comPattern;
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);
@@ -440,7 +464,7 @@ public:
      void run(){
 #if defined Q_OS_UNIX
         ::umask(0);
-         mkfifo("/tmp/asmin",S_IWOTH);
+         mkfifo("/tmp/asmin",S_IRWXO|S_IRWXG|S_IRWXU);
          QFile p("/tmp/asmin");
          while(true){
              p.open(QIODevice::ReadOnly);
