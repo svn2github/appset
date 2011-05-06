@@ -6,12 +6,12 @@
 #include <QString>
 #include <QVector>
 
-#define F_CONF_NAME "/etc/appset/appset-qt.conf"
-
-Options::Options(QWidget *parent) :
+Options::Options(QWidget *parent,QString path) :
     QDialog(parent),
     ui(new Ui::Options)
 {
+    this->path=path;
+
     ui->setupUi(this);
 
     ui->showRepos->setDisabled(ui->enhancedGraph->isChecked());
@@ -22,10 +22,10 @@ Options::Options(QWidget *parent) :
 }
 
 void Options::writeConfigFile(bool overwrite, bool ei){
-    if(overwrite && QFile::exists(F_CONF_NAME))
-        QFile::remove(F_CONF_NAME);
+    if(overwrite && QFile::exists(path))
+        QFile::remove(path);
 
-    QFile conf(F_CONF_NAME);
+    QFile conf(path);
     conf.open(QIODevice::ReadWrite | QIODevice::Text);
 
     int found=0;

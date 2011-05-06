@@ -317,16 +317,38 @@ public slots:
     void getUpPrivileges();
 
     void closeEvent(QCloseEvent *event){
-            if (pp==9 || !pp){
+            /*if (pp==9 || !pp){
+                if(priv->state()==QProcess::NotRunning){
                     event->accept();
-            }else{
-                    event->ignore();
-            }
+                    return;
+                }
+            }*/
+        hide();
+        event->ignore();
+    }
+
+    void changeEvent ( QEvent *event ){
+         if( event->type() == QEvent::WindowStateChange ){
+              if( isMinimized() )
+                   hide();
+         }
     }
 
     void outUpPrivileged(int out);
     void outPrivileged(int out);
     void outComPrivileged(int out);
+    void outCCachePrivileged(int out);
+
+    void appIcon();
+
+    void showPriv(){
+        this->setWindowFlags(Qt::WindowStaysOnTopHint|Qt::X11BypassWindowManagerHint|Qt::Window);
+        this->activateWindow();
+        this->raise();
+        this->setWindowFlags(Qt::Window);
+        this->showNormal();
+        show();
+    }
 
 private:
     QProcess *priv;

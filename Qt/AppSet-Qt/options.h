@@ -13,7 +13,7 @@ class Options : public QDialog
     Q_OBJECT
 
 public:
-    explicit Options(QWidget *parent = 0);
+    explicit Options(QWidget *parent = 0, QString path="/etc/appset/appset-qt.conf");
     ~Options();
 
 
@@ -33,6 +33,8 @@ public:
 
 private:
     Ui::Options *ui;
+
+    QString path;
 };
 
 #endif // OPTIONS_H

@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     hider.start();
 
     hider.connect(&hider,SIGNAL(hide()),&w,SLOT(hide()));
-    hider.connect(&hider,SIGNAL(show()),&w,SLOT(show()));
+    hider.connect(&hider,SIGNAL(show()),&w,SLOT(showPriv()));
 
     return a.exec();
 }

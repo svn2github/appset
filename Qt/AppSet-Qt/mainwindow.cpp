@@ -39,6 +39,7 @@ using namespace AS;
 
 #include <QSplitter>
 #include <QWidgetList>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -207,13 +208,27 @@ MainWindow::MainWindow(QWidget *parent) :
     sizes << 250 << 180;
     mainSplitter->setSizes(sizes);
 
-    Options opt;
+
+    QString optPath;
+    if(pp&&pp!=9 && QFile::exists("/tmp/aspriv")){
+        QFile file("/tmp/aspriv");
+        file.open(QIODevice::ReadOnly | QIODevice::Text);
+        QTextStream opf(&file);
+        optPath = opf.readLine();
+        QStringList geom=opf.readLine().split('\t');
+        int x=geom.at(0).toInt()+(geom.at(2).toInt()-350)/2;
+        int y=geom.at(1).toInt()+(geom.at(3).toInt()-250)/2;
+        this->setGeometry(x,y,0,0);
+    }else{
+        optPath=QDir::homePath()+"/.appset-qt.conf";
+    }
+    Options opt(this,optPath);
     this->sbdelay=opt.sbdelay;
     this->extbrowser=opt.browser;
     this->showBackOut=opt.backOutput;
     this->confirmCountdown=opt.confirmCountdown;
     if(!opt.statShow) ui->statGroup->setHidden(true);
-    if(opt.startfullscreen)this->showMaximized();
+    if(opt.startfullscreen && (!pp || pp==9))this->showMaximized();
     if(opt.showRepos)ui->tableWidget->showColumn(1);
     else ui->tableWidget->hideColumn(1);
     enhanced=opt.enhanced;
@@ -290,7 +305,7 @@ MainWindow::MainWindow(QWidget *parent) :
                 ui->tabWidget->removeTab(2);
     }    
 
-    if(pp!=9 && pp!=5)this->show();
+    if(pp!=9 && pp!=5 && pp!=10)this->show();
     else this->hide();
 #endif
 
@@ -298,11 +313,66 @@ MainWindow::MainWindow(QWidget *parent) :
 
     priv = new QProcess(this);
 
+    //QWebSettings::setIconDatabasePath("/tmp/favicons/");
+    connect(ui->webView,SIGNAL(iconChanged()),SLOT(appIcon()));
+
     timer->start(100);
+}
+
+void MainWindow::appIcon(){
+    ;//ui->tableWidget->item(currentPacket,2)->setIcon(ui->webView->icon().pixmap(16,16));
+}
+
+void MainWindow::cleanCache(){
+#ifdef unix
+    QMessageBox con;
+    con.setText(tr("Are you sure to clean the cache?"));
+    con.setIcon(QMessageBox::Question);
+    con.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+
+    if(con.exec()==QMessageBox::Yes){
+        this->setEnabled(false);
+
+        QFile pfile("/tmp/aspriv");
+        pfile.open(QIODevice::WriteOnly|QIODevice::Text);
+        QTextStream aspriv(&pfile);
+        aspriv << QDir::homePath() << "/.appset-qt.conf\n";
+        aspriv << this->x() << "\t" << this->y() << "\t" << this->width() << "\t" << this->height() << "\n";
+        pfile.close();
+
+        priv = new QProcess(this);
+        QStringList args;
+        args << "--cleancache";
+
+        priv->start(QString("appset-launch.sh"),args);
+
+        connect(priv,SIGNAL(finished(int)),SLOT(outCCachePrivileged(int)));
+    }
+#endif
+}
+
+void MainWindow::outCCachePrivileged(int out){
+    int cacheSize = ((QTNIXEngine*)as)->cacheSize();
+    cleanAction->setEnabled(cacheSize>0);
+    if(cacheSize>0){
+        cleanAction->setText(tr("Clean cache")+QString(" (")+QString::number(cacheSize)+QString(" MB)"));
+    }
+
+    this->setEnabled(true);
+
+    priv->disconnect(SIGNAL(finished(int)),this,SLOT(outCCachePrivileged(int)));
+    QFile::remove("/tmp/aspriv");
 }
 
 void MainWindow::getUpPrivileges(){
     this->setEnabled(false);
+
+    QFile pfile("/tmp/aspriv");
+    pfile.open(QIODevice::WriteOnly|QIODevice::Text);
+    QTextStream aspriv(&pfile);
+    aspriv << QDir::homePath() << "/.appset-qt.conf\n";
+    aspriv << this->x() << "\t" << this->y() << "\t" << this->width() << "\t" << this->height() << "\n";
+    pfile.close();
 
     priv = new QProcess(this);
     QStringList args;
@@ -315,6 +385,14 @@ void MainWindow::getUpPrivileges(){
 
 void MainWindow::getPrivileges(){
     int rows=ui->tableUpgraded->rowCount();
+
+    QFile pfile("/tmp/aspriv");
+    pfile.open(QIODevice::WriteOnly|QIODevice::Text);
+    QTextStream aspriv(&pfile);
+    aspriv << QDir::homePath() << "/.appset-qt.conf\n";
+    aspriv << this->x() << "\t" << this->y() << "\t" << this->width() << "\t" << this->height() << "\n";
+    pfile.close();
+
     QFile ifile(local?"/tmp/aslocal":"/tmp/asinstall");
     ifile.open(QIODevice::WriteOnly|QIODevice::Text);
     QTextStream asfiler;
@@ -365,6 +443,13 @@ void MainWindow::getPrivileges(){
 void MainWindow::getComPrivileges(){
     int ii=toI,rr=toR,uu=toU;
 
+    QFile pfile("/tmp/aspriv");
+    pfile.open(QIODevice::WriteOnly|QIODevice::Text);
+    QTextStream aspriv(&pfile);
+    aspriv << QDir::homePath() << "/.appset-qt.conf\n";
+    aspriv << this->x() << "\t" << this->y() << "\t" << this->width() << "\t" << this->height() << "\n";
+    pfile.close();
+
     QFile ifile("/tmp/ascom");
     ifile.open(QIODevice::WriteOnly|QIODevice::Text);
     QTextStream asfiler(&ifile);
@@ -387,6 +472,7 @@ void MainWindow::outUpPrivileged(int out){
 
     addRows(true);
 
+    QFile::remove("/tmp/aspriv");
     priv->disconnect(SIGNAL(finished(int)),this,SLOT(outUpPrivileged(int)));
 }
 
@@ -397,6 +483,7 @@ void MainWindow::outComPrivileged(int out){
     comContinued();
 
     QFile::remove("/tmp/ascom");
+    QFile::remove("/tmp/aspriv");
     priv->disconnect(SIGNAL(finished(int)),this,SLOT(outComPrivileged(int)));
 }
 
@@ -407,6 +494,7 @@ void MainWindow::outPrivileged(int out){
     QFile::remove("/tmp/asinstall");
     QFile::remove("/tmp/asupgrade");
     QFile::remove("/tmp/asremove");
+    QFile::remove("/tmp/aspriv");
 
     priv->disconnect(SIGNAL(finished(int)),this,SLOT(outPrivileged(int)));
 }
@@ -421,6 +509,7 @@ int MainWindow::argInterpreter(QString arg){
     if(arg=="--comupgrade") return 8;
     if(arg=="--update") return 5;
     if(arg=="--hidden") return 9;
+    if(arg=="--cleancache") return 10;
     return 0;
 }
 
@@ -607,7 +696,7 @@ void MainWindow::saveUrlPre(){
 void MainWindow::showOptions(){
     if(!this->isVisible())return;
 
-    Options opt(this);
+    Options opt(this,QDir::homePath()+"/.appset-qt.conf");
     inModal=true;
     int res = opt.exec();
 
@@ -726,23 +815,6 @@ void MainWindow::error(QNetworkReply::NetworkError){
 }
 
 //END RSS
-
-void MainWindow::cleanCache(){
-#ifdef unix
-    QMessageBox con;
-    con.setText(tr("Are you sure to clean the cache?"));
-    con.setIcon(QMessageBox::Question);
-    con.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
-
-    inModal=true;
-    if(con.exec()==QMessageBox::Yes){
-        ((AS::QTNIXEngine*)as)->cleanCache();
-        cleanAction->setDisabled(true);
-        cleanAction->setText(tr("Clean cache"));
-    }
-    inModal=false;
-#endif
-}
 
 void MainWindow::confirmTimeout(){
     confirmRemaining--;
@@ -2238,6 +2310,10 @@ void MainWindow::addRows(bool checked){
         this->hide();
         updateDB();
         return;
+    }else if(pp==10){
+        ((AS::QTNIXEngine*)as)->cleanCache();
+        qApp->quit();
+        return;
     }
 
     QString param("");
@@ -2629,6 +2705,7 @@ void MainWindow::addRows(bool checked){
 
     loadingStatus->setText("");
 }
+
 
 void MainWindow::upgrade_tool(){
 #ifdef unix

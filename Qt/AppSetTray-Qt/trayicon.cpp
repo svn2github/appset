@@ -183,9 +183,9 @@ void TrayIcon::checkUps(){
 }
 
 void TrayIcon::launchAS(){    
-    checkRunning();
+    /*checkRunning();
     if(!running)
-        showMessage(tr("Launching AppSet-Qt"),tr("Wait..."),QSystemTrayIcon::Information,1000);
+        showMessage(tr("Launching AppSet-Qt"),tr("Wait..."),QSystemTrayIcon::Information,1000);*/
 
 #ifdef unix
     system("appset-launch.sh &");
