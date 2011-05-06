@@ -76,11 +76,13 @@ MainWindow::MainWindow(QWidget *parent) :
     bool privileged=pp>0 && pp!=9;
     argsParsed=pp!=4 && pp!=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf",privileged?"/tmp/as.tmp":"/tmp/asuser.tmp",!privileged))){
-        QMessageBox errMsg;
-        errMsg.setText(tr("Errors while initializing the system!"));
-        errMsg.setInformativeText(((AS::QTNIXEngine*)as)->getConfErrStr(errno));
-        errMsg.setIcon(QMessageBox::Critical);
-        errMsg.exec();
+        if(privileged){
+            QMessageBox errMsg;
+            errMsg.setText(tr("Errors while initializing the system!"));
+            errMsg.setInformativeText(((AS::QTNIXEngine*)as)->getConfErrStr(errno));
+            errMsg.setIcon(QMessageBox::Critical);
+            errMsg.exec();
+        }
         exit(1);
     }
 #endif
@@ -1103,7 +1105,7 @@ void MainWindow::opFinished(){
             done.setStandardButtons(status?QMessageBox::Yes|QMessageBox::No:QMessageBox::Ok);
             if(status){
                 inModal=true;
-                int showLogs = done.exec();
+                int showLogs = this->isVisible()?done.exec():QMessageBox::No;
                 inModal=false;
 
                 if(showLogs==QMessageBox::Yes){
@@ -2116,11 +2118,13 @@ void MainWindow::updateDB(){
     ui->centralWidget->setDisabled(true);
     ui->mainToolBar->setDisabled(true);    
 
-    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+    QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
 
     loadingDialog->show();
     loadingBar->setValue(25);
     loadingStatus->setText(tr("UPDATING DB: "));
+
+    QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
 
     //as->addListener(sbu);
     as->update();
@@ -2130,6 +2134,8 @@ void MainWindow::updateDB(){
 
     loadingBar->setValue(60);
     loadingStatus->setText(tr("DB UPDATED!"));
+
+    QCoreApplication::processEvents(QEventLoop::AllEvents, 1000);
 
     modified=0;
     applyEnabler();

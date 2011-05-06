@@ -22,9 +22,9 @@ TrayIcon::TrayIcon(QObject *parent) :
 
     QMenu *trayMenu = new QMenu();
 
-    launch=trayMenu->addAction(QIcon(":general/appset.png"),tr("Launch AppSet-Qt"));
+    launch=trayMenu->addAction(QIcon(":general/appset.png"),tr("Show AppSet"));
     check=trayMenu->addAction(QApplication::style()->standardIcon(QStyle::SP_BrowserReload),tr("Check for updates NOW!"));
-    quit=trayMenu->addAction(QApplication::style()->standardIcon(QStyle::SP_BrowserStop),tr("Quit Tray"));
+    quit=trayMenu->addAction(QApplication::style()->standardIcon(QStyle::SP_BrowserStop),tr("Quit"));
 
     connect(launch,SIGNAL(triggered()),SLOT(launchAS()));
     connect(check,SIGNAL(triggered()),SLOT(manualCheckUps()));
@@ -63,23 +63,41 @@ TrayIcon::TrayIcon(QObject *parent) :
     running=false;
 }
 
+#include <QProcess>
 void TrayIcon::manualCheckUps(){
     manualCheck=true;
     //if(!running) showMessage(tr("Checking updates"),tr("Waiting for updates from helper daemon..."),QSystemTrayIcon::Information,6000);
     QCoreApplication::processEvents(QEventLoop::AllEvents,500);
-    checkUps();
-    manualCheck=false;
+    QStringList args;
+    args << "--update";
+    QProcess *priv=new QProcess(this);
+    priv->start("appset-launch.sh",args);
+    connect(priv,SIGNAL(finished(int)),SLOT(checkUps()));
+    //checkUps();
 }
 
+#include <QFile>
+#include <QTextStream>
 void TrayIcon::quitter(){
+    //XXX check running instances and close them
+    checkRunning();
     QMessageBox reqMes;
-    reqMes.setText(tr("Are you sure to quit this tray?"));
-    reqMes.setInformativeText(tr("You can restart it from desktop menu"));
-    reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    reqMes.setIcon(QMessageBox::Question);
-    int res = reqMes.exec();
+    int res=QMessageBox::Yes;
+    if(running){
+        reqMes.setText(tr("There is an instance of AppSet which is running some privileged operations."));
+        reqMes.setInformativeText(tr("Do you want to quit anyway (not recommended)?"));
+        reqMes.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        reqMes.setIcon(QMessageBox::Warning);
+        res = reqMes.exec();
+    }
 
     if(res==QMessageBox::Yes){
+        QFile pfile("/tmp/asmin");
+        pfile.open(QIODevice::WriteOnly|QIODevice::Text);
+        QTextStream aspriv(&pfile);
+        aspriv << "quit\n";
+        pfile.close();
+
         QCoreApplication::quit();
     }
 }
@@ -105,8 +123,9 @@ void TrayIcon::checkRunning(){
 bool compareRepos(Package *p1, Package *p2){
     return p1->getRepository().compare(p2->getRepository())<0;
 }
+
 #include <cctype>
-void TrayIcon::checkUps(){
+void TrayIcon::checkUps(){    
     bool running = this->running;
     if(!running){
         //list<Package*> *pkgs = as->queryLocal(as_QUERY_UPGRADABLE);
@@ -162,6 +181,15 @@ void TrayIcon::checkUps(){
             setToolTip(tr("No updates available"));
         }
     }
+
+    if(manualCheck){
+        QFile pfile("/tmp/asmin");
+        pfile.open(QIODevice::WriteOnly|QIODevice::Text);
+        QTextStream aspriv(&pfile);
+        aspriv << "update\n";
+        pfile.close();
+    }
+    manualCheck=false;
 
     timer->setSingleShot(true);
     ifstream conf;

@@ -481,6 +481,8 @@ class ASHider:public QThread{
 signals:
     void hide();
     void show();
+    void upDB();
+    void quit();
 public:
      ASHider(MainWindow *w){this->w=w;}
      void run(){
@@ -489,11 +491,18 @@ public:
          mkfifo("/tmp/asmin",S_IRWXO|S_IRWXG|S_IRWXU);
          QFile p("/tmp/asmin");
          while(true){
-             p.open(QIODevice::ReadOnly);
-             p.readLine();
+             p.open(QIODevice::ReadOnly|QIODevice::Text);
+             QTextStream asmin(&p);
+             QString cmd=asmin.readLine().trimmed();
+             if(cmd=="update"){
+                 emit upDB();
+             }else if(cmd=="quit"){
+                 emit quit();
+             }else{
+                 if(w->isVisible() && !w->inModal) emit hide();
+                 else emit show();
+             }
              p.close();
-             if(w->isVisible() && !w->inModal) emit hide();
-             else emit show();
              QCoreApplication::processEvents(QEventLoop::AllEvents,500);
          }
 #endif

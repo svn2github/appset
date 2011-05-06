@@ -33,6 +33,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+#ifdef unix
+    system("appsettray-qt &");
+#endif
+
     QTranslator myappTranslator;
     myappTranslator.load(":langs/appset-qt_" + QLocale::system().name());
          a.installTranslator(&myappTranslator);
@@ -45,6 +49,8 @@ int main(int argc, char *argv[])
 
     hider.connect(&hider,SIGNAL(hide()),&w,SLOT(hide()));
     hider.connect(&hider,SIGNAL(show()),&w,SLOT(showPriv()));
+    hider.connect(&hider,SIGNAL(upDB()),&w,SLOT(addRows()));
+    hider.connect(&hider,SIGNAL(quit()),qApp,SLOT(quit()));
 
     return a.exec();
 }
