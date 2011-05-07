@@ -37,9 +37,5 @@ int main(int argc, char *argv[]){
     TrayIcon tray;
     tray.show();
 
-#ifdef unix
-    system("appset-launch.sh --hidden");
-#endif
-
     return app.exec();
 }
