@@ -365,6 +365,8 @@ void MainWindow::outCCachePrivileged(int out){
     cleanAction->setEnabled(cacheSize>0);
     if(cacheSize>0){
         cleanAction->setText(tr("Clean cache")+QString(" (")+QString::number(cacheSize)+QString(" MB)"));
+    }else{
+        cleanAction->setText(tr("Clean cache"));
     }
 
     this->setEnabled(true);

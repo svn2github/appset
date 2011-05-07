@@ -41,7 +41,7 @@ TrayIcon::TrayIcon(QObject *parent) :
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf","/tmp/astray.tmp",true))){
         exit(1);
     }
-    system("appset-launch.sh --hidden");
+    system("appset-launch.sh --hidden &");
 #endif
 
     timer = new QTimer();
