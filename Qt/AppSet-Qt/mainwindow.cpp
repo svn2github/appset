@@ -219,8 +219,8 @@ MainWindow::MainWindow(QWidget *parent) :
         QTextStream opf(&file);
         optPath = opf.readLine();
         QStringList geom=opf.readLine().split('\t');
-        int x=geom.at(0).toInt()+(geom.at(2).toInt()-350)/2;
-        int y=geom.at(1).toInt()+(geom.at(3).toInt()-250)/2;
+        int x=geom.at(0).toInt()+(geom.at(2).toInt()-400)/2;
+        int y=geom.at(1).toInt()+(geom.at(3).toInt()-300)/2;
         this->setGeometry(x,y,0,0);
     }else{
         optPath=QDir::homePath()+"/.appset-qt.conf";
