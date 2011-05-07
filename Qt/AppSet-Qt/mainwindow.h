@@ -111,6 +111,8 @@ public:
 };
 
 #include <fstream>
+#include <sys/stat.h>
+#include <QFile>
 class ASLogger:public AS::EngineListener{
     std::ofstream logFile;
 public:
@@ -123,6 +125,7 @@ public:
     ~ASLogger(){
 #ifdef unix
         if(logFile.is_open()) logFile.close();
+        QFile::remove("/tmp/aslock");
 #endif
     }
 
@@ -323,14 +326,14 @@ public slots:
                     return;
                 }
             }*/
-        hide();
+        hidePriv();
         event->ignore();
     }
 
     void changeEvent ( QEvent *event ){
          if( event->type() == QEvent::WindowStateChange ){
               if( isMinimized() )
-                   hide();
+                   hidePriv();
          }
     }
 
@@ -342,15 +345,33 @@ public slots:
     void appIcon();
 
     void showPriv(){
+        QFile asshown("/tmp/asshown");
+        asshown.open(QFile::WriteOnly);
+        asshown.write("\n");
+        asshown.close();
+
         this->setWindowFlags(Qt::WindowStaysOnTopHint|Qt::X11BypassWindowManagerHint|Qt::Window);
         this->activateWindow();
         this->raise();
         this->setWindowFlags(Qt::Window);
         this->showNormal();
+
+        if((oldgeom.left()!=-1))
+            this->setGeometry(oldgeom);
+
         show();
     }
 
+    void hidePriv(){
+        QFile::remove("/tmp/asshown");
+        oldgeom=geometry();
+        hide();
+    }
+
 private:
+    bool autoupgrade;
+
+    QRect oldgeom;
     QProcess *priv;
 
     QDeclarativeView *view;
@@ -471,8 +492,6 @@ signals:
 
 };
 
-
-#include <sys/stat.h>
 #include <QFile>
 class ASHider:public QThread{
     Q_OBJECT

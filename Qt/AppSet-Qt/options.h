@@ -26,6 +26,7 @@ public:
     bool showRepos;
     bool enhanced;
     bool extraInfo;
+    bool autoupgrade;
 
     int updelay;
 

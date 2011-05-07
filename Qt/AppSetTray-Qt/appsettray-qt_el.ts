@@ -5,8 +5,9 @@
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
-        <source>Launch AppSet-Qt</source>
-        <translation>Εκκίνηση Appset-Qt</translation>
+        <source>Show/Hide AppSet</source>
+        <oldsource>Show AppSet</oldsource>
+        <translation type="unfinished">Εκκίνηση Appset-Qt</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
@@ -15,72 +16,79 @@
     </message>
     <message>
         <location filename="trayicon.cpp" line="27"/>
-        <source>Quit Tray</source>
-        <translation>Τερματισμός Πλαισίου</translation>
+        <source>Quit</source>
+        <oldsource>Quit Tray</oldsource>
+        <translation type="unfinished">Τερματισμός Πλαισίου</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="61"/>
+        <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
         <translation>Αναμονή για βοηθό...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="76"/>
         <source>Are you sure to quit this tray?</source>
-        <translation>Είστε σίγουροι ότι θέλετε να τερματίσετε αυτό το πλαίσιο;</translation>
+        <translation type="obsolete">Είστε σίγουροι ότι θέλετε να τερματίσετε αυτό το πλαίσιο;</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="77"/>
         <source>You can restart it from desktop menu</source>
-        <translation>Μπορείτε να το επανεκκινήσετε από το μενού της επιφάνειας εργασίας</translation>
+        <translation type="obsolete">Μπορείτε να το επανεκκινήσετε από το μενού της επιφάνειας εργασίας</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="97"/>
+        <location filename="trayicon.cpp" line="83"/>
+        <source>There is an instance of AppSet which is running some privileged operations.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="84"/>
+        <source>Do you want to quit anyway (not recommended)?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="113"/>
         <source>AppSet-Qt is Running!</source>
         <translation>το AppSet-Qt Τρέχει!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="139"/>
+        <location filename="trayicon.cpp" line="156"/>
         <source>There are updates for:</source>
         <translation>Διαθέσιμες ενημερώσεις για:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="139"/>
+        <location filename="trayicon.cpp" line="156"/>
         <source>There is an update for:</source>
         <translation>Διαθέσιμη ενημέρωση για:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="149"/>
+        <location filename="trayicon.cpp" line="166"/>
         <source>
 And others...</source>
         <translation>Και άλλα...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="152"/>
-        <location filename="trayicon.cpp" line="155"/>
+        <location filename="trayicon.cpp" line="169"/>
+        <location filename="trayicon.cpp" line="172"/>
         <source> updates available!</source>
         <translation> υπάρχουν διαθέσιμες ενημερώσεις!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="152"/>
-        <location filename="trayicon.cpp" line="155"/>
+        <location filename="trayicon.cpp" line="169"/>
+        <location filename="trayicon.cpp" line="172"/>
         <source> update available!</source>
         <translation>υπάρχει διαθέσιμη ενημέρωση!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="159"/>
-        <location filename="trayicon.cpp" line="162"/>
+        <location filename="trayicon.cpp" line="176"/>
+        <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>Καμία διαθέσιμη ενημέρωση</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="186"/>
         <source>Launching AppSet-Qt</source>
-        <translation>Εκκίνηση AppSet-Qt</translation>
+        <translation type="obsolete">Εκκίνηση AppSet-Qt</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="186"/>
         <source>Wait...</source>
-        <translation>Aναμένατε...</translation>
+        <translation type="obsolete">Aναμένατε...</translation>
     </message>
 </context>
 </TS>

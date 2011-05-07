@@ -51,8 +51,13 @@ int main(){
     unlink("/tmp/ashelper.tmp");
     unlink("/tmp/ashelper.out");
     unlink("/tmp/astray.tmp");
-    unlink("/tmp/asupreq.tmp");
+    unlink("/tmp/asmin.tmp");
     unlink("/tmp/as.tmp");
+    unlink("/tmp/aspriv.tmp");
+    unlink("/tmp/asinstall.tmp");
+    unlink("/tmp/asremove.tmp");
+    unlink("/tmp/asupgrade.tmp");
+    unlink("/tmp/asshown.tmp");
 
     ofstream pid_writer;
     pid_writer.open("/var/run/ashelper.pid");
@@ -158,7 +163,7 @@ int main(){
                 remains = sleep(5);
                 counter = (counter+5-remains);
                 struct stat s;
-                while(stat("/tmp/as.tmp",&s)==0){
+                while(stat("/tmp/as.tmp",&s)==0 || stat("/tmp/asshown",&s)==0){
                     sleep(5);
                     counter += 5;
                     runned=true;
@@ -166,6 +171,7 @@ int main(){
                 //upreq=stat("/tmp/asupreq.tmp",&s)==0;
                 if((counter>=updelay/* || upreq*/) && stat("/tmp/as.tmp",&s)){
                     ase->update();
+                    system("echo -ne 'update\n' > /tmp/asmin");
                     counter = 0;
                     runned=true;                    
                 }

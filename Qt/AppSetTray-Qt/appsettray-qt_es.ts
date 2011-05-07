@@ -5,8 +5,9 @@
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
-        <source>Launch AppSet-Qt</source>
-        <translation>Iniciar AppSet Qt</translation>
+        <source>Show/Hide AppSet</source>
+        <oldsource>Show AppSet</oldsource>
+        <translation type="unfinished">Iniciar AppSet Qt</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
@@ -15,73 +16,80 @@
     </message>
     <message>
         <location filename="trayicon.cpp" line="27"/>
-        <source>Quit Tray</source>
-        <translation>Salir</translation>
+        <source>Quit</source>
+        <oldsource>Quit Tray</oldsource>
+        <translation type="unfinished">Salir</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="61"/>
+        <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
         <translation>Esperando al asistente...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="76"/>
         <source>Are you sure to quit this tray?</source>
-        <translation>¿Estás seguro de salir?</translation>
+        <translation type="obsolete">¿Estás seguro de salir?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="77"/>
         <source>You can restart it from desktop menu</source>
-        <translation>Puedes reiniciar el programa del menú del escritorio</translation>
+        <translation type="obsolete">Puedes reiniciar el programa del menú del escritorio</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="97"/>
+        <location filename="trayicon.cpp" line="83"/>
+        <source>There is an instance of AppSet which is running some privileged operations.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="84"/>
+        <source>Do you want to quit anyway (not recommended)?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="113"/>
         <source>AppSet-Qt is Running!</source>
         <translation>¡AppSet Qt está en marcha!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="139"/>
+        <location filename="trayicon.cpp" line="156"/>
         <source>There are updates for:</source>
         <translation>Hay actualizaciones para:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="139"/>
+        <location filename="trayicon.cpp" line="156"/>
         <source>There is an update for:</source>
         <translation>Hay una actualización para:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="149"/>
+        <location filename="trayicon.cpp" line="166"/>
         <source>
 And others...</source>
         <translation>
 Y otros...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="152"/>
-        <location filename="trayicon.cpp" line="155"/>
+        <location filename="trayicon.cpp" line="169"/>
+        <location filename="trayicon.cpp" line="172"/>
         <source> updates available!</source>
         <translation> actualizaciones disponibles</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="152"/>
-        <location filename="trayicon.cpp" line="155"/>
+        <location filename="trayicon.cpp" line="169"/>
+        <location filename="trayicon.cpp" line="172"/>
         <source> update available!</source>
         <translation> actualización disponible</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="159"/>
-        <location filename="trayicon.cpp" line="162"/>
+        <location filename="trayicon.cpp" line="176"/>
+        <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>No hay actualizaciones disponibles</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="186"/>
         <source>Launching AppSet-Qt</source>
-        <translation>Iniciando AppSet Qt</translation>
+        <translation type="obsolete">Iniciando AppSet Qt</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="186"/>
         <source>Wait...</source>
-        <translation>Espere...</translation>
+        <translation type="obsolete">Espere...</translation>
     </message>
 </context>
 </TS>

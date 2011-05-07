@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     ASHider hider(&w);
     hider.start();
 
-    hider.connect(&hider,SIGNAL(hide()),&w,SLOT(hide()));
+    hider.connect(&hider,SIGNAL(hide()),&w,SLOT(hidePriv()));
     hider.connect(&hider,SIGNAL(show()),&w,SLOT(showPriv()));
     hider.connect(&hider,SIGNAL(upDB()),&w,SLOT(addRows()));
     hider.connect(&hider,SIGNAL(quit()),qApp,SLOT(quit()));

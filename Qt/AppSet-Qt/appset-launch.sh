@@ -5,11 +5,20 @@ if [ "$#" == "0" ]; then
     if [ "$?" == "0" ]; then
         echo h > /tmp/asmin
     else
+        rm /tmp/asuser.tmp
         appset-qt &
     fi
 elif [ "$1" == "--hidden" ]; then
     appset-qt --hidden &
-elif [ $# -ge 1 ]; then
+elif [ "$1" == "--show" ]; then
+    pgrep appset-qt > /dev/null
+    if [ "$?" == "0" ]; then
+        echo h > /tmp/asmin
+    else
+        rm /tmp/asuser.tmp
+        appset-qt --show &
+    fi
+elif [ $# -ge 1 ]; then        
         if [ -e /usr/bin/kdesu ]; then
             kdesu -d --noignorebutton -i "/usr/share/icons/appset/appset.png" -c "appset-qt $1 $2 $3"
         elif [ -e /usr/bin/gksu ]; then

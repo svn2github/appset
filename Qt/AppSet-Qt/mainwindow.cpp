@@ -40,6 +40,7 @@ using namespace AS;
 #include <QSplitter>
 #include <QWidgetList>
 #include <QDir>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -73,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
     as = new AS::QTNIXEngine();
     int errno=0;
     pp=privilegedExecuter(qApp->argc(),qApp->argv());
-    bool privileged=pp>0 && pp!=9;
+    bool privileged=pp>0 && pp!=9 && pp!=11;
     argsParsed=pp!=4 && pp!=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf",privileged?"/tmp/as.tmp":"/tmp/asuser.tmp",!privileged))){
         if(privileged){
@@ -212,7 +213,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     QString optPath;
-    if(pp&&pp!=9 && QFile::exists("/tmp/aspriv")){
+    if(pp&&pp!=9&&pp!=11 && QFile::exists("/tmp/aspriv")){
         QFile file("/tmp/aspriv");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         QTextStream opf(&file);
@@ -230,12 +231,13 @@ MainWindow::MainWindow(QWidget *parent) :
     this->showBackOut=opt.backOutput;
     this->confirmCountdown=opt.confirmCountdown;
     if(!opt.statShow) ui->statGroup->setHidden(true);
-    if(opt.startfullscreen && (!pp || pp==9))this->showMaximized();
+    if(opt.startfullscreen && (!pp || pp==9 || pp==11))this->showMaximized();
     if(opt.showRepos)ui->tableWidget->showColumn(1);
     else ui->tableWidget->hideColumn(1);
     enhanced=opt.enhanced;
     if(enhanced)ui->urlpre->setHidden(true);
     ui->urlpre->setChecked(opt.extraInfo);
+    this->autoupgrade=opt.autoupgrade;
 
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
@@ -307,8 +309,13 @@ MainWindow::MainWindow(QWidget *parent) :
                 ui->tabWidget->removeTab(2);
     }    
 
-    if(pp!=9 && pp!=5 && pp!=10)this->show();
-    else this->hide();
+    oldgeom=QRect(-1,0,0,0);
+
+    if((pp!=9 && pp!=5 && pp!=10 && pp) || pp==11)this->showPriv();
+    else{
+        this->hidePriv();
+        oldgeom=QRect(-1,0,0,0);
+    }
 #endif
 
     inModal=false;
@@ -388,6 +395,10 @@ void MainWindow::getUpPrivileges(){
 void MainWindow::getPrivileges(){
     int rows=ui->tableUpgraded->rowCount();
 
+    QFile lfile("/tmp/aslock");
+    lfile.open(QIODevice::WriteOnly);
+    lfile.close();
+
     QFile pfile("/tmp/aspriv");
     pfile.open(QIODevice::WriteOnly|QIODevice::Text);
     QTextStream aspriv(&pfile);
@@ -444,6 +455,10 @@ void MainWindow::getPrivileges(){
 
 void MainWindow::getComPrivileges(){
     int ii=toI,rr=toR,uu=toU;
+
+    QFile lfile("/tmp/aslock");
+    lfile.open(QIODevice::WriteOnly);
+    lfile.close();
 
     QFile pfile("/tmp/aspriv");
     pfile.open(QIODevice::WriteOnly|QIODevice::Text);
@@ -512,6 +527,7 @@ int MainWindow::argInterpreter(QString arg){
     if(arg=="--update") return 5;
     if(arg=="--hidden") return 9;
     if(arg=="--cleancache") return 10;
+    if(arg=="--show") return 11;
     return 0;
 }
 
@@ -607,7 +623,7 @@ void MainWindow::comContinued(){
 void MainWindow::comInfoRetrieved(AS::Package *pkg){
     if(pkg) ui->webView_2->setUrl(QUrl(pkg->getURL().c_str()));
 }
-#include <QFile>
+
 #include <QScrollBar>
 void MainWindow::refreshCom(){
     QStringList logs;
@@ -717,6 +733,7 @@ void MainWindow::showOptions(){
         else ui->tableWidget->hideColumn(1);
         enhanced=opt.enhanced;
         mainSplitter->setHidden(enhanced);
+        this->autoupgrade=opt.autoupgrade;
 
         if(enhanced && !view)asyncFilter();
         if(!enhanced && view){
@@ -1024,7 +1041,7 @@ bool MainWindow::outcomeEvaluator(){
 
 void MainWindow::opFinished(){
     int op = 1;
-    if(pp!=9 && pp){
+    if(pp!=9 && pp && pp!=11){
         timerUpdate->stop();
         op=asThread->getOp();
         int status = asThread->getStatus();
@@ -1075,7 +1092,7 @@ void MainWindow::opFinished(){
     }
 
     if(op>0&&op<4){
-        if(pp==9 || !pp){
+        if(pp==9 || !pp || pp==11){
             ui->stacked->setCurrentIndex(0);
             QCoreApplication::processEvents(QEventLoop::AllEvents,500);
             ui->mainToolBar->show();
@@ -1105,7 +1122,7 @@ void MainWindow::opFinished(){
             done.setStandardButtons(status?QMessageBox::Yes|QMessageBox::No:QMessageBox::Ok);
             if(status){
                 inModal=true;
-                int showLogs = this->isVisible()?done.exec():QMessageBox::No;
+                int showLogs = this->isVisible()?!QFile::exists("/tmp/aslock")?done.exec():QMessageBox::No:QMessageBox::No;
                 inModal=false;
 
                 if(showLogs==QMessageBox::Yes){
@@ -1170,7 +1187,7 @@ void MainWindow::editConfirm(){
             }
         }
 
-        if(pp!=9 && pp){
+        if(pp!=9 && pp && pp!=11){
             asThread->setList(prem);
             asThread->setOp(3);
             pkgs=prem;
@@ -1189,7 +1206,7 @@ void MainWindow::editConfirm(){
             iOutcome << ui->tableUpgraded->item(i,1)->toolTip().trimmed();
         }
 
-        if(pp!=9 && pp){
+        if(pp!=9 && pp && pp!=11){
             asThread->setList(pinst);
             asThread->setOp(1);
             asThread->local=local;
@@ -1218,7 +1235,7 @@ void MainWindow::editConfirm(){
             }
         }
 
-        if(pp!=9 && pp){
+        if(pp!=9 && pp && pp!=11){
             asThread->setList(pupgr);
             asThread->setOp(2);
             pkgs=pupgr;
@@ -1229,7 +1246,7 @@ void MainWindow::editConfirm(){
     if(toU || toR || toI){        
         ui->choicesGroup->setHidden(true);
 
-        if(pp!=9 && pp){
+        if(pp!=9 && pp && pp!=11){
             timerUpdate->start(250);
             if(this->showBackOut) ui->backGroup->setVisible(true);
         }
@@ -1459,7 +1476,7 @@ void MainWindow::applyEnabler(){
 }
 
 void MainWindow::installCom(){
-    if(!pp || pp==9){
+    if(!pp || pp==9 || pp==11){
         toI=1;
         comPattern=ui->tableCommunity->model()->data(ui->tableCommunity->model()->index(currentPacket,1)).toString();
         getComPrivileges();
@@ -1484,7 +1501,7 @@ void MainWindow::upgradeCom(){
 }
 
 void MainWindow::removeCom(){
-    if(!pp || pp==9){
+    if(!pp || pp==9 || pp==11){
         toR=1;
         comPattern=ui->tableCommunity->model()->data(ui->tableCommunity->model()->index(currentPacket,1)).toString();
         getComPrivileges();
@@ -1841,7 +1858,7 @@ void MainWindow::confirm(){
     int in=0,r=0,u=0;
     int rows=ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
-        if(!isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,2)->text().contains(expert)){
+        if(autoupgrade && !isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,2)->text().contains(expert)){
             currentPacket=i;
             this->upgrade();
             modified++;
@@ -2757,7 +2774,7 @@ MainWindow::~MainWindow(){
 #ifdef unix    
     delete (AS::QTNIXEngine*)as;
 
-    if(pp && pp!=9)return;
+    if(pp && pp!=9 && pp!=11)return;
 
     std::ifstream helper_pid;
     helper_pid.open("/var/run/ashelper.pid");

@@ -22,7 +22,7 @@ TrayIcon::TrayIcon(QObject *parent) :
 
     QMenu *trayMenu = new QMenu();
 
-    launch=trayMenu->addAction(QIcon(":general/appset.png"),tr("Show AppSet"));
+    launch=trayMenu->addAction(QIcon(":general/appset.png"),tr("Show/Hide AppSet"));
     check=trayMenu->addAction(QApplication::style()->standardIcon(QStyle::SP_BrowserReload),tr("Check for updates NOW!"));
     quit=trayMenu->addAction(QApplication::style()->standardIcon(QStyle::SP_BrowserStop),tr("Quit"));
 
@@ -39,13 +39,9 @@ TrayIcon::TrayIcon(QObject *parent) :
     as = new AS::QTNIXEngine();
     int errno=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf","/tmp/astray.tmp",true))){
-        /*QMessageBox errMsg;
-        errMsg.setText(tr("Error configuring system"));
-        errMsg.setInformativeText(((AS::QTNIXEngine*)as)->getConfErrStr(errno));
-        errMsg.setIcon(QMessageBox::Critical);
-        errMsg.exec();*/
         exit(1);
     }
+    system("appset-launch.sh --hidden");
 #endif
 
     timer = new QTimer();
@@ -92,11 +88,13 @@ void TrayIcon::quitter(){
     }
 
     if(res==QMessageBox::Yes){
-        QFile pfile("/tmp/asmin");
-        pfile.open(QIODevice::WriteOnly|QIODevice::Text);
-        QTextStream aspriv(&pfile);
-        aspriv << "quit\n";
-        pfile.close();
+        if(QFile::exists("/tmp/asmin")){
+            QFile pfile("/tmp/asmin");
+            pfile.open(QIODevice::WriteOnly|QIODevice::Text);
+            QTextStream aspriv(&pfile);
+            aspriv << "quit\n";
+            pfile.close();
+        }
 
         QCoreApplication::quit();
     }
@@ -216,7 +214,7 @@ void TrayIcon::launchAS(){
         showMessage(tr("Launching AppSet-Qt"),tr("Wait..."),QSystemTrayIcon::Information,1000);*/
 
 #ifdef unix
-    system("appset-launch.sh &");
+    system("appset-launch.sh --show &");
 #endif
 }
 
