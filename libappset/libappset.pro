@@ -16,6 +16,3 @@ unix{
     HEADERS+=asnixengine.h
     SOURCES+=asnixengine.cpp
 }
-
-OTHER_FILES += \
-    TODO.txt

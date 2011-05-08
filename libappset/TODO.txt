@@ -1,6 +1,0 @@
-1) Aggiungere funzione di utilità per ottenere stringhe da codici di errore
-2) Completare la saveConfig nel nixengine
-
-3) Visualizzare progresso durante i download
-4) Area informazioni aggiuntive ridimensionabile
-5) Ottimizzazione avvio (tempi)
