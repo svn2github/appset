@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Version=0.5.0
-Exec=/usr/bin/appsettray-qt
+Exec=/usr/bin/appset-launch.sh --hidden
 Name=AppSetTray-Qt
 Categories=Application;System;
 Type=Application

@@ -75,6 +75,7 @@ MainWindow::MainWindow(QWidget *parent) :
     int errno=0;
     pp=privilegedExecuter(qApp->argc(),qApp->argv());
     bool privileged=pp>0 && pp!=9 && pp!=11;
+    if(privileged)this->setWindowTitle("AppSet-Qt (SUPERUSER)");
     argsParsed=pp!=4 && pp!=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf",privileged?"/tmp/as.tmp":"/tmp/asuser.tmp",!privileged))){
         if(privileged){
@@ -198,6 +199,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
     get(QUrl(QString(((AS::QTNIXEngine*)as)->getNewsUrl(QLocale::languageToString(QLocale::system().language()).toAscii().data()).c_str())));
     ui->treeWidget->hideColumn(0);
+    rssloader=new QTimer(this);
+    rssloader->setSingleShot(true);
+    connect(rssloader,SIGNAL(timeout()),SLOT(RSSRetry()));
 
     mainSplitter = new QSplitter(ui->tabList);
     ui->contents->removeWidget(ui->extraInfoGroupBox);
@@ -832,7 +836,12 @@ void MainWindow::error(QNetworkReply::NetworkError){
     currentReply->disconnect(this);
     currentReply->deleteLater();
     currentReply = 0;
-    ui->newsGroup->hide();
+    rssloader->start(4000);
+    //ui->newsGroup->hide();
+}
+
+void MainWindow::RSSRetry(){
+    get(QUrl(QString(((AS::QTNIXEngine*)as)->getNewsUrl(QLocale::languageToString(QLocale::system().language()).toAscii().data()).c_str())));
 }
 
 //END RSS
@@ -1849,8 +1858,8 @@ void MainWindow::notUpgrade(bool community){
 void MainWindow::confirm(){
     ui->tableUpgraded->hideColumn(5);
     ui->tableUpgraded->setColumnWidth(1,300);
-    ui->tableUpgraded->setColumnWidth(2,150);
-    ui->tableUpgraded->setColumnWidth(3,400);
+    ui->tableUpgraded->setColumnWidth(2,200);
+    ui->tableUpgraded->setColumnWidth(3,300);
     ui->stacked->setCurrentIndex(1);
     ui->mainToolBar->hide();
 

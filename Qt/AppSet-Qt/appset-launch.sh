@@ -9,7 +9,9 @@ if [ "$#" == "0" ]; then
         appset-qt &
     fi
 elif [ "$1" == "--hidden" ]; then
-    appset-qt --hidden &
+    if [ "$?" -ne "0" ]; then
+        appset-qt --hidden &
+    fi
 elif [ "$1" == "--show" ]; then
     pgrep appset-qt > /dev/null
     if [ "$?" == "0" ]; then

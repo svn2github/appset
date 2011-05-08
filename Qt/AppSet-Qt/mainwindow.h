@@ -326,14 +326,23 @@ public slots:
                     return;
                 }
             }*/
-        hidePriv();
+        //hidePriv();
+        QFile minfile("/tmp/asmin");
+        minfile.open(QFile::WriteOnly);
+        minfile.write("h\n");
+        minfile.close();
         event->ignore();
     }
 
     void changeEvent ( QEvent *event ){
          if( event->type() == QEvent::WindowStateChange ){
-              if( isMinimized() )
-                   hidePriv();
+              if( isMinimized() ){
+                  QFile minfile("/tmp/asmin");
+                  minfile.open(QFile::WriteOnly);
+                  minfile.write("h\n");
+                  minfile.close();
+                  //hidePriv();
+              }
          }
     }
 
@@ -368,7 +377,11 @@ public slots:
         hide();
     }
 
+    void RSSRetry();
+
 private:
+    QTimer *rssloader;
+
     bool autoupgrade;
 
     QRect oldgeom;
