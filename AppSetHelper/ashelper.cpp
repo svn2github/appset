@@ -169,9 +169,9 @@ int main(){
                     runned=true;
                 }
                 //upreq=stat("/tmp/asupreq.tmp",&s)==0;
-                if((counter>=updelay/* || upreq*/) && stat("/tmp/as.tmp",&s)){
+                if((counter>=updelay/* || upreq*/) && stat("/tmp/as.tmp",&s) && stat("/tmp/asshown",&s)){
                     ase->update();
-                    system("echo -ne 'update\n' > /tmp/asmin");
+                    if(stat("/tmp/asmin",&s)==0) system("echo -ne 'update\n' > /tmp/asmin");
                     counter = 0;
                     runned=true;                    
                 }

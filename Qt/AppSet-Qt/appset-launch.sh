@@ -3,9 +3,11 @@
 if [ "$#" == "0" ]; then
     pgrep appset-qt > /dev/null
     if [ "$?" == "0" ]; then
-        echo h > /tmp/asmin
+        if [ -p /tmp/asmin ]; then
+            echo h > /tmp/asmin
+        fi
     else
-        rm /tmp/asuser.tmp
+        rm /tmp/asuser.tmp > /dev/null
         appset-qt &
     fi
 elif [ "$1" == "--hidden" ]; then
@@ -15,9 +17,11 @@ elif [ "$1" == "--hidden" ]; then
 elif [ "$1" == "--show" ]; then
     pgrep appset-qt > /dev/null
     if [ "$?" == "0" ]; then
-        echo h > /tmp/asmin
+        if [ -p /tmp/asmin ]; then
+            echo h > /tmp/asmin
+        fi
     else
-        rm /tmp/asuser.tmp
+        rm /tmp/asuser.tmp > /dev/null
         appset-qt --show &
     fi
 elif [ $# -ge 1 ]; then        

@@ -327,20 +327,25 @@ public slots:
                 }
             }*/
         //hidePriv();
-        QFile minfile("/tmp/asmin");
-        minfile.open(QFile::WriteOnly);
-        minfile.write("h\n");
-        minfile.close();
-        event->ignore();
+        if(QFile::exists("/tmp/asmin")){
+            QFile minfile("/tmp/asmin");
+            minfile.open(QFile::WriteOnly);
+            minfile.write("h\n");
+            minfile.close();
+            event->ignore();
+        }
     }
 
     void changeEvent ( QEvent *event ){
          if( event->type() == QEvent::WindowStateChange ){
               if( isMinimized() ){
-                  QFile minfile("/tmp/asmin");
-                  minfile.open(QFile::WriteOnly);
-                  minfile.write("h\n");
-                  minfile.close();
+                  if(QFile::exists("/tmp/asmin")){
+                      QFile minfile("/tmp/asmin");
+                      minfile.open(QFile::WriteOnly);
+                      minfile.write("h\n");
+                      minfile.close();
+                      event->ignore();
+                  }
                   //hidePriv();
               }
          }

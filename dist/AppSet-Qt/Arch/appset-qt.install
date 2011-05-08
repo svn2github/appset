@@ -8,8 +8,8 @@ whisperer(){
     echo "user."
     echo "----------------------------------------------------------------"
     echo "----------------------------------------------------------------"
-    echo "IMPORTANT!: NOW YOU NEED TO REBOOT YOUR COMPUTER TO MAKE APPSET"
-    echo "WORKING CORRECTLY"
+    echo "IMPORTANT: NOW YOU NEED TO REBOOT YOUR COMPUTER TO LET APPSET"
+    echo "WORKING AT ITS BEST"
     echo "----------------------------------------------------------------"
     echo "----------------------------------------------------------------"
 }
