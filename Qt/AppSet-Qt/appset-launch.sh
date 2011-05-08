@@ -8,6 +8,7 @@ if [ "$#" == "0" ]; then
         fi
     else
         rm /tmp/asuser.tmp > /dev/null
+        rm /tmp/asmin > /dev/null
         appset-qt &
     fi
 elif [ "$1" == "--hidden" ]; then

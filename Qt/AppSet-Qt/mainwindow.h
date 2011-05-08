@@ -535,6 +535,12 @@ public:
                  emit upDB();
              }else if(cmd=="quit"){
                  emit quit();
+                 if(QFile::exists("/tmp/asmin")){
+                     QFile minfile("/tmp/asmin");
+                     minfile.open(QFile::WriteOnly);
+                     minfile.write("quit\n");
+                     minfile.close();
+                 }
              }else{
                  if(w->isVisible() && !w->inModal) emit hide();
                  else emit show();

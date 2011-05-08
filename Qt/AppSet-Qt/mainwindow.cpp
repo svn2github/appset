@@ -588,6 +588,8 @@ int MainWindow::privilegedExecuter(int argc, char *argv[]){
 
             file.close();
         }else if(op>=6 && op<=8){
+            ui->stacked->setCurrentIndex(2);
+
             QFile ifile("/tmp/ascom");
             ifile.open(QIODevice::ReadOnly|QIODevice::Text);
             QTextStream asfiler(&ifile);
@@ -1488,7 +1490,7 @@ void MainWindow::applyEnabler(){
 
 void MainWindow::installCom(){
     if(!pp || pp==9 || pp==11){
-        toI=1;
+        toI=1;toU=0;toR=0;
         comPattern=ui->tableCommunity->model()->data(ui->tableCommunity->model()->index(currentPacket,1)).toString();
         getComPrivileges();
     }else{
@@ -1505,7 +1507,7 @@ void MainWindow::upgradeCom(){
     inModal=true;
     if(con.exec()==QMessageBox::Yes){
         //comCommon(8);
-        toU=1;
+        toI=0;toU=1;toR=0;
         getComPrivileges();
     }
     inModal=false;
@@ -1513,7 +1515,7 @@ void MainWindow::upgradeCom(){
 
 void MainWindow::removeCom(){
     if(!pp || pp==9 || pp==11){
-        toR=1;
+        toI=0;toU=0;toR=1;
         comPattern=ui->tableCommunity->model()->data(ui->tableCommunity->model()->index(currentPacket,1)).toString();
         getComPrivileges();
     }else{
@@ -2783,7 +2785,7 @@ MainWindow::~MainWindow(){
     delete ui;
 
 #ifdef unix    
-    delete (AS::QTNIXEngine*)as;
+    delete (AS::QTNIXEngine*)as;  
 
     if(pp && pp!=9 && pp!=11)return;
 
