@@ -26,6 +26,8 @@ int main(int argc, char *argv[]){
 
     QApplication app(argc,argv);
 
+    if(app.isSessionRestored())exit(0);
+
     QApplication::setQuitOnLastWindowClosed(false);
 
     if (!QSystemTrayIcon::isSystemTrayAvailable()) return 1;

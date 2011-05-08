@@ -1,8 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
-Version=0.5.0
+Version=1.0
 Exec=/usr/bin/appset-launch.sh
 Name=AppSet-Qt
+GenericName=Package Manager
 Categories=Application;System;
 Type=Application
 Icon=/usr/share/icons/appset/appset.png
+StartupNotify=false
+Terminal=false
