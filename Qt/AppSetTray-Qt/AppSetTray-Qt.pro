@@ -20,16 +20,16 @@ RESOURCES += \
 target.path = /usr/bin/
 target.files += appsettray-qt
 
-autostart.path = /etc/xdg/autostart/
-autostart.files += appsettray-qt.desktop
+#autostart.path = /etc/xdg/autostart/
+#autostart.files += appsettray-qt.desktop
 
 #desktop.path = /usr/share/applications/
 #desktop.files += appsettray-qt.desktop
 
-INSTALLS += target autostart desktop
+INSTALLS += target #autostart desktop
 
-OTHER_FILES += \
-    appsettray-qt.desktop
+#OTHER_FILES += \
+ #   appsettray-qt.desktop
 
 TRANSLATIONS = appsettray-qt_it.ts \
     appsettray-qt_de.ts \

@@ -1,7 +1,7 @@
 # Maintainer: Simone Tobia <simone.tobia at gmail dot com>
 
 pkgname=appset-qt
-pkgver=0.5.0
+pkgver=0.5.0pre
 pkgrel=1
 pkgdesc="An advanced and feature rich Package Manager Frontend"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('packer: for AUR support')
 install=${pkgname}.install
 changelog=$pkgname.changelog
 source=($pkgname-$pkgver-sources.tar.gz)
-md5sums=(57b3b5c51813193bee068ba73fe636ff)
+md5sums=(23c4202b30184f5443ec999a01580a88)
 
 build() {
   cd $srcdir/$pkgname-$pkgver-sources
