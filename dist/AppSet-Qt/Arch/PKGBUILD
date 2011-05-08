@@ -12,7 +12,7 @@ optdepends=('packer: for AUR support')
 install=${pkgname}.install
 changelog=$pkgname.changelog
 source=($pkgname-$pkgver-sources.tar.gz)
-md5sums=(ed1500a8eefb8e1cd74293346227199a)
+md5sums=(40f859feeb81712c5f8829c168055b3e)
 
 build() {
   cd $srcdir/$pkgname-$pkgver-sources

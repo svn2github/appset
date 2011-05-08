@@ -47,7 +47,7 @@ images.files += appset.png
 desktop.path = /usr/share/applications
 desktop.files += appset-qt.desktop
 autostart.path = /etc/xdg/autostart/
-autostart.files += appsetauto.desktop
+autostart.files += appset-qt.desktop
 INSTALLS += target autostart \
     images \
     desktop
