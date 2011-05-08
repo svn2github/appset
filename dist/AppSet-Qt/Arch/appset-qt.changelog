@@ -10,6 +10,8 @@
     *Tray "check for updates NOW!" action is now calling the authorization backend (and really works better than before)
   -Options are now stored "per user" (every possible sudoer has its own options)
   -New option "Auto select system files for upgrade" (checked by default) for "non expert users" (disabled if in expert mode)
+  -Search bar delay now default to 1200 ms
+  -Removed AppSetTray-Qt desktop file (now there is only AppSet-Qt in DE's menus)
   -Better integration with helper daemon
   -News reader now retries (every 5 seconds) to download feeds when fails (without hiding the panel)
 
