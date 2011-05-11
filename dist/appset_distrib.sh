@@ -17,7 +17,7 @@ MD5=`md5sum "appset-qt-$1-sources.tar.gz" | awk '{ print $1 }'`
 sed -i "/^md5sums/{s/)/$MD5)/}" "appset-qt-$1-DIST/AppSet-Qt/Arch/PKGBUILD"
 sed -i "/^source/{s/)/http:\/\/sourceforge.net\/projects\/appset\/files\/appset-qt\/$3\/$2\/appset-qt-$1-sources.tar.gz)/}" "appset-qt-$1-DIST/AppSet-Qt/Arch/PKGBUILD"
 sed -i "/^pkgver/{s/=/=$1/}" "appset-qt-$1-DIST/AppSet-Qt/Arch/PKGBUILD"
-if [ $4 == "Arch" ]; then
+if [ $4 = "Arch" ]; then
 	cp "appset-qt-$1-sources.tar.gz" "appset-qt-$1-DIST/AppSet-Qt/Arch/"
 	cd "appset-qt-$1-DIST/AppSet-Qt/Arch/"
 	makepkg -s
