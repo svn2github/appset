@@ -7,7 +7,7 @@
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
         <oldsource>Show AppSet</oldsource>
-        <translation type="unfinished">Llança l&apos;AppSet-Qt</translation>
+        <translation>Mostra/oculta l&apos;AppSet</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
@@ -18,7 +18,7 @@
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
         <oldsource>Quit Tray</oldsource>
-        <translation type="unfinished">Tanca la safata</translation>
+        <translation>Abandona</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
@@ -36,12 +36,12 @@
     <message>
         <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hi ha una instància de l&apos;AppSet executant-se amb algunes operacions privilegiades.</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voleu abandonar igualment (no recomanat)?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="113"/>

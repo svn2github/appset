@@ -9,26 +9,73 @@
         <translation>Quant a l&apos;AppSet-Qt</translation>
     </message>
     <message>
-        <location filename="about.ui" line="79"/>
         <source>An advanced and feature rich Package Manager Frontend
 
 Author: Simone Tobia</source>
-        <translation>Un frontal avançat i ric en característiques de gestors de paquets
+        <translation type="obsolete">Un frontal avançat i ric en característiques de gestors de paquets
 
 Autor: Simone Tobia</translation>
     </message>
     <message>
-        <location filename="about.ui" line="93"/>
+        <location filename="about.ui" line="132"/>
         <source>Version:</source>
         <translation>Versió:</translation>
     </message>
     <message>
-        <location filename="about.ui" line="109"/>
+        <location filename="about.ui" line="172"/>
+        <source>About</source>
+        <translation type="unfinished">Quant a</translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="194"/>
+        <source>An advanced and feature rich Package Manager Frontend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="211"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;License: GNU General Public License Version 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="239"/>
+        <source>Authors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="245"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please use &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt; to report bugs or request new features&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="279"/>
+        <source>Maintainer and developer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="335"/>
+        <source>Translation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="371"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
         <translation>Agraïments especials a l&apos;equip del Projecte Chakra pels seus suggeriments i traduccions.</translation>
     </message>
     <message>
-        <location filename="about.ui" line="147"/>
+        <location filename="about.ui" line="382"/>
+        <source>Web Site</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="398"/>
         <source>about:blank</source>
         <translation>quant_a:en_blanc</translation>
     </message>
@@ -835,7 +882,7 @@ Voleu continuar igualment?</translation>
     <message>
         <location filename="options.ui" line="248"/>
         <source>Auto select system files for upgrade (disabled in expert mode)</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecciona automàticament els fitxers del sistema per actualitzar-los (deshabilitat al mode expert)</translation>
     </message>
     <message>
         <location filename="options.ui" line="260"/>

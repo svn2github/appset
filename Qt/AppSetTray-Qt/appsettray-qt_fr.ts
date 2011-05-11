@@ -7,7 +7,7 @@
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
         <oldsource>Show AppSet</oldsource>
-        <translation type="unfinished">Executer AppSet-Qt</translation>
+        <translation>Afficher/Cacher Appset</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
@@ -18,7 +18,7 @@
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
         <oldsource>Quit Tray</oldsource>
-        <translation type="unfinished">Fermer la barre d&apos;état</translation>
+        <translation>Quitter</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
@@ -36,12 +36,12 @@
     <message>
         <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Une instance d&apos;AppSet réalise actuellement une opération avec les droits administrateur.</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voulez-vous tout de même quitter (non recommandé) ?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="113"/>
