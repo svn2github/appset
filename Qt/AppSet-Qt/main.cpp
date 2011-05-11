@@ -33,11 +33,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    if(a.isSessionRestored())exit(0);
-
-#ifdef unix
-    system("appsettray-qt &");
-#endif
+    if(a.isSessionRestored())exit(0);    
 
     QTranslator myappTranslator;
     myappTranslator.load(":langs/appset-qt_" + QLocale::system().name());

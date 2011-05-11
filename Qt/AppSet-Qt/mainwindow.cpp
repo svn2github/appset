@@ -76,6 +76,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pp=privilegedExecuter(qApp->argc(),qApp->argv());
     bool privileged=pp>0 && pp!=9 && pp!=11;
     if(privileged)this->setWindowTitle("AppSet-Qt (SUPERUSER)");
+    else system("appsettray-qt &");
     argsParsed=pp!=4 && pp!=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf",privileged?"/tmp/as.tmp":"/tmp/asuser.tmp",!privileged))){
         if(privileged){
