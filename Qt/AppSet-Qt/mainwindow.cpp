@@ -2231,7 +2231,7 @@ void MainWindow::showMultimedia(){
 }
 
 void MainWindow::showOffice(){
-    category.setPattern(".*office|spreadsheed|word processor");
+    category.setPattern(".*office|spreadsheet|word processor");
     category_exclude.setPattern("configuration[s]*|kernel|driver[s]*|firmware[s]*|libraries|library|protocol[s]*");
 
     ui->tabWidget->setCurrentIndex(1);
