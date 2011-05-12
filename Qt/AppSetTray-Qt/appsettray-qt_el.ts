@@ -7,7 +7,7 @@
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
         <oldsource>Show AppSet</oldsource>
-        <translation type="unfinished">Εκκίνηση Appset-Qt</translation>
+        <translation>Εμφάνιση/Απόκρυψη Appset</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
@@ -18,7 +18,7 @@
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
         <oldsource>Quit Tray</oldsource>
-        <translation type="unfinished">Τερματισμός Πλαισίου</translation>
+        <translation>Τερματισμός</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
@@ -36,12 +36,12 @@
     <message>
         <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπάρχει μια διεργασια του AppSet η οποία τρέχει μερικές προνομιούχες λειτουργίες.</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Θα θέλατε να προχωρήσετε σε τερματισμό ούτως η αλλιώς (δε συνιστάται);</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="113"/>

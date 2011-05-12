@@ -17,22 +17,22 @@ Author: Simone Tobia</source>
 作者：Simone Tobia</translation>
     </message>
     <message>
-        <location filename="about.ui" line="132"/>
+        <location filename="about.ui" line="138"/>
         <source>Version:</source>
         <translation>版本：</translation>
     </message>
     <message>
-        <location filename="about.ui" line="172"/>
+        <location filename="about.ui" line="178"/>
         <source>About</source>
         <translation type="unfinished">關於</translation>
     </message>
     <message>
-        <location filename="about.ui" line="194"/>
+        <location filename="about.ui" line="200"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="211"/>
+        <location filename="about.ui" line="217"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -41,12 +41,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="239"/>
+        <location filename="about.ui" line="245"/>
         <source>Authors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="245"/>
+        <location filename="about.ui" line="251"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -55,27 +55,27 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="279"/>
+        <location filename="about.ui" line="285"/>
         <source>Maintainer and developer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="335"/>
+        <location filename="about.ui" line="341"/>
         <source>Translation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="371"/>
+        <location filename="about.ui" line="377"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
         <translation>特別感謝 Chakra-project 團隊給予的建議與翻譯。</translation>
     </message>
     <message>
-        <location filename="about.ui" line="382"/>
+        <location filename="about.ui" line="388"/>
         <source>Web Site</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="398"/>
+        <location filename="about.ui" line="404"/>
         <source>about:blank</source>
         <translation>關於：空白</translation>
     </message>
@@ -106,38 +106,38 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="620"/>
         <location filename="mainwindow.ui" line="688"/>
         <location filename="mainwindow.ui" line="767"/>
-        <location filename="mainwindow.cpp" line="2309"/>
-        <location filename="mainwindow.cpp" line="2730"/>
+        <location filename="mainwindow.cpp" line="2310"/>
+        <location filename="mainwindow.cpp" line="2731"/>
         <source>All</source>
         <translation>全部</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="206"/>
-        <location filename="mainwindow.cpp" line="2205"/>
+        <location filename="mainwindow.cpp" line="2206"/>
         <source>Games</source>
         <translation>遊戲</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="239"/>
-        <location filename="mainwindow.cpp" line="2229"/>
+        <location filename="mainwindow.cpp" line="2230"/>
         <source>Multimedia</source>
         <translation>多媒體</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
-        <location filename="mainwindow.cpp" line="2253"/>
+        <location filename="mainwindow.cpp" line="2254"/>
         <source>Internet</source>
         <translation>網際網路</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="305"/>
-        <location filename="mainwindow.cpp" line="2241"/>
+        <location filename="mainwindow.cpp" line="2242"/>
         <source>Office</source>
         <translation>辦公</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="338"/>
-        <location filename="mainwindow.cpp" line="2217"/>
+        <location filename="mainwindow.cpp" line="2218"/>
         <source>System</source>
         <translation>系統</translation>
     </message>
@@ -165,14 +165,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="678"/>
-        <location filename="mainwindow.cpp" line="266"/>
+        <location filename="mainwindow.cpp" line="267"/>
         <source>Name</source>
         <translation>名稱</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="683"/>
         <location filename="mainwindow.cpp" line="60"/>
-        <location filename="mainwindow.cpp" line="266"/>
+        <location filename="mainwindow.cpp" line="267"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
@@ -239,8 +239,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="518"/>
         <location filename="mainwindow.ui" line="786"/>
-        <location filename="mainwindow.cpp" line="2563"/>
-        <location filename="mainwindow.cpp" line="2617"/>
+        <location filename="mainwindow.cpp" line="2564"/>
+        <location filename="mainwindow.cpp" line="2618"/>
         <source>Upgradable</source>
         <translation>可升級</translation>
     </message>
@@ -252,8 +252,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="504"/>
         <location filename="mainwindow.ui" line="802"/>
-        <location filename="mainwindow.cpp" line="2485"/>
-        <location filename="mainwindow.cpp" line="2630"/>
+        <location filename="mainwindow.cpp" line="2486"/>
+        <location filename="mainwindow.cpp" line="2631"/>
         <source>Installed</source>
         <translation>已安裝</translation>
     </message>
@@ -264,8 +264,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="818"/>
-        <location filename="mainwindow.cpp" line="2418"/>
-        <location filename="mainwindow.cpp" line="2636"/>
+        <location filename="mainwindow.cpp" line="2419"/>
+        <location filename="mainwindow.cpp" line="2637"/>
         <source>Not Installed</source>
         <translation>未安裝</translation>
     </message>
@@ -349,23 +349,23 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="1521"/>
-        <location filename="mainwindow.cpp" line="2054"/>
-        <location filename="mainwindow.cpp" line="2111"/>
+        <location filename="mainwindow.cpp" line="2055"/>
+        <location filename="mainwindow.cpp" line="2112"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1550"/>
-        <location filename="mainwindow.cpp" line="857"/>
-        <location filename="mainwindow.cpp" line="861"/>
-        <location filename="mainwindow.cpp" line="1182"/>
-        <location filename="mainwindow.cpp" line="1979"/>
-        <location filename="mainwindow.cpp" line="1982"/>
+        <location filename="mainwindow.cpp" line="858"/>
+        <location filename="mainwindow.cpp" line="862"/>
+        <location filename="mainwindow.cpp" line="1183"/>
+        <location filename="mainwindow.cpp" line="1980"/>
+        <location filename="mainwindow.cpp" line="1983"/>
         <source>Confirm</source>
         <translation>確認</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="151"/>
+        <location filename="mainwindow.cpp" line="152"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
@@ -382,7 +382,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="66"/>
-        <location filename="mainwindow.cpp" line="266"/>
+        <location filename="mainwindow.cpp" line="267"/>
         <source>S</source>
         <translation>S</translation>
     </message>
@@ -394,22 +394,22 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
-        <location filename="mainwindow.cpp" line="266"/>
-        <location filename="mainwindow.cpp" line="1438"/>
+        <location filename="mainwindow.cpp" line="267"/>
+        <location filename="mainwindow.cpp" line="1439"/>
         <source>Installed Version</source>
         <translation>已安裝版本</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
-        <location filename="mainwindow.cpp" line="266"/>
-        <location filename="mainwindow.cpp" line="1439"/>
+        <location filename="mainwindow.cpp" line="267"/>
+        <location filename="mainwindow.cpp" line="1440"/>
         <source>Last Version</source>
         <translation>最新版本</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
-        <location filename="mainwindow.cpp" line="1441"/>
-        <location filename="mainwindow.cpp" line="2030"/>
+        <location filename="mainwindow.cpp" line="1442"/>
+        <location filename="mainwindow.cpp" line="2031"/>
         <source>Repository</source>
         <translation>套件庫</translation>
     </message>
@@ -434,146 +434,146 @@ p, li { white-space: pre-wrap; }
         <translation>進度</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="83"/>
+        <location filename="mainwindow.cpp" line="84"/>
         <source>Errors while initializing the system!</source>
         <translation>當初始化系統時發生錯誤！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="130"/>
+        <location filename="mainwindow.cpp" line="131"/>
         <source>Update</source>
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="132"/>
-        <location filename="mainwindow.cpp" line="371"/>
-        <location filename="mainwindow.cpp" line="373"/>
-        <location filename="mainwindow.cpp" line="2696"/>
+        <location filename="mainwindow.cpp" line="133"/>
+        <location filename="mainwindow.cpp" line="372"/>
+        <location filename="mainwindow.cpp" line="374"/>
+        <location filename="mainwindow.cpp" line="2697"/>
         <source>Clean cache</source>
         <translation>清理快取</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="135"/>
-        <location filename="mainwindow.cpp" line="2690"/>
+        <location filename="mainwindow.cpp" line="136"/>
+        <location filename="mainwindow.cpp" line="2691"/>
         <source>Mark all upgrades</source>
         <translation>標記全部升級</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="138"/>
-        <location filename="mainwindow.cpp" line="665"/>
+        <location filename="mainwindow.cpp" line="139"/>
+        <location filename="mainwindow.cpp" line="666"/>
         <source>Open local package</source>
         <translation>開啟本地套件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="141"/>
+        <location filename="mainwindow.cpp" line="142"/>
         <source>Check and apply</source>
         <translation>檢查並套用</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="147"/>
+        <location filename="mainwindow.cpp" line="148"/>
         <source>Options</source>
         <translation>選項</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="197"/>
+        <location filename="mainwindow.cpp" line="198"/>
         <source>Link</source>
         <translation>連結</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="197"/>
+        <location filename="mainwindow.cpp" line="198"/>
         <source>Title</source>
         <translation>標題</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="308"/>
-        <location filename="mainwindow.cpp" line="2735"/>
+        <location filename="mainwindow.cpp" line="309"/>
+        <location filename="mainwindow.cpp" line="2736"/>
         <source>To enable external packages support you have to install</source>
         <translation>若要啟用外部套件支援，您必須安裝</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="667"/>
+        <location filename="mainwindow.cpp" line="668"/>
         <source>Package files</source>
         <translation>套件檔案</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="691"/>
+        <location filename="mainwindow.cpp" line="692"/>
         <source>Error loading the specified package file!</source>
         <translation>載入指定的套件檔時發生錯誤！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="692"/>
+        <location filename="mainwindow.cpp" line="693"/>
         <source>The file</source>
         <translation>該檔案</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="692"/>
+        <location filename="mainwindow.cpp" line="693"/>
         <source>doesn&apos;t seems to be a valid package!</source>
         <translation>似乎不是有效的套件！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="342"/>
+        <location filename="mainwindow.cpp" line="343"/>
         <source>Are you sure to clean the cache?</source>
         <translation>您確定要清理快取嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1440"/>
-        <location filename="mainwindow.cpp" line="2033"/>
+        <location filename="mainwindow.cpp" line="1441"/>
+        <location filename="mainwindow.cpp" line="2034"/>
         <source>Size</source>
         <translation>大小</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1442"/>
-        <location filename="mainwindow.cpp" line="2042"/>
+        <location filename="mainwindow.cpp" line="1443"/>
+        <location filename="mainwindow.cpp" line="2043"/>
         <source>Required by</source>
         <translation>被這些需要</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1442"/>
-        <location filename="mainwindow.cpp" line="2039"/>
+        <location filename="mainwindow.cpp" line="1443"/>
+        <location filename="mainwindow.cpp" line="2040"/>
         <source>Requires</source>
         <translation>需要這些</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1443"/>
+        <location filename="mainwindow.cpp" line="1444"/>
         <source>Close</source>
         <translation>關閉</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1503"/>
+        <location filename="mainwindow.cpp" line="1504"/>
         <source>Are you sure to upgrade ALL external packages?</source>
         <translation>您確定要升級「全部」的外部套件嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2035"/>
+        <location filename="mainwindow.cpp" line="2036"/>
         <source>URL</source>
         <translation>網址</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2455"/>
+        <location filename="mainwindow.cpp" line="2456"/>
         <source>Searching correspondeces...</source>
         <translation>正在搜尋對應關係...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2539"/>
+        <location filename="mainwindow.cpp" line="2540"/>
         <source>Checking upgradables</source>
         <translation>正在檢查可升級項目</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2749"/>
+        <location filename="mainwindow.cpp" line="2750"/>
         <source>The main backend</source>
         <translation>主後端程式</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2750"/>
+        <location filename="mainwindow.cpp" line="2751"/>
         <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
         <translation>不是最新狀態。您必須升級才能繼續其他操作。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2751"/>
+        <location filename="mainwindow.cpp" line="2752"/>
         <source>Do you want to proceed now?</source>
         <translation>您想要立刻處理嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2763"/>
+        <location filename="mainwindow.cpp" line="2764"/>
         <source>Running backend&apos;s post upgrade command</source>
         <translation>正在執行後端程式的升級後指令</translation>
     </message>
@@ -595,71 +595,71 @@ Author: Simone Tobia</source>
         <translation type="obsolete">特別感謝 Chakra-project 團隊給予建議與翻譯。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="948"/>
-        <location filename="mainwindow.cpp" line="1006"/>
+        <location filename="mainwindow.cpp" line="949"/>
+        <location filename="mainwindow.cpp" line="1007"/>
         <source>Waiting others...</source>
         <translation>正在等候其他...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="961"/>
-        <location filename="mainwindow.cpp" line="1020"/>
+        <location filename="mainwindow.cpp" line="962"/>
+        <location filename="mainwindow.cpp" line="1021"/>
         <source>Installing...</source>
         <translation>正在安裝...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1132"/>
+        <location filename="mainwindow.cpp" line="1133"/>
         <source>Errors during operations!</source>
         <translation>操作時發生錯誤！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1132"/>
+        <location filename="mainwindow.cpp" line="1133"/>
         <source>Success!</source>
         <translation>成功！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1133"/>
+        <location filename="mainwindow.cpp" line="1134"/>
         <source>Do you want to see operations logs?</source>
         <translation>您想要查看操作記錄嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1133"/>
-        <location filename="mainwindow.cpp" line="1169"/>
+        <location filename="mainwindow.cpp" line="1134"/>
+        <location filename="mainwindow.cpp" line="1170"/>
         <source>All operations completed successfully!</source>
         <translation>所有操作都已成功完成！</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1696"/>
-        <location filename="mainwindow.cpp" line="1144"/>
+        <location filename="mainwindow.cpp" line="1145"/>
         <source>Continue</source>
         <translation>繼續</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1580"/>
-        <location filename="mainwindow.cpp" line="1634"/>
-        <location filename="mainwindow.cpp" line="1669"/>
-        <location filename="mainwindow.cpp" line="1758"/>
-        <location filename="mainwindow.cpp" line="1846"/>
-        <location filename="mainwindow.cpp" line="1855"/>
+        <location filename="mainwindow.cpp" line="1581"/>
+        <location filename="mainwindow.cpp" line="1635"/>
+        <location filename="mainwindow.cpp" line="1670"/>
+        <location filename="mainwindow.cpp" line="1759"/>
+        <location filename="mainwindow.cpp" line="1847"/>
+        <location filename="mainwindow.cpp" line="1856"/>
         <source>Pending changes:</source>
         <translation>擱置的變動：</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1602"/>
+        <location filename="mainwindow.cpp" line="1603"/>
         <source>Some installed packages require</source>
         <translation>某些已安裝套件需要</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1603"/>
+        <location filename="mainwindow.cpp" line="1604"/>
         <source>Do you want to proceed anyway (removing them too)?</source>
         <translation>無論如何您都想要處理 (也移除它們) 嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1684"/>
+        <location filename="mainwindow.cpp" line="1685"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
         <translation>無論如何您都想要處理 (也清除它們) 嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1727"/>
+        <location filename="mainwindow.cpp" line="1728"/>
         <source>Do you want to clear them too?</source>
         <translation>您也想要將它們清除嗎？</translation>
     </message>
@@ -672,7 +672,7 @@ Do you want to proceed anyway (removing them too)?</source>
 無論如何您都想要處理 (也移除它們) 嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1683"/>
+        <location filename="mainwindow.cpp" line="1684"/>
         <source>These selected for install packages require</source>
         <translation>這些選取要安裝的套件需要</translation>
     </message>
@@ -685,7 +685,7 @@ Do you want to proceed anyway (clearing them too)?</source>
 無論如何您都想要處理 (也清除它們) 嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1726"/>
+        <location filename="mainwindow.cpp" line="1727"/>
         <source>These packages were selected as dependencies of</source>
         <translation>這些套件被選取以滿足下列的相依關係</translation>
     </message>
@@ -698,22 +698,22 @@ Do you want to clear them too?</source>
 您也想要清除它們嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1772"/>
+        <location filename="mainwindow.cpp" line="1773"/>
         <source>These selected for removal packages are required by</source>
         <translation>這些選取要移除的套件被以下需要</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1773"/>
+        <location filename="mainwindow.cpp" line="1774"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
         <translation>無論如何您都想要處理 (也取消移除它們) 嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1815"/>
+        <location filename="mainwindow.cpp" line="1816"/>
         <source>These packages were selected for removal because they need</source>
         <translation>這些套件被選取以移除，因為它們需要</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1816"/>
+        <location filename="mainwindow.cpp" line="1817"/>
         <source>Do you want to clear their removal too?</source>
         <translation>您也想要將它們移除嗎？</translation>
     </message>
@@ -738,7 +738,7 @@ Do you want to proceed anyway?</source>
         <translation type="obsolete">&lt;b&gt;網址：&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2036"/>
+        <location filename="mainwindow.cpp" line="2037"/>
         <source>(Watch the full site)</source>
         <translation>(查看完整網站)</translation>
     </message>
@@ -751,27 +751,27 @@ Do you want to proceed anyway?</source>
         <translation type="obsolete">&lt;b&gt;被這些需要：&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1444"/>
-        <location filename="mainwindow.cpp" line="2051"/>
-        <location filename="mainwindow.cpp" line="2109"/>
+        <location filename="mainwindow.cpp" line="1445"/>
+        <location filename="mainwindow.cpp" line="2052"/>
+        <location filename="mainwindow.cpp" line="2110"/>
         <source>Install</source>
         <translation>安裝</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1446"/>
-        <location filename="mainwindow.cpp" line="2052"/>
-        <location filename="mainwindow.cpp" line="2110"/>
+        <location filename="mainwindow.cpp" line="1447"/>
+        <location filename="mainwindow.cpp" line="2053"/>
+        <location filename="mainwindow.cpp" line="2111"/>
         <source>Remove</source>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1445"/>
-        <location filename="mainwindow.cpp" line="2053"/>
+        <location filename="mainwindow.cpp" line="1446"/>
+        <location filename="mainwindow.cpp" line="2054"/>
         <source>Upgrade</source>
         <translation>升級</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2155"/>
+        <location filename="mainwindow.cpp" line="2156"/>
         <source>UPDATING DB: </source>
         <translation>正在更新資料庫：</translation>
     </message>
@@ -780,17 +780,17 @@ Do you want to proceed anyway?</source>
         <translation type="obsolete">正在更新資料庫...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2166"/>
+        <location filename="mainwindow.cpp" line="2167"/>
         <source>DB UPDATED!</source>
         <translation>資料庫已更新！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2379"/>
+        <location filename="mainwindow.cpp" line="2380"/>
         <source>Loading packages...</source>
         <translation>正在載入套件...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2450"/>
+        <location filename="mainwindow.cpp" line="2451"/>
         <source>PARSING INSTALLED: </source>
         <translation>正在解析已安裝：</translation>
     </message>
@@ -799,15 +799,15 @@ Do you want to proceed anyway?</source>
         <translation type="obsolete">正在搜尋對應關係...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2503"/>
+        <location filename="mainwindow.cpp" line="2504"/>
         <source>Installed (external)</source>
         <translation>已安裝 (外部)</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="532"/>
-        <location filename="mainwindow.cpp" line="2512"/>
-        <location filename="mainwindow.cpp" line="2552"/>
-        <location filename="mainwindow.cpp" line="2658"/>
+        <location filename="mainwindow.cpp" line="2513"/>
+        <location filename="mainwindow.cpp" line="2553"/>
+        <location filename="mainwindow.cpp" line="2659"/>
         <source>External</source>
         <translation>外部</translation>
     </message>
