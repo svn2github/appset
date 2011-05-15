@@ -1,77 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="tr" version="2.0">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <translation>Afficher/Cacher Appset</translation>
+        <translation>AppSet&apos; i Göster/Gizle</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
         <source>Check for updates NOW!</source>
-        <translation>Vérifier la disponibilité des mises à jour MAINTENANT!</translation>
+        <translation>Güncellemeleri ŞİMDİ denetle!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <translation>Quitter</translation>
+        <translation>Çık</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
-        <translation>En attente d&apos;une aide...</translation>
+        <translation>Yardımcı bekleniyor...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation>Une instance d&apos;AppSet réalise actuellement une opération avec les droits administrateur.</translation>
+        <translation>İzin verilen işlemleri yürütmekte olan bir AppSet uygulaması şu anda çalışıyor</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation>Voulez-vous tout de même quitter (non recommandé) ?</translation>
+        <translation>Yine de çıkmak ister misiniz (önerilmez)?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="113"/>
         <source>AppSet-Qt is Running!</source>
-        <translation>AppSet-Qt est en fonctionnement!</translation>
+        <translation>AppSet-Qt Çalışıyor!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="156"/>
         <source>There are updates for:</source>
-        <translation>Il y a des mises a jour pour :</translation>
+        <translation>Şunlar için güncellemeler var:</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="156"/>
         <source>There is an update for:</source>
-        <translation>Il y a une mise à jour pour :</translation>
+        <translation>Şunun için bir güncelleme var:</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="166"/>
         <source>
 And others...</source>
         <translation>
-Et d&apos;autres...</translation>
+Ve diğerleri...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="169"/>
         <location filename="trayicon.cpp" line="172"/>
         <source> updates available!</source>
-        <translation> mises à jour disponibles!</translation>
+        <translation> güncellemeler var!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="169"/>
         <location filename="trayicon.cpp" line="172"/>
         <source> update available!</source>
-        <translation> mise à jour disponible!</translation>
+        <translation> güncelleme var!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="176"/>
         <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
-        <translation>Aucune mise à jour disponible</translation>
+        <translation>Güncelleme yok</translation>
     </message>
 </context>
 </TS>

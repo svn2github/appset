@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ca_ES">
+<TS version="2.0" language="ca">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <oldsource>Show AppSet</oldsource>
         <translation>Mostra/oculta l&apos;AppSet</translation>
     </message>
     <message>
@@ -17,21 +16,12 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <oldsource>Quit Tray</oldsource>
         <translation>Abandona</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
         <translation>S&apos;està esperant l&apos;assistent...</translation>
-    </message>
-    <message>
-        <source>Are you sure to quit this tray?</source>
-        <translation type="obsolete">Esteu segur de que voleu tancar aquesta safata?</translation>
-    </message>
-    <message>
-        <source>You can restart it from desktop menu</source>
-        <translation type="obsolete">Podeu reiniciar des dels menú de l&apos;escriptori</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="83"/>
@@ -82,14 +72,6 @@ I altres...</translation>
         <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>No hi ha cap actualització disponible</translation>
-    </message>
-    <message>
-        <source>Launching AppSet-Qt</source>
-        <translation type="obsolete">S&apos;està llançant l&apos;AppSet-Qt</translation>
-    </message>
-    <message>
-        <source>Wait...</source>
-        <translation type="obsolete">Espera...</translation>
     </message>
 </context>
 </TS>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="el_GR">
+<TS version="2.0" language="el">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <oldsource>Show AppSet</oldsource>
         <translation>Εμφάνιση/Απόκρυψη Appset</translation>
     </message>
     <message>
@@ -17,21 +16,12 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <oldsource>Quit Tray</oldsource>
         <translation>Τερματισμός</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
         <translation>Αναμονή για βοηθό...</translation>
-    </message>
-    <message>
-        <source>Are you sure to quit this tray?</source>
-        <translation type="obsolete">Είστε σίγουροι ότι θέλετε να τερματίσετε αυτό το πλαίσιο;</translation>
-    </message>
-    <message>
-        <source>You can restart it from desktop menu</source>
-        <translation type="obsolete">Μπορείτε να το επανεκκινήσετε από το μενού της επιφάνειας εργασίας</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="83"/>
@@ -81,14 +71,6 @@ And others...</source>
         <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>Καμία διαθέσιμη ενημέρωση</translation>
-    </message>
-    <message>
-        <source>Launching AppSet-Qt</source>
-        <translation type="obsolete">Εκκίνηση AppSet-Qt</translation>
-    </message>
-    <message>
-        <source>Wait...</source>
-        <translation type="obsolete">Aναμένατε...</translation>
     </message>
 </context>
 </TS>

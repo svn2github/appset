@@ -6,7 +6,6 @@
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <oldsource>Launch AppSet-Qt</oldsource>
         <translation>顯示/隱藏 AppSet</translation>
     </message>
     <message>
@@ -17,21 +16,12 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <oldsource>Quit Tray</oldsource>
         <translation>退出</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
         <translation>正在等候輔助程式...</translation>
-    </message>
-    <message>
-        <source>Are you sure to quit this tray?</source>
-        <translation type="obsolete">您確定要退出此系統匣？</translation>
-    </message>
-    <message>
-        <source>You can restart it from desktop menu</source>
-        <translation type="obsolete">您可以從桌面選單重新啟動</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="83"/>
@@ -82,14 +72,6 @@ And others...</source>
         <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>無更新可用</translation>
-    </message>
-    <message>
-        <source>Launching AppSet-Qt</source>
-        <translation type="obsolete">正在啟動 AppSet-Qt</translation>
-    </message>
-    <message>
-        <source>Wait...</source>
-        <translation type="obsolete">稍候...</translation>
     </message>
 </context>
 </TS>

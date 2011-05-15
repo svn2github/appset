@@ -9,5 +9,6 @@
         <file>appset-qt_es.qm</file>
         <file>appset-qt_pl.qm</file>
         <file>appset-qt_zh-tw.qm</file>
+        <file>appset-qt_tr.qm</file>
     </qresource>
 </RCC>

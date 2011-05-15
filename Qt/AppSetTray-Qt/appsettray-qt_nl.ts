@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="nl_NL">
+<TS version="2.0" language="nl">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <oldsource>Show AppSet</oldsource>
-        <translation type="unfinished">Start Appset-Qt</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
@@ -17,9 +16,7 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <oldsource>Quit Tray</oldsource>
-        <translatorcomment>Vindt geen geschikte vertaling voor &quot;Tray&quot; :(</translatorcomment>
-        <translation type="unfinished">Sluit Systeemvakpictogram</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
@@ -27,22 +24,14 @@
         <translation>Wachten op helper...</translation>
     </message>
     <message>
-        <source>Are you sure to quit this tray?</source>
-        <translation type="obsolete">Wilt u het systeemvakpictogram zeker afsluiten?</translation>
-    </message>
-    <message>
-        <source>You can restart it from desktop menu</source>
-        <translation type="obsolete">U kunt het altijd van het desktopmenu herstarten</translation>
-    </message>
-    <message>
         <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="113"/>
@@ -83,14 +72,6 @@ En andere...</translation>
         <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>Geen opwaarderingen beschikbaar</translation>
-    </message>
-    <message>
-        <source>Launching AppSet-Qt</source>
-        <translation type="obsolete">AppSet-Qt is aan het opstarten</translation>
-    </message>
-    <message>
-        <source>Wait...</source>
-        <translation type="obsolete">Wachten...</translation>
     </message>
 </context>
 </TS>

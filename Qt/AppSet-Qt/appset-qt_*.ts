@@ -9,27 +9,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="138"/>
+        <location filename="about.ui" line="153"/>
         <source>Version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="377"/>
+        <location filename="about.ui" line="394"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="178"/>
+        <location filename="about.ui" line="193"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="200"/>
+        <location filename="about.ui" line="215"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="217"/>
+        <location filename="about.ui" line="232"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -38,12 +38,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="245"/>
+        <location filename="about.ui" line="260"/>
         <source>Authors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="251"/>
+        <location filename="about.ui" line="266"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -52,22 +52,22 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="285"/>
+        <location filename="about.ui" line="300"/>
         <source>Maintainer and developer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="341"/>
+        <location filename="about.ui" line="356"/>
         <source>Translation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="388"/>
+        <location filename="about.ui" line="405"/>
         <source>Web Site</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="404"/>
+        <location filename="about.ui" line="421"/>
         <source>about:blank</source>
         <translation type="unfinished"></translation>
     </message>

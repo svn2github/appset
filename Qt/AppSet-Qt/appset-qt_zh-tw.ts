@@ -9,30 +9,27 @@
         <translation>關於 AppSet-Qt</translation>
     </message>
     <message>
-        <source>An advanced and feature rich Package Manager Frontend
-
-Author: Simone Tobia</source>
-        <translation type="obsolete">進階且多功能的套件管理程式前端介面
-
-作者：Simone Tobia</translation>
-    </message>
-    <message>
-        <location filename="about.ui" line="138"/>
+        <location filename="about.ui" line="153"/>
         <source>Version:</source>
         <translation>版本：</translation>
     </message>
     <message>
-        <location filename="about.ui" line="178"/>
+        <location filename="about.ui" line="394"/>
+        <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
+        <translation>特別感謝 Chakra-project 團隊給予的建議與翻譯。</translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="193"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="about.ui" line="200"/>
+        <location filename="about.ui" line="215"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
         <translation>進階與多功能的套件管理程式前端介面</translation>
     </message>
     <message>
-        <location filename="about.ui" line="217"/>
+        <location filename="about.ui" line="232"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -45,12 +42,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;授權條款：GNU General Public License 第 2 版&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="about.ui" line="245"/>
+        <location filename="about.ui" line="260"/>
         <source>Authors</source>
         <translation>作者</translation>
     </message>
     <message>
-        <location filename="about.ui" line="251"/>
+        <location filename="about.ui" line="266"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -63,33 +60,24 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;請使用 &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt; 來回報臭蟲或提請新功能&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="about.ui" line="285"/>
+        <location filename="about.ui" line="300"/>
         <source>Maintainer and developer</source>
         <translation>維護者與開發者</translation>
     </message>
     <message>
-        <location filename="about.ui" line="341"/>
+        <location filename="about.ui" line="356"/>
         <source>Translation</source>
         <translation>翻譯</translation>
     </message>
     <message>
-        <location filename="about.ui" line="377"/>
-        <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <translation>特別感謝 Chakra-project 團隊給予的建議與翻譯。</translation>
-    </message>
-    <message>
-        <location filename="about.ui" line="388"/>
+        <location filename="about.ui" line="405"/>
         <source>Web Site</source>
         <translation>網站</translation>
     </message>
     <message>
-        <location filename="about.ui" line="404"/>
+        <location filename="about.ui" line="421"/>
         <source>about:blank</source>
         <translation>關於：空白</translation>
-    </message>
-    <message>
-        <source>http://appset.altervista.org/index-it.htm</source>
-        <translation type="obsolete">http://appset.altervista.org/index-it.htm</translation>
     </message>
 </context>
 <context>
@@ -172,6 +160,30 @@ p, li { white-space: pre-wrap; }
         <translation>總計</translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="504"/>
+        <location filename="mainwindow.ui" line="802"/>
+        <location filename="mainwindow.cpp" line="2486"/>
+        <location filename="mainwindow.cpp" line="2631"/>
+        <source>Installed</source>
+        <translation>已安裝</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="518"/>
+        <location filename="mainwindow.ui" line="786"/>
+        <location filename="mainwindow.cpp" line="2564"/>
+        <location filename="mainwindow.cpp" line="2618"/>
+        <source>Upgradable</source>
+        <translation>可升級</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="532"/>
+        <location filename="mainwindow.cpp" line="2513"/>
+        <location filename="mainwindow.cpp" line="2553"/>
+        <location filename="mainwindow.cpp" line="2659"/>
+        <source>External</source>
+        <translation>外部</translation>
+    </message>
+    <message>
         <location filename="mainwindow.ui" line="678"/>
         <location filename="mainwindow.cpp" line="267"/>
         <source>Name</source>
@@ -217,53 +229,9 @@ p, li { white-space: pre-wrap; }
         <translation>只顯示可升級的套件</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1594"/>
-        <source>Backend&apos;s output:</source>
-        <translation>後端程式的輸出：</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1621"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Waiting backend&apos;s initialization...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;正在等候後端程式的初始化...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1646"/>
-        <source>Wait for the end of operations in order to continue ...</source>
-        <translation>等候操作結束才能繼續...</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1673"/>
-        <source>Read the backend&apos;s output and click Continue</source>
-        <translation>讀取後端的輸出並按下「繼續」</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="518"/>
-        <location filename="mainwindow.ui" line="786"/>
-        <location filename="mainwindow.cpp" line="2564"/>
-        <location filename="mainwindow.cpp" line="2618"/>
-        <source>Upgradable</source>
-        <translation>可升級</translation>
-    </message>
-    <message>
         <location filename="mainwindow.ui" line="799"/>
         <source>Show only installed packages</source>
         <translation>只顯示已安裝套件</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="504"/>
-        <location filename="mainwindow.ui" line="802"/>
-        <location filename="mainwindow.cpp" line="2486"/>
-        <location filename="mainwindow.cpp" line="2631"/>
-        <source>Installed</source>
-        <translation>已安裝</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="815"/>
@@ -373,9 +341,38 @@ p, li { white-space: pre-wrap; }
         <translation>確認</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="152"/>
-        <source>About</source>
-        <translation>關於</translation>
+        <location filename="mainwindow.ui" line="1594"/>
+        <source>Backend&apos;s output:</source>
+        <translation>後端程式的輸出：</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1621"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Waiting backend&apos;s initialization...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;正在等候後端程式的初始化...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1646"/>
+        <source>Wait for the end of operations in order to continue ...</source>
+        <translation>等候操作結束才能繼續...</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1673"/>
+        <source>Read the backend&apos;s output and click Continue</source>
+        <translation>讀取後端的輸出並按下「繼續」</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1696"/>
+        <location filename="mainwindow.cpp" line="1145"/>
+        <source>Continue</source>
+        <translation>繼續</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1760"/>
@@ -396,6 +393,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
+        <location filename="mainwindow.cpp" line="1442"/>
+        <location filename="mainwindow.cpp" line="2031"/>
+        <source>Repository</source>
+        <translation>套件庫</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="66"/>
         <source>Packet</source>
         <translation>套件</translation>
@@ -413,13 +417,6 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="1440"/>
         <source>Last Version</source>
         <translation>最新版本</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="60"/>
-        <location filename="mainwindow.cpp" line="1442"/>
-        <location filename="mainwindow.cpp" line="2031"/>
-        <source>Repository</source>
-        <translation>套件庫</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="66"/>
@@ -482,6 +479,11 @@ p, li { white-space: pre-wrap; }
         <translation>選項</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="152"/>
+        <source>About</source>
+        <translation>關於</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="198"/>
         <source>Link</source>
         <translation>連結</translation>
@@ -496,6 +498,11 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="2736"/>
         <source>To enable external packages support you have to install</source>
         <translation>若要啟用外部套件支援，您必須安裝</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="343"/>
+        <source>Are you sure to clean the cache?</source>
+        <translation>您確定要清理快取嗎？</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="668"/>
@@ -516,91 +523,6 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="693"/>
         <source>doesn&apos;t seems to be a valid package!</source>
         <translation>似乎不是有效的套件！</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="343"/>
-        <source>Are you sure to clean the cache?</source>
-        <translation>您確定要清理快取嗎？</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1441"/>
-        <location filename="mainwindow.cpp" line="2034"/>
-        <source>Size</source>
-        <translation>大小</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1443"/>
-        <location filename="mainwindow.cpp" line="2043"/>
-        <source>Required by</source>
-        <translation>被這些需要</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1443"/>
-        <location filename="mainwindow.cpp" line="2040"/>
-        <source>Requires</source>
-        <translation>需要這些</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1444"/>
-        <source>Close</source>
-        <translation>關閉</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1504"/>
-        <source>Are you sure to upgrade ALL external packages?</source>
-        <translation>您確定要升級「全部」的外部套件嗎？</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2036"/>
-        <source>URL</source>
-        <translation>網址</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2456"/>
-        <source>Searching correspondeces...</source>
-        <translation>正在搜尋對應關係...</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2540"/>
-        <source>Checking upgradables</source>
-        <translation>正在檢查可升級項目</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2750"/>
-        <source>The main backend</source>
-        <translation>主後端程式</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2751"/>
-        <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
-        <translation>不是最新狀態。您必須升級才能繼續其他操作。</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2752"/>
-        <source>Do you want to proceed now?</source>
-        <translation>您想要立刻處理嗎？</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2764"/>
-        <source>Running backend&apos;s post upgrade command</source>
-        <translation>正在執行後端程式的升級後指令</translation>
-    </message>
-    <message>
-        <source>About AppSet-Qt</source>
-        <translation type="obsolete">關於 AppSet-Qt</translation>
-    </message>
-    <message>
-        <source>An advanced and feature rich Package Manager Frontend
-
-Author: Simone Tobia</source>
-        <translation type="obsolete">進階與多功能的套件管理程式前端介面
-
-作者：Simone Tobia</translation>
-    </message>
-    <message>
-        <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <oldsource>A special thanks goes to the Chackra-project team for their suggestions and translations.</oldsource>
-        <translation type="obsolete">特別感謝 Chakra-project 團隊給予建議與翻譯。</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="949"/>
@@ -636,10 +558,52 @@ Author: Simone Tobia</source>
         <translation>所有操作都已成功完成！</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1696"/>
-        <location filename="mainwindow.cpp" line="1145"/>
-        <source>Continue</source>
-        <translation>繼續</translation>
+        <location filename="mainwindow.cpp" line="1441"/>
+        <location filename="mainwindow.cpp" line="2034"/>
+        <source>Size</source>
+        <translation>大小</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1443"/>
+        <location filename="mainwindow.cpp" line="2043"/>
+        <source>Required by</source>
+        <translation>被這些需要</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1443"/>
+        <location filename="mainwindow.cpp" line="2040"/>
+        <source>Requires</source>
+        <translation>需要這些</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1444"/>
+        <source>Close</source>
+        <translation>關閉</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1445"/>
+        <location filename="mainwindow.cpp" line="2052"/>
+        <location filename="mainwindow.cpp" line="2110"/>
+        <source>Install</source>
+        <translation>安裝</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1446"/>
+        <location filename="mainwindow.cpp" line="2054"/>
+        <source>Upgrade</source>
+        <translation>升級</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1447"/>
+        <location filename="mainwindow.cpp" line="2053"/>
+        <location filename="mainwindow.cpp" line="2111"/>
+        <source>Remove</source>
+        <translation>移除</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1504"/>
+        <source>Are you sure to upgrade ALL external packages?</source>
+        <translation>您確定要升級「全部」的外部套件嗎？</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1581"/>
@@ -662,35 +626,14 @@ Author: Simone Tobia</source>
         <translation>無論如何您都想要處理 (也移除它們) 嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1685"/>
-        <source>Do you want to proceed anyway (clearing them too)?</source>
-        <translation>無論如何您都想要處理 (也清除它們) 嗎？</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1728"/>
-        <source>Do you want to clear them too?</source>
-        <translation>您也想要將它們清除嗎？</translation>
-    </message>
-    <message>
-        <source>
-
-Do you want to proceed anyway (removing them too)?</source>
-        <translation type="obsolete">
-
-無論如何您都想要處理 (也移除它們) 嗎？</translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="1684"/>
         <source>These selected for install packages require</source>
         <translation>這些選取要安裝的套件需要</translation>
     </message>
     <message>
-        <source>
-
-Do you want to proceed anyway (clearing them too)?</source>
-        <translation type="obsolete">
-
-無論如何您都想要處理 (也清除它們) 嗎？</translation>
+        <location filename="mainwindow.cpp" line="1685"/>
+        <source>Do you want to proceed anyway (clearing them too)?</source>
+        <translation>無論如何您都想要處理 (也清除它們) 嗎？</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1727"/>
@@ -698,12 +641,9 @@ Do you want to proceed anyway (clearing them too)?</source>
         <translation>這些套件被選取以滿足下列的相依關係</translation>
     </message>
     <message>
-        <source>
-
-Do you want to clear them too?</source>
-        <translation type="obsolete">
-
-您也想要清除它們嗎？</translation>
+        <location filename="mainwindow.cpp" line="1728"/>
+        <source>Do you want to clear them too?</source>
+        <translation>您也想要將它們清除嗎？</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1773"/>
@@ -726,24 +666,9 @@ Do you want to clear them too?</source>
         <translation>您也想要將它們移除嗎？</translation>
     </message>
     <message>
-        <source>Some installed packages require this:</source>
-        <translation type="obsolete">有些安裝的套件需要這個：</translation>
-    </message>
-    <message>
-        <source>
-
-Do you want to proceed anyway?</source>
-        <translation type="obsolete">
-
-無論如何您都想要處理嗎？</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Size: &lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;大小：&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;URL: &lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;網址：&lt;/b&gt;</translation>
+        <location filename="mainwindow.cpp" line="2036"/>
+        <source>URL</source>
+        <translation>網址</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2037"/>
@@ -751,41 +676,9 @@ Do you want to proceed anyway?</source>
         <translation>(查看完整網站)</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Requires:&lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;需要這些：&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Required By:&lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;被這些需要：&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1445"/>
-        <location filename="mainwindow.cpp" line="2052"/>
-        <location filename="mainwindow.cpp" line="2110"/>
-        <source>Install</source>
-        <translation>安裝</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1447"/>
-        <location filename="mainwindow.cpp" line="2053"/>
-        <location filename="mainwindow.cpp" line="2111"/>
-        <source>Remove</source>
-        <translation>移除</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1446"/>
-        <location filename="mainwindow.cpp" line="2054"/>
-        <source>Upgrade</source>
-        <translation>升級</translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="2156"/>
         <source>UPDATING DB: </source>
         <translation>正在更新資料庫：</translation>
-    </message>
-    <message>
-        <source>UPDATING DB...</source>
-        <translation type="obsolete">正在更新資料庫...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2167"/>
@@ -803,8 +696,9 @@ Do you want to proceed anyway?</source>
         <translation>正在解析已安裝：</translation>
     </message>
     <message>
-        <source>SEARCHING CORRESPONDENCES...</source>
-        <translation type="obsolete">正在搜尋對應關係...</translation>
+        <location filename="mainwindow.cpp" line="2456"/>
+        <source>Searching correspondeces...</source>
+        <translation>正在搜尋對應關係...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2504"/>
@@ -812,12 +706,29 @@ Do you want to proceed anyway?</source>
         <translation>已安裝 (外部)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="532"/>
-        <location filename="mainwindow.cpp" line="2513"/>
-        <location filename="mainwindow.cpp" line="2553"/>
-        <location filename="mainwindow.cpp" line="2659"/>
-        <source>External</source>
-        <translation>外部</translation>
+        <location filename="mainwindow.cpp" line="2540"/>
+        <source>Checking upgradables</source>
+        <translation>正在檢查可升級項目</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="2750"/>
+        <source>The main backend</source>
+        <translation>主後端程式</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="2751"/>
+        <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
+        <translation>不是最新狀態。您必須升級才能繼續其他操作。</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="2752"/>
+        <source>Do you want to proceed now?</source>
+        <translation>您想要立刻處理嗎？</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="2764"/>
+        <source>Running backend&apos;s post upgrade command</source>
+        <translation>正在執行後端程式的升級後指令</translation>
     </message>
 </context>
 <context>
@@ -826,6 +737,21 @@ Do you want to proceed anyway?</source>
         <location filename="options.ui" line="20"/>
         <source>AppSet Options</source>
         <translation>AppSet 選項</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="29"/>
+        <source>External Browser</source>
+        <translation>外部瀏覽器</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="52"/>
+        <source>Deskop default browser</source>
+        <translation>桌面預設瀏覽器</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="61"/>
+        <source>This browser:</source>
+        <translation>這個瀏覽器：</translation>
     </message>
     <message>
         <location filename="options.ui" line="90"/>
@@ -841,6 +767,11 @@ Do you want to proceed anyway?</source>
         <location filename="options.ui" line="122"/>
         <source>Main Interface</source>
         <translation>主介面</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="140"/>
+        <source>Start Fullscreen</source>
+        <translation>開始全螢幕</translation>
     </message>
     <message>
         <location filename="options.ui" line="147"/>
@@ -891,26 +822,6 @@ Do you want to proceed anyway?</source>
         <location filename="options.ui" line="276"/>
         <source>Enhanced</source>
         <translation>增強</translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="140"/>
-        <source>Start Fullscreen</source>
-        <translation>開始全螢幕</translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="29"/>
-        <source>External Browser</source>
-        <translation>外部瀏覽器</translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="52"/>
-        <source>Deskop default browser</source>
-        <translation>桌面預設瀏覽器</translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="61"/>
-        <source>This browser:</source>
-        <translation>這個瀏覽器：</translation>
     </message>
 </context>
 </TS>

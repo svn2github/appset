@@ -1,0 +1,31 @@
+[main]
+host = http://www.transifex.net
+
+[appset-qt.appset-qt_-ts]
+source_file = AppSet-Qt/appset-qt_*.ts
+source_lang = en
+trans.ca = AppSet-Qt/appset-qt_ca.ts
+trans.de = AppSet-Qt/appset-qt_de.ts
+trans.el = AppSet-Qt/appset-qt_el.ts
+trans.es = AppSet-Qt/appset-qt_es.ts
+trans.fr = AppSet-Qt/appset-qt_fr.ts
+trans.it = AppSet-Qt/appset-qt_it.ts
+trans.nl = AppSet-Qt/appset-qt_nl.ts
+trans.pl = AppSet-Qt/appset-qt_pl.ts
+trans.tr = AppSet-Qt/appset-qt_tr.ts
+trans.zh_TW = AppSet-Qt/appset-qt_zh-tw.ts
+
+[appset-qt.appsettray-qt_-ts]
+source_file = AppSetTray-Qt/appsettray-qt_*.ts
+source_lang = en
+trans.ca = AppSetTray-Qt/appsettray-qt_ca.ts
+trans.de = AppSetTray-Qt/appsettray-qt_de.ts
+trans.el = AppSetTray-Qt/appsettray-qt_el.ts
+trans.es = AppSetTray-Qt/appsettray-qt_es.ts
+trans.fr = AppSetTray-Qt/appsettray-qt_fr.ts
+trans.it = AppSetTray-Qt/appsettray-qt_it.ts
+trans.nl = AppSetTray-Qt/appsettray-qt_nl.ts
+trans.pl = AppSetTray-Qt/appsettray-qt_pl.ts
+trans.tr = AppSetTray-Qt/appsettray-qt_tr.ts
+trans.zh_TW = AppSetTray-Qt/appsettray-qt_zh-tw.ts
+

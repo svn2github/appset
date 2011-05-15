@@ -6,7 +6,6 @@
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <oldsource>Show AppSet</oldsource>
         <translation>Mostrar/Ocultar AppSet</translation>
     </message>
     <message>
@@ -17,21 +16,12 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <oldsource>Quit Tray</oldsource>
         <translation>Salir</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
         <translation>Esperando al asistente...</translation>
-    </message>
-    <message>
-        <source>Are you sure to quit this tray?</source>
-        <translation type="obsolete">¿Estás seguro de salir?</translation>
-    </message>
-    <message>
-        <source>You can restart it from desktop menu</source>
-        <translation type="obsolete">Puedes reiniciar el programa del menú del escritorio</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="83"/>
@@ -82,14 +72,6 @@ Y otros...</translation>
         <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>No hay actualizaciones disponibles</translation>
-    </message>
-    <message>
-        <source>Launching AppSet-Qt</source>
-        <translation type="obsolete">Iniciando AppSet Qt</translation>
-    </message>
-    <message>
-        <source>Wait...</source>
-        <translation type="obsolete">Espere...</translation>
     </message>
 </context>
 </TS>

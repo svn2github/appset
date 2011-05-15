@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it_IT">
+<TS version="2.0" language="it">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <oldsource>Show AppSet</oldsource>
         <translation>Mostra/Nascondi AppSet-Qt</translation>
     </message>
     <message>
@@ -17,21 +16,12 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <oldsource>Quit Tray</oldsource>
         <translation>Termina</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
         <translation>Aspettando l&apos;helper...</translation>
-    </message>
-    <message>
-        <source>Are you sure to quit this tray?</source>
-        <translation type="obsolete">Sei sicuro di voler chiudere questa Tray?</translation>
-    </message>
-    <message>
-        <source>You can restart it from desktop menu</source>
-        <translation type="obsolete">Puoi riavviarla dal menu del desktop</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="83"/>
@@ -82,14 +72,6 @@ E altri...</translation>
         <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>Nessun aggiornamento disponibile</translation>
-    </message>
-    <message>
-        <source>Launching AppSet-Qt</source>
-        <translation type="obsolete">Avvio AppSet-Qt</translation>
-    </message>
-    <message>
-        <source>Wait...</source>
-        <translation type="obsolete">Attendi...</translation>
     </message>
 </context>
 </TS>

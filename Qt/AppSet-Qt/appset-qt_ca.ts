@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ca_ES">
+<TS version="2.0" language="ca">
 <context>
     <name>About</name>
     <message>
@@ -9,79 +9,75 @@
         <translation>Quant a l&apos;AppSet-Qt</translation>
     </message>
     <message>
-        <source>An advanced and feature rich Package Manager Frontend
-
-Author: Simone Tobia</source>
-        <translation type="obsolete">Un frontal avançat i ric en característiques de gestors de paquets
-
-Autor: Simone Tobia</translation>
-    </message>
-    <message>
-        <location filename="about.ui" line="138"/>
+        <location filename="about.ui" line="153"/>
         <source>Version:</source>
         <translation>Versió:</translation>
     </message>
     <message>
-        <location filename="about.ui" line="178"/>
+        <location filename="about.ui" line="394"/>
+        <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
+        <translation>Agraïments especials a l&apos;equip del Projecte Chakra pels seus suggeriments i traduccions.</translation>
+    </message>
+    <message>
+        <location filename="about.ui" line="193"/>
         <source>About</source>
-        <translation type="unfinished">Quant a</translation>
+        <translation>Quant a</translation>
     </message>
     <message>
-        <location filename="about.ui" line="200"/>
+        <location filename="about.ui" line="215"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
-        <translation type="unfinished"></translation>
+        <translation>Una interfície de gestors de paquets amb moltes característiques</translation>
     </message>
     <message>
-        <location filename="about.ui" line="217"/>
+        <location filename="about.ui" line="232"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;License: GNU General Public License Version 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;⏎
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;⏎
+p, li { white-space: pre-wrap; }⏎
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;⏎
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Llicència: Llicència pública general GNU Versió 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="about.ui" line="245"/>
+        <location filename="about.ui" line="260"/>
         <source>Authors</source>
-        <translation type="unfinished"></translation>
+        <translation>Autors</translation>
     </message>
     <message>
-        <location filename="about.ui" line="251"/>
+        <location filename="about.ui" line="266"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please use &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt; to report bugs or request new features&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;⏎
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;⏎
+p, li { white-space: pre-wrap; }⏎
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;⏎
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please use &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt; per informar quant a errors o demanar noves característiques&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="about.ui" line="285"/>
+        <location filename="about.ui" line="300"/>
         <source>Maintainer and developer</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantenidor i desenvolupador</translation>
     </message>
     <message>
-        <location filename="about.ui" line="341"/>
+        <location filename="about.ui" line="356"/>
         <source>Translation</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducció</translation>
     </message>
     <message>
-        <location filename="about.ui" line="377"/>
-        <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <translation>Agraïments especials a l&apos;equip del Projecte Chakra pels seus suggeriments i traduccions.</translation>
-    </message>
-    <message>
-        <location filename="about.ui" line="388"/>
+        <location filename="about.ui" line="405"/>
         <source>Web Site</source>
-        <translation type="unfinished"></translation>
+        <translation>Lloc web</translation>
     </message>
     <message>
-        <location filename="about.ui" line="404"/>
+        <location filename="about.ui" line="421"/>
         <source>about:blank</source>
         <translation>quant_a:en_blanc</translation>
-    </message>
-    <message>
-        <source>http://appset.altervista.org/index-it.htm</source>
-        <translation type="obsolete">http://appset.altervista.org/index.htm</translation>
     </message>
 </context>
 <context>
@@ -164,6 +160,30 @@ p, li { white-space: pre-wrap; }
         <translation>Total</translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="504"/>
+        <location filename="mainwindow.ui" line="802"/>
+        <location filename="mainwindow.cpp" line="2486"/>
+        <location filename="mainwindow.cpp" line="2631"/>
+        <source>Installed</source>
+        <translation>Instal·lat</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="518"/>
+        <location filename="mainwindow.ui" line="786"/>
+        <location filename="mainwindow.cpp" line="2564"/>
+        <location filename="mainwindow.cpp" line="2618"/>
+        <source>Upgradable</source>
+        <translation>Actualitzable</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="532"/>
+        <location filename="mainwindow.cpp" line="2513"/>
+        <location filename="mainwindow.cpp" line="2553"/>
+        <location filename="mainwindow.cpp" line="2659"/>
+        <source>External</source>
+        <translation>Extern</translation>
+    </message>
+    <message>
         <location filename="mainwindow.ui" line="678"/>
         <location filename="mainwindow.cpp" line="267"/>
         <source>Name</source>
@@ -209,53 +229,9 @@ p, li { white-space: pre-wrap; }
         <translation>Mostra només els paquets actualitzables</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1594"/>
-        <source>Backend&apos;s output:</source>
-        <translation>Sortida del dorsal:</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1621"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Waiting backend&apos;s initialization...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;S&apos;està esperant a que el dorsal s&apos;initcialitzi...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1646"/>
-        <source>Wait for the end of operations in order to continue ...</source>
-        <translation>Espereu a que acabin les operacions per a continuar...</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1673"/>
-        <source>Read the backend&apos;s output and click Continue</source>
-        <translation>Llegiu la sortida del dorsal i cliqueu Continua</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="518"/>
-        <location filename="mainwindow.ui" line="786"/>
-        <location filename="mainwindow.cpp" line="2564"/>
-        <location filename="mainwindow.cpp" line="2618"/>
-        <source>Upgradable</source>
-        <translation>Actualitzable</translation>
-    </message>
-    <message>
         <location filename="mainwindow.ui" line="799"/>
         <source>Show only installed packages</source>
         <translation>Mostra només els paquets instal·lats</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="504"/>
-        <location filename="mainwindow.ui" line="802"/>
-        <location filename="mainwindow.cpp" line="2486"/>
-        <location filename="mainwindow.cpp" line="2631"/>
-        <source>Installed</source>
-        <translation>Instal·lat</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="815"/>
@@ -365,9 +341,38 @@ p, li { white-space: pre-wrap; }
         <translation>Confirma</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="152"/>
-        <source>About</source>
-        <translation>Quant a</translation>
+        <location filename="mainwindow.ui" line="1594"/>
+        <source>Backend&apos;s output:</source>
+        <translation>Sortida del dorsal:</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1621"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Waiting backend&apos;s initialization...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;S&apos;està esperant a que el dorsal s&apos;initcialitzi...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1646"/>
+        <source>Wait for the end of operations in order to continue ...</source>
+        <translation>Espereu a que acabin les operacions per a continuar...</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1673"/>
+        <source>Read the backend&apos;s output and click Continue</source>
+        <translation>Llegiu la sortida del dorsal i cliqueu Continua</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1696"/>
+        <location filename="mainwindow.cpp" line="1145"/>
+        <source>Continue</source>
+        <translation>Continua</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1760"/>
@@ -388,6 +393,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
+        <location filename="mainwindow.cpp" line="1442"/>
+        <location filename="mainwindow.cpp" line="2031"/>
+        <source>Repository</source>
+        <translation>Repositori</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="66"/>
         <source>Packet</source>
         <translation>Paquet</translation>
@@ -405,13 +417,6 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="1440"/>
         <source>Last Version</source>
         <translation>Darrera versió</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="60"/>
-        <location filename="mainwindow.cpp" line="1442"/>
-        <location filename="mainwindow.cpp" line="2031"/>
-        <source>Repository</source>
-        <translation>Repositori</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="66"/>
@@ -474,6 +479,11 @@ p, li { white-space: pre-wrap; }
         <translation>Opcions</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="152"/>
+        <source>About</source>
+        <translation>Quant a</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="198"/>
         <source>Link</source>
         <translation>Enllaç</translation>
@@ -488,6 +498,11 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="2736"/>
         <source>To enable external packages support you have to install</source>
         <translation>Per habilitar la possibilitat de paquets externs heu d&apos;instal·lar</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="343"/>
+        <source>Are you sure to clean the cache?</source>
+        <translation>Reament voleu netejar a cau?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="668"/>
@@ -508,91 +523,6 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="693"/>
         <source>doesn&apos;t seems to be a valid package!</source>
         <translation>no sembla ser un paquet vàlid!</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="343"/>
-        <source>Are you sure to clean the cache?</source>
-        <translation>Reament voleu netejar a cau?</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1441"/>
-        <location filename="mainwindow.cpp" line="2034"/>
-        <source>Size</source>
-        <translation>MIda</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1443"/>
-        <location filename="mainwindow.cpp" line="2043"/>
-        <source>Required by</source>
-        <translation>Requerit per</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1443"/>
-        <location filename="mainwindow.cpp" line="2040"/>
-        <source>Requires</source>
-        <translation>Requereix</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1444"/>
-        <source>Close</source>
-        <translation>Tanca</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1504"/>
-        <source>Are you sure to upgrade ALL external packages?</source>
-        <translation>Realment voleu actualitzar TOTS els paquets externs?</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2036"/>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2456"/>
-        <source>Searching correspondeces...</source>
-        <translation>S&apos;estan cercant correspondències...</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2540"/>
-        <source>Checking upgradables</source>
-        <translation>S&apos;està comprovant els actuaitzables</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2750"/>
-        <source>The main backend</source>
-        <translation>Dorsal principal</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2751"/>
-        <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
-        <translation>no està actualitzat. Heu d&apos;actualitzar-lo per tal de poder continuar amb altres operacions.</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2752"/>
-        <source>Do you want to proceed now?</source>
-        <translation>Voleu fer-ho ara?</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="2764"/>
-        <source>Running backend&apos;s post upgrade command</source>
-        <translation>S&apos;està executant una post-ordre del dorsal</translation>
-    </message>
-    <message>
-        <source>About AppSet-Qt</source>
-        <translation type="obsolete">Quant a l&apos;AppSet-Qt</translation>
-    </message>
-    <message>
-        <source>An advanced and feature rich Package Manager Frontend
-
-Author: Simone Tobia</source>
-        <translation type="obsolete">Un frontal avançat i ric en característiques de gestors de paquets
-
-Autor: Simone Tobia</translation>
-    </message>
-    <message>
-        <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <oldsource>A special thanks goes to the Chackra-project team for their suggestions and translations.</oldsource>
-        <translation type="obsolete">Agraïments especials a l&apos;equip del Projecte Chakra pels seus suggeriments i traduccions.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="949"/>
@@ -628,10 +558,52 @@ Autor: Simone Tobia</translation>
         <translation>Totes les operacions completades amb èxit!</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1696"/>
-        <location filename="mainwindow.cpp" line="1145"/>
-        <source>Continue</source>
-        <translation>Continua</translation>
+        <location filename="mainwindow.cpp" line="1441"/>
+        <location filename="mainwindow.cpp" line="2034"/>
+        <source>Size</source>
+        <translation>MIda</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1443"/>
+        <location filename="mainwindow.cpp" line="2043"/>
+        <source>Required by</source>
+        <translation>Requerit per</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1443"/>
+        <location filename="mainwindow.cpp" line="2040"/>
+        <source>Requires</source>
+        <translation>Requereix</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1444"/>
+        <source>Close</source>
+        <translation>Tanca</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1445"/>
+        <location filename="mainwindow.cpp" line="2052"/>
+        <location filename="mainwindow.cpp" line="2110"/>
+        <source>Install</source>
+        <translation>Instal·la</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1446"/>
+        <location filename="mainwindow.cpp" line="2054"/>
+        <source>Upgrade</source>
+        <translation>Actualitza</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1447"/>
+        <location filename="mainwindow.cpp" line="2053"/>
+        <location filename="mainwindow.cpp" line="2111"/>
+        <source>Remove</source>
+        <translation>Elimina</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1504"/>
+        <source>Are you sure to upgrade ALL external packages?</source>
+        <translation>Realment voleu actualitzar TOTS els paquets externs?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1581"/>
@@ -654,9 +626,19 @@ Autor: Simone Tobia</translation>
         <translation>Voleu continuar igualment (eliminat-los també)?</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="1684"/>
+        <source>These selected for install packages require</source>
+        <translation>Aquests paquets instal·lats per instal·lar requereixen</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="1685"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
         <translation>Voleu continuar igualment (netejant-los també)?</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1727"/>
+        <source>These packages were selected as dependencies of</source>
+        <translation>Aquests paquets s&apos;han seleccionat com a dependències de</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1728"/>
@@ -684,58 +666,9 @@ Autor: Simone Tobia</translation>
         <translation>Voleu netejar també la seva supressió?</translation>
     </message>
     <message>
-        <source>
-
-Do you want to proceed anyway (removing them too)?</source>
-        <translation type="obsolete">
-
-Voleu continuar igualment (eliminat-los també)?</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1684"/>
-        <source>These selected for install packages require</source>
-        <translation>Aquests paquets instal·lats per instal·lar requereixen</translation>
-    </message>
-    <message>
-        <source>
-
-Do you want to proceed anyway (clearing them too)?</source>
-        <translation type="obsolete">
-
-Voleu continuar igualment (netejant-los també)?</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1727"/>
-        <source>These packages were selected as dependencies of</source>
-        <translation>Aquests paquets s&apos;han seleccionat com a dependències de</translation>
-    </message>
-    <message>
-        <source>
-
-Do you want to clear them too?</source>
-        <translation type="obsolete">
-
-Voleu netejar-los també?</translation>
-    </message>
-    <message>
-        <source>Some installed packages require this:</source>
-        <translation type="obsolete">Alguns paquets instal·lats requereixen aixó:</translation>
-    </message>
-    <message>
-        <source>
-
-Do you want to proceed anyway?</source>
-        <translation type="obsolete">
-
-Voleu continuar igualment?</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Size: &lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;Mida: &lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;URL: &lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;URL: &lt;/b&gt;</translation>
+        <location filename="mainwindow.cpp" line="2036"/>
+        <source>URL</source>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2037"/>
@@ -743,41 +676,9 @@ Voleu continuar igualment?</translation>
         <translation>(Mostra el lloc complet)</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Requires:&lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;Requereix: &lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Required By:&lt;/b&gt;</source>
-        <translation type="obsolete">&lt;b&gt;Requerit per: &lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1445"/>
-        <location filename="mainwindow.cpp" line="2052"/>
-        <location filename="mainwindow.cpp" line="2110"/>
-        <source>Install</source>
-        <translation>Instal·la</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1447"/>
-        <location filename="mainwindow.cpp" line="2053"/>
-        <location filename="mainwindow.cpp" line="2111"/>
-        <source>Remove</source>
-        <translation>Elimina</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="1446"/>
-        <location filename="mainwindow.cpp" line="2054"/>
-        <source>Upgrade</source>
-        <translation>Actualitza</translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="2156"/>
         <source>UPDATING DB: </source>
         <translation>ACTUALITZACIÓ DE LA BD: </translation>
-    </message>
-    <message>
-        <source>UPDATING DB...</source>
-        <translation type="obsolete">ACTUALITZACIÓ DE LA BD...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2167"/>
@@ -795,8 +696,9 @@ Voleu continuar igualment?</translation>
         <translation>ANÀLISI DELS INSTAL·LATS: </translation>
     </message>
     <message>
-        <source>SEARCHING CORRESPONDENCES...</source>
-        <translation type="obsolete">CERCA DE CORRESPONDÈNCIES...</translation>
+        <location filename="mainwindow.cpp" line="2456"/>
+        <source>Searching correspondeces...</source>
+        <translation>S&apos;estan cercant correspondències...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2504"/>
@@ -804,12 +706,29 @@ Voleu continuar igualment?</translation>
         <translation>Instal·lat (extern)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="532"/>
-        <location filename="mainwindow.cpp" line="2513"/>
-        <location filename="mainwindow.cpp" line="2553"/>
-        <location filename="mainwindow.cpp" line="2659"/>
-        <source>External</source>
-        <translation>Extern</translation>
+        <location filename="mainwindow.cpp" line="2540"/>
+        <source>Checking upgradables</source>
+        <translation>S&apos;està comprovant els actuaitzables</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="2750"/>
+        <source>The main backend</source>
+        <translation>Dorsal principal</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="2751"/>
+        <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
+        <translation>no està actualitzat. Heu d&apos;actualitzar-lo per tal de poder continuar amb altres operacions.</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="2752"/>
+        <source>Do you want to proceed now?</source>
+        <translation>Voleu fer-ho ara?</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="2764"/>
+        <source>Running backend&apos;s post upgrade command</source>
+        <translation>S&apos;està executant una post-ordre del dorsal</translation>
     </message>
 </context>
 <context>
@@ -848,6 +767,11 @@ Voleu continuar igualment?</translation>
         <location filename="options.ui" line="122"/>
         <source>Main Interface</source>
         <translation>Interfície principal</translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="140"/>
+        <source>Start Fullscreen</source>
+        <translation>Inicia en pantalla completa</translation>
     </message>
     <message>
         <location filename="options.ui" line="147"/>
@@ -898,11 +822,6 @@ Voleu continuar igualment?</translation>
         <location filename="options.ui" line="276"/>
         <source>Enhanced</source>
         <translation>Avançat</translation>
-    </message>
-    <message>
-        <location filename="options.ui" line="140"/>
-        <source>Start Fullscreen</source>
-        <translation>Inicia en pantalla completa</translation>
     </message>
 </context>
 </TS>
