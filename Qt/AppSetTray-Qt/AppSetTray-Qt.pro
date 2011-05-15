@@ -41,4 +41,5 @@ TRANSLATIONS = appsettray-qt_it.ts \
     appsettray-qt_pl.ts \
     appsettray-qt_zh-tw.ts \
     appsettray-qt_tr.ts \
+    appsettray-qt_ro_ro.ts \
     appsettray-qt_*.ts

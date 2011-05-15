@@ -10,5 +10,6 @@
         <file>appset-qt_pl.qm</file>
         <file>appset-qt_zh-tw.qm</file>
         <file>appset-qt_tr.qm</file>
+        <file>appset-qt_ro_ro.qm</file>
     </qresource>
 </RCC>
