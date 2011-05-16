@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pl" version="2.0">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <translation></translation>
+        <translation>Pokaż/Ukryj AppSet</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
@@ -16,7 +14,7 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <translation></translation>
+        <translation>Zakończ</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
@@ -26,12 +24,12 @@
     <message>
         <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation></translation>
+        <translation>Istnieje instacja AppSet która wykonuje pewne uprzywilejowane operacje.</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation></translation>
+        <translation>Czy chcesz zakończyć mimo wszysko (nie zalecane)?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="113"/>

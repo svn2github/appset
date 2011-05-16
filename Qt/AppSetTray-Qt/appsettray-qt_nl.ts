@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.0">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <translation></translation>
+        <translation>Toon/Verberg Appset-Qt</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
@@ -16,7 +14,7 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <translation></translation>
+        <translation>Afsluiten</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
@@ -26,12 +24,12 @@
     <message>
         <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation></translation>
+        <translation>Er is een instantie van AppSet lopende die acties uitvoert met beheerdersrechten.</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation></translation>
+        <translation>Wilt u toch afsluiten (niet aanbevolen)?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="113"/>
@@ -59,13 +57,13 @@ En andere...</translation>
         <location filename="trayicon.cpp" line="169"/>
         <location filename="trayicon.cpp" line="172"/>
         <source> updates available!</source>
-        <translation> Opwaarderingen beschikbaar!</translation>
+        <translation> opwaarderingen beschikbaar!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="169"/>
         <location filename="trayicon.cpp" line="172"/>
         <source> update available!</source>
-        <translation> Opwaardering beschikbaar!</translation>
+        <translation> opwaardering beschikbaar!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="176"/>
