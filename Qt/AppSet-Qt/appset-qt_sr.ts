@@ -1,30 +1,30 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ro_RO" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr" version="2.0">
 <context>
     <name>About</name>
     <message>
         <location filename="about.ui" line="20"/>
         <source>About AppSet-Qt</source>
-        <translation>Despre AppSet-Qt</translation>
+        <translation>О АпСет програму</translation>
     </message>
     <message>
         <location filename="about.ui" line="138"/>
         <source>Version:</source>
-        <translation>Versiune:</translation>
+        <translation>Верзија:</translation>
     </message>
     <message>
         <location filename="about.ui" line="377"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <translation>Mulțumiri echipei proiectului Chakra pentru sugestii și traduceri.</translation>
+        <translation>Посебно се захваљујемо тиму чакра-пројекта за своје предлоге и преводе.</translation>
     </message>
     <message>
         <location filename="about.ui" line="178"/>
         <source>About</source>
-        <translation>Despre</translation>
+        <translation>О програму</translation>
     </message>
     <message>
         <location filename="about.ui" line="200"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
-        <translation>O interfață avansată pentru managerul de pachete.</translation>
+        <translation>Напредни и вишефункционални менаџер пакета</translation>
     </message>
     <message>
         <location filename="about.ui" line="217"/>
@@ -37,12 +37,12 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Licență: Licența Publică Generală GNU, versiunea 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Лиценца: ГНУ Генерал Паблик Лиценца Верзија 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="about.ui" line="245"/>
         <source>Authors</source>
-        <translation>Autori</translation>
+        <translation>Аутори</translation>
     </message>
     <message>
         <location filename="about.ui" line="251"/>
@@ -55,22 +55,22 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please use &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt;pentru a raporta bug-uri sau pentru a cere funcții noi.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Молимо користите &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt; за пријаву грешака или за предлоге нових функција&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="about.ui" line="285"/>
         <source>Maintainer and developer</source>
-        <translation>Dezvoltator și întreținător</translation>
+        <translation>Уредник и програмер</translation>
     </message>
     <message>
         <location filename="about.ui" line="341"/>
         <source>Translation</source>
-        <translation>Traducere</translation>
+        <translation>Превођење</translation>
     </message>
     <message>
         <location filename="about.ui" line="388"/>
         <source>Web Site</source>
-        <translation>Site Web</translation>
+        <translation>Веб сајт</translation>
     </message>
     <message>
         <location filename="about.ui" line="404"/>
@@ -83,17 +83,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="26"/>
         <source>AppSet-Qt</source>
-        <translation>AppSet-Qt</translation>
+        <translation>АппСет-Qt</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="138"/>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Почетак</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="154"/>
         <source>Sections</source>
-        <translation>Secțiuni</translation>
+        <translation>Секције</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="173"/>
@@ -103,42 +103,42 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="2310"/>
         <location filename="mainwindow.cpp" line="2731"/>
         <source>All</source>
-        <translation>Toate</translation>
+        <translation>Све</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="206"/>
         <location filename="mainwindow.cpp" line="2206"/>
         <source>Games</source>
-        <translation>Jocuri</translation>
+        <translation>Игре</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="239"/>
         <location filename="mainwindow.cpp" line="2230"/>
         <source>Multimedia</source>
-        <translation>Multimedia</translation>
+        <translation>Мултимедија</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
         <location filename="mainwindow.cpp" line="2254"/>
         <source>Internet</source>
-        <translation>Internet</translation>
+        <translation>Интернет</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="305"/>
         <location filename="mainwindow.cpp" line="2242"/>
         <source>Office</source>
-        <translation>Birou</translation>
+        <translation>Канцеларија</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="338"/>
         <location filename="mainwindow.cpp" line="2218"/>
         <source>System</source>
-        <translation>Sistem</translation>
+        <translation>Систем</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="373"/>
         <source>News</source>
-        <translation>Noutăți</translation>
+        <translation>Вести</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="461"/>
@@ -150,12 +150,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="477"/>
         <source>Statistics</source>
-        <translation>Statistici</translation>
+        <translation>Статистика</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="490"/>
         <source>Total</source>
-        <translation>Total</translation>
+        <translation>Укупно</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="504"/>
@@ -163,7 +163,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="2486"/>
         <location filename="mainwindow.cpp" line="2631"/>
         <source>Installed</source>
-        <translation>Instalate</translation>
+        <translation>Инсталирани</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="518"/>
@@ -171,7 +171,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="2564"/>
         <location filename="mainwindow.cpp" line="2618"/>
         <source>Upgradable</source>
-        <translation>Actualizabile</translation>
+        <translation>Надоградиви</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="532"/>
@@ -179,114 +179,114 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="2553"/>
         <location filename="mainwindow.cpp" line="2659"/>
         <source>External</source>
-        <translation>Externe</translation>
+        <translation>Спољни</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="678"/>
         <location filename="mainwindow.cpp" line="267"/>
         <source>Name</source>
-        <translation>Nume</translation>
+        <translation>Име</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="683"/>
         <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="267"/>
         <source>Description</source>
-        <translation>Descriere</translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="708"/>
         <location filename="mainwindow.ui" line="1120"/>
         <source>Search</source>
-        <translation>Căutare</translation>
+        <translation>Претрага</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="714"/>
         <location filename="mainwindow.ui" line="1113"/>
         <source>Search...</source>
-        <translation>Caută...</translation>
+        <translation>Тражи...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="721"/>
         <source>Clears the search bar</source>
-        <translation>Curăță bara de căutare</translation>
+        <translation>Брише траку за претрагу</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="757"/>
         <source>Show:</source>
-        <translation>Afișează:</translation>
+        <translation>Прикажи:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="764"/>
         <source>Show all packages</source>
-        <translation>Afișează toate pachetele</translation>
+        <translation>Прикажи све пакете</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="783"/>
         <source>Show only upgradable packages</source>
-        <translation>Afișează doar pachetele actualizabile</translation>
+        <translation>Прикажи само надоградиве пакете</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="799"/>
         <source>Show only installed packages</source>
-        <translation>Afișează doar pachetele instalate</translation>
+        <translation>Прикажи само инсталиране пакете</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="815"/>
         <source>Show only not installed packages</source>
-        <translation>Afișează doar pachetele neinstalate</translation>
+        <translation>Прикажи само неинсталиране пакете</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="818"/>
         <location filename="mainwindow.cpp" line="2419"/>
         <location filename="mainwindow.cpp" line="2637"/>
         <source>Not Installed</source>
-        <translation>Neinstalate</translation>
+        <translation>Нису инсталирани</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="850"/>
         <source>Show/Hide Package Extra Informations</source>
-        <translation>Arată/Ascunde Informații Suplimentare</translation>
+        <translation>Прикажи/Сакриј Додатне информације Пакета</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="856"/>
         <source>Extra Info</source>
-        <translation>Informații suplimentare</translation>
+        <translation>Додатне информације</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="872"/>
         <source>Show/Hide system packages</source>
-        <translation>Arată/Ascunde pachete de sistem</translation>
+        <translation>Прикажи/Сакриј системске пакета</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="878"/>
         <source>Expert Mode</source>
-        <translation>Modul Expert</translation>
+        <translation>Напредни Режим</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1075"/>
         <source>Upgrade All</source>
-        <translation>Actualizează toate</translation>
+        <translation>Надогради Све</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1086"/>
         <source>List Installed</source>
-        <translation>Enumeră instalate</translation>
+        <translation>Листа Инсталираних</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1131"/>
         <source>Clear</source>
-        <translation>Curăță</translation>
+        <translation>Очисти</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1158"/>
         <source>Searching...</source>
-        <translation>Se caută...</translation>
+        <translation>Претраживање...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1248"/>
         <source>These packages are produced by users. Use at your own risk!</source>
-        <translation>Aceste pachete sunt produse de utilizatori. Utilizare pe riscul propriu!</translation>
+        <translation>Ови пакети су произведени од стране корисника. Користите на сопствени ризик!</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1338"/>
@@ -300,13 +300,13 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;Summary of changes&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Verifică toate pachetele modificate apoi apasă Confirmare sau Anulare.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;Извештај о Изменама&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Проверите све измене пакета и потом кликните на Потврди или Одустани.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1413"/>
         <source>Backend Output:</source>
-        <translation>Afișajul Backend-ului</translation>
+        <translation>Системски Испис:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1488"/>
@@ -315,18 +315,14 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Make your choice: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Alege: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation/>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1521"/>
         <location filename="mainwindow.cpp" line="2055"/>
         <location filename="mainwindow.cpp" line="2112"/>
         <source>Cancel</source>
-        <translation>Anulare</translation>
+        <translation>Одустани</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1550"/>
@@ -336,12 +332,12 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="1980"/>
         <location filename="mainwindow.cpp" line="1983"/>
         <source>Confirm</source>
-        <translation>Confirmare</translation>
+        <translation>Потврди</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1594"/>
         <source>Backend&apos;s output:</source>
-        <translation>Afișajul backend-ului:</translation>
+        <translation>Извештај Бацкенд&apos;с излаз:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1621"/>
@@ -350,101 +346,97 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Monospace'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Waiting backend&apos;s initialization...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Monospace'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Se așteaptă inițializarea backend-ului...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation/>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1646"/>
         <source>Wait for the end of operations in order to continue ...</source>
-        <translation>Așteaptă sfârșitul operațiunilor înainte de a continua...</translation>
+        <translation>Сачекајте за крај операције, како би сте наставили...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1673"/>
         <source>Read the backend&apos;s output and click Continue</source>
-        <translation>Citește afișajul backend-ului și apasă Continuare</translation>
+        <translation/>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1696"/>
         <location filename="mainwindow.cpp" line="1145"/>
         <source>Continue</source>
-        <translation>Continuare</translation>
+        <translation>Настави</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1760"/>
         <source>About Qt...</source>
-        <translation>Despre Qt...</translation>
+        <translation>О Кутеу...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1769"/>
         <source>About AppSet</source>
-        <translation>Despre AppSet</translation>
+        <translation>О АпСет програму</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="66"/>
         <location filename="mainwindow.cpp" line="267"/>
         <source>S</source>
-        <translation>S</translation>
+        <translation>С</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="1442"/>
         <location filename="mainwindow.cpp" line="2031"/>
         <source>Repository</source>
-        <translation>Depozit</translation>
+        <translation>Складиште</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="66"/>
         <source>Packet</source>
-        <translation>Pachet</translation>
+        <translation>Пакет</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="267"/>
         <location filename="mainwindow.cpp" line="1439"/>
         <source>Installed Version</source>
-        <translation>Versiune Instalată</translation>
+        <translation>Инсталирана Верзија</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="60"/>
         <location filename="mainwindow.cpp" line="267"/>
         <location filename="mainwindow.cpp" line="1440"/>
         <source>Last Version</source>
-        <translation>Ultima versiune</translation>
+        <translation>Последња Верзија</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="66"/>
         <source>Version</source>
-        <translation>Versiune</translation>
+        <translation>Верзија</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="66"/>
         <source>Dependencies</source>
-        <translation>Dependențe</translation>
+        <translation>Зависности</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="66"/>
         <source>Size(MB)</source>
-        <translation>Dimensiune(MB)</translation>
+        <translation>Величина(МБ)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="66"/>
         <source>Progress</source>
-        <translation>Progres</translation>
+        <translation>Напредак</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="84"/>
         <source>Errors while initializing the system!</source>
-        <translation>Erori la inițializarea sistemului!</translation>
+        <translation>Грешке током иницијализације система!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="131"/>
         <source>Update</source>
-        <translation>Sincronizează</translation>
+        <translation>Ажурирање</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="133"/>
@@ -452,156 +444,156 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="374"/>
         <location filename="mainwindow.cpp" line="2697"/>
         <source>Clean cache</source>
-        <translation>Curăță cache</translation>
+        <translation>Очистите кеш</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="136"/>
         <location filename="mainwindow.cpp" line="2691"/>
         <source>Mark all upgrades</source>
-        <translation>Marchează toate actualizările</translation>
+        <translation>Обележи све надоградње</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="139"/>
         <location filename="mainwindow.cpp" line="666"/>
         <source>Open local package</source>
-        <translation>Deschide pachet local</translation>
+        <translation>Отвори локални пакет</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="142"/>
         <source>Check and apply</source>
-        <translation>Verifică și aplică</translation>
+        <translation>Провери и примени</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="148"/>
         <source>Options</source>
-        <translation>Opțiuni</translation>
+        <translation>Опције</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="152"/>
         <source>About</source>
-        <translation>Despre</translation>
+        <translation>О</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="198"/>
         <source>Link</source>
-        <translation>Legătură</translation>
+        <translation>Веза</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="198"/>
         <source>Title</source>
-        <translation>Titlu</translation>
+        <translation>Наслов</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="309"/>
         <location filename="mainwindow.cpp" line="2736"/>
         <source>To enable external packages support you have to install</source>
-        <translation>Pentru a permite instalarea pachetelor externe trebuie să instalezi</translation>
+        <translation>Да бисте омогућили подршку екстерних пакета морате да инсталирате</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="343"/>
         <source>Are you sure to clean the cache?</source>
-        <translation>Sunteți sigur că vreți să curățați cache-ul?</translation>
+        <translation>Да ли сте сигурни да желите да очистите кеш?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="668"/>
         <source>Package files</source>
-        <translation>Fișiere pachet</translation>
+        <translation>Документи пакета</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="692"/>
         <source>Error loading the specified package file!</source>
-        <translation>Eroare la încărcarea fișierului pachet specificat!</translation>
+        <translation>Грешка приликом учитавања наведеног пакета!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="693"/>
         <source>The file</source>
-        <translation>Fișierul</translation>
+        <translation>Документ</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="693"/>
         <source>doesn&apos;t seems to be a valid package!</source>
-        <translation>nu pare a fi un pachet valid!</translation>
+        <translation>се не чини да је важећи пакет!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="949"/>
         <location filename="mainwindow.cpp" line="1007"/>
         <source>Waiting others...</source>
-        <translation>Se așteaptă altele...</translation>
+        <translation>Чекање других...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="962"/>
         <location filename="mainwindow.cpp" line="1021"/>
         <source>Installing...</source>
-        <translation>Se instalează...</translation>
+        <translation>Инсталирање...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1133"/>
         <source>Errors during operations!</source>
-        <translation>Erori în timpul operațiunilor!</translation>
+        <translation>Грешке током операција!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1133"/>
         <source>Success!</source>
-        <translation>Succes!</translation>
+        <translation>Успех!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1134"/>
         <source>Do you want to see operations logs?</source>
-        <translation>Vreți să vedeți logurile operațiunilor?</translation>
+        <translation>Да ли желите да видите извештај операција?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1134"/>
         <location filename="mainwindow.cpp" line="1170"/>
         <source>All operations completed successfully!</source>
-        <translation>Toate operațiunile încheiate cu succes!</translation>
+        <translation>Све операције су успешно завршене!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1441"/>
         <location filename="mainwindow.cpp" line="2034"/>
         <source>Size</source>
-        <translation>Mărime</translation>
+        <translation>Величина</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1443"/>
         <location filename="mainwindow.cpp" line="2043"/>
         <source>Required by</source>
-        <translation>Cerut de</translation>
+        <translation>Захтевано од</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1443"/>
         <location filename="mainwindow.cpp" line="2040"/>
         <source>Requires</source>
-        <translation>Cere</translation>
+        <translation>Захтева</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1444"/>
         <source>Close</source>
-        <translation>Închide</translation>
+        <translation>Затвори</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1445"/>
         <location filename="mainwindow.cpp" line="2052"/>
         <location filename="mainwindow.cpp" line="2110"/>
         <source>Install</source>
-        <translation>Instalează</translation>
+        <translation>Инсталирати</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1446"/>
         <location filename="mainwindow.cpp" line="2054"/>
         <source>Upgrade</source>
-        <translation>Actualizează</translation>
+        <translation>Надоградња</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1447"/>
         <location filename="mainwindow.cpp" line="2053"/>
         <location filename="mainwindow.cpp" line="2111"/>
         <source>Remove</source>
-        <translation>Elimină</translation>
+        <translation>Уклони</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1504"/>
         <source>Are you sure to upgrade ALL external packages?</source>
-        <translation>Sunteți sigur că vreți să actualizați TOATE pachetele externe?</translation>
+        <translation>Да ли сте сигурни да желите да надоградите СВЕ спољашње пакете?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1581"/>
@@ -611,122 +603,122 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="1847"/>
         <location filename="mainwindow.cpp" line="1856"/>
         <source>Pending changes:</source>
-        <translation>Schimbări în așteptare:</translation>
+        <translation>Измене на чекању:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1603"/>
         <source>Some installed packages require</source>
-        <translation>Unele pachete instalate cer</translation>
+        <translation>Неки инсталирани пакети захтевају </translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1604"/>
         <source>Do you want to proceed anyway (removing them too)?</source>
-        <translation>Vreți să continuați oricum (și să le eliminați)?</translation>
+        <translation>Да ли желите да наставите у сваком случају (уклањање свих)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1684"/>
         <source>These selected for install packages require</source>
-        <translation>Pachetele alese pentru instalare cer </translation>
+        <translation>Ови пакети изабрани за инсталацију захтевају</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1685"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
-        <translation>Vreți să continuați oricum (și să le curățați)?</translation>
+        <translation>Да ли желите да наставите у сваком случају (чишћење свих)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1727"/>
         <source>These packages were selected as dependencies of</source>
-        <translation>Următoarele pachete au fost alese ca dependențe ale</translation>
+        <translation>Ови пакети су одабрани као зависност од</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1728"/>
         <source>Do you want to clear them too?</source>
-        <translation>Vreți de asemenea să le curățați?</translation>
+        <translation>Да ли желите да их такође уклоните?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1773"/>
         <source>These selected for removal packages are required by</source>
-        <translation>Pachetele alese pentru eliminare sunt cerute de</translation>
+        <translation>Ови пакета изабрани за уклањање су зависности од</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1774"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
-        <translation>Vreți să continuați oricum (și să anulați eliminarea)?</translation>
+        <translation>Да ли желите да наставите у сваком случају (поништавање њиховог уклањања)?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1816"/>
         <source>These packages were selected for removal because they need</source>
-        <translation>Următoarele pachete au fost alese pentru eliminare pentru că au nevoie de</translation>
+        <translation>Ови пакети су изабрани за уклањање, јер им је потребан</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1817"/>
         <source>Do you want to clear their removal too?</source>
-        <translation>Vreți de asemenea să curățați eliminarea lor?</translation>
+        <translation>Да ли желите да поништите њихово уклањање?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2036"/>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>УРЛ адреса</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2037"/>
         <source>(Watch the full site)</source>
-        <translation>(Vizualizați site-ul întreg)</translation>
+        <translation>(Погледајте цео сајт)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2156"/>
         <source>UPDATING DB: </source>
-        <translation>SE ACTUALIZEAZĂ DB:</translation>
+        <translation>НАДОГРАДЊА БАЗЕ:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2167"/>
         <source>DB UPDATED!</source>
-        <translation>DB ACTUALIZATĂ!</translation>
+        <translation>БАЗА НАДОГРАЂЕНА!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2380"/>
         <source>Loading packages...</source>
-        <translation>Se încarcă pachetele...</translation>
+        <translation>Учитавање пакета...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2451"/>
         <source>PARSING INSTALLED: </source>
-        <translation>SE PARCURG INSTALATE</translation>
+        <translation>ПАРСИРАЊЕ ИНСТАЛИРАНО:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2456"/>
         <source>Searching correspondeces...</source>
-        <translation>Se caută corespondețe</translation>
+        <translation>Претраживање коресподенције...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2504"/>
         <source>Installed (external)</source>
-        <translation>Instalate (externe)</translation>
+        <translation>Инсталирани (екстерни)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2540"/>
         <source>Checking upgradables</source>
-        <translation>Se verifică actualizabilele</translation>
+        <translation>Провера надоградњи</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2750"/>
         <source>The main backend</source>
-        <translation>Backend-ul principal</translation>
+        <translation>Главни бекенд</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2751"/>
         <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
-        <translation>nu este actualizat. Trebuie să actualizezi înainte de a continua cu alte operațiuni.</translation>
+        <translation>није надограђен. Морате да га надоградите да би наставили са другим операцијама.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2752"/>
         <source>Do you want to proceed now?</source>
-        <translation>Vreți să continuați acum?</translation>
+        <translation>Да ли желите да наставите сада?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2764"/>
         <source>Running backend&apos;s post upgrade command</source>
-        <translation>Se execută comanda post upgrade a backend-ului.</translation>
+        <translation>Покретање пост-инсталационе команде</translation>
     </message>
 </context>
 <context>
@@ -734,92 +726,92 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="20"/>
         <source>AppSet Options</source>
-        <translation>Opțiuni AppSet</translation>
+        <translation>Опције АпСета</translation>
     </message>
     <message>
         <location filename="options.ui" line="29"/>
         <source>External Browser</source>
-        <translation>Navigator Extern</translation>
+        <translation>Спољни прегледач</translation>
     </message>
     <message>
         <location filename="options.ui" line="52"/>
         <source>Deskop default browser</source>
-        <translation>Navigatorul implicit al sistemului</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="61"/>
         <source>This browser:</source>
-        <translation>Acest navigator:</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="90"/>
         <source>Tray</source>
-        <translation>Zonă de notificare</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="112"/>
         <source>Updates control interval (min)</source>
-        <translation>Intervalul de verificare actualizări (min.)</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="122"/>
         <source>Main Interface</source>
-        <translation>Interfața principală</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="140"/>
         <source>Start Fullscreen</source>
-        <translation>Pornește pe tot ecranul</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="147"/>
         <source>Shows Backend Output during operations</source>
-        <translation>Arată Afișajul backend-ului în timpul operațiunilor</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="160"/>
         <source>Show Backend Output</source>
-        <translation>Arată Afișajul Backend-ului</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="183"/>
         <source>Search bar delay (ms)</source>
-        <translation>întârzierea barei de căutare (ms)</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="200"/>
         <source>Show packages statistics</source>
-        <translation>Arată statisticile pachetelor</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="217"/>
         <source>Enable countdown to auto-confirm changes</source>
-        <translation>Activează contorul de auto-confirmare a acțiunilor</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="231"/>
         <source>Show repository column in packages table</source>
-        <translation>Arată coloana depozit în tabela pachetelor.</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="248"/>
         <source>Auto select system files for upgrade (disabled in expert mode)</source>
-        <translation>Auto-alege fișierele de sistem pentru actualizare (dezactivat în modul expert)</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="260"/>
         <source>Graphics</source>
-        <translation>Grafică</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="266"/>
         <source>Standard</source>
-        <translation>Standard</translation>
+        <translation/>
     </message>
     <message>
         <location filename="options.ui" line="276"/>
         <source>Enhanced</source>
-        <translation>Îmbunătățit</translation>
+        <translation/>
     </message>
 </context>
 </TS>

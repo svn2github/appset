@@ -11,5 +11,6 @@
         <file>appsettray-qt_zh-tw.qm</file>
         <file>appsettray-qt_tr.qm</file>
         <file>appsettray-qt_ro_ro.qm</file>
+        <file>appsettray-qt_sr.qm</file>
     </qresource>
 </RCC>

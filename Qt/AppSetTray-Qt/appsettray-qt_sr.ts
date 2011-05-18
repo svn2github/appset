@@ -1,75 +1,75 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ro_RO" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr" version="2.0">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <translation>Arată/Ascunde AppSet</translation>
+        <translation>Прикажи/Сакриј АпСет</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
         <source>Check for updates NOW!</source>
-        <translation>Verifică dacă sunt actualizări!</translation>
+        <translation>Проверите да ли постоје надоградње САДА!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <translation>Ieșire</translation>
+        <translation>Излаз</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
-        <translation>Se așteaptă helper...</translation>
+        <translation>Чекање помагача...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation>Exista o instanță AppSet ce efectuează operațiuni privilegiate.</translation>
+        <translation>Постоји инстанца АпСета која је покренула неке привилеговане операције.</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation>Vrei să ieși oricum (nerecomandat)?</translation>
+        <translation>Да ли желите да прекинете у сваком случају (не препоручује се)?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="113"/>
         <source>AppSet-Qt is Running!</source>
-        <translation>AppSet-Qr ruleaza!</translation>
+        <translation>АпСет је покренут!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="156"/>
         <source>There are updates for:</source>
-        <translation>Exista actualizări pentru:</translation>
+        <translation>Постоје надоградње за:</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="156"/>
         <source>There is an update for:</source>
-        <translation>Există o actualizare pentru:</translation>
+        <translation>Постоји надоградња за:</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="166"/>
         <source>
 And others...</source>
         <translation>
-Și altele...</translation>
+И други...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="169"/>
         <location filename="trayicon.cpp" line="172"/>
         <source> updates available!</source>
-        <translation> actualizări disponibile!</translation>
+        <translation> надоградње доступне!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="169"/>
         <location filename="trayicon.cpp" line="172"/>
         <source> update available!</source>
-        <translation> actualizări disponibile!</translation>
+        <translation> надоградња доступна!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="176"/>
         <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
-        <translation>Nicio actualizare disponibilă</translation>
+        <translation>Нема доступних надоградњи</translation>
     </message>
 </context>
 </TS>
