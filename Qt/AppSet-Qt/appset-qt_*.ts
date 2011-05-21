@@ -14,7 +14,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="394"/>
+        <location filename="about.ui" line="370"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -57,17 +57,17 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="356"/>
+        <location filename="about.ui" line="343"/>
         <source>Translation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="405"/>
+        <location filename="about.ui" line="381"/>
         <source>Web Site</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="about.ui" line="421"/>
+        <location filename="about.ui" line="397"/>
         <source>about:blank</source>
         <translation type="unfinished"></translation>
     </message>

@@ -4,7 +4,7 @@
     <message>
         <location filename="about.ui" line="20"/>
         <source>About AppSet-Qt</source>
-        <translation>App-Set-Qt Hakkında</translation>
+        <translation>AppSet-Qt Hakkında</translation>
     </message>
     <message>
         <location filename="about.ui" line="138"/>
@@ -14,7 +14,7 @@
     <message>
         <location filename="about.ui" line="377"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <translation>Önerileri ve çevirilieri için Chakra-projesi ekibine teşekkürler.</translation>
+        <translation>Önerileri ve çevirileri için Chakra-projesi ekibine teşekkürler.</translation>
     </message>
     <message>
         <location filename="about.ui" line="178"/>
@@ -37,7 +37,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;License: GNU Genel Kamu Lisansı Sürümü 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Lisans: GNU Genel Kamu Lisansı Sürümü 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="about.ui" line="245"/>
@@ -88,7 +88,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="138"/>
         <source>Start</source>
-        <translation>Başlat</translation>
+        <translation>Başlangıç</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="154"/>
@@ -286,7 +286,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="1248"/>
         <source>These packages are produced by users. Use at your own risk!</source>
-        <translation>Bu paketler kullanıcılar tarafından oluşturulmuştur. Kullanımında tüm sorumluluk size aittir.</translation>
+        <translation>Bu paketler kullanıcılar tarafından oluşturulmuştur. Kullanımına dair tüm sorumluluk size aittir.</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1338"/>
@@ -495,7 +495,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="309"/>
         <location filename="mainwindow.cpp" line="2736"/>
         <source>To enable external packages support you have to install</source>
-        <translation>Harici paket desteğini etkinleştirmek için kurmalısınız</translation>
+        <translation>Harici paket desteğini etkinleştirmek için şunu kurmalısınız:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="343"/>
@@ -819,7 +819,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="276"/>
         <source>Enhanced</source>
-        <translation>Gelişmix</translation>
+        <translation>Gelişmiş</translation>
     </message>
 </context>
 </TS>

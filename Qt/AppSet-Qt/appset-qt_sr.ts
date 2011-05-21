@@ -14,7 +14,7 @@
     <message>
         <location filename="about.ui" line="377"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <translation>Посебно се захваљујемо тиму чакра-пројекта за своје предлоге и преводе.</translation>
+        <translation>Посебно се захваљујемо тиму Чакра-пројекта за своје предлоге и преводе.</translation>
     </message>
     <message>
         <location filename="about.ui" line="178"/>
@@ -83,7 +83,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="26"/>
         <source>AppSet-Qt</source>
-        <translation>АппСет-Qt</translation>
+        <translation>АпСет-Qt</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="138"/>
@@ -256,7 +256,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="872"/>
         <source>Show/Hide system packages</source>
-        <translation>Прикажи/Сакриј системске пакета</translation>
+        <translation>Прикажи/Сакриј системске пакете</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="878"/>
@@ -306,7 +306,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="1413"/>
         <source>Backend Output:</source>
-        <translation>Системски Испис:</translation>
+        <translation>Системски Извештај:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1488"/>
@@ -315,7 +315,11 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Make your choice: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Ваш избор: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1521"/>
@@ -337,7 +341,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="1594"/>
         <source>Backend&apos;s output:</source>
-        <translation>Извештај Бацкенд&apos;с излаз:</translation>
+        <translation>Извештај позадинског програма:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1621"/>
@@ -346,7 +350,11 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Monospace'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Waiting backend&apos;s initialization...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Monospace'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Чека се позадински програм...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1646"/>
@@ -356,7 +364,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="1673"/>
         <source>Read the backend&apos;s output and click Continue</source>
-        <translation/>
+        <translation>Прочитајте извештај позадинског програма и кликните на Настави</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1696"/>
@@ -471,7 +479,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="152"/>
         <source>About</source>
-        <translation>О</translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="198"/>
@@ -638,7 +646,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="1773"/>
         <source>These selected for removal packages are required by</source>
-        <translation>Ови пакета изабрани за уклањање су зависности од</translation>
+        <translation>Ови пакети изабрани за уклањање су зависности од</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1774"/>
@@ -736,82 +744,82 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="52"/>
         <source>Deskop default browser</source>
-        <translation/>
+        <translation>Дескоп подразумевани прегледач</translation>
     </message>
     <message>
         <location filename="options.ui" line="61"/>
         <source>This browser:</source>
-        <translation/>
+        <translation>Овај прегледач:</translation>
     </message>
     <message>
         <location filename="options.ui" line="90"/>
         <source>Tray</source>
-        <translation/>
+        <translation>Послужавник</translation>
     </message>
     <message>
         <location filename="options.ui" line="112"/>
         <source>Updates control interval (min)</source>
-        <translation/>
+        <translation>Интервал за проверу доградњи (минути)</translation>
     </message>
     <message>
         <location filename="options.ui" line="122"/>
         <source>Main Interface</source>
-        <translation/>
+        <translation>Главна маска</translation>
     </message>
     <message>
         <location filename="options.ui" line="140"/>
         <source>Start Fullscreen</source>
-        <translation/>
+        <translation>Покрени на целом екрану</translation>
     </message>
     <message>
         <location filename="options.ui" line="147"/>
         <source>Shows Backend Output during operations</source>
-        <translation/>
+        <translation>Приказује извештај позадинског програма током операција</translation>
     </message>
     <message>
         <location filename="options.ui" line="160"/>
         <source>Show Backend Output</source>
-        <translation/>
+        <translation>Прикажи извештај позадинског програма</translation>
     </message>
     <message>
         <location filename="options.ui" line="183"/>
         <source>Search bar delay (ms)</source>
-        <translation/>
+        <translation>Одлагање траке за претрагу (МС)</translation>
     </message>
     <message>
         <location filename="options.ui" line="200"/>
         <source>Show packages statistics</source>
-        <translation/>
+        <translation>Прикажи статистике пакета</translation>
     </message>
     <message>
         <location filename="options.ui" line="217"/>
         <source>Enable countdown to auto-confirm changes</source>
-        <translation/>
+        <translation>Омогући аутоматско одбројавање до потврде</translation>
     </message>
     <message>
         <location filename="options.ui" line="231"/>
         <source>Show repository column in packages table</source>
-        <translation/>
+        <translation>Прикажи колону складишта у табели пакета</translation>
     </message>
     <message>
         <location filename="options.ui" line="248"/>
         <source>Auto select system files for upgrade (disabled in expert mode)</source>
-        <translation/>
+        <translation>Аутоматски означи системске пакете за надоградњу (онемогућено у стручним моду)</translation>
     </message>
     <message>
         <location filename="options.ui" line="260"/>
         <source>Graphics</source>
-        <translation/>
+        <translation>Графика</translation>
     </message>
     <message>
         <location filename="options.ui" line="266"/>
         <source>Standard</source>
-        <translation/>
+        <translation>Стандардно</translation>
     </message>
     <message>
         <location filename="options.ui" line="276"/>
         <source>Enhanced</source>
-        <translation/>
+        <translation>Побољшано</translation>
     </message>
 </context>
 </TS>

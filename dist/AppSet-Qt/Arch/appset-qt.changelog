@@ -1,3 +1,7 @@
+0.5.1 :
+  -Romanian translation
+  -Serbian translation
+
 0.5.0 :
   -Completely new authorization structure:
     *Now starts immediately (without asking for password) as unprivileged user (every user can browse apps)

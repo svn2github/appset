@@ -10,7 +10,7 @@
         <file>appsettray-qt_pl.qm</file>
         <file>appsettray-qt_zh-tw.qm</file>
         <file>appsettray-qt_tr.qm</file>
-        <file>appsettray-qt_ro_ro.qm</file>
         <file>appsettray-qt_sr.qm</file>
+        <file>appsettray-qt_ro.qm</file>
     </qresource>
 </RCC>
