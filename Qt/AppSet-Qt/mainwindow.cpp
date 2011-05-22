@@ -2789,7 +2789,6 @@ MainWindow::~MainWindow(){
     delete (AS::QTNIXEngine*)as;  
 
     if(pp && pp!=9 && pp!=11){
-        QFile::remove("/tmp/asshownp");
         return;
     }
 

@@ -328,22 +328,24 @@ public slots:
             }*/
         //hidePriv();
         if(QFile::exists("/tmp/asmin")){
-            QFile minfile("/tmp/asmin");
+            /*QFile minfile("/tmp/asmin");
             minfile.open(QFile::WriteOnly);
             minfile.write("h\n");
-            minfile.close();
+            minfile.close();*/
+            QProcess::startDetached("appset-launch.sh");
             event->ignore();
         }
     }
 
     void changeEvent ( QEvent *event ){
          if( event->type() == QEvent::WindowStateChange ){
-              if( isMinimized() ){
+              if( isMinimized()){
                   if(QFile::exists("/tmp/asmin")){
-                      QFile minfile("/tmp/asmin");
+                      /*QFile minfile("/tmp/asmin");
                       minfile.open(QFile::WriteOnly);
                       minfile.write("h\n");
-                      minfile.close();
+                      minfile.close();*/
+                      QProcess::startDetached("appset-launch.sh");
                       event->ignore();
                   }
                   //hidePriv();
@@ -359,8 +361,7 @@ public slots:
     void appIcon();
 
     void showPriv(){
-        if(QFile::exists(pp>0 && pp!=9 && pp!=11?"/tmp/asshownp":"/tmp/asshown"))return;
-        QFile asshown(pp>0 && pp!=9 && pp!=11?"/tmp/asshownp":"/tmp/asshown");
+        QFile asshown("/tmp/asshown");
         asshown.open(QFile::WriteOnly);
         asshown.write("\n");
         asshown.close();
@@ -378,8 +379,7 @@ public slots:
     }
 
     void hidePriv(){
-        if(!QFile::exists(pp>0 && pp!=9 && pp!=11?"/tmp/asshownp":"/tmp/asshown"))return;
-        QFile::remove(pp>0 && pp!=9 && pp!=11?"/tmp/asshownp":"/tmp/asshown");
+        QFile::remove("/tmp/asshown");
         oldgeom=geometry();
         hide();
     }
