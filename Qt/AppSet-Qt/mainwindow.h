@@ -359,7 +359,8 @@ public slots:
     void appIcon();
 
     void showPriv(){
-        QFile asshown("/tmp/asshown");
+        if(QFile::exists(pp>0 && pp!=9 && pp!=11?"/tmp/asshownp":"/tmp/asshown"))return;
+        QFile asshown(pp>0 && pp!=9 && pp!=11?"/tmp/asshownp":"/tmp/asshown");
         asshown.open(QFile::WriteOnly);
         asshown.write("\n");
         asshown.close();
@@ -377,7 +378,8 @@ public slots:
     }
 
     void hidePriv(){
-        QFile::remove("/tmp/asshown");
+        if(!QFile::exists(pp>0 && pp!=9 && pp!=11?"/tmp/asshownp":"/tmp/asshown"))return;
+        QFile::remove(pp>0 && pp!=9 && pp!=11?"/tmp/asshownp":"/tmp/asshown");
         oldgeom=geometry();
         hide();
     }

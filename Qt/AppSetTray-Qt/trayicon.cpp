@@ -114,13 +114,14 @@ void TrayIcon::checkRunning(){
 
     running = status!=0?false:true;
 
+    if(QFile::exists("/tmp/asshown") || status==0)check->setDisabled(true);
+    else check->setDisabled(false);
+
     if(status == 0){
-        check->setDisabled(true);
         setIcon(QIcon(":pkgstatus/working.png"));
 
         setToolTip(tr("AppSet-Qt is Running!"));
     }else{
-        check->setDisabled(false);
         checkUps();
     }    
 }

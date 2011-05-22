@@ -2788,7 +2788,12 @@ MainWindow::~MainWindow(){
 #ifdef unix    
     delete (AS::QTNIXEngine*)as;  
 
-    if(pp && pp!=9 && pp!=11)return;
+    if(pp && pp!=9 && pp!=11){
+        QFile::remove("/tmp/asshownp");
+        return;
+    }
+
+    QFile::remove("/tmp/asshown");
 
     std::ifstream helper_pid;
     helper_pid.open("/var/run/ashelper.pid");
