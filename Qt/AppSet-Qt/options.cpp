@@ -102,6 +102,12 @@ void Options::writeConfigFile(bool overwrite, bool ei){
         conf.write((QString::number((int)ui->autoupgrade->isChecked())+QString("\n")).toAscii());
         autoupgrade=ui->autoupgrade->isChecked();
     }
+    if(found>11)
+        preload=configs[11].toShort();
+    else{
+        conf.write((QString::number((int)ui->preload->isChecked())+QString("\n")).toAscii());
+        preload=ui->preload->isChecked();
+    }
 
 
     ui->checkBox->setChecked(startfullscreen);
@@ -116,6 +122,7 @@ void Options::writeConfigFile(bool overwrite, bool ei){
     ui->enhancedGraph->setChecked(enhanced);
     ui->standardGraph->setChecked(!enhanced);
     ui->autoupgrade->setChecked(autoupgrade);
+    ui->preload->setChecked(preload);
 
     conf.close();
 }

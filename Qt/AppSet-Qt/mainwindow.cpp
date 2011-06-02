@@ -49,6 +49,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     view=0;
+    pkgs=0;
 
     merging = true;
 
@@ -146,10 +147,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mainToolBar->addSeparator();
 
     connect(ui->mainToolBar->addAction(style()->standardIcon(QStyle::SP_ComputerIcon), tr("Options")),SIGNAL(triggered()),SLOT(showOptions()));
+    connect(ui->mainToolBar->addAction(QIcon(":general/repos.png"), tr("Repositories")),SIGNAL(triggered()),SLOT(repoEditor()));
 
     ui->mainToolBar->addSeparator();
 
     connect(ui->mainToolBar->addAction(QIcon(":general/appset.png"), tr("About")),SIGNAL(triggered()),SLOT(about()));
+    connect(ui->mainToolBar->addAction(QIcon(":general/bug.png"), tr("Report a bug")),SIGNAL(triggered()),SLOT(bugReport()));
+    connect(ui->mainToolBar->addAction(QIcon(":general/feature.png"), tr("Request a feature")),SIGNAL(triggered()),SLOT(featureRequest()));
 
     connect(ui->searchBar, SIGNAL(textChanged(QString)), SLOT(timerFired(QString)));
 
@@ -183,8 +187,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //ui->webView->installEventFilter(new QTEventFilter);
 
-    connect(ui->actionAbout_Qt,SIGNAL(triggered()),SLOT(aboutQt()));
-    connect(ui->actionAbout_AppSet,SIGNAL(triggered()),SLOT(about()));
+    //connect(ui->actionAbout_Qt,SIGNAL(triggered()),SLOT(aboutQt()));
+    //connect(ui->actionAbout_AppSet,SIGNAL(triggered()),SLOT(about()));
 
     isExpert = false;
 
@@ -243,6 +247,7 @@ MainWindow::MainWindow(QWidget *parent) :
     if(enhanced)ui->urlpre->setHidden(true);
     ui->urlpre->setChecked(opt.extraInfo);
     this->autoupgrade=opt.autoupgrade;
+    this->preload=opt.preload;
 
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
@@ -316,10 +321,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     oldgeom=QRect(-1,0,0,0);
 
-    if((pp!=9 && pp!=5 && pp!=10 && pp) || pp==11)this->showPriv();
-    else{
+    if((pp!=9 && pp!=5 && pp!=10 && pp) || pp==11){
+        this->showPriv();
+        timer->start(100);
+    }else{
         this->hidePriv();
         oldgeom=QRect(-1,0,0,0);
+
+        if(preload) timer->start(100);
     }
 #endif
 
@@ -328,9 +337,7 @@ MainWindow::MainWindow(QWidget *parent) :
     priv = new QProcess(this);
 
     //QWebSettings::setIconDatabasePath("/tmp/favicons/");
-    connect(ui->webView,SIGNAL(iconChanged()),SLOT(appIcon()));
-
-    timer->start(100);
+    connect(ui->webView,SIGNAL(iconChanged()),SLOT(appIcon()));    
 }
 
 void MainWindow::appIcon(){
@@ -362,6 +369,14 @@ void MainWindow::cleanCache(){
 
         connect(priv,SIGNAL(finished(int)),SLOT(outCCachePrivileged(int)));
     }
+#endif
+}
+
+void MainWindow::repoEditor(){
+#ifdef unix
+    system((QString("appset-launch.sh --repoedit /etc/appset/")+QString(((AS::QTNIXEngine*)as)->getDistro().c_str())+
+           QString("/")+QString(((AS::QTNIXEngine*)as)->getTool().c_str())+
+           QString(".repos &")).toAscii().data());
 #endif
 }
 
@@ -743,6 +758,7 @@ void MainWindow::showOptions(){
         enhanced=opt.enhanced;
         mainSplitter->setHidden(enhanced);
         this->autoupgrade=opt.autoupgrade;
+        this->preload=opt.preload;
 
         if(enhanced && !view)asyncFilter();
         if(!enhanced && view){
@@ -1083,8 +1099,19 @@ void MainWindow::opFinished(){
 
             if(!statusU){
                 for(int i=0;i<rows;++i){
-                    if(ui->tableUpgraded->item(i,0)->text()=="Upgrade")
+                    if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
+                        if(ui->tableUpgraded->item(i,1)->text()==QString(((AS::QTNIXEngine*)as)->getTool().c_str())){
+                            loadingStatus->setText(tr("Running backend's post upgrade command"));
+                            loadingBar->show();
+                            loadingBar->setValue(50);
+                            ((AS::QTNIXEngine*)as)->toolUpgrade();
+                            loadingStatus->setText("");
+                            loadingBar->hide();
+                            loadingBar->setValue(0);
+                        }
+
                         ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Upgrade"));
+                    }
                 }
                 delete l;
             }
@@ -2325,6 +2352,18 @@ void MainWindow::showNotInstalled(bool checked){
 
     asyncFilter();
 }
+
+void MainWindow::clearPackagesList(){
+    int count = ui->tableWidget->rowCount();
+    for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);
+    ui->tableUpgraded->clearContents();
+    if(pkgs){
+        //pkgs->clear();
+        delete pkgs;
+        pkgs=0;
+    }
+}
+
 void MainWindow::addRows(bool checked){
     if(!checked) return;
 
@@ -2385,9 +2424,10 @@ void MainWindow::addRows(bool checked){
 
 
     //ui->tableWidget->clearContents();
-    int count = ui->tableWidget->rowCount();
-    for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);
+    //int count = ui->tableWidget->rowCount();
+    //for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);
     //ui->tableWidget->setRowCount(0);
+    clearPackagesList();
 
     std::list<AS::Package*> *ipkgs=new std::list<AS::Package*>();
 
@@ -2444,7 +2484,9 @@ void MainWindow::addRows(bool checked){
             }            
         }
 
+        //pkgs->clear();
         delete pkgs;
+        pkgs=0;
 
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 
@@ -2585,7 +2627,9 @@ void MainWindow::addRows(bool checked){
 
             delete ups;
         }
+        //pkgs->clear();
         delete pkgs;
+        pkgs=0;
     }else{
         std::list<AS::Package*>::iterator it=pkgs->begin();
 
@@ -2682,7 +2726,9 @@ void MainWindow::addRows(bool checked){
             it++;
         }
 
+        //pkgs->clear();
         delete pkgs;
+        pkgs=0;
         if(ups)delete ups;
     }
 
@@ -2759,20 +2805,21 @@ void MainWindow::upgrade_tool(){
         isExpert=true;
         upgrade();
         confirm();
-        editConfirm();
-        isExpert=preExpert;
-        loadingStatus->setText(tr("Running backend's post upgrade command"));
-        loadingBar->show();
-        loadingBar->setValue(50);
-        ((AS::QTNIXEngine*)as)->toolUpgrade();
-        loadingStatus->setText("");
-        loadingBar->hide();
-        loadingBar->setValue(0);
+        getPrivileges();
+        isExpert=preExpert;        
     }else{
         QCoreApplication::quit();
     }
     inModal=false;
 #endif
+}
+
+void MainWindow::bugReport(){
+    extBrowserLink(QUrl("http://sourceforge.net/tracker/?func=add&group_id=376825&atid=1568693"));
+}
+
+void MainWindow::featureRequest(){
+    extBrowserLink(QUrl("http://sourceforge.net/tracker/?func=add&group_id=376825&atid=1568696"));
 }
 
 #include <sys/types.h>

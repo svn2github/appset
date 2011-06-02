@@ -1,0 +1,6 @@
+repo_conf_path=/etc/pacman.conf
+repo_match_regexp=^\[(?!(options|repo-name|\[|\s))
+detail_match_regexp=^(Server|Include)\s*=\b.+\b
+repo_name_filter=(\s+|\[|\])
+conf_comment_string=#
+repo_name_format=[%repo%]

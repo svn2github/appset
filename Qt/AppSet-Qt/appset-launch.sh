@@ -28,17 +28,23 @@ elif [ "$1" == "--show" ]; then
         rm /tmp/asuser.tmp > /dev/null
         appset-qt --show &
     fi
-elif [ $# -ge 1 ]; then        
+elif [ $# -ge 1 ]; then
+        TORUN=appset-qt
+
+        if [ "$1" == "--repoedit" ]; then
+            TORUN=appsetrepoeditor-qt
+        fi
+
         if [ -e /usr/bin/kdesu ]; then
-            kdesu -d --noignorebutton -i "/usr/share/icons/appset/appset.png" -c "appset-qt $1 $2 $3"
+            kdesu -d --noignorebutton -i "/usr/share/icons/appset/appset.png" -c "$TORUN $1 $2 $3"
         elif [ -e /usr/bin/gksu ]; then
-            gksu -D "/usr/share/applications/appset-qt.desktop" "appset-qt $1 $2 $3"
+            gksu -D "/usr/share/applications/appset-qt.desktop" "$TORUN $1 $2 $3"
         elif [ -e /usr/bin/beesu ]; then
-            beesu "appset-qt $1 $2 $3"
+            beesu "$TORUN $1 $2 $3"
         elif [ -e /usr/bin/xdg-su ]; then
-            xdg-su -c "appset-qt $1 $2 $3"
+            xdg-su -c "$TORUN $1 $2 $3"
         else
-            xterm -e "sudo appset-qt $1 $2 $3"
+            xterm -e "sudo $TORUN $1 $2 $3"
         fi
 fi
 

@@ -12,10 +12,12 @@ trans.fr = AppSet-Qt/appset-qt_fr.ts
 trans.it = AppSet-Qt/appset-qt_it.ts
 trans.nl = AppSet-Qt/appset-qt_nl.ts
 trans.pl = AppSet-Qt/appset-qt_pl.ts
+trans.pt_PT = AppSet-Qt/appset-qt_pt.ts
 trans.ro_RO = AppSet-Qt/appset-qt_ro.ts
 trans.sr = AppSet-Qt/appset-qt_sr.ts
 trans.tr = AppSet-Qt/appset-qt_tr.ts
-trans.zh_TW = AppSet-Qt/appset-qt_zh-tw.ts
+trans.zh_CN = AppSet-Qt/appset-qt_zh_CN.ts
+trans.zh_TW = AppSet-Qt/appset-qt_zh_TW.ts
 
 [appset-qt.appsettray-qt_-ts]
 source_file = AppSetTray-Qt/appsettray-qt_*.ts
@@ -28,8 +30,10 @@ trans.fr = AppSetTray-Qt/appsettray-qt_fr.ts
 trans.it = AppSetTray-Qt/appsettray-qt_it.ts
 trans.nl = AppSetTray-Qt/appsettray-qt_nl.ts
 trans.pl = AppSetTray-Qt/appsettray-qt_pl.ts
+trans.pt_PT = AppSetTray-Qt/appsettray-qt_pt.ts
 trans.ro_RO = AppSetTray-Qt/appsettray-qt_ro.ts
 trans.sr = AppSetTray-Qt/appsettray-qt_sr.ts
 trans.tr = AppSetTray-Qt/appsettray-qt_tr.ts
-trans.zh_TW = AppSetTray-Qt/appsettray-qt_zh-tw.ts
+trans.zh_CN = AppSetTray-Qt/appsettray-qt_zh_CN.ts
+trans.zh_TW = AppSetTray-Qt/appsettray-qt_zh_TW.ts
 

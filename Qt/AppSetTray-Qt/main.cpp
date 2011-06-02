@@ -18,6 +18,7 @@ along with AppSet; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #include <QtGui>
+#include <QLibraryInfo>
 
 #include "trayicon.h"
 
@@ -31,6 +32,11 @@ int main(int argc, char *argv[]){
     QApplication::setQuitOnLastWindowClosed(false);
 
     if (!QSystemTrayIcon::isSystemTrayAvailable()) return 1;
+
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + QLocale::system().name(),
+         QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    app.installTranslator(&qtTranslator);
 
     QTranslator myappTranslator;
     myappTranslator.load(":langs/appsettray-qt_" + QLocale::system().name());

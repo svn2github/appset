@@ -376,15 +376,28 @@ public slots:
             this->setGeometry(oldgeom);
 
         show();
+
+        if(!preload && !(pp>0 && pp!=9 && pp!=11)) addRows();
     }
 
     void hidePriv(){
-        QFile::remove("/tmp/asshown");
-        oldgeom=geometry();
-        hide();
+        if(!inModal){
+            QFile::remove("/tmp/asshown");
+            oldgeom=geometry();
+            hide();
+
+            if(!preload) clearPackagesList();
+        }
     }
 
+    void clearPackagesList();
+
     void RSSRetry();
+
+    void bugReport();
+    void featureRequest();
+
+    void repoEditor();
 
 private:
     QTimer *rssloader;
@@ -505,6 +518,8 @@ private:
     int privilegedExecuter(int argc, char *argv[]);
     int pp;
     QString comPattern;
+
+    bool preload; //Preload otherwise load/unload when show/hide main GUI
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);

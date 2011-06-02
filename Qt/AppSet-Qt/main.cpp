@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <QLocale>
 #include <QTranslator>
+#include <QLibraryInfo>
 
 #include "mainwindow.h"
 
@@ -33,7 +34,12 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    if(a.isSessionRestored())exit(0);    
+    if(a.isSessionRestored())exit(0);
+
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + QLocale::system().name(),
+         QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    a.installTranslator(&qtTranslator);
 
     QTranslator myappTranslator;
     myappTranslator.load(":langs/appset-qt_" + QLocale::system().name());

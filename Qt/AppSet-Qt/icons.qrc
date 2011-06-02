@@ -26,5 +26,8 @@
         <file>appset.png</file>
         <file>loading.png</file>
         <file>community.png</file>
+        <file>repos.png</file>
+        <file>bug.png</file>
+        <file>feature.png</file>
     </qresource>
 </RCC>

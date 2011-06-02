@@ -21,6 +21,7 @@ build() {
   #localization
   lrelease Qt/AppSet-Qt/*.ts
   lrelease Qt/AppSetTray-Qt/*.ts
+  lrelease Qt/AppSetRepoEditor-Qt/*.ts
 
   make || return 1
 }

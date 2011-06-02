@@ -74,6 +74,7 @@ namespace AS{
         virtual std::string getLocalExt(){return commands["local_ext"];};
 
         virtual std::string getTool(){return sysinfo["tool"];};
+        virtual std::string getDistro(){return sysinfo["distribution"];};
 
         static int getBytesSize(std::string ssize);
 

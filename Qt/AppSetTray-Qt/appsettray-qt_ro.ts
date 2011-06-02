@@ -34,7 +34,7 @@
     <message>
         <location filename="trayicon.cpp" line="113"/>
         <source>AppSet-Qt is Running!</source>
-        <translation>AppSet-Qr ruleaza!</translation>
+        <translation>AppSet-Qt e pornit!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="156"/>

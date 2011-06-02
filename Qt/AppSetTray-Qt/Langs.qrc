@@ -8,9 +8,11 @@
         <file>appsettray-qt_el.qm</file>
         <file>appsettray-qt_es.qm</file>
         <file>appsettray-qt_pl.qm</file>
-        <file>appsettray-qt_zh-tw.qm</file>
         <file>appsettray-qt_tr.qm</file>
         <file>appsettray-qt_sr.qm</file>
         <file>appsettray-qt_ro.qm</file>
+        <file>appsettray-qt_zh_TW.qm</file>
+        <file>appsettray-qt_zh_CN.qm</file>
+        <file>appsettray-qt_pt.qm</file>
     </qresource>
 </RCC>

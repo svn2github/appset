@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/actions">
+        <file>add.png</file>
+    </qresource>
+    <qresource prefix="/general">
+        <file>dialog.png</file>
+    </qresource>
+</RCC>

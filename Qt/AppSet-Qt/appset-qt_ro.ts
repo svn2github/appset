@@ -676,7 +676,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="2156"/>
         <source>UPDATING DB: </source>
-        <translation>SE ACTUALIZEAZĂ DB:</translation>
+        <translation>ACTUALIZARE DB:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2167"/>

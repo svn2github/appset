@@ -8,9 +8,11 @@
         <file>appset-qt_el.qm</file>
         <file>appset-qt_es.qm</file>
         <file>appset-qt_pl.qm</file>
-        <file>appset-qt_zh-tw.qm</file>
         <file>appset-qt_tr.qm</file>
         <file>appset-qt_sr.qm</file>
         <file>appset-qt_ro.qm</file>
+        <file>appset-qt_zh_TW.qm</file>
+        <file>appset-qt_zh_CN.qm</file>
+        <file>appset-qt_pt.qm</file>
     </qresource>
 </RCC>

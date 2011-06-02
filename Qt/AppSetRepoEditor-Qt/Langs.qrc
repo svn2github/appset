@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/langs">
+        <file>appsetrepoeditor-qt_ca.qm</file>
+        <file>appsetrepoeditor-qt_de.qm</file>
+        <file>appsetrepoeditor-qt_el.qm</file>
+        <file>appsetrepoeditor-qt_es.qm</file>
+        <file>appsetrepoeditor-qt_fr.qm</file>
+        <file>appsetrepoeditor-qt_it.qm</file>
+        <file>appsetrepoeditor-qt_nl.qm</file>
+        <file>appsetrepoeditor-qt_pl.qm</file>
+        <file>appsetrepoeditor-qt_pt.qm</file>
+        <file>appsetrepoeditor-qt_ro.qm</file>
+        <file>appsetrepoeditor-qt_sr.qm</file>
+        <file>appsetrepoeditor-qt_tr.qm</file>
+        <file>appsetrepoeditor-qt_zh_CN.qm</file>
+        <file>appsetrepoeditor-qt_zh_TW.qm</file>
+    </qresource>
+</RCC>
