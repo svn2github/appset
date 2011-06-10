@@ -22,16 +22,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <asnixengine.h>
 #include <QString>
+#include <QProcess>
+
+#include "inputprovider.h"
 
 namespace AS{
 
     class QTNIXEngine : public NIXEngine {
+    private:
+        InputProvider *inputProvider;
+        QProcess *process;
+
     protected:        
         int execCmd(std::string command);
     public:
-        QString getConfErrStr(int errno);
+        QTNIXEngine(InputProvider *ip){inputProvider=ip;}
+
+        QString getConfErrStr(int errno);        
 
         int compareVersions(const QString &s1, const QString &s2);
+
+        InputProvider *getIP(){return inputProvider;}
+        void sendAnswer(QString answer);
     };
 
 }

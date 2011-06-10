@@ -17,23 +17,24 @@ You should have received a copy of the GNU General Public License
 along with AppSet; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-#include <QProcess>
-
 #include "asqtnixengine.h"
+#include <QTextStream>
 
 int AS::QTNIXEngine::execCmd(std::string command){
-    QProcess process;
+    process = new QProcess();
 
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-    env.insert("LANG", "en");
+    env.insert("LANG", "C");
 
-    process.setProcessEnvironment(env);;
+    process->setProcessEnvironment(env);;
 
-    process.setProcessChannelMode(QProcess::MergedChannels);
+    process->setProcessChannelMode(QProcess::MergedChannels);
 
     QProcess yesProcess;
-    yesProcess.setStandardOutputProcess(&process);
-    yesProcess.start("yes");
+    if(inputProvider==0 || !inputProvider->isEnabled()){
+        yesProcess.setStandardOutputProcess(process);
+        yesProcess.start("yes");
+    }
 
     QString cmd(command.c_str());
     cmd = cmd.trimmed();
@@ -57,28 +58,62 @@ int AS::QTNIXEngine::execCmd(std::string command){
     exec=args.at(0);
     args.removeAt(0);
 
-    process.start(exec,args);
+    process->start(exec,args);
 
     int actual=50;
-    while(!process.waitForFinished(actual)){
-        if(process.state()==QProcess::NotRunning) break;
-        if(!process.canReadLine()) actual=(actual+100)%1000;
+    QString line;
+    QTextStream stream;
+    stream.setDevice(process);
+    while(!process->waitForFinished(actual)){
+        if(process->state()==QProcess::NotRunning) break;
+        if(!process->canReadLine()) actual=(actual+100)%1000;
         else actual=50;
-        while(process.canReadLine()){
-            notifyListeners(QString(process.readLine().data()).trimmed().toAscii().data());
+        QString c;
+        while(!(c=stream.read(1)).isEmpty()){
+            line+=c;
+            if(line.contains('?') || line.contains('\n')){
+                notifyListeners(line.trimmed().toAscii().data());
+                if(inputProvider && inputProvider->isEnabled()){
+                    if(!inputProvider->evaluate(line) && line.contains('?')){
+                        stream << "y\n";
+                        stream.flush();
+                    }
+                }
+                line.clear();
+            }
         }
     }
 
-    while(process.canReadLine()){
-        QString line(process.readLine().data());
-        notifyListeners(line.trimmed().toAscii().data());
+    QString c;
+    while(!(c=stream.read(1)).isEmpty()){
+        line+=c;
+        if(line.contains('?') || line.contains('\n')){
+            notifyListeners(line.trimmed().toAscii().data());
+            if(inputProvider && inputProvider->isEnabled()){
+                if(!inputProvider->evaluate(line) && line.contains('?')){
+                    stream << "y\n";
+                    stream.flush();
+                }
+            }
+            line.clear();
+        }
     }
 
-    process.waitForFinished();
+    process->waitForFinished();
 
-    yesProcess.close();
+    if(inputProvider==0 || !inputProvider->isEnabled()) yesProcess.close();
 
-    return process.exitCode();
+    int ret=process->exitCode();
+    process->kill();
+    delete process;
+    return ret;
+}
+
+void AS::QTNIXEngine::sendAnswer(QString answer){
+    QTextStream stream;
+    stream.setDevice(process);
+    stream << (answer+"\n");
+    stream.flush();
 }
 
 QString AS::QTNIXEngine::getConfErrStr(int errno){

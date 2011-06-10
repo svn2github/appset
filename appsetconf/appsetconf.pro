@@ -4,6 +4,7 @@ OTHER_FILES += \
     appset.conf \
     appset/Arch/pacman \
     appset/Arch/packer \
+    appset/Arch/pacman.quest \
     appset/Fedora/yum \
     appset/Fedora/yumdeps
 

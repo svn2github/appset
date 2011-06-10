@@ -36,7 +36,7 @@ TrayIcon::TrayIcon(QObject *parent) :
     setIcon(QIcon(":general/appset.png"));
 
 #ifdef unix
-    as = new AS::QTNIXEngine();
+    as = new AS::QTNIXEngine(new InputProvider());
     int errno=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf","/tmp/astray.tmp",true))){
         exit(1);

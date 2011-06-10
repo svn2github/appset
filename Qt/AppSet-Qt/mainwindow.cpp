@@ -72,12 +72,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->editCancel->setIcon(style()->standardIcon(QStyle::SP_DialogCancelButton));
 
 #ifdef unix
-    as = new AS::QTNIXEngine();
+    as = new AS::QTNIXEngine(new InputProvider());
+
     int errno=0;
     pp=privilegedExecuter(qApp->argc(),qApp->argv());
     bool privileged=pp>0 && pp!=9 && pp!=11;
-    if(privileged)this->setWindowTitle("AppSet-Qt (SUPERUSER)");
-    else system("appsettray-qt &");
+    if(privileged){
+        this->setWindowTitle("AppSet-Qt (SUPERUSER)");        
+    }else{
+        system("appsettray-qt &");
+    }
     argsParsed=pp!=4 && pp!=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf",privileged?"/tmp/as.tmp":"/tmp/asuser.tmp",!privileged))){
         if(privileged){
@@ -89,12 +93,17 @@ MainWindow::MainWindow(QWidget *parent) :
         }
         exit(1);
     }
+
+    if(privileged)
+        ((AS::QTNIXEngine*)as)->getIP()->loadQuests(QString("/etc/appset/")+QString(((AS::QTNIXEngine*)as)->getDistro().c_str())+
+               QString("/")+QString(((AS::QTNIXEngine*)as)->getTool().c_str())+
+               QString(".quest"));
 #endif
 
 
     asThread = new AsThread(as);
     connect(asThread,SIGNAL(finished()),SLOT(opFinished()));
-
+    connect(asThread,SIGNAL(userQuery(QString)),SLOT(userQuery(QString)));
 
     loadingDialog = new QDialog(this);
     loadingBar = new QProgressBar(loadingDialog);
@@ -2359,7 +2368,7 @@ void MainWindow::clearPackagesList(){
     ui->tableUpgraded->clearContents();
     if(pkgs){
         //pkgs->clear();
-        delete pkgs;
+        //delete pkgs;
         pkgs=0;
     }
 }

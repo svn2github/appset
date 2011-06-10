@@ -5,18 +5,12 @@ TEMPLATE = lib
 CONFIG += staticlib
 
 unix{
-    HEADERS+=asqtnixengine.h
-    SOURCES+=asqtnixengine.cpp
+    HEADERS+=asqtnixengine.h inputprovider.h communityrepomodel.h
+    SOURCES+=asqtnixengine.cpp inputprovider.cpp communityrepomodel.cpp
 }
 
 INCLUDEPATH += ../../libappset
 LIBS += -L../../libappset -lappset
-
-HEADERS += \
-    communityrepomodel.h
-
-SOURCES += \
-    communityrepomodel.cpp
 
 RESOURCES += \
     icons.qrc

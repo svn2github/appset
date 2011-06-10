@@ -53,6 +53,8 @@ namespace Ui {
 #include "about.h"
 
 class AsThread:public QThread{
+    Q_OBJECT
+
     int op;
     std::list<AS::Package*> *l;
     AS::EngineListener *el;
@@ -68,6 +70,8 @@ public:
         status=0;
         this->as=as;
         local=false;
+
+        this->connect(((AS::QTNIXEngine*)as)->getIP(),SIGNAL(userQuery(QString)),this,SIGNAL(userQuery(QString)));
     }
 
     int getStatus(){return status;}
@@ -83,31 +87,42 @@ public:
     void run(){
         switch(op){
         case 1:
+            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->install(l,local);
             break;
         case 2:
+            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->upgrade(l);
             break;
         case 3:
+            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->remove(l);
             break;
         case 4:
+            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             l=as->queryLocal(as_QUERY_ALL_INFO | as_EXPERT_QUERY);
             break;
         case 5:
+            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             l=as->queryRemote(as_QUERY_ALL_INFO | as_EXPERT_QUERY);
             break;
         case 6:
+            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             status+=((AS::QTNIXEngine*)as)->com_install(pattern.toAscii().data());
             break;
         case 7:
+            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             status+=((AS::QTNIXEngine*)as)->com_remove(pattern.toAscii().data());
             break;
         case 8:
+            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             status+=((AS::QTNIXEngine*)as)->com_upgrade(pattern.toAscii().data());
             break;
         }
     }
+
+signals:
+    void userQuery(QString query);
 };
 
 #include <fstream>
@@ -209,7 +224,7 @@ protected:
 signals:
     void wheel(int delta);
 };
-
+#include <QMessageBox>
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -398,6 +413,11 @@ public slots:
     void featureRequest();
 
     void repoEditor();
+
+    void userQuery(QString query){
+        int res=QMessageBox::question(this,tr("Backend question"),query,QMessageBox::Yes|QMessageBox::No);
+        ((AS::QTNIXEngine*)as)->sendAnswer(res==QMessageBox::Yes?"y":"n");
+    }
 
 private:
     QTimer *rssloader;
