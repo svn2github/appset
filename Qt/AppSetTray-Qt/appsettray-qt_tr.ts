@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="tr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="tr" version="2.0">
 <context>
     <name>TrayIcon</name>
     <message>
@@ -24,53 +22,52 @@
         <translation>Yardımcı bekleniyor...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="88"/>
+        <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
         <translation>İzin verilen işlemleri yürütmekte olan bir AppSet uygulaması şu anda çalışıyor</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="89"/>
+        <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
         <translation>Yine de çıkmak ister misiniz (önerilmez)?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="68"/>
-        <location filename="trayicon.cpp" line="123"/>
+        <location filename="trayicon.cpp" line="113"/>
         <source>AppSet-Qt is Running!</source>
         <translation>AppSet-Qt Çalışıyor!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="164"/>
+        <location filename="trayicon.cpp" line="156"/>
         <source>There are updates for:</source>
         <translation>Şunlar için güncellemeler var:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="164"/>
+        <location filename="trayicon.cpp" line="156"/>
         <source>There is an update for:</source>
         <translation>Şunun için bir güncelleme var:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="174"/>
+        <location filename="trayicon.cpp" line="166"/>
         <source>
 And others...</source>
         <translation>
 Ve diğerleri...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="177"/>
-        <location filename="trayicon.cpp" line="180"/>
+        <location filename="trayicon.cpp" line="169"/>
+        <location filename="trayicon.cpp" line="172"/>
         <source> updates available!</source>
         <translation> güncellemeler var!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="177"/>
-        <location filename="trayicon.cpp" line="180"/>
+        <location filename="trayicon.cpp" line="169"/>
+        <location filename="trayicon.cpp" line="172"/>
         <source> update available!</source>
         <translation> güncelleme var!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="184"/>
-        <location filename="trayicon.cpp" line="187"/>
+        <location filename="trayicon.cpp" line="176"/>
+        <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
         <translation>Güncelleme yok</translation>
     </message>

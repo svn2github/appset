@@ -2364,13 +2364,7 @@ void MainWindow::showNotInstalled(bool checked){
 
 void MainWindow::clearPackagesList(){
     int count = ui->tableWidget->rowCount();
-    for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);
-    ui->tableUpgraded->clearContents();
-    if(pkgs){
-        //pkgs->clear();
-        //delete pkgs;
-        pkgs=0;
-    }
+    for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);    
 }
 
 void MainWindow::addRows(bool checked){

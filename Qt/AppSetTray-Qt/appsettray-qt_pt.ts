@@ -1,77 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="pt_PT">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_PT" version="2.0">
 <context>
     <name>TrayIcon</name>
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar / Oculter AppSet</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
         <source>Check for updates NOW!</source>
-        <translation type="unfinished"></translation>
+        <translation>Verificar AGORA as actualizações!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Sair</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
-        <translation type="unfinished"></translation>
+        <translation>À espera de ajuda ...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="68"/>
-        <location filename="trayicon.cpp" line="123"/>
-        <source>AppSet-Qt is Running!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="trayicon.cpp" line="88"/>
+        <location filename="trayicon.cpp" line="83"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Existe uma instância do AppSet que está executar algumas operações previligiadas.</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="89"/>
+        <location filename="trayicon.cpp" line="84"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Deseja sair de qualquer maneira (não recomendado)?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="164"/>
+        <location filename="trayicon.cpp" line="113"/>
+        <source>AppSet-Qt is Running!</source>
+        <translation>O AppSet-Qt está ligado!</translation>
+    </message>
+    <message>
+        <location filename="trayicon.cpp" line="156"/>
         <source>There are updates for:</source>
-        <translation type="unfinished"></translation>
+        <translation>Existem actualizações para:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="164"/>
+        <location filename="trayicon.cpp" line="156"/>
         <source>There is an update for:</source>
-        <translation type="unfinished"></translation>
+        <translation>Existe uma actualização para:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="174"/>
+        <location filename="trayicon.cpp" line="166"/>
         <source>
 And others...</source>
-        <translation type="unfinished"></translation>
+        <translation>E outras...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="177"/>
-        <location filename="trayicon.cpp" line="180"/>
+        <location filename="trayicon.cpp" line="169"/>
+        <location filename="trayicon.cpp" line="172"/>
         <source> updates available!</source>
-        <translation type="unfinished"></translation>
+        <translation> actualizações disponíveis!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="177"/>
-        <location filename="trayicon.cpp" line="180"/>
+        <location filename="trayicon.cpp" line="169"/>
+        <location filename="trayicon.cpp" line="172"/>
         <source> update available!</source>
-        <translation type="unfinished"></translation>
+        <translation> actualização disponível!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="184"/>
-        <location filename="trayicon.cpp" line="187"/>
+        <location filename="trayicon.cpp" line="176"/>
+        <location filename="trayicon.cpp" line="179"/>
         <source>No updates available</source>
-        <translation type="unfinished"></translation>
+        <translation>Não existem actualizações disponíveis</translation>
     </message>
 </context>
 </TS>
