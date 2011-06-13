@@ -14,14 +14,18 @@ private:
     QList<QRegExp> quests;
 
     bool enabled;
+    bool forced;
 
 public:
-    explicit InputProvider(QObject *parent=0):QObject(parent),enabled(false){}
+    explicit InputProvider(QObject *parent=0):QObject(parent),enabled(false),forced(false){}
 
     bool evaluate(const QString &content);
 
     void setEnabled(bool enabled) { this->enabled=enabled; }
     bool isEnabled() const { return enabled; }
+
+    void setForced(bool forced) { this->forced=forced; }
+    bool isForced() const { return forced; }
 
     void loadQuests(QString filepath);
 

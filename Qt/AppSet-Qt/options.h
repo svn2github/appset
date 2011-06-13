@@ -28,6 +28,7 @@ public:
     bool extraInfo;
     bool autoupgrade;
     bool preload;
+    int interactions;
 
     int updelay;
 

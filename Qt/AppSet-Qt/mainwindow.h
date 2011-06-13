@@ -540,6 +540,7 @@ private:
     QString comPattern;
 
     bool preload; //Preload otherwise load/unload when show/hide main GUI
+    bool interactions;
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);

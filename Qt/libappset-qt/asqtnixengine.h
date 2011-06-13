@@ -30,7 +30,7 @@ namespace AS{
 
     class QTNIXEngine : public NIXEngine {
     private:
-        InputProvider *inputProvider;
+        InputProvider *inputProvider,*bak;
         QProcess *process;
 
     protected:        
@@ -44,7 +44,19 @@ namespace AS{
 
         InputProvider *getIP(){return inputProvider;}
         void sendAnswer(QString answer);
+
+        void setAuto(bool automatic){
+            if(automatic){
+                bak=inputProvider;
+                inputProvider=0;
+            }else{
+                inputProvider=bak;
+            }
+        };
+
+        bool isAuto() const { return inputProvider==0; };
     };
+
 
 }
 

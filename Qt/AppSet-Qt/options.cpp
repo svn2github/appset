@@ -16,6 +16,11 @@ Options::Options(QWidget *parent,QString path) :
 
     ui->showRepos->setDisabled(ui->enhancedGraph->isChecked());
 
+    QStringList answers;
+    answers << tr("Automatic") << tr("Semi-Automatic") << tr("Ask everything");
+
+    ui->inter->addItems(answers);
+
     extraInfo=true;
 
     writeConfigFile(false);
@@ -108,6 +113,12 @@ void Options::writeConfigFile(bool overwrite, bool ei){
         conf.write((QString::number((int)ui->preload->isChecked())+QString("\n")).toAscii());
         preload=ui->preload->isChecked();
     }
+    if(found>12)
+        interactions=configs[12].toInt();
+    else{
+        conf.write((QString::number((int)ui->inter->currentIndex())+QString("\n")).toAscii());
+        interactions=ui->inter->currentIndex();
+    }
 
 
     ui->checkBox->setChecked(startfullscreen);
@@ -123,6 +134,7 @@ void Options::writeConfigFile(bool overwrite, bool ei){
     ui->standardGraph->setChecked(!enhanced);
     ui->autoupgrade->setChecked(autoupgrade);
     ui->preload->setChecked(preload);
+    ui->inter->setCurrentIndex(interactions);
 
     conf.close();
 }

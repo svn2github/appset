@@ -98,10 +98,17 @@ void RepoEditor::addEntry(){
     }
 }
 
+#include <QProcess>
 void RepoEditor::apply(){
     if(repoConf->saveChanges(ui->checkBox->isChecked()?ui->backupFile->text():"")){
         QMessageBox::information(this,tr("Success"),tr("Repositories configuration successfully saved."),QMessageBox::Ok);
-        done(QDialog::Accepted);
+        QStringList args;
+        args << "--update";
+        QProcess *priv=new QProcess(this);
+        priv->start("appset-launch.sh",args);
+        hide();
+        connect(priv,SIGNAL(finished(int)),qApp,SLOT(quit()));
+        //done(QDialog::Accepted);
     }else{
         QMessageBox::critical(this,tr("Error"),tr("Repositories configuration not saved."),QMessageBox::Ok);
     }

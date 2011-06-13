@@ -3,8 +3,11 @@
 bool InputProvider::evaluate(const QString &content){
     bool ret=false;
 
-    for(int i=0;!ret && i<quests.size();++i){
-        ret=content.contains(quests.at(i));
+    if(forced) ret=true;
+    else{
+        for(int i=0;!ret && i<quests.size();++i){
+            ret=content.contains(quests.at(i));
+        }
     }
 
     if(ret) emit userQuery(content);

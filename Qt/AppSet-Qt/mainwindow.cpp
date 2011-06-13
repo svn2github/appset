@@ -257,6 +257,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->urlpre->setChecked(opt.extraInfo);
     this->autoupgrade=opt.autoupgrade;
     this->preload=opt.preload;
+    this->interactions=opt.interactions;
+    if(interactions==2)((AS::QTNIXEngine*)as)->getIP()->setForced(true);
+    else ((AS::QTNIXEngine*)as)->getIP()->setForced(false);
+    if(interactions==0 && !((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(true);
+    else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
 
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
@@ -768,6 +773,11 @@ void MainWindow::showOptions(){
         mainSplitter->setHidden(enhanced);
         this->autoupgrade=opt.autoupgrade;
         this->preload=opt.preload;
+        this->interactions=opt.interactions;
+        if(interactions==2)((AS::QTNIXEngine*)as)->getIP()->setForced(true);
+        else ((AS::QTNIXEngine*)as)->getIP()->setForced(false);
+        if(interactions==0 && !((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(true);
+        else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
 
         if(enhanced && !view)asyncFilter();
         if(!enhanced && view){
@@ -2413,9 +2423,7 @@ void MainWindow::addRows(bool checked){
 
     //ui->stacked->setCurrentIndex(2);
     if(this->isVisible())loadingDialog->show();
-    loadingBar->setValue(0);
-
-    ui->tableWidget->setSortingEnabled(false);
+    loadingBar->setValue(0);    
 
     timer2->stop();
 
@@ -2431,6 +2439,8 @@ void MainWindow::addRows(bool checked){
     //for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);
     //ui->tableWidget->setRowCount(0);
     clearPackagesList();
+
+    ui->tableWidget->setSortingEnabled(false);
 
     std::list<AS::Package*> *ipkgs=new std::list<AS::Package*>();
 
@@ -2818,11 +2828,11 @@ void MainWindow::upgrade_tool(){
 }
 
 void MainWindow::bugReport(){
-    extBrowserLink(QUrl("http://sourceforge.net/tracker/?func=add&group_id=376825&atid=1568693"));
+    extBrowserLink(QUrl("http://sourceforge.net/tracker/?func=browse&group_id=376825&atid=1568693"));
 }
 
 void MainWindow::featureRequest(){
-    extBrowserLink(QUrl("http://sourceforge.net/tracker/?func=add&group_id=376825&atid=1568696"));
+    extBrowserLink(QUrl("http://sourceforge.net/tracker/?func=browse&group_id=376825&atid=1568696"));
 }
 
 #include <sys/types.h>
