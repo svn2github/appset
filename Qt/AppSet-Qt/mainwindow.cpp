@@ -2205,6 +2205,7 @@ void MainWindow::updateDB(){
 
     //as->addListener(sbu);
     as->update();
+    unlink("/tmp/ashelper.out");
     //as->removeListener(sbu);
 
     //ui->showUpgradable->setChecked(true);

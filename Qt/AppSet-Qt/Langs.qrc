@@ -14,5 +14,6 @@
         <file>appset-qt_zh_TW.qm</file>
         <file>appset-qt_zh_CN.qm</file>
         <file>appset-qt_pt.qm</file>
+        <file>appset-qt_pt_BR.qm</file>
     </qresource>
 </RCC>

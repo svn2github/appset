@@ -20,9 +20,10 @@ bool InputProvider::evaluate(const QString &content){
 void InputProvider::loadQuests(QString filepath){
     QFile file(filepath);
     QTextStream stream(&file);
-    if(file.open(QIODevice::ReadOnly)){
-        while(file.canReadLine()){
-              quests.append(QRegExp(stream.readLine()));
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        while(!stream.atEnd()){
+            QString line=stream.readLine();
+            quests.append(QRegExp(line));
         }
 
         file.close();

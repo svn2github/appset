@@ -89,14 +89,17 @@ public:
         case 1:
             if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->install(l,local);
+            unlink("/tmp/ashelper.out");
             break;
         case 2:
             if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->upgrade(l);
+            unlink("/tmp/ashelper.out");
             break;
         case 3:
             if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->remove(l);
+            unlink("/tmp/ashelper.out");
             break;
         case 4:
             if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
