@@ -22,52 +22,53 @@
         <translation>Wachten op helper...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="83"/>
+        <location filename="trayicon.cpp" line="88"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
         <translation>Er is een instantie van AppSet lopende die acties uitvoert met beheerdersrechten.</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="84"/>
+        <location filename="trayicon.cpp" line="89"/>
         <source>Do you want to quit anyway (not recommended)?</source>
         <translation>Wilt u toch afsluiten (niet aanbevolen)?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="113"/>
+        <location filename="trayicon.cpp" line="68"/>
+        <location filename="trayicon.cpp" line="123"/>
         <source>AppSet-Qt is Running!</source>
         <translation>AppSet-Qt is Bezig!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There are updates for:</source>
         <translation>Er zijn opwaarderingen voor:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There is an update for:</source>
         <translation>Er is een opwaardering voor:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="166"/>
+        <location filename="trayicon.cpp" line="174"/>
         <source>
 And others...</source>
         <translation>
 En andere...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> updates available!</source>
         <translation> opwaarderingen beschikbaar!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> update available!</source>
         <translation> opwaardering beschikbaar!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="176"/>
-        <location filename="trayicon.cpp" line="179"/>
+        <location filename="trayicon.cpp" line="184"/>
+        <location filename="trayicon.cpp" line="187"/>
         <source>No updates available</source>
         <translation>Geen opwaarderingen beschikbaar</translation>
     </message>

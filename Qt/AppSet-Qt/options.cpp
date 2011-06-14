@@ -18,8 +18,9 @@ Options::Options(QWidget *parent,QString path) :
 
     QStringList answers;
     answers << tr("Automatic") << tr("Semi-Automatic") << tr("Ask everything");
-
+    ui->labelInter->setText(ui->labelInter->text()+QString(" (")+tr("in English")+")");
     ui->inter->addItems(answers);
+    ui->inter->setCurrentIndex(1);
 
     extraInfo=true;
 

@@ -3,7 +3,7 @@
 bool InputProvider::evaluate(const QString &content){
     bool ret=false;
 
-    if(forced) ret=true;
+    if(forced && content.contains('?')) ret=true;
     else{
         for(int i=0;!ret && i<quests.size();++i){
             ret=content.contains(quests.at(i));
@@ -21,7 +21,7 @@ void InputProvider::loadQuests(QString filepath){
     QFile file(filepath);
     QTextStream stream(&file);
     if(file.open(QIODevice::ReadOnly)){
-        while(!file.atEnd()){
+        while(file.canReadLine()){
               quests.append(QRegExp(stream.readLine()));
         }
 

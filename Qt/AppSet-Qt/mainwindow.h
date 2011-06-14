@@ -87,35 +87,35 @@ public:
     void run(){
         switch(op){
         case 1:
-            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
+            if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->install(l,local);
             break;
         case 2:
-            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
+            if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->upgrade(l);
             break;
         case 3:
-            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
+            if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
             status+=as->remove(l);
             break;
         case 4:
-            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
+            if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             l=as->queryLocal(as_QUERY_ALL_INFO | as_EXPERT_QUERY);
             break;
         case 5:
-            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
+            if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             l=as->queryRemote(as_QUERY_ALL_INFO | as_EXPERT_QUERY);
             break;
         case 6:
-            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
+            if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             status+=((AS::QTNIXEngine*)as)->com_install(pattern.toAscii().data());
             break;
         case 7:
-            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
+            if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             status+=((AS::QTNIXEngine*)as)->com_remove(pattern.toAscii().data());
             break;
         case 8:
-            ((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
+            if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             status+=((AS::QTNIXEngine*)as)->com_upgrade(pattern.toAscii().data());
             break;
         }
@@ -540,7 +540,7 @@ private:
     QString comPattern;
 
     bool preload; //Preload otherwise load/unload when show/hide main GUI
-    bool interactions;
+    int interactions;
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);

@@ -22,51 +22,52 @@
         <translation>Warte auf Helfer ...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="83"/>
+        <location filename="trayicon.cpp" line="88"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
         <translation>Es wird schon eine Instanz von AppSet mit privilegierten Operationen ausgeführt.</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="84"/>
+        <location filename="trayicon.cpp" line="89"/>
         <source>Do you want to quit anyway (not recommended)?</source>
         <translation>Wollen Sie trotzdem das Programm beenden (nicht empfohlen)?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="113"/>
+        <location filename="trayicon.cpp" line="68"/>
+        <location filename="trayicon.cpp" line="123"/>
         <source>AppSet-Qt is Running!</source>
         <translation>AppSet-Qt arbeitet!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There are updates for:</source>
         <translation>Es sind Erneuerungen vorhanden für:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There is an update for:</source>
         <translation>Es ist eine Erneuerung vorhanden für:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="166"/>
+        <location filename="trayicon.cpp" line="174"/>
         <source>
 And others...</source>
         <translation>Und weitere ...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> updates available!</source>
         <translation> Erneuerungen verfügbar!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> update available!</source>
         <translation> Erneuerung verfügbar!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="176"/>
-        <location filename="trayicon.cpp" line="179"/>
+        <location filename="trayicon.cpp" line="184"/>
+        <location filename="trayicon.cpp" line="187"/>
         <source>No updates available</source>
         <translation>Keine Erneuerungen verfügbar</translation>
     </message>

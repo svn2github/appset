@@ -61,6 +61,7 @@ TRANSLATIONS = appset-qt_it.ts \
     appset-qt_fr.ts \
     appset-qt_pl.ts \
     appset-qt_pt.ts \
+    appset-qt_pt_BR.ts \
     appset-qt_zh_TW.ts \
     appset-qt_zh_CN.ts \
     appset-qt_tr.ts \

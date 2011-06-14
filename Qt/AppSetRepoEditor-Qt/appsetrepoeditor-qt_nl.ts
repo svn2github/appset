@@ -151,22 +151,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="repoeditor.cpp" line="103"/>
+        <location filename="repoeditor.cpp" line="104"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="repoeditor.cpp" line="103"/>
+        <location filename="repoeditor.cpp" line="104"/>
         <source>Repositories configuration successfully saved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="repoeditor.cpp" line="106"/>
+        <location filename="repoeditor.cpp" line="113"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="repoeditor.cpp" line="106"/>
+        <location filename="repoeditor.cpp" line="113"/>
         <source>Repositories configuration not saved.</source>
         <translation type="unfinished"></translation>
     </message>

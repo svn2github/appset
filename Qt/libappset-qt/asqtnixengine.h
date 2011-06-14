@@ -49,12 +49,14 @@ namespace AS{
             if(automatic){
                 bak=inputProvider;
                 inputProvider=0;
-            }else{
-                inputProvider=bak;
-            }
-        };
+            }else inputProvider=bak;
+        }
+        bool isAuto() const { return inputProvider==0; }
 
-        bool isAuto() const { return inputProvider==0; };
+        void setForced(bool forced){
+            if(inputProvider!=0)inputProvider->setForced(forced);
+            else bak->setForced(forced);
+        }
     };
 
 

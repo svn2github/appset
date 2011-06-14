@@ -22,52 +22,53 @@
         <translation>Esperando al asistente...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="83"/>
+        <location filename="trayicon.cpp" line="88"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
         <translation>Hay una instancia de AppSet ejecutando operaciones con privilegios.</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="84"/>
+        <location filename="trayicon.cpp" line="89"/>
         <source>Do you want to quit anyway (not recommended)?</source>
         <translation>¿Quiere salir de todas formas (no recomendado)?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="113"/>
+        <location filename="trayicon.cpp" line="68"/>
+        <location filename="trayicon.cpp" line="123"/>
         <source>AppSet-Qt is Running!</source>
         <translation>¡AppSet-Qt está en marcha!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There are updates for:</source>
         <translation>Hay actualizaciones para:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There is an update for:</source>
         <translation>Hay una actualización para:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="166"/>
+        <location filename="trayicon.cpp" line="174"/>
         <source>
 And others...</source>
         <translation>
 Y otros...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> updates available!</source>
         <translation> actualizaciones disponibles</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> update available!</source>
         <translation> actualización disponible</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="176"/>
-        <location filename="trayicon.cpp" line="179"/>
+        <location filename="trayicon.cpp" line="184"/>
+        <location filename="trayicon.cpp" line="187"/>
         <source>No updates available</source>
         <translation>No hay actualizaciones disponibles</translation>
     </message>

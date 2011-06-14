@@ -22,52 +22,53 @@
         <translation>正在等候輔助程式...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="83"/>
+        <location filename="trayicon.cpp" line="88"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
         <translation>有個 AppSet 實體正在執行一些需要特權的操作項目。</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="84"/>
+        <location filename="trayicon.cpp" line="89"/>
         <source>Do you want to quit anyway (not recommended)?</source>
         <translation>無論如何您都想要退出嗎 (不建議)？</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="113"/>
+        <location filename="trayicon.cpp" line="68"/>
+        <location filename="trayicon.cpp" line="123"/>
         <source>AppSet-Qt is Running!</source>
         <translation>AppSet-Qt 正在執行中！</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There are updates for:</source>
         <translation>有更新：</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There is an update for:</source>
         <translation>有更新：</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="166"/>
+        <location filename="trayicon.cpp" line="174"/>
         <source>
 And others...</source>
         <translation>
 與其他...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> updates available!</source>
         <translation> 項更新可用！</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> update available!</source>
         <translation> 項更新可用！</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="176"/>
-        <location filename="trayicon.cpp" line="179"/>
+        <location filename="trayicon.cpp" line="184"/>
+        <location filename="trayicon.cpp" line="187"/>
         <source>No updates available</source>
         <translation>無更新可用</translation>
     </message>

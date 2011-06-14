@@ -94,38 +94,38 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="620"/>
         <location filename="mainwindow.ui" line="688"/>
         <location filename="mainwindow.ui" line="767"/>
-        <location filename="mainwindow.cpp" line="2340"/>
-        <location filename="mainwindow.cpp" line="2780"/>
+        <location filename="mainwindow.cpp" line="2356"/>
+        <location filename="mainwindow.cpp" line="2790"/>
         <source>All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="206"/>
-        <location filename="mainwindow.cpp" line="2236"/>
+        <location filename="mainwindow.cpp" line="2252"/>
         <source>Games</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="239"/>
-        <location filename="mainwindow.cpp" line="2260"/>
+        <location filename="mainwindow.cpp" line="2276"/>
         <source>Multimedia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="272"/>
-        <location filename="mainwindow.cpp" line="2284"/>
+        <location filename="mainwindow.cpp" line="2300"/>
         <source>Internet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="305"/>
-        <location filename="mainwindow.cpp" line="2272"/>
+        <location filename="mainwindow.cpp" line="2288"/>
         <source>Office</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="338"/>
-        <location filename="mainwindow.cpp" line="2248"/>
+        <location filename="mainwindow.cpp" line="2264"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
@@ -154,37 +154,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="504"/>
         <location filename="mainwindow.ui" line="802"/>
-        <location filename="mainwindow.cpp" line="2531"/>
-        <location filename="mainwindow.cpp" line="2678"/>
+        <location filename="mainwindow.cpp" line="2541"/>
+        <location filename="mainwindow.cpp" line="2688"/>
         <source>Installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="518"/>
         <location filename="mainwindow.ui" line="786"/>
-        <location filename="mainwindow.cpp" line="2609"/>
-        <location filename="mainwindow.cpp" line="2665"/>
+        <location filename="mainwindow.cpp" line="2619"/>
+        <location filename="mainwindow.cpp" line="2675"/>
         <source>Upgradable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="532"/>
-        <location filename="mainwindow.cpp" line="2558"/>
-        <location filename="mainwindow.cpp" line="2598"/>
-        <location filename="mainwindow.cpp" line="2706"/>
+        <location filename="mainwindow.cpp" line="2568"/>
+        <location filename="mainwindow.cpp" line="2608"/>
+        <location filename="mainwindow.cpp" line="2716"/>
         <source>External</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="678"/>
-        <location filename="mainwindow.cpp" line="275"/>
+        <location filename="mainwindow.cpp" line="286"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="683"/>
         <location filename="mainwindow.cpp" line="61"/>
-        <location filename="mainwindow.cpp" line="275"/>
+        <location filename="mainwindow.cpp" line="286"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
@@ -232,8 +232,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="818"/>
-        <location filename="mainwindow.cpp" line="2462"/>
-        <location filename="mainwindow.cpp" line="2684"/>
+        <location filename="mainwindow.cpp" line="2472"/>
+        <location filename="mainwindow.cpp" line="2694"/>
         <source>Not Installed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -308,18 +308,18 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="1521"/>
-        <location filename="mainwindow.cpp" line="2085"/>
-        <location filename="mainwindow.cpp" line="2142"/>
+        <location filename="mainwindow.cpp" line="2101"/>
+        <location filename="mainwindow.cpp" line="2158"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1550"/>
-        <location filename="mainwindow.cpp" line="877"/>
-        <location filename="mainwindow.cpp" line="881"/>
-        <location filename="mainwindow.cpp" line="1213"/>
-        <location filename="mainwindow.cpp" line="2010"/>
-        <location filename="mainwindow.cpp" line="2013"/>
+        <location filename="mainwindow.cpp" line="893"/>
+        <location filename="mainwindow.cpp" line="897"/>
+        <location filename="mainwindow.cpp" line="1229"/>
+        <location filename="mainwindow.cpp" line="2026"/>
+        <location filename="mainwindow.cpp" line="2029"/>
         <source>Confirm</source>
         <translation type="unfinished"></translation>
     </message>
@@ -349,7 +349,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="1696"/>
-        <location filename="mainwindow.cpp" line="1175"/>
+        <location filename="mainwindow.cpp" line="1191"/>
         <source>Continue</source>
         <translation type="unfinished"></translation>
     </message>
@@ -366,14 +366,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="61"/>
         <location filename="mainwindow.cpp" line="67"/>
-        <location filename="mainwindow.cpp" line="275"/>
+        <location filename="mainwindow.cpp" line="286"/>
         <source>S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="61"/>
-        <location filename="mainwindow.cpp" line="1472"/>
-        <location filename="mainwindow.cpp" line="2061"/>
+        <location filename="mainwindow.cpp" line="1488"/>
+        <location filename="mainwindow.cpp" line="2077"/>
         <source>Repository</source>
         <translation type="unfinished"></translation>
     </message>
@@ -385,15 +385,15 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="61"/>
-        <location filename="mainwindow.cpp" line="275"/>
-        <location filename="mainwindow.cpp" line="1469"/>
+        <location filename="mainwindow.cpp" line="286"/>
+        <location filename="mainwindow.cpp" line="1485"/>
         <source>Installed Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="61"/>
-        <location filename="mainwindow.cpp" line="275"/>
-        <location filename="mainwindow.cpp" line="1470"/>
+        <location filename="mainwindow.cpp" line="286"/>
+        <location filename="mainwindow.cpp" line="1486"/>
         <source>Last Version</source>
         <translation type="unfinished"></translation>
     </message>
@@ -418,310 +418,315 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="88"/>
+        <location filename="mainwindow.cpp" line="89"/>
         <source>Errors while initializing the system!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="135"/>
+        <location filename="mainwindow.cpp" line="141"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="137"/>
-        <location filename="mainwindow.cpp" line="390"/>
-        <location filename="mainwindow.cpp" line="392"/>
-        <location filename="mainwindow.cpp" line="2746"/>
+        <location filename="mainwindow.cpp" line="143"/>
+        <location filename="mainwindow.cpp" line="401"/>
+        <location filename="mainwindow.cpp" line="403"/>
+        <location filename="mainwindow.cpp" line="2756"/>
         <source>Clean cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="140"/>
-        <location filename="mainwindow.cpp" line="2740"/>
+        <location filename="mainwindow.cpp" line="146"/>
+        <location filename="mainwindow.cpp" line="2750"/>
         <source>Mark all upgrades</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="143"/>
-        <location filename="mainwindow.cpp" line="684"/>
+        <location filename="mainwindow.cpp" line="149"/>
+        <location filename="mainwindow.cpp" line="695"/>
         <source>Open local package</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="146"/>
+        <location filename="mainwindow.cpp" line="152"/>
         <source>Check and apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="152"/>
+        <location filename="mainwindow.cpp" line="158"/>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="153"/>
+        <location filename="mainwindow.cpp" line="159"/>
         <source>Repositories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="157"/>
+        <location filename="mainwindow.cpp" line="163"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="158"/>
+        <location filename="mainwindow.cpp" line="164"/>
         <source>Report a bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="159"/>
+        <location filename="mainwindow.cpp" line="165"/>
         <source>Request a feature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="205"/>
+        <location filename="mainwindow.cpp" line="211"/>
         <source>Link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="205"/>
+        <location filename="mainwindow.cpp" line="211"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="317"/>
-        <location filename="mainwindow.cpp" line="2785"/>
+        <location filename="mainwindow.cpp" line="328"/>
+        <location filename="mainwindow.cpp" line="2795"/>
         <source>To enable external packages support you have to install</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="353"/>
+        <location filename="mainwindow.cpp" line="364"/>
         <source>Are you sure to clean the cache?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="686"/>
+        <location filename="mainwindow.cpp" line="697"/>
         <source>Package files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="710"/>
+        <location filename="mainwindow.cpp" line="721"/>
         <source>Error loading the specified package file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="711"/>
+        <location filename="mainwindow.cpp" line="722"/>
         <source>The file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="711"/>
+        <location filename="mainwindow.cpp" line="722"/>
         <source>doesn&apos;t seems to be a valid package!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="968"/>
-        <location filename="mainwindow.cpp" line="1026"/>
+        <location filename="mainwindow.cpp" line="984"/>
+        <location filename="mainwindow.cpp" line="1042"/>
         <source>Waiting others...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="981"/>
-        <location filename="mainwindow.cpp" line="1040"/>
+        <location filename="mainwindow.cpp" line="997"/>
+        <location filename="mainwindow.cpp" line="1056"/>
         <source>Installing...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1163"/>
+        <location filename="mainwindow.cpp" line="1179"/>
         <source>Errors during operations!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1163"/>
+        <location filename="mainwindow.cpp" line="1179"/>
         <source>Success!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1164"/>
+        <location filename="mainwindow.cpp" line="1180"/>
         <source>Do you want to see operations logs?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1164"/>
-        <location filename="mainwindow.cpp" line="1200"/>
+        <location filename="mainwindow.cpp" line="1180"/>
+        <location filename="mainwindow.cpp" line="1216"/>
         <source>All operations completed successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1471"/>
-        <location filename="mainwindow.cpp" line="2064"/>
+        <location filename="mainwindow.cpp" line="1487"/>
+        <location filename="mainwindow.cpp" line="2080"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1473"/>
-        <location filename="mainwindow.cpp" line="2073"/>
+        <location filename="mainwindow.cpp" line="1489"/>
+        <location filename="mainwindow.cpp" line="2089"/>
         <source>Required by</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1473"/>
-        <location filename="mainwindow.cpp" line="2070"/>
+        <location filename="mainwindow.cpp" line="1489"/>
+        <location filename="mainwindow.cpp" line="2086"/>
         <source>Requires</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1474"/>
+        <location filename="mainwindow.cpp" line="1490"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1475"/>
-        <location filename="mainwindow.cpp" line="2082"/>
-        <location filename="mainwindow.cpp" line="2140"/>
+        <location filename="mainwindow.cpp" line="1491"/>
+        <location filename="mainwindow.cpp" line="2098"/>
+        <location filename="mainwindow.cpp" line="2156"/>
         <source>Install</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1476"/>
-        <location filename="mainwindow.cpp" line="2084"/>
+        <location filename="mainwindow.cpp" line="1492"/>
+        <location filename="mainwindow.cpp" line="2100"/>
         <source>Upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1477"/>
-        <location filename="mainwindow.cpp" line="2083"/>
-        <location filename="mainwindow.cpp" line="2141"/>
+        <location filename="mainwindow.cpp" line="1493"/>
+        <location filename="mainwindow.cpp" line="2099"/>
+        <location filename="mainwindow.cpp" line="2157"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1534"/>
+        <location filename="mainwindow.cpp" line="1550"/>
         <source>Are you sure to upgrade ALL external packages?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1611"/>
-        <location filename="mainwindow.cpp" line="1665"/>
-        <location filename="mainwindow.cpp" line="1700"/>
-        <location filename="mainwindow.cpp" line="1789"/>
-        <location filename="mainwindow.cpp" line="1877"/>
-        <location filename="mainwindow.cpp" line="1886"/>
+        <location filename="mainwindow.cpp" line="1627"/>
+        <location filename="mainwindow.cpp" line="1681"/>
+        <location filename="mainwindow.cpp" line="1716"/>
+        <location filename="mainwindow.cpp" line="1805"/>
+        <location filename="mainwindow.cpp" line="1893"/>
+        <location filename="mainwindow.cpp" line="1902"/>
         <source>Pending changes:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1633"/>
+        <location filename="mainwindow.cpp" line="1649"/>
         <source>Some installed packages require</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1634"/>
+        <location filename="mainwindow.cpp" line="1650"/>
         <source>Do you want to proceed anyway (removing them too)?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1714"/>
+        <location filename="mainwindow.cpp" line="1730"/>
         <source>These selected for install packages require</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1715"/>
+        <location filename="mainwindow.cpp" line="1731"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1757"/>
+        <location filename="mainwindow.cpp" line="1773"/>
         <source>These packages were selected as dependencies of</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1758"/>
+        <location filename="mainwindow.cpp" line="1774"/>
         <source>Do you want to clear them too?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1803"/>
+        <location filename="mainwindow.cpp" line="1819"/>
         <source>These selected for removal packages are required by</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1804"/>
+        <location filename="mainwindow.cpp" line="1820"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1846"/>
+        <location filename="mainwindow.cpp" line="1862"/>
         <source>These packages were selected for removal because they need</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1847"/>
+        <location filename="mainwindow.cpp" line="1863"/>
         <source>Do you want to clear their removal too?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2066"/>
+        <location filename="mainwindow.cpp" line="2082"/>
         <source>URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2067"/>
+        <location filename="mainwindow.cpp" line="2083"/>
         <source>(Watch the full site)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2186"/>
+        <location filename="mainwindow.cpp" line="2202"/>
         <source>UPDATING DB: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2197"/>
+        <location filename="mainwindow.cpp" line="2213"/>
         <source>DB UPDATED!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2422"/>
+        <location filename="mainwindow.cpp" line="2430"/>
         <source>Loading packages...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2496"/>
+        <location filename="mainwindow.cpp" line="2506"/>
         <source>PARSING INSTALLED: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2501"/>
+        <location filename="mainwindow.cpp" line="2511"/>
         <source>Searching correspondeces...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2549"/>
+        <location filename="mainwindow.cpp" line="2559"/>
         <source>Installed (external)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2585"/>
+        <location filename="mainwindow.cpp" line="2595"/>
         <source>Checking upgradables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2799"/>
+        <location filename="mainwindow.cpp" line="2809"/>
         <source>The main backend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2800"/>
+        <location filename="mainwindow.cpp" line="2810"/>
         <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2801"/>
+        <location filename="mainwindow.cpp" line="2811"/>
         <source>Do you want to proceed now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1107"/>
+        <location filename="mainwindow.cpp" line="1123"/>
         <source>Running backend&apos;s post upgrade command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.h" line="418"/>
+        <source>Backend question</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -733,93 +738,118 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="29"/>
+        <location filename="options.ui" line="192"/>
+        <source>Answers to backend&apos;s questions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.ui" line="233"/>
         <source>External Browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="52"/>
+        <location filename="options.ui" line="256"/>
         <source>Deskop default browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="61"/>
+        <location filename="options.ui" line="265"/>
         <source>This browser:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="90"/>
+        <location filename="options.ui" line="284"/>
         <source>Tray</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="112"/>
+        <location filename="options.ui" line="306"/>
         <source>Updates control interval (min)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="122"/>
+        <location filename="options.ui" line="29"/>
         <source>Main Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="140"/>
+        <location filename="options.ui" line="47"/>
         <source>Start Fullscreen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="147"/>
+        <location filename="options.ui" line="54"/>
         <source>Shows Backend Output during operations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="160"/>
+        <location filename="options.ui" line="67"/>
         <source>Show Backend Output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="183"/>
+        <location filename="options.ui" line="90"/>
         <source>Search bar delay (ms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="200"/>
+        <location filename="options.ui" line="107"/>
         <source>Show packages statistics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="217"/>
+        <location filename="options.ui" line="138"/>
         <source>Enable countdown to auto-confirm changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="231"/>
+        <location filename="options.ui" line="121"/>
         <source>Show repository column in packages table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="248"/>
+        <location filename="options.ui" line="155"/>
         <source>Auto select system files for upgrade (disabled in expert mode)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="265"/>
+        <location filename="options.ui" line="172"/>
         <source>Preload packages (otherwise load/unload when show/hide)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="277"/>
+        <location filename="options.ui" line="204"/>
         <source>Graphics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="283"/>
+        <location filename="options.ui" line="210"/>
         <source>Standard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="options.ui" line="293"/>
+        <location filename="options.ui" line="220"/>
         <source>Enhanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.cpp" line="20"/>
+        <source>Automatic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.cpp" line="20"/>
+        <source>Semi-Automatic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.cpp" line="20"/>
+        <source>Ask everything</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="options.cpp" line="21"/>
+        <source>in English</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

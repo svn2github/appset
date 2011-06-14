@@ -7,8 +7,10 @@
   -"Report a bug" and "Request a feature" buttons in main GUI
   -The option to disable packages preload on startup to minimize memory and CPU usage on boot
   -Upgrade backend tool integration with new auth structure bug fixed
-  -Chinese(China) translation
-  -Portuguese translation
+  -Chinese (China) translation
+  -Portuguese (Portugal) translation
+  -Portuguese (Brazilian) translation
+
 
 0.5.1 :
   -Some minor bugs fixed for both tray and main GUI

@@ -258,8 +258,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->autoupgrade=opt.autoupgrade;
     this->preload=opt.preload;
     this->interactions=opt.interactions;
-    if(interactions==2)((AS::QTNIXEngine*)as)->getIP()->setForced(true);
-    else ((AS::QTNIXEngine*)as)->getIP()->setForced(false);
+    if(interactions==2)((AS::QTNIXEngine*)as)->setForced(true);
+    else ((AS::QTNIXEngine*)as)->setForced(false);
     if(interactions==0 && !((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(true);
     else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
 
@@ -774,8 +774,8 @@ void MainWindow::showOptions(){
         this->autoupgrade=opt.autoupgrade;
         this->preload=opt.preload;
         this->interactions=opt.interactions;
-        if(interactions==2)((AS::QTNIXEngine*)as)->getIP()->setForced(true);
-        else ((AS::QTNIXEngine*)as)->getIP()->setForced(false);
+        if(interactions==2)((AS::QTNIXEngine*)as)->setForced(true);
+        else ((AS::QTNIXEngine*)as)->setForced(false);
         if(interactions==0 && !((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(true);
         else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
 

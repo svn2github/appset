@@ -22,52 +22,53 @@
         <translation>S&apos;està esperant l&apos;assistent...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="83"/>
+        <location filename="trayicon.cpp" line="88"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
         <translation>Hi ha una instància de l&apos;AppSet executant-se amb algunes operacions privilegiades.</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="84"/>
+        <location filename="trayicon.cpp" line="89"/>
         <source>Do you want to quit anyway (not recommended)?</source>
         <translation>Voleu abandonar igualment (no recomanat)?</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="113"/>
+        <location filename="trayicon.cpp" line="68"/>
+        <location filename="trayicon.cpp" line="123"/>
         <source>AppSet-Qt is Running!</source>
         <translation>L&apos;AppSet-Qt s&apos;està executant!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There are updates for:</source>
         <translation>Hi ha actualitzacions per:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="156"/>
+        <location filename="trayicon.cpp" line="164"/>
         <source>There is an update for:</source>
         <translation>Hi ha una actualització per:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="166"/>
+        <location filename="trayicon.cpp" line="174"/>
         <source>
 And others...</source>
         <translation>
 I altres...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> updates available!</source>
         <translation> actualitzacions disponibles!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="169"/>
-        <location filename="trayicon.cpp" line="172"/>
+        <location filename="trayicon.cpp" line="177"/>
+        <location filename="trayicon.cpp" line="180"/>
         <source> update available!</source>
         <translation> actualització disponible!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="176"/>
-        <location filename="trayicon.cpp" line="179"/>
+        <location filename="trayicon.cpp" line="184"/>
+        <location filename="trayicon.cpp" line="187"/>
         <source>No updates available</source>
         <translation>No hi ha cap actualització disponible</translation>
     </message>

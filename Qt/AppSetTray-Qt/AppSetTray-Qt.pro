@@ -40,6 +40,7 @@ TRANSLATIONS = appsettray-qt_it.ts \
     appsettray-qt_ca.ts \
     appsettray-qt_pl.ts \
     appsettray-qt_pt.ts \
+    appsettray-qt_pt_BR.ts \
     appsettray-qt_zh_TW.ts \
     appsettray-qt_zh_CN.ts \
     appsettray-qt_tr.ts \

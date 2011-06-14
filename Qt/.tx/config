@@ -12,6 +12,7 @@ trans.fr = AppSet-Qt/appset-qt_fr.ts
 trans.it = AppSet-Qt/appset-qt_it.ts
 trans.nl = AppSet-Qt/appset-qt_nl.ts
 trans.pl = AppSet-Qt/appset-qt_pl.ts
+trans.pt_BR = AppSet-Qt/appset-qt_pt_BR.ts
 trans.pt_PT = AppSet-Qt/appset-qt_pt.ts
 trans.ro_RO = AppSet-Qt/appset-qt_ro.ts
 trans.sr = AppSet-Qt/appset-qt_sr.ts
@@ -30,10 +31,24 @@ trans.fr = AppSetTray-Qt/appsettray-qt_fr.ts
 trans.it = AppSetTray-Qt/appsettray-qt_it.ts
 trans.nl = AppSetTray-Qt/appsettray-qt_nl.ts
 trans.pl = AppSetTray-Qt/appsettray-qt_pl.ts
+trans.pt_BR = AppSetTray-Qt/appsettray-qt_pt_BR.ts
 trans.pt_PT = AppSetTray-Qt/appsettray-qt_pt.ts
 trans.ro_RO = AppSetTray-Qt/appsettray-qt_ro.ts
 trans.sr = AppSetTray-Qt/appsettray-qt_sr.ts
 trans.tr = AppSetTray-Qt/appsettray-qt_tr.ts
 trans.zh_CN = AppSetTray-Qt/appsettray-qt_zh_CN.ts
 trans.zh_TW = AppSetTray-Qt/appsettray-qt_zh_TW.ts
+
+[appset-qt.appsetrepoeditor-qt_ts]
+source_file = AppSetRepoEditor-Qt/appsetrepoeditor-qt_*.ts
+source_lang = en
+trans.ca = AppSetRepoEditor-Qt/appsetrepoeditor-qt_ca.ts
+trans.fr = AppSetRepoEditor-Qt/appsetrepoeditor-qt_fr.ts
+trans.it = AppSetRepoEditor-Qt/appsetrepoeditor-qt_it.ts
+trans.pt_BR = AppSetRepoEditor-Qt/appsetrepoeditor-qt_pt_BR.ts
+trans.pt_PT = AppSetRepoEditor-Qt/appsetrepoeditor-qt_pt.ts
+trans.ro_RO = AppSetRepoEditor-Qt/appsetrepoeditor-qt_ro.ts
+trans.sr = AppSetRepoEditor-Qt/appsetrepoeditor-qt_sr.ts
+trans.tr = AppSetRepoEditor-Qt/appsetrepoeditor-qt_tr.ts
+trans.zh_CN = AppSetRepoEditor-Qt/appsetrepoeditor-qt_zh_CN.ts
 
