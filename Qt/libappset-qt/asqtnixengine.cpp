@@ -25,6 +25,7 @@ int AS::QTNIXEngine::execCmd(std::string command){
 
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     env.insert("LANG", "C");
+    env.insert("COLOR","NO");
 
     process->setProcessEnvironment(env);;
 
