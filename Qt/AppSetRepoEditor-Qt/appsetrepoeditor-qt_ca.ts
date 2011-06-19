@@ -4,42 +4,42 @@
     <message>
         <location filename="addrepo.ui" line="14"/>
         <source>Add Repository</source>
-        <translation type="unfinished"/>
+        <translation>Afegeix repositori</translation>
     </message>
     <message>
         <location filename="addrepo.ui" line="29"/>
         <source>Repository</source>
-        <translation type="unfinished"/>
+        <translation>Repositori</translation>
     </message>
     <message>
         <location filename="addrepo.ui" line="39"/>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Opcions</translation>
     </message>
     <message>
         <location filename="addrepo.cpp" line="42"/>
         <source>The repository name field can&apos;t be blank.</source>
-        <translation type="unfinished"/>
+        <translation>El camp del nom del repositori no pot ser buit</translation>
     </message>
     <message>
         <location filename="addrepo.cpp" line="56"/>
         <source>The repository options field is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>El camp d&apos;opcions del repositori no és vàlid</translation>
     </message>
     <message>
         <location filename="addrepo.cpp" line="59"/>
         <source>The repository name field is not valid.</source>
-        <translation type="unfinished"/>
+        <translation>El camp del nom del repositori no és vàlid</translation>
     </message>
     <message>
         <location filename="addrepo.cpp" line="64"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="addrepo.cpp" line="64"/>
         <source>Can&apos;t add repository.</source>
-        <translation type="unfinished"/>
+        <translation>No s&apos;ha pogut afegir el repositori.</translation>
     </message>
 </context>
 <context>
@@ -48,42 +48,42 @@
         <location filename="repoconf.cpp" line="144"/>
         <location filename="repoconf.cpp" line="148"/>
         <source>Backup error</source>
-        <translation type="unfinished"/>
+        <translation>Error de còpia de seguretat</translation>
     </message>
     <message>
         <location filename="repoconf.cpp" line="144"/>
         <source>Backup file already exists.</source>
-        <translation type="unfinished"/>
+        <translation>El fitxer de còpia de seguretat ja existeix.</translation>
     </message>
     <message>
         <location filename="repoconf.cpp" line="144"/>
         <source>Do you want to overwrite it?</source>
-        <translation type="unfinished"/>
+        <translation>Voleu sobreescriure&apos;l?</translation>
     </message>
     <message>
         <location filename="repoconf.cpp" line="148"/>
         <source>Can&apos;t create backup file.</source>
-        <translation type="unfinished"/>
+        <translation>No s&apos;ha pogut crear el fitxer de còpia de seguretat.</translation>
     </message>
     <message>
         <location filename="repoconf.cpp" line="148"/>
         <source>Do you want to proceed without a backup?</source>
-        <translation type="unfinished"/>
+        <translation>Voleu continuar sense fer còpia de seguretat?</translation>
     </message>
     <message>
         <location filename="repoconf.cpp" line="191"/>
         <source>Active</source>
-        <translation type="unfinished"/>
+        <translation>Actiu</translation>
     </message>
     <message>
         <location filename="repoconf.cpp" line="191"/>
         <source>Repository</source>
-        <translation type="unfinished"/>
+        <translation>Repositori</translation>
     </message>
     <message>
         <location filename="repoconf.cpp" line="191"/>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Opcions</translation>
     </message>
 </context>
 <context>
@@ -91,82 +91,82 @@
     <message>
         <location filename="repoeditor.ui" line="14"/>
         <source>RepoEditor</source>
-        <translation type="unfinished"/>
+        <translation>Editor dels repositoris</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="27"/>
         <source>Available Repositories</source>
-        <translation type="unfinished"/>
+        <translation>Repositoris disponibles</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="72"/>
         <source>Add</source>
-        <translation type="unfinished"/>
+        <translation>Afegeix</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="79"/>
         <source>Remove</source>
-        <translation type="unfinished"/>
+        <translation>Elimina</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="99"/>
         <source>Move Up</source>
-        <translation type="unfinished"/>
+        <translation>Mou amunp</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="106"/>
         <source>Move Down</source>
-        <translation type="unfinished"/>
+        <translation>Mou avall</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="118"/>
         <source>Backup</source>
-        <translation type="unfinished"/>
+        <translation>Còpia de seguretat</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="126"/>
         <source>Create backup on save</source>
-        <translation type="unfinished"/>
+        <translation>Crea còpia de seguretat en desar</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="149"/>
         <source>Load a backup file</source>
-        <translation type="unfinished"/>
+        <translation>Carrega un fitxer de còpia de seguretat</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="160"/>
         <source>Backup file:</source>
-        <translation type="unfinished"/>
+        <translation>Fitxer de còpia de seguretat:</translation>
     </message>
     <message>
         <location filename="repoeditor.cpp" line="86"/>
         <source>Can&apos;t load backup file</source>
-        <translation type="unfinished"/>
+        <translation>No s&apos;ha pogut trobar el fitxer de còpia de seguretat</translation>
     </message>
     <message>
         <location filename="repoeditor.cpp" line="86"/>
         <source>Selected file is not valid</source>
-        <translation type="unfinished"/>
+        <translation>El fitxer seleccionat no és vàlid</translation>
     </message>
     <message>
         <location filename="repoeditor.cpp" line="104"/>
         <source>Success</source>
-        <translation type="unfinished"/>
+        <translation>Completat</translation>
     </message>
     <message>
         <location filename="repoeditor.cpp" line="104"/>
         <source>Repositories configuration successfully saved.</source>
-        <translation type="unfinished"/>
+        <translation>La configuració dels repositoris s&apos;ha desat correctament.</translation>
     </message>
     <message>
         <location filename="repoeditor.cpp" line="113"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="repoeditor.cpp" line="113"/>
         <source>Repositories configuration not saved.</source>
-        <translation type="unfinished"/>
+        <translation>No s&apos;ha desat la configuració dels repositoris</translation>
     </message>
 </context>
 </TS>
