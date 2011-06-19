@@ -4,12 +4,12 @@
     <message>
         <location filename="trayicon.cpp" line="25"/>
         <source>Show/Hide AppSet</source>
-        <translation>顯示/隱藏 AppSet</translation>
+        <translation>显示/ AppSet</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="26"/>
         <source>Check for updates NOW!</source>
-        <translation>立刻檢查更新！</translation>
+        <translation>立即检查更新！</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="27"/>
@@ -19,23 +19,23 @@
     <message>
         <location filename="trayicon.cpp" line="57"/>
         <source>Waiting helper...</source>
-        <translation>正在等候輔助程式...</translation>
+        <translation>等待辅助程序中...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="88"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
-        <translation>有個 AppSet 實體正在執行一些需要特權的操作項目。</translation>
+        <translation>AppSet 的一个实例正在执行特权操作。</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="89"/>
         <source>Do you want to quit anyway (not recommended)?</source>
-        <translation>無論如何您都想要退出嗎 (不建議)？</translation>
+        <translation>无论如何您都要退出吗 (不推荐)？</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="68"/>
         <location filename="trayicon.cpp" line="123"/>
         <source>AppSet-Qt is Running!</source>
-        <translation>AppSet-Qt 正在執行中！</translation>
+        <translation>AppSet-Qt 运行中！</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="164"/>
@@ -52,25 +52,25 @@
         <source>
 And others...</source>
         <translation>
-與其他...</translation>
+与其他...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="177"/>
         <location filename="trayicon.cpp" line="180"/>
         <source> updates available!</source>
-        <translation> 項更新可用！</translation>
+        <translation> 项更新可用！</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="177"/>
         <location filename="trayicon.cpp" line="180"/>
         <source> update available!</source>
-        <translation> 項更新可用！</translation>
+        <translation> 项更新可用！</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="184"/>
         <location filename="trayicon.cpp" line="187"/>
         <source>No updates available</source>
-        <translation>無更新可用</translation>
+        <translation>无可用</translation>
     </message>
 </context>
 </TS>

@@ -479,7 +479,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="159"/>
         <source>Repositories</source>
-        <translation type="unfinished"/>
+        <translation>Depolar</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="163"/>
@@ -489,12 +489,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="164"/>
         <source>Report a bug</source>
-        <translation type="unfinished"/>
+        <translation>Hata bildirin</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="165"/>
         <source>Request a feature</source>
-        <translation type="unfinished"/>
+        <translation>Bir özellik isteyin</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="211"/>
@@ -746,7 +746,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.h" line="418"/>
         <source>Backend question</source>
-        <translation type="unfinished"/>
+        <translation>Arkauç sorusu</translation>
     </message>
 </context>
 <context>
@@ -759,7 +759,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="192"/>
         <source>Answers to backend&apos;s questions</source>
-        <translation type="unfinished"/>
+        <translation>Arkauç sorularına verilen cevaplar</translation>
     </message>
     <message>
         <location filename="options.ui" line="233"/>
@@ -834,7 +834,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="172"/>
         <source>Preload packages (otherwise load/unload when show/hide)</source>
-        <translation type="unfinished"/>
+        <translation>Paketleri önyükleme yap (aksi takdirde göster/gizle işlevinde yükle/kaldır)</translation>
     </message>
     <message>
         <location filename="options.ui" line="204"/>
@@ -854,22 +854,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Automatic</source>
-        <translation type="unfinished"/>
+        <translation>Otomatik</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Semi-Automatic</source>
-        <translation type="unfinished"/>
+        <translation>Yarı otomatik</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Ask everything</source>
-        <translation type="unfinished"/>
+        <translation>Her şeyi sor</translation>
     </message>
     <message>
         <location filename="options.cpp" line="21"/>
         <source>in English</source>
-        <translation type="unfinished"/>
+        <translation>İngilizce</translation>
     </message>
 </context>
 </TS>

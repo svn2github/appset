@@ -479,7 +479,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="159"/>
         <source>Repositories</source>
-        <translation type="unfinished"/>
+        <translation>Складишта</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="163"/>
@@ -489,12 +489,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="164"/>
         <source>Report a bug</source>
-        <translation type="unfinished"/>
+        <translation>Пријавите грешку</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="165"/>
         <source>Request a feature</source>
-        <translation type="unfinished"/>
+        <translation>Захтевајте нову функцију</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="211"/>
@@ -746,7 +746,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.h" line="418"/>
         <source>Backend question</source>
-        <translation type="unfinished"/>
+        <translation>Питање позадинског програма</translation>
     </message>
 </context>
 <context>
@@ -759,7 +759,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="192"/>
         <source>Answers to backend&apos;s questions</source>
-        <translation type="unfinished"/>
+        <translation>Одговори на питања позадинског програма</translation>
     </message>
     <message>
         <location filename="options.ui" line="233"/>
@@ -834,7 +834,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="172"/>
         <source>Preload packages (otherwise load/unload when show/hide)</source>
-        <translation type="unfinished"/>
+        <translation>Унапред учитај пакете (у супротном учитај/очисти када се прикаже/сакрије)</translation>
     </message>
     <message>
         <location filename="options.ui" line="204"/>
@@ -854,22 +854,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Automatic</source>
-        <translation type="unfinished"/>
+        <translation>Аутоматски</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Semi-Automatic</source>
-        <translation type="unfinished"/>
+        <translation>Полу-Ауоматски</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Ask everything</source>
-        <translation type="unfinished"/>
+        <translation>Питај све</translation>
     </message>
     <message>
         <location filename="options.cpp" line="21"/>
         <source>in English</source>
-        <translation type="unfinished"/>
+        <translation>на Енглеском</translation>
     </message>
 </context>
 </TS>

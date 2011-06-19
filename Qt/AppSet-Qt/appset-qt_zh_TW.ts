@@ -479,7 +479,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="159"/>
         <source>Repositories</source>
-        <translation type="unfinished"/>
+        <translation>套件庫</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="163"/>
@@ -489,12 +489,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="164"/>
         <source>Report a bug</source>
-        <translation type="unfinished"/>
+        <translation>回報臭蟲</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="165"/>
         <source>Request a feature</source>
-        <translation type="unfinished"/>
+        <translation>提請新功能</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="211"/>
@@ -746,7 +746,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.h" line="418"/>
         <source>Backend question</source>
-        <translation type="unfinished"/>
+        <translation>後端程式疑問</translation>
     </message>
 </context>
 <context>
@@ -759,7 +759,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="192"/>
         <source>Answers to backend&apos;s questions</source>
-        <translation type="unfinished"/>
+        <translation>對於後端程式疑問的回答</translation>
     </message>
     <message>
         <location filename="options.ui" line="233"/>
@@ -834,7 +834,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="172"/>
         <source>Preload packages (otherwise load/unload when show/hide)</source>
-        <translation type="unfinished"/>
+        <translation>預先載入套件 (否則僅在顯示/隱藏時才載入/取消載入)</translation>
     </message>
     <message>
         <location filename="options.ui" line="204"/>
@@ -854,22 +854,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Automatic</source>
-        <translation type="unfinished"/>
+        <translation>自動</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Semi-Automatic</source>
-        <translation type="unfinished"/>
+        <translation>半自動</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Ask everything</source>
-        <translation type="unfinished"/>
+        <translation>每件事都詢問</translation>
     </message>
     <message>
         <location filename="options.cpp" line="21"/>
         <source>in English</source>
-        <translation type="unfinished"/>
+        <translation>用英文</translation>
     </message>
 </context>
 </TS>
