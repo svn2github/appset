@@ -186,7 +186,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -401,7 +401,7 @@ p, li { white-space: pre-wrap; }
           </url>
          </property>
          <property name="zoomFactor">
-          <double>0.930000007152557</double>
+          <double>0.935000002384186</double>
          </property>
         </widget>
        </item>

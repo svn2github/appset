@@ -229,8 +229,6 @@ MainWindow::MainWindow(QWidget *parent) :
     sizes << 250 << 180;
     mainSplitter->setSizes(sizes);
 
-
-    QString optPath;
     if(pp&&pp!=9&&pp!=11 && QFile::exists("/tmp/aspriv")){
         QFile file("/tmp/aspriv");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -249,7 +247,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->showBackOut=opt.backOutput;
     this->confirmCountdown=opt.confirmCountdown;
     if(!opt.statShow) ui->statGroup->setHidden(true);
-    if(opt.startfullscreen && (!pp || pp==9 || pp==11))this->showMaximized();
+    if(opt.startfullscreen && (!pp || pp==9 || pp==11))this->maxShown=true;
+    else this->maxShown=false;
     if(opt.showRepos)ui->tableWidget->showColumn(1);
     else ui->tableWidget->hideColumn(1);
     enhanced=opt.enhanced;
@@ -744,7 +743,7 @@ void MainWindow::extBrowserLink(const QUrl & link){
 }
 
 void MainWindow::saveUrlPre(){
-    Options opt;
+    Options opt(this,optPath);
     opt.extraInfo=ui->urlpre->isChecked();
     opt.writeConfigFile(true,true);
 }

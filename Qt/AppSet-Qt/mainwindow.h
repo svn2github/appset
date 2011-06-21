@@ -393,7 +393,12 @@ public slots:
         if((oldgeom.left()!=-1))
             this->setGeometry(oldgeom);
 
-        show();
+        if(this->maxShown){
+            this->showMaximized();
+            this->maxShown=false;
+        }else{
+            show();
+        }
 
         if(!preload && !(pp>0 && pp!=9 && pp!=11)) addRows();
     }
@@ -544,6 +549,8 @@ private:
 
     bool preload; //Preload otherwise load/unload when show/hide main GUI
     int interactions;
+    QString optPath;
+    bool maxShown;
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);
