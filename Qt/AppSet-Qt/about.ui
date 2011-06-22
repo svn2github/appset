@@ -401,7 +401,7 @@ p, li { white-space: pre-wrap; }
           </url>
          </property>
          <property name="zoomFactor">
-          <double>0.935000002384186</double>
+          <double>0.925000011920929</double>
          </property>
         </widget>
        </item>

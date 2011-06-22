@@ -35,7 +35,7 @@
         <location filename="trayicon.cpp" line="68"/>
         <location filename="trayicon.cpp" line="123"/>
         <source>AppSet-Qt is Running!</source>
-        <translation>AppSet-Qt está em execussão!</translation>
+        <translation>AppSet-Qt está em execução!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="164"/>

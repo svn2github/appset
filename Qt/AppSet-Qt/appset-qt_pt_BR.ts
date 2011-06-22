@@ -14,7 +14,7 @@
     <message>
         <location filename="about.ui" line="370"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <translation>Um agradecimento especial vai para a equipe do projeto Chakra pelas suas sugestões e traduções.</translation>
+        <translation>Um agradecimento especial para a equipe do projeto Chakra pelas suas sugestões e traduções.</translation>
     </message>
     <message>
         <location filename="about.ui" line="193"/>
@@ -24,7 +24,7 @@
     <message>
         <location filename="about.ui" line="215"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
-        <translation>Uma avançada e rica em recursos Interface para Gerenciadores de Pacotes</translation>
+        <translation>Uma Interface para Gerenciador de Pacotes avançada e rica em recursos</translation>
     </message>
     <message>
         <location filename="about.ui" line="232"/>
@@ -510,7 +510,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="328"/>
         <location filename="mainwindow.cpp" line="2795"/>
         <source>To enable external packages support you have to install</source>
-        <translation>Para ativar os pacotes de suporte externos você tem que instal-los</translation>
+        <translation>Para ativar os pacotes de suporte externos você tem que instalá-los</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="364"/>
@@ -696,7 +696,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="2213"/>
         <source>DB UPDATED!</source>
-        <translation>BD ATUALIZADA!</translation>
+        <translation>BD ATUALIZADO!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2430"/>
@@ -731,7 +731,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="2810"/>
         <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
-        <translation>não est atualizado. Você tem que atualizá-lo, a fim de prosseguir com outras operações.</translation>
+        <translation>não está atualizado. Você tem que atualizá-lo, a fim de prosseguir com outras operações.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2811"/>

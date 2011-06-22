@@ -19,7 +19,7 @@
     <message>
         <location filename="about.ui" line="193"/>
         <source>About</source>
-        <translation>O</translation>
+        <translation>Info</translation>
     </message>
     <message>
         <location filename="about.ui" line="215"/>
@@ -746,7 +746,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.h" line="418"/>
         <source>Backend question</source>
-        <translation type="unfinished"/>
+        <translation>Pytanie backendu</translation>
     </message>
 </context>
 <context>
@@ -759,7 +759,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="192"/>
         <source>Answers to backend&apos;s questions</source>
-        <translation type="unfinished"/>
+        <translation>Odpowiedzi na pytania backendu</translation>
     </message>
     <message>
         <location filename="options.ui" line="233"/>
@@ -834,7 +834,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="172"/>
         <source>Preload packages (otherwise load/unload when show/hide)</source>
-        <translation type="unfinished"/>
+        <translation>Preload pakietów (w przeciwnym wypadku  wczytaj/nie wczytuj, gdy pokaż/ukryj)</translation>
     </message>
     <message>
         <location filename="options.ui" line="204"/>
