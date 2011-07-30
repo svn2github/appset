@@ -812,6 +812,7 @@ void MainWindow::finished(QNetworkReply *reply){
 #include <QDesktopServices>
 void MainWindow::itemActivated(QTreeWidgetItem * item){
     ui->textBrowser->setHtml(item->text(0));
+    ui->textBrowser->page()->setPalette(QPalette(Qt::white));
 }
 
 void MainWindow::metaDataChanged(){

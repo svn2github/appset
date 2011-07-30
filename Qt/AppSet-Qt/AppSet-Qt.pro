@@ -36,7 +36,8 @@ RESOURCES += \
 OTHER_FILES += \
     appset-launch.sh \
     appset-qt.desktop \
-    AppsView.qml
+    AppsView.qml \
+    lic_template.txt \
 
 unix: QMAKE_COPY = "cp -fp"
 
