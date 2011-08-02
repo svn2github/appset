@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1058</width>
+    <width>1109</width>
     <height>540</height>
    </rect>
   </property>
@@ -182,6 +182,15 @@
                      <height>48</height>
                     </size>
                    </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
+                   </property>
                    <property name="toolButtonStyle">
                     <enum>Qt::ToolButtonTextUnderIcon</enum>
                    </property>
@@ -214,6 +223,12 @@
                      <width>48</width>
                      <height>48</height>
                     </size>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
                    </property>
                    <property name="toolButtonStyle">
                     <enum>Qt::ToolButtonTextUnderIcon</enum>
@@ -248,6 +263,12 @@
                      <height>48</height>
                     </size>
                    </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
+                   </property>
                    <property name="toolButtonStyle">
                     <enum>Qt::ToolButtonTextUnderIcon</enum>
                    </property>
@@ -280,6 +301,12 @@
                      <width>48</width>
                      <height>48</height>
                     </size>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
                    </property>
                    <property name="toolButtonStyle">
                     <enum>Qt::ToolButtonTextUnderIcon</enum>
@@ -314,6 +341,12 @@
                      <height>48</height>
                     </size>
                    </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
+                   </property>
                    <property name="toolButtonStyle">
                     <enum>Qt::ToolButtonTextUnderIcon</enum>
                    </property>
@@ -346,6 +379,12 @@
                      <width>48</width>
                      <height>48</height>
                     </size>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="autoExclusive">
+                    <bool>true</bool>
                    </property>
                    <property name="toolButtonStyle">
                     <enum>Qt::ToolButtonTextUnderIcon</enum>
@@ -619,8 +658,14 @@
              <attribute name="title">
               <string>All</string>
              </attribute>
-             <layout class="QVBoxLayout" name="verticalLayout_6">
-              <property name="margin">
+             <layout class="QVBoxLayout" name="verticalLayout_17">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
                <number>0</number>
               </property>
               <item>
@@ -653,8 +698,17 @@
                  <property name="sizeConstraint">
                   <enum>QLayout::SetMaximumSize</enum>
                  </property>
-                 <property name="margin">
+                 <property name="leftMargin">
                   <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
                  </property>
                  <item>
                   <widget class="QComboBox" name="comboBox">
@@ -672,6 +726,9 @@
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
+                   </property>
+                   <property name="frame">
+                    <bool>true</bool>
                    </property>
                    <item>
                     <property name="text">
@@ -883,117 +940,384 @@
                </widget>
               </item>
               <item>
-               <layout class="QVBoxLayout" name="contents">
+               <layout class="QHBoxLayout" name="horizontalLayout_14">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <item>
-                 <widget class="QTableWidget" name="tableWidget">
-                  <property name="minimumSize">
-                   <size>
-                    <width>650</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="editTriggers">
-                   <set>QAbstractItemView::NoEditTriggers</set>
-                  </property>
-                  <property name="alternatingRowColors">
-                   <bool>true</bool>
-                  </property>
-                  <property name="selectionMode">
-                   <enum>QAbstractItemView::SingleSelection</enum>
-                  </property>
-                  <property name="selectionBehavior">
-                   <enum>QAbstractItemView::SelectRows</enum>
-                  </property>
-                  <property name="showGrid">
-                   <bool>false</bool>
-                  </property>
-                  <property name="sortingEnabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                  <property name="cornerButtonEnabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="columnCount">
-                   <number>8</number>
-                  </property>
-                  <attribute name="horizontalHeaderDefaultSectionSize">
-                   <number>150</number>
-                  </attribute>
-                  <attribute name="horizontalHeaderStretchLastSection">
-                   <bool>true</bool>
-                  </attribute>
-                  <attribute name="verticalHeaderVisible">
-                   <bool>false</bool>
-                  </attribute>
-                  <attribute name="verticalHeaderHighlightSections">
-                   <bool>false</bool>
-                  </attribute>
-                  <column/>
-                  <column/>
-                  <column/>
-                  <column/>
-                  <column/>
-                  <column/>
-                  <column/>
-                  <column/>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QGroupBox" name="extraInfoGroupBox">
+                 <widget class="QGroupBox" name="groupBox_2">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
-                  <property name="minimumSize">
+                  <property name="maximumSize">
                    <size>
-                    <width>0</width>
-                    <height>0</height>
+                    <width>70</width>
+                    <height>16777215</height>
                    </size>
                   </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="title">
+                   <string>Sections</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_16">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>4</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <item>
-                    <widget class="QTextBrowser" name="infoText">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
+                    <widget class="QToolButton" name="showAllCat_3">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
                      </property>
-                     <property name="minimumSize">
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="contextMenuPolicy">
+                      <enum>Qt::NoContextMenu</enum>
+                     </property>
+                     <property name="toolTip">
+                      <string>All</string>
+                     </property>
+                     <property name="text">
+                      <string>All</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="icons.qrc">
+                       <normaloff>:/pkggroups/all.png</normaloff>:/pkggroups/all.png</iconset>
+                     </property>
+                     <property name="iconSize">
                       <size>
-                       <width>200</width>
-                       <height>0</height>
+                       <width>48</width>
+                       <height>48</height>
                       </size>
                      </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>250</width>
-                       <height>6000</height>
-                      </size>
+                     <property name="checkable">
+                      <bool>true</bool>
                      </property>
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
+                     <property name="checked">
+                      <bool>true</bool>
                      </property>
-                     <property name="frameShadow">
-                      <enum>QFrame::Sunken</enum>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
                      </property>
-                     <property name="lineWidth">
-                      <number>1</number>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonIconOnly</enum>
                      </property>
-                     <property name="openLinks">
-                      <bool>false</bool>
+                     <property name="autoRaise">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QWebView" name="webView">
+                    <widget class="QToolButton" name="showGames_3">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Games</string>
+                     </property>
+                     <property name="text">
+                      <string>Games</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="icons.qrc">
+                       <normaloff>:/pkggroups/games.png</normaloff>:/pkggroups/games.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>48</width>
+                       <height>48</height>
+                      </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonIconOnly</enum>
+                     </property>
+                     <property name="autoRaise">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QToolButton" name="showMultimedia_3">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Multimedia</string>
+                     </property>
+                     <property name="text">
+                      <string>Multimedia</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="icons.qrc">
+                       <normaloff>:/pkggroups/multimedia.png</normaloff>:/pkggroups/multimedia.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>48</width>
+                       <height>48</height>
+                      </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonIconOnly</enum>
+                     </property>
+                     <property name="autoRaise">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QToolButton" name="showInternet_3">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Internet</string>
+                     </property>
+                     <property name="text">
+                      <string>Internet</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="icons.qrc">
+                       <normaloff>:/pkggroups/internet.png</normaloff>:/pkggroups/internet.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>48</width>
+                       <height>48</height>
+                      </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonIconOnly</enum>
+                     </property>
+                     <property name="autoRaise">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QToolButton" name="showOffice_3">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Office</string>
+                     </property>
+                     <property name="text">
+                      <string>Office</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="icons.qrc">
+                       <normaloff>:/pkggroups/office.png</normaloff>:/pkggroups/office.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>48</width>
+                       <height>48</height>
+                      </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonIconOnly</enum>
+                     </property>
+                     <property name="autoRaise">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QToolButton" name="showSystem_3">
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>System</string>
+                     </property>
+                     <property name="text">
+                      <string>System</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="icons.qrc">
+                       <normaloff>:/pkggroups/system.png</normaloff>:/pkggroups/system.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>48</width>
+                       <height>48</height>
+                      </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonIconOnly</enum>
+                     </property>
+                     <property name="autoRaise">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="contentsWidget" native="true">
+                  <layout class="QVBoxLayout" name="contents">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QTableWidget" name="tableWidget">
+                     <property name="minimumSize">
+                      <size>
+                       <width>650</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="editTriggers">
+                      <set>QAbstractItemView::NoEditTriggers</set>
+                     </property>
+                     <property name="alternatingRowColors">
+                      <bool>true</bool>
+                     </property>
+                     <property name="selectionMode">
+                      <enum>QAbstractItemView::SingleSelection</enum>
+                     </property>
+                     <property name="selectionBehavior">
+                      <enum>QAbstractItemView::SelectRows</enum>
+                     </property>
+                     <property name="showGrid">
+                      <bool>false</bool>
+                     </property>
+                     <property name="sortingEnabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                     <property name="cornerButtonEnabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="columnCount">
+                      <number>8</number>
+                     </property>
+                     <attribute name="horizontalHeaderDefaultSectionSize">
+                      <number>150</number>
+                     </attribute>
+                     <attribute name="horizontalHeaderStretchLastSection">
+                      <bool>true</bool>
+                     </attribute>
+                     <attribute name="verticalHeaderVisible">
+                      <bool>false</bool>
+                     </attribute>
+                     <attribute name="verticalHeaderHighlightSections">
+                      <bool>false</bool>
+                     </attribute>
+                     <column/>
+                     <column/>
+                     <column/>
+                     <column/>
+                     <column/>
+                     <column/>
+                     <column/>
+                     <column/>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QTabWidget" name="extraInfoGroupBox">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -1004,35 +1328,117 @@
                        <height>0</height>
                       </size>
                      </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>6000</height>
-                      </size>
+                     <property name="currentIndex">
+                      <number>0</number>
                      </property>
-                     <property name="sizeIncrement">
-                      <size>
-                       <width>0</width>
-                       <height>1</height>
-                      </size>
-                     </property>
-                     <property name="baseSize">
-                      <size>
-                       <width>0</width>
-                       <height>160</height>
-                      </size>
-                     </property>
-                     <property name="focusPolicy">
-                      <enum>Qt::NoFocus</enum>
-                     </property>
-                     <property name="contextMenuPolicy">
-                      <enum>Qt::PreventContextMenu</enum>
-                     </property>
-                     <property name="url">
-                      <url>
-                       <string>about:blank</string>
-                      </url>
-                     </property>
+                     <widget class="QWidget" name="extraInfoTabWidgetPage1" native="true">
+                      <attribute name="title">
+                       <string>Homepage</string>
+                      </attribute>
+                      <layout class="QHBoxLayout" name="horizontalLayout_6">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QWebView" name="webView">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>6000</height>
+                          </size>
+                         </property>
+                         <property name="sizeIncrement">
+                          <size>
+                           <width>0</width>
+                           <height>1</height>
+                          </size>
+                         </property>
+                         <property name="baseSize">
+                          <size>
+                           <width>0</width>
+                           <height>160</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::NoFocus</enum>
+                         </property>
+                         <property name="contextMenuPolicy">
+                          <enum>Qt::PreventContextMenu</enum>
+                         </property>
+                         <property name="url">
+                          <url>
+                           <string>about:blank</string>
+                          </url>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="tab">
+                      <attribute name="title">
+                       <string>Details</string>
+                      </attribute>
+                      <layout class="QVBoxLayout" name="verticalLayout_6">
+                       <item>
+                        <widget class="QTextBrowser" name="infoText">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>200</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>65000</width>
+                           <height>65000</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Sunken</enum>
+                         </property>
+                         <property name="lineWidth">
+                          <number>1</number>
+                         </property>
+                         <property name="openLinks">
+                          <bool>false</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
                     </widget>
                    </item>
                   </layout>
@@ -1040,22 +1446,9 @@
                 </item>
                </layout>
               </item>
-              <item>
-               <widget class="QWidget" name="anim" native="true">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_15">
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_14"/>
-                 </item>
-                </layout>
-               </widget>
-              </item>
              </layout>
+             <zorder>widgetTools</zorder>
+             <zorder></zorder>
             </widget>
             <widget class="QWidget" name="tabCommunity">
              <attribute name="icon">
@@ -1786,22 +2179,6 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections>
   <connection>
-   <sender>urlpre</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>extraInfoGroupBox</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>957</x>
-     <y>34</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>335</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>showAllCat_2</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -1883,6 +2260,102 @@ p, li { white-space: pre-wrap; }
   </connection>
   <connection>
    <sender>showSystem_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showSystem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>937</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>653</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showAllCat_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showAllCat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>132</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showGames_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showGames()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>302</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1103</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showMultimedia_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showMultimedia()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>457</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1116</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showInternet_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showInternet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>622</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1104</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showOffice_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showOffice()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>777</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>787</x>
+     <y>593</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showSystem_3</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>showSystem()</slot>

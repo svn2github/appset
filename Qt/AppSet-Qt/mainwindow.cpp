@@ -218,9 +218,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(rssloader,SIGNAL(timeout()),SLOT(RSSRetry()));
 
     mainSplitter = new QSplitter(ui->tabList);
-    ui->contents->removeWidget(ui->extraInfoGroupBox);
-    ui->contents->removeWidget(ui->tableWidget);
-    ui->tabList->layout()->addWidget(mainSplitter);
+    ui->contentsWidget->layout()->removeWidget(ui->extraInfoGroupBox);
+    ui->contentsWidget->layout()->removeWidget(ui->tableWidget);
+    ui->contentsWidget->layout()->addWidget(mainSplitter);
     mainSplitter->addWidget(ui->tableWidget);
     mainSplitter->addWidget(ui->extraInfoGroupBox);
     mainSplitter->setOrientation(Qt::Vertical);
@@ -270,8 +270,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget->setTabText(2, QString(((AS::QTNIXEngine*)as)->getCommunityName().c_str()));
 
     QSplitter *splitter2 = new QSplitter(ui->tabCommunity);
-    ui->contents->removeWidget(ui->extraInfoGroupBox_2);
-    ui->contents->removeWidget(ui->groupCom);
+    ui->contentsWidget->layout()->removeWidget(ui->extraInfoGroupBox_2);
+    ui->contentsWidget->layout()->removeWidget(ui->groupCom);
     ui->tabCommunity->layout()->addWidget(splitter2);
     splitter2->addWidget(ui->groupCom);
     splitter2->addWidget(ui->extraInfoGroupBox_2);
@@ -350,8 +350,9 @@ MainWindow::MainWindow(QWidget *parent) :
     priv = new QProcess(this);
 
     //QWebSettings::setIconDatabasePath("/tmp/favicons/");
-    connect(ui->webView,SIGNAL(iconChanged()),SLOT(appIcon()));    
+    connect(ui->webView,SIGNAL(iconChanged()),SLOT(appIcon()));
 }
+
 
 void MainWindow::appIcon(){
     ;//ui->tableWidget->item(currentPacket,2)->setIcon(ui->webView->icon().pixmap(16,16));
@@ -1501,7 +1502,7 @@ void MainWindow::asyncFilter(QString filter){
             view->setSource(QUrl("qrc:/appsView/AppsView.qml"));
             view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
             mainSplitter->setHidden(true);
-            ui->anim->layout()->addWidget(view);            
+            ui->contentsWidget->layout()->addWidget(view);
         }else{
             view->rootContext()->setContextProperty("appsModel",QVariant::fromValue(appsList));
         }
@@ -2251,6 +2252,8 @@ void MainWindow::showGames(bool community){
     ui->tabWidget->setTabIcon(1, QIcon(":/pkggroups/games.png"));
     asyncFilter("@@");    
     ui->tabWidget->setTabText(1, tr("Games") );
+    ui->showGames_2->setChecked(true);
+    ui->showGames_3->setChecked(true);
 }
 
 void MainWindow::showSystem(){
@@ -2263,6 +2266,8 @@ void MainWindow::showSystem(){
     asyncFilter("@@");
 
     ui->tabWidget->setTabText(1, tr("System") );
+    ui->showSystem_2->setChecked(true);
+    ui->showSystem_3->setChecked(true);
 }
 
 void MainWindow::showMultimedia(){
@@ -2275,6 +2280,8 @@ void MainWindow::showMultimedia(){
     asyncFilter("@@");
 
     ui->tabWidget->setTabText(1, tr("Multimedia") );
+    ui->showMultimedia_2->setChecked(true);
+    ui->showMultimedia_3->setChecked(true);
 }
 
 void MainWindow::showOffice(){
@@ -2287,6 +2294,8 @@ void MainWindow::showOffice(){
     asyncFilter("@@");
 
     ui->tabWidget->setTabText(1, tr("Office") );
+    ui->showOffice_2->setChecked(true);
+    ui->showOffice_3->setChecked(true);
 }
 
 void MainWindow::showInternet(){
@@ -2299,6 +2308,8 @@ void MainWindow::showInternet(){
     asyncFilter("@@");
 
     ui->tabWidget->setTabText(1, tr("Internet") );
+    ui->showInternet_2->setChecked(true);
+    ui->showInternet_3->setChecked(true);
 }
 
 void MainWindow::showUpgradable(bool checked){
@@ -2355,6 +2366,8 @@ void MainWindow::showAllCat(){
     if(ui->tabWidget->tabText(1)!="All") asyncFilter("@@");
 
     ui->tabWidget->setTabText(1, tr("All") );
+    ui->showAllCat_2->setChecked(true);
+    ui->showAllCat_3->setChecked(true);
 }
 
 void MainWindow::showNotInstalled(bool checked){
