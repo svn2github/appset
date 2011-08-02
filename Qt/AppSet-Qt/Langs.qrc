@@ -15,5 +15,8 @@
         <file>appset-qt_zh_CN.qm</file>
         <file>appset-qt_pt.qm</file>
         <file>appset-qt_pt_BR.qm</file>
+        <file>appset-qt_ru.qm</file>
+        <file>appset-qt_eu.qm</file>
+        <file>appset-qt_be.qm</file>
     </qresource>
 </RCC>

@@ -15,5 +15,8 @@
         <file>appsettray-qt_zh_CN.qm</file>
         <file>appsettray-qt_pt.qm</file>
         <file>appsettray-qt_pt_BR.qm</file>
+        <file>appsettray-qt_ru.qm</file>
+        <file>appsettray-qt_eu.qm</file>
+        <file>appsettray-qt_be.qm</file>
     </qresource>
 </RCC>
