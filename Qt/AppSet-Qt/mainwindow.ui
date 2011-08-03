@@ -932,7 +932,7 @@
                     <enum>Qt::RightToLeft</enum>
                    </property>
                    <property name="text">
-                    <string>Expert Mode</string>
+                    <string>System files</string>
                    </property>
                   </widget>
                  </item>
@@ -1331,7 +1331,7 @@
                      <property name="currentIndex">
                       <number>0</number>
                      </property>
-                     <widget class="QWidget" name="extraInfoTabWidgetPage1" native="true">
+                     <widget class="QWidget" name="extraInfoTabWidgetPage1">
                       <attribute name="title">
                        <string>Homepage</string>
                       </attribute>

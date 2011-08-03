@@ -275,19 +275,22 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="935"/>
-        <source>Expert Mode</source>
-        <translation>专家模式</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1336"/>
-        <source>Homepage</source>
-        <oldsource>Package Homepage</oldsource>
+        <source>System files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1403"/>
         <source>Details</source>
-        <oldsource>Package Details</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Expert Mode</source>
+        <translation type="obsolete">专家模式</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1336"/>
+        <source>Homepage</source>
+        <oldsource>Package Homepage</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

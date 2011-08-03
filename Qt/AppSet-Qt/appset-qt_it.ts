@@ -275,20 +275,23 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="935"/>
+        <source>System files</source>
+        <translation>File di sistema</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1403"/>
+        <source>Details</source>
+        <translation>Dettagli</translation>
+    </message>
+    <message>
         <source>Expert Mode</source>
-        <translation>Modo Esperto</translation>
+        <translation type="obsolete">Modo Esperto</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1336"/>
         <source>Homepage</source>
         <oldsource>Package Homepage</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="1403"/>
-        <source>Details</source>
-        <oldsource>Package Details</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Homapage</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1468"/>
