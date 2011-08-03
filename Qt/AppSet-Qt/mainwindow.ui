@@ -842,6 +842,10 @@
                    <property name="text">
                     <string>Upgradable</string>
                    </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/pkgstatus/upgrade.png</normaloff>:/pkgstatus/upgrade.png</iconset>
+                   </property>
                    <property name="checkable">
                     <bool>true</bool>
                    </property>
@@ -858,6 +862,10 @@
                    <property name="text">
                     <string>Installed</string>
                    </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/pkgstatus/checked.png</normaloff>:/pkgstatus/checked.png</iconset>
+                   </property>
                    <property name="checkable">
                     <bool>true</bool>
                    </property>
@@ -873,6 +881,10 @@
                    </property>
                    <property name="text">
                     <string>Not Installed</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/pkgstatus/unchecked.png</normaloff>:/pkgstatus/unchecked.png</iconset>
                    </property>
                    <property name="checkable">
                     <bool>true</bool>
@@ -1447,7 +1459,6 @@
                </layout>
               </item>
              </layout>
-             <zorder>widgetTools</zorder>
             </widget>
             <widget class="QWidget" name="tabCommunity">
              <attribute name="icon">
