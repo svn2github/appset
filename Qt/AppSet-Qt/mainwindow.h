@@ -551,6 +551,8 @@ private:
     int interactions;
     QString optPath;
     bool maxShown;
+
+    int upgradables;
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);

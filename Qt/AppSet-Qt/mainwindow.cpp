@@ -1354,13 +1354,22 @@ void MainWindow::editCancel(){
 }
 
 void MainWindow::markUpgrades(){
+    loadingDialog->show();
+    loadingBar->setValue(0);
     int rows = ui->tableWidget->rowCount();
+    int count=0;
     for(int i=0;i<rows;++i){
         if(ui->tableWidget->item(i,0)->text()=="Upgradable"){            
             currentPacket=i;
             upgrade(true);
+
+            QCoreApplication::processEvents(QEventLoop::AllEvents, 33);
+            count++;
+            loadingBar->setValue(count*100/(upgradables?upgradables:count));
         }
     }
+    loadingBar->setValue(0);
+    loadingDialog->hide();
 
     if(enhanced){
         for(int i=0;i<appsList.count();++i){
@@ -2430,7 +2439,7 @@ void MainWindow::addRows(bool checked){
     tpack=ipack=upack=epack=0;
     local=false;
 
-    int rows=0,upgradables=0;
+    int rows=0;upgradables=0;
 
     ui->centralWidget->setDisabled(true);
     ui->mainToolBar->setDisabled(true);
