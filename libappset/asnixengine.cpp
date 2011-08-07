@@ -205,7 +205,7 @@ int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
     if(ignore_packages && ignore_packages->size()){
         holding=commands["tool_hold_upgrades"].find('*')==std::string::npos;
         if(!holding){
-            ignoring=commands["tool_ignore_upgrades"].find('*')==std::string::npos;
+            ignoring=isIgnoringUpgrades();
             if(ignoring){
                 tail+=" ";
                 tail+=commands["tool_ignore_upgrades"];
@@ -219,11 +219,13 @@ int AS::NIXEngine::upgrade(std::list<Package*>* ignore_packages){
             if(!first){
                 if(ignoring)tail += ",";
                 else tail += " ";
+            }else{
+                first=false;
             }
             std::string pname=(*it)->getName();
-            if(trr) pname=filterRepo(pname);
+            if(trr || ignoring) pname=filterRepo(pname);
             tail += pname;
-            first=false;
+
         }
 
         if(holding){

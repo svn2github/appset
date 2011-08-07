@@ -71,22 +71,24 @@ namespace AS{
         virtual int cleanCache();
 
         virtual std::string getNewsUrl(std::string lang);
-        virtual std::string getLocalExt(){return commands["local_ext"];};
+        virtual std::string getLocalExt(){return commands["local_ext"];}
 
-        virtual std::string getTool(){return sysinfo["tool"];};
-        virtual std::string getDistro(){return sysinfo["distribution"];};
+        virtual std::string getTool(){return sysinfo["tool"];}
+        virtual std::string getDistro(){return sysinfo["distribution"];}
 
         static int getBytesSize(std::string ssize);
 
+        virtual bool isIgnoringUpgrades(){ return commands["tool_ignore_upgrades"].find('*')==std::string::npos;}
+
         //Community stuff
-        virtual bool isCommunityEnabled(){return community_enabled;};
+        virtual bool isCommunityEnabled(){return community_enabled;}
         virtual std::list<Package*>* com_search(std::string pattern);
         virtual std::list<Package*>* com_info(std::string pattern);
         virtual int com_install(std::string pattern);
         virtual int com_remove(std::string pattern);
         virtual int com_upgrade(std::string pattern);
-        virtual std::string getCommunityName(){return community["community_name"];};
-        virtual std::string getCommunityToolName(){return commands["community_tool"];};
+        virtual std::string getCommunityName(){return community["community_name"];}
+        virtual std::string getCommunityToolName(){return commands["community_tool"];}
     };
 
 }

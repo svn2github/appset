@@ -454,13 +454,14 @@ void MainWindow::getPrivileges(){
     for(int i=0;i<rows;++i){
         if(ui->tableUpgraded->item(i,0)->text()=="Remove"){
             asfiler.setDevice(&rfile);
-        }else if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
+        }else if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()=="Upgradable"){
             asfiler.setDevice(&ufile);
         }else{
             asfiler.setDevice(&ifile);
         }
         asfiler << ui->tableUpgraded->item(i,1)->text() << "\t-\t" << ui->tableUpgraded->item(i,0)->text() << "\t-\t";
-        asfiler << ui->tableUpgraded->item(i,2)->text() << "\t-\t" << ui->tableUpgraded->item(i,3)->text() << "\t-\t" << ui->tableUpgraded->item(i,4)->text() << "\n";
+        asfiler << ui->tableUpgraded->item(i,2)->text() << "\t-\t" << ui->tableUpgraded->item(i,3)->text() << "\t-\t";
+        asfiler << ui->tableUpgraded->item(i,4)->text() << (((ui->tableUpgraded->item(i,0)->text()=="Upgradable")?QString("\t-\tH"):QString(""))+"\n");
     }
     ifile.close();
     rfile.close();
@@ -608,6 +609,9 @@ int MainWindow::privilegedExecuter(int argc, char *argv[]){
                 ui->tableUpgraded->setItem(i,2,new QTableWidgetItem(args.at(2)));
                 ui->tableUpgraded->setItem(i,3,new QTableWidgetItem(args.at(3)));
                 ui->tableUpgraded->setItem(i,4,new QTableWidgetItem(args.at(4)));
+                if(args.count()>5){
+                    ui->tableUpgraded->hideRow(i);
+                }
                 QProgressBar *prog=new QProgressBar();
                 prog->setValue(0);
                 ui->tableUpgraded->setCellWidget(i,5,prog);
@@ -1276,25 +1280,35 @@ void MainWindow::editConfirm(){
         }
     }else if(toU){
         std::list<Package*> *pupgr=new std::list<Package*>();
-        int rows = ui->tableUpgraded->rowCount();
-        /*for(int i=0;i<rows;++i){
-            if(ui->tableWidget->item(i,0)->text()=="Upgradable"){
-                p=new Package();
-                p->setName(ui->tableWidget->item(i,2)->text().trimmed().toAscii().data());
-                pupgr->insert(pupgr->end(),p);
-            }
-        }
-        rows=ui->tableUpgraded->rowCount();*/
-        for(int i=0;i<rows;++i){
-            if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
-                ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Upgrade"));
-                p=new Package();
-                p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
-                pupgr->insert(pupgr->end(),p);
 
-                uOutcome << ui->tableUpgraded->item(i,1)->toolTip().trimmed();
+        bool ignoring = ((AS::QTNIXEngine*)as)->isIgnoringUpgrades();
+        if(ignoring){
+            int rows = ui->tableUpgraded->rowCount();
+            for(int i=0;i<rows;++i){
+                //XXX change from unprivileged copying all and then hiding as superuser (tableUpgraded)
+                if(ui->tableUpgraded->item(i,0)->text()=="Upgradable"){
+                    p=new Package();
+                    p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
+                    pupgr->insert(pupgr->end(),p);
+                }else if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
+                    uOutcome << ui->tableUpgraded->item(i,1)->toolTip().trimmed();
+                }
+            }
+        }else{
+            int rows = ui->tableUpgraded->rowCount();
+            for(int i=0;i<rows;++i){
+                if(ui->tableUpgraded->item(i,0)->text()=="Upgrade"){
+                    ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/waiting.png"),"Upgrade"));
+                    p=new Package();
+                    p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
+                    pupgr->insert(pupgr->end(),p);
+
+                    uOutcome << ui->tableUpgraded->item(i,1)->toolTip().trimmed();
+                }
             }
         }
+
+        //XXX need to check for replacements
 
         if(pp!=9 && pp && pp!=11){
             asThread->setList(pupgr);
@@ -1926,6 +1940,7 @@ void MainWindow::confirm(){
     ui->tableUpgraded->setRowCount(0);
 
     int in=0,r=0,u=0;
+    bool ignoring = ((AS::QTNIXEngine*)as)->isIgnoringUpgrades();
     int rows=ui->tableWidget->rowCount();
     for(int i=0;i<rows;++i){
         if(autoupgrade && !isExpert && ui->tableWidget->item(i,0)->text()=="Upgradable" && ui->tableWidget->item(i,2)->text().contains(expert)){
@@ -1994,10 +2009,10 @@ void MainWindow::confirm(){
 
             //ui->tableUpgraded->setItem(in++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
             ui->tableUpgraded->setItem(in++,4,new QTableWidgetItem(QString::number(dsize/(float)1024)));
-        }else if(ui->tableWidget->item(i,0)->text()=="Upgrade"){
+        }else if(ui->tableWidget->item(i,0)->text()=="Upgrade" || (ui->tableWidget->item(i,0)->text()=="Upgradable" && ignoring)){
             ui->tableUpgraded->insertRow(u);            
             ui->tableUpgraded->setItem(u,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
-            ui->tableUpgraded->item(u,0)->setText("Upgrade");
+            ui->tableUpgraded->item(u,0)->setText(ui->tableWidget->item(i,0)->text());
             ui->tableUpgraded->setItem(u,1,new QTableWidgetItem(*ui->tableWidget->item(i,2)));
             ui->tableUpgraded->setItem(u,2,new QTableWidgetItem(ui->tableWidget->item(i,3)->text()+QString(" (")+ui->tableWidget->item(i,4)->text()+QString(")")));
 
@@ -2020,8 +2035,12 @@ void MainWindow::confirm(){
             ui->tableUpgraded->setItem(u,4,new QTableWidgetItem(deps.join(" ")));*/
 
             //ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
+
+            if(ui->tableWidget->item(i,0)->text()=="Upgradable") ui->tableUpgraded->hideRow(u);
+
             ui->tableUpgraded->setItem(u,3,new QTableWidgetItem(""));
-            ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));
+            ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));            
+
 
 //            ui->tableUpgraded->showRow(u++);
         }

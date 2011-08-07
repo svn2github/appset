@@ -1,5 +1,5 @@
 update=pacman -Sy
-upgrade=pacman -S --needed
+upgrade=pacman -Su --needed
 install=pacman -S --needed
 remove=pacman -Rsd --noconfirm
 clean_cache=pacman -Scc
@@ -8,7 +8,7 @@ query_local_byname=pacman -Q
 query_local_info_byname=pacman -Qi
 query_remote_byname=pacman -Ssq
 query_remote_info_byname=pacman -Si
-tool_ignore_upgrades=*
+tool_ignore_upgrades=--ignore
 tool_hold_upgrades=*
 tool_unhold_upgrades=*
 check_install_deps=pacman -Sp --print-format "%r/%n %s"
