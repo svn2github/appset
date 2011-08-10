@@ -123,7 +123,9 @@ void TrayIcon::checkRunning(){
         setToolTip(tr("AppSet-Qt is Running!"));
     }else{
         checkUps();
-    }    
+    }
+
+    timer2->stop();
 }
 
 bool compareRepos(Package *p1, Package *p2){
@@ -167,6 +169,8 @@ void TrayIcon::checkUps(){
                 Package *pkg = *it;
                 str+=QString("\n- ")+QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())+QString(" ")+QString(pkg->getRemoteVersion().c_str());
                 i--;
+
+                delete pkg;
             }
 
             if(i==0){
@@ -185,7 +189,7 @@ void TrayIcon::checkUps(){
             setIcon(QIcon(":general/appset.png"));
 
             setToolTip(tr("No updates available"));
-        }        
+        }
 
     }
 
