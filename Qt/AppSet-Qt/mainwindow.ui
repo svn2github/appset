@@ -2396,6 +2396,22 @@ p, li { white-space: pre-wrap; }
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>urlpre</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>extraInfoGroupBox</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>942</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>298</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>showGames()</slot>
