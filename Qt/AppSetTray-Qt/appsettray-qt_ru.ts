@@ -14,7 +14,7 @@
     <message>
         <location filename="trayicon.cpp" line="27"/>
         <source>Quit</source>
-        <translation>Выйт</translation>
+        <translation>Выход</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="57"/>

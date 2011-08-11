@@ -96,7 +96,7 @@
     <message>
         <location filename="repoeditor.ui" line="27"/>
         <source>Available Repositories</source>
-        <translation>Доуступные репозитории</translation>
+        <translation>Доступные репозитории</translation>
     </message>
     <message>
         <location filename="repoeditor.ui" line="72"/>

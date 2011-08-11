@@ -9,7 +9,7 @@
     <message>
         <location filename="about.ui" line="153"/>
         <source>Version:</source>
-        <translation>Versão:</translation>
+        <translation>Versão: </translation>
     </message>
     <message>
         <location filename="about.ui" line="375"/>
@@ -264,7 +264,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="913"/>
         <source>Extra Info</source>
-        <translation>Informações Adicionais</translation>
+        <translation>Info. Extras</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="929"/>
@@ -274,18 +274,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="935"/>
         <source>System files</source>
-        <translation type="unfinished"/>
+        <translation>Pacotes do Sistema</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1403"/>
         <source>Details</source>
-        <translation type="unfinished"/>
+        <translation>Detalhes</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1336"/>
         <source>Homepage</source>
         <oldsource>Package Homepage</oldsource>
-        <translation type="unfinished"/>
+        <translation>Site</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1468"/>
@@ -476,19 +476,19 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="403"/>
         <location filename="mainwindow.cpp" line="2770"/>
         <source>Clean cache</source>
-        <translation>Limpar o cache</translation>
+        <translation>Limpar cache</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="146"/>
         <location filename="mainwindow.cpp" line="2764"/>
         <source>Mark all upgrades</source>
-        <translation>Marcar todas as atualizações</translation>
+        <translation>Marcar atualizações</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="149"/>
         <location filename="mainwindow.cpp" line="695"/>
         <source>Open local package</source>
-        <translation>Abrir um pacote local</translation>
+        <translation>Abrir pacote local</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="152"/>
@@ -513,12 +513,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="164"/>
         <source>Report a bug</source>
-        <translation>Reportar um bug</translation>
+        <translation>Reportar bug</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="165"/>
         <source>Request a feature</source>
-        <translation>Solicitar um recurso</translation>
+        <translation>Solicitar recurso</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="211"/>

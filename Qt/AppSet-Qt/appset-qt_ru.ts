@@ -327,7 +327,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="1806"/>
         <source>Backend Output:</source>
-        <translation>Backend выход:</translation>
+        <translation>Вывод бакэнда:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1881"/>
@@ -360,7 +360,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="1987"/>
         <source>Backend&apos;s output:</source>
-        <translation>Backend&apos;s выход:</translation>
+        <translation>Вывод бакэндов:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2014"/>
@@ -376,12 +376,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2039"/>
         <source>Wait for the end of operations in order to continue ...</source>
-        <translation>Для продолжения работы, дождитесьзавершения операции...</translation>
+        <translation>Для продолжения работы, дождитесь завершения операции...</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2066"/>
         <source>Read the backend&apos;s output and click Continue</source>
-        <translation>Прочитайте вывод бэкенда и нажми Продолжить</translation>
+        <translation>Прочтите вывод бэкенда и нажми Продолжить</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2089"/>
@@ -501,7 +501,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="163"/>
         <source>About</source>
-        <translation>О</translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="164"/>
@@ -708,12 +708,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="2203"/>
         <source>UPDATING DB: </source>
-        <translation>ОБНОВЛЕНЕЕ БД:</translation>
+        <translation>ОБНОВЛЕНИЕ БД:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2215"/>
         <source>DB UPDATED!</source>
-        <translation>БД ООБНОВЛЕНА:</translation>
+        <translation>БД ОБНОВЛЕНА:</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2444"/>
