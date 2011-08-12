@@ -454,7 +454,7 @@ void MainWindow::getPrivileges(){
     for(int i=0;i<rows;++i){
         if(ui->tableUpgraded->item(i,0)->text()=="Remove"){
             asfiler.setDevice(&rfile);
-        }else if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()=="Upgradable"){
+        }else if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || (ui->tableUpgraded->item(i,0)->text()=="Upgradable" && toU)){
             asfiler.setDevice(&ufile);
         }else{
             asfiler.setDevice(&ifile);
@@ -1110,7 +1110,7 @@ void MainWindow::opFinished(){
 
             if(!statusI){
                 for(int i=0;i<rows;++i){
-                    if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()==QString("Remove")) continue;
+                    if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()==QString("Remove") || ui->tableUpgraded->item(i,0)->text()=="Upgradable") continue;
                     ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/success.png"),"Install"));
                 }
                 delete l;
@@ -1261,7 +1261,7 @@ void MainWindow::editConfirm(){
     }else if(toI){
         std::list<Package*> *pinst=new std::list<Package*>();
         for(int i=0;i<rows;++i){
-            if(ui->tableUpgraded->item(i,0)->text()==QString("Remove") || ui->tableUpgraded->item(i,0)->text()=="Upgrade") continue;
+            if(ui->tableUpgraded->item(i,0)->text()==QString("Remove") || ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()=="Upgradable") continue;
             p=new Package();
             if(!local)p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
             else p->setName(ui->tableUpgraded->item(i,2)->text().trimmed().toAscii().data());
@@ -1284,8 +1284,7 @@ void MainWindow::editConfirm(){
         bool ignoring = ((AS::QTNIXEngine*)as)->isIgnoringUpgrades();
         if(ignoring){
             int rows = ui->tableUpgraded->rowCount();
-            for(int i=0;i<rows;++i){
-                //XXX change from unprivileged copying all and then hiding as superuser (tableUpgraded)
+            for(int i=0;i<rows;++i){                
                 if(ui->tableUpgraded->item(i,0)->text()=="Upgradable"){
                     p=new Package();
                     p->setName(ui->tableUpgraded->item(i,1)->text().trimmed().toAscii().data());
@@ -2010,6 +2009,7 @@ void MainWindow::confirm(){
             //ui->tableUpgraded->setItem(in++,4,new QTableWidgetItem(*ui->tableWidget->item(i,4)));
             ui->tableUpgraded->setItem(in++,4,new QTableWidgetItem(QString::number(dsize/(float)1024)));
         }else if(ui->tableWidget->item(i,0)->text()=="Upgrade" || (ui->tableWidget->item(i,0)->text()=="Upgradable" && ignoring)){
+            //XXX We have to check if the user wants an upgrade before proceding
             ui->tableUpgraded->insertRow(u);            
             ui->tableUpgraded->setItem(u,0,new QTableWidgetItem(*ui->tableWidget->item(i,0)));
             ui->tableUpgraded->item(u,0)->setText(ui->tableWidget->item(i,0)->text());
@@ -2039,7 +2039,9 @@ void MainWindow::confirm(){
             if(ui->tableWidget->item(i,0)->text()=="Upgradable") ui->tableUpgraded->hideRow(u);
 
             ui->tableUpgraded->setItem(u,3,new QTableWidgetItem(""));
-            ui->tableUpgraded->setItem(u++,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));            
+            ui->tableUpgraded->setItem(u,4,new QTableWidgetItem(QString::number(ui->tableWidget->item(i,7)->text().toFloat()/1024)));
+
+            if(ui->tableWidget->item(i,0)->text()=="Upgrade") u++;
 
 
 //            ui->tableUpgraded->showRow(u++);
