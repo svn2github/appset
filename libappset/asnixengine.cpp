@@ -342,8 +342,8 @@ namespace AS {
                         //version = cstr.substr(match.rm_so, match.rm_eo-match.rm_so);
                         version = cstr.substr(cstr.find_first_of(' ')+1);
 
-                        pkg->setName(pname);
-                        pkg->setRepository(repo);
+                        pkg->setName(pname.c_str());
+                        pkg->setRepository(repo.c_str());
 
                         if(version.find(' ')!=std::string::npos){
                             int converted = AS::NIXEngine::getBytesSize(version);
@@ -354,8 +354,8 @@ namespace AS {
                             version=versionstream.str();
                         }
 
-                        if(remote) pkg->setRemoteVersion(version);
-                        else pkg->setLocalVersion(version);
+                        if(remote) pkg->setRemoteVersion(version.c_str());
+                        else pkg->setLocalVersion(version.c_str());
 
                         pkgList->insert(pkgList->end(), pkg);
                         return;
@@ -363,7 +363,10 @@ namespace AS {
                 }                
             }
 
-            delete pkg;
+            cstr.clear();
+            pname.clear();
+            version.clear();
+            repo.clear();
         }
     };
 
@@ -437,10 +440,10 @@ namespace AS {
 
                 if(!firstName){
                     AS::Package *pkg = new AS::Package(!remote);
-                    pkg->setRepository(value);
+                    pkg->setRepository(value.c_str());
                     pkgList->insert(pkgList->end(), pkg);
                 }else{
-                    (*(pkgList->rbegin()))->setRepository(value);
+                    (*(pkgList->rbegin()))->setRepository(value.c_str());
                 }
             }else if(discard){
                 return;
@@ -448,33 +451,33 @@ namespace AS {
                 value = cstr.substr(match.rm_eo);
                 if(!remote || pkgList->empty() || firstName){
                     AS::Package *pkg = new AS::Package(!remote);
-                    pkg->setName(value);
+                    pkg->setName(value.c_str());
                     pkgList->insert(pkgList->end(), pkg);
                     firstName=true;
                 }else
-                    (*(pkgList->rbegin()))->setName(value);
+                    (*(pkgList->rbegin()))->setName(value.c_str());
             }else if(!regexec(&pkg_version, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
-                if(remote)(*(pkgList->rbegin()))->setRemoteVersion(value);
-                else (*(pkgList->rbegin()))->setLocalVersion(value);
+                if(remote)(*(pkgList->rbegin()))->setRemoteVersion(value.c_str());
+                else (*(pkgList->rbegin()))->setLocalVersion(value.c_str());
             }else if(!regexec(&pkg_group, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
-                (*(pkgList->rbegin()))->setGroup(value);
+                (*(pkgList->rbegin()))->setGroup(value.c_str());
             }else if(!regexec(&pkg_license, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
-                (*(pkgList->rbegin()))->setLicense(value);
+                (*(pkgList->rbegin()))->setLicense(value.c_str());
             }else if(!regexec(&pkg_description, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
-                (*(pkgList->rbegin()))->setDescription(value);
+                (*(pkgList->rbegin()))->setDescription(value.c_str());
             }else if(!regexec(&pkg_url, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
-                (*(pkgList->rbegin()))->setURL(value);
+                (*(pkgList->rbegin()))->setURL(value.c_str());
             }else if(!regexec(&pkg_size, content, 1, &match, 0)){
                 value = cstr.substr(match.rm_eo);
                 int converted=0;
 
                 if(value.find(' ')!=std::string::npos){
-                    converted = AS::NIXEngine::getBytesSize(value);
+                    converted = AS::NIXEngine::getBytesSize(value.c_str());
                 }else{
                     int ksize=-1;
                     for(int j=0;ksize==-1 && j<((unsigned)value.length());++j){
@@ -564,7 +567,7 @@ std::list<AS::Package*>* AS::NIXEngine::checkDeps(AS::Package *package, bool ins
 
     bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
     if(trr){
-        if(package)package->setName(filterRepo(package->getName()));
+        if(package)package->setName(filterRepo(package->getName()).c_str());
     }
     int status = upgrade?execQuery(ret, as_UPGRADE_DEPS, package, install):execQuery(ret, as_QUERY_DEPS, package, install, local);
 
@@ -581,7 +584,7 @@ std::list<AS::Package*>* AS::NIXEngine::queryLocal(unsigned flags, AS::Package *
 
     bool trr=commands["tool_rm_repo"].find('*')==std::string::npos;
     if(trr){
-        if(package)package->setName(filterRepo(package->getName()));
+        if(package)package->setName(filterRepo(package->getName()).c_str());
     }
     execQuery(ret, flags, package, false);
 
@@ -616,29 +619,29 @@ std::list<AS::Package*>* AS::NIXEngine::queryRemote(unsigned flags, AS::Package 
             case 0:
                 pkg = new AS::Package();
                 ret->insert(ret->end(),pkg);
-                pkg->setName(buffer);
+                pkg->setName(buffer.c_str());
                 break;
             case 1:
-                pkg->setLocalVersion(buffer);
+                pkg->setLocalVersion(buffer.c_str());
                 break;
             case 2:
-                pkg->setRemoteVersion(buffer);
+                pkg->setRemoteVersion(buffer.c_str());
                 break;
             case 3:
                 pkg->setSize(atoi(buffer.c_str()));
                 break;
             case 4:
-                pkg->setDescription(buffer);
+                pkg->setDescription(buffer.c_str());
                 pkg->setQueried();
                 break;
             case 5:
-                pkg->setURL(buffer);;
+                pkg->setURL(buffer.c_str());
                 break;
             case 6:
                 pkg->setInstalled(buffer.compare("false"));
                 break;
             case 7:
-                pkg->setRepository(buffer);
+                pkg->setRepository(buffer.c_str());
             }
             part = (part+1)%8;
         }
@@ -822,9 +825,9 @@ public:
                 if(!regexec(&pkg_version, content, 1, &match, 0)){
                     version = cstr.substr(match.rm_so, match.rm_eo-match.rm_so);
 
-                    pkg->setName(pname);
-                    pkg->setRepository(repo);
-                    pkg->setRemoteVersion(version);
+                    pkg->setName(pname.c_str());
+                    pkg->setRepository(repo.c_str());
+                    pkg->setRemoteVersion(version.c_str());
 
                     pkgList->insert(pkgList->end(), pkg);
                     descr=true;
@@ -832,8 +835,6 @@ public:
                 }
             }
         }
-
-        delete pkg;
     }
 };
 

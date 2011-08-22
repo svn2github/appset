@@ -274,7 +274,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="935"/>
         <source>System files</source>
-        <translation>Pacotes do Sistema</translation>
+        <translation>Pac. do Sistema</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1403"/>

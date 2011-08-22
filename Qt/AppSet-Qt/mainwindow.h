@@ -403,15 +403,7 @@ public slots:
         if(!preload && !(pp>0 && pp!=9 && pp!=11)) addRows();
     }
 
-    void hidePriv(){
-        if(!inModal){
-            QFile::remove("/tmp/asshown");
-            oldgeom=geometry();
-            hide();
-
-            if(!preload) clearPackagesList();
-        }
-    }
+    void hidePriv();
 
     void clearPackagesList();
 

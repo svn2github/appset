@@ -22,7 +22,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define NO_PKG_INFO_STR "NO INFO"
 
 AS::Package::Package(bool installed){
-    name = description = license = url = group = localVersion = remoteVersion = repository = std::string(NO_PKG_INFO_STR);
+    name = new std::string(NO_PKG_INFO_STR);
+    description = new std::string(NO_PKG_INFO_STR);
+    license = new std::string(NO_PKG_INFO_STR);
+    url = new std::string(NO_PKG_INFO_STR);
+    group = new std::string(NO_PKG_INFO_STR);
+    localVersion = new std::string(NO_PKG_INFO_STR);
+    remoteVersion = new std::string(NO_PKG_INFO_STR);
+    repository = new std::string(NO_PKG_INFO_STR);
 
     this->installed = installed;
 
@@ -31,16 +38,16 @@ AS::Package::Package(bool installed){
     ksize = 0;
 }
 
-
-void AS::Package::setQueryResult(std::string description, std::string url, std::string group, std::string localVersion, std::string remoteVersion, std::string repository){
-    setDescription(description);
-    setURL(url);
-    setGroup(group);
-    setLocalVersion(localVersion);
-    setRemoteVersion(remoteVersion);
-    setRepository(repository);
-
-    queried = true;
+using namespace std;
+AS::Package::~Package(){
+    delete name;
+    delete description;
+    delete license;
+    delete url;
+    delete group;
+    delete localVersion;
+    delete remoteVersion;
+    delete repository;
 }
 
 #undef NO_PKG_INFO_STR

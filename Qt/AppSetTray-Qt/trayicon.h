@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <QTimer>
 
+#include <QProcess>
+
 using namespace AS;
 
 class TrayIcon : public QSystemTrayIcon
@@ -47,6 +49,7 @@ public slots:
     void checkUps();
     void checkRunning();
     void manualCheckUps();
+    void manualCheckFinished(int s);
 
     void quitter();
 
@@ -63,6 +66,8 @@ private:
     bool running;
 
     bool manualCheck;
+
+    QProcess *priv;
 };
 
 #endif // TRAYICON_H

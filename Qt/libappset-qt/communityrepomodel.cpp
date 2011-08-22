@@ -144,7 +144,7 @@ void CommunityRepoModel::mergeInstalled(){
                 for(std::list<AS::Package*>::iterator it2=ipkgs->begin();it2!=ipkgs->end();it2++){
                     if(QString(pkgs->at(i)->getName().c_str())==QString((*it2)->getName().c_str())){
                         pkgs->at(i)->setInstalled(true);
-                        pkgs->at(i)->setLocalVersion((*it2)->getLocalVersion());
+                        pkgs->at(i)->setLocalVersion((*it2)->getLocalVersion().c_str());
 
                         emit dataChanged(createIndex(i,0),createIndex(i,3));
                     }

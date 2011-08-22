@@ -114,7 +114,7 @@ int main(){
 
                     if(pkg2->getName().compare(pkg->getName()) == 0){
                         found = true;
-                        pkg2->setLocalVersion(pkg->getLocalVersion());
+                        pkg2->setLocalVersion(pkg->getLocalVersion().c_str());
                         pkg2->setInstalled(true);
                     }
                     it2++;

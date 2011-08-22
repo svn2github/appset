@@ -20,6 +20,8 @@ TrayIcon::TrayIcon(QObject *parent) :
 
     manualCheck = false;
 
+    priv=0;
+
     QMenu *trayMenu = new QMenu();
 
     launch=trayMenu->addAction(QIcon(":general/appset.png"),tr("Show/Hide AppSet"));
@@ -41,17 +43,17 @@ TrayIcon::TrayIcon(QObject *parent) :
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf","/tmp/astray.tmp",true))){
         exit(1);
     }
-    //system("appset-launch.sh --hidden &");
 #endif
 
-    timer = new QTimer();
+    /*timer = new QTimer();
     timer->setSingleShot(true);
-    timer->start(1500);
+    timer->start(1500);*/
 
     timer2 = new QTimer();
+    timer2->setSingleShot(true);
     timer2->start(3000);
 
-    connect(timer,SIGNAL(timeout()),SLOT(checkUps()));
+    //connect(timer,SIGNAL(timeout()),SLOT(checkUps()));
     connect(timer2,SIGNAL(timeout()),SLOT(checkRunning()));
 
     setToolTip(tr("Waiting helper..."));
@@ -59,28 +61,28 @@ TrayIcon::TrayIcon(QObject *parent) :
     running=false;
 }
 
-#include <QProcess>
 void TrayIcon::manualCheckUps(){
     check->setDisabled(true);
     timer2->stop();
-    timer2->setInterval(100);
     setIcon(QIcon(":pkgstatus/working.png"));
     setToolTip(tr("AppSet-Qt is Running!"));
     manualCheck=true;
-    //if(!running) showMessage(tr("Checking updates"),tr("Waiting for updates from helper daemon..."),QSystemTrayIcon::Information,6000);
     QCoreApplication::processEvents(QEventLoop::AllEvents,500);
     QStringList args;
     args << "--update";
-    QProcess *priv=new QProcess(this);
-    priv->start("appset-launch.sh",args);    
-    connect(priv,SIGNAL(finished(int)),timer2,SLOT(start()));
-    //checkUps();
+    priv=new QProcess(this);
+    priv->start("appset-launch.sh",args);
+    connect(priv,SIGNAL(finished(int)),this,SLOT(manualCheckFinished(int)));
+}
+
+void TrayIcon::manualCheckFinished(int s){
+    timer2->setSingleShot(true);
+    timer2->start(100);
 }
 
 #include <QFile>
 #include <QTextStream>
 void TrayIcon::quitter(){
-    //XXX check running instances and close them
     checkRunning();
     QMessageBox reqMes;
     int res=QMessageBox::Yes;
@@ -106,6 +108,11 @@ void TrayIcon::quitter(){
 }
 
 void TrayIcon::checkRunning(){
+    if(priv){
+        delete priv;
+        priv=0;
+    }
+
     int status = 0;
 
 #ifdef unix
@@ -114,7 +121,7 @@ void TrayIcon::checkRunning(){
 
     running = status!=0?false:true;
 
-    if(QFile::exists("/tmp/asshown") || status==0)check->setDisabled(true);
+    if(QFile::exists("/tmp/asshown") || status==0) check->setDisabled(true);
     else check->setDisabled(false);
 
     if(status == 0){
@@ -125,7 +132,7 @@ void TrayIcon::checkRunning(){
         checkUps();
     }
 
-    timer2->stop();
+    timer2->start(3000);
 }
 
 bool compareRepos(Package *p1, Package *p2){
@@ -136,26 +143,6 @@ bool compareRepos(Package *p1, Package *p2){
 void TrayIcon::checkUps(){
     bool running = this->running;
     if(!running){
-        //list<Package*> *pkgs = as->queryLocal(as_QUERY_UPGRADABLE);
-#ifdef unix
-        /*ofstream upreq;
-        upreq.open("/tmp/asupreq.tmp");
-        upreq.write("upreq",6);
-        upreq.close();
-        int tried=0;
-        struct stat s;
-        while(stat("/tmp/asupreq.tmp",&s)==0 && tried<6){
-            QCoreApplication::processEvents(QEventLoop::AllEvents,500);
-            sleep(5);
-            tried++;
-        }
-        tried=0;
-        while(stat("/tmp/ashelper.out",&s) && tried<6){
-            QCoreApplication::processEvents(QEventLoop::AllEvents,500);
-            sleep(5);
-            tried++;
-        }*/
-#endif
         Package *pp=new Package(true);
         pp->setName("");
         std::list<Package*> *pkgs = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
@@ -165,12 +152,14 @@ void TrayIcon::checkUps(){
         if(pkgs && pkgs->size()){
             QString str=pkgs->size()>1?tr("There are updates for:"):tr("There is an update for:");
             int i=30;
-            for(list<Package*>::iterator it=pkgs->begin();i>0 && it!=pkgs->end();it++){
+            for(list<Package*>::iterator it=pkgs->begin();it!=pkgs->end();it++){
                 Package *pkg = *it;
-                str+=QString("\n- ")+QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())+QString(" ")+QString(pkg->getRemoteVersion().c_str());
+                if(i>0){
+                    str+=QString("\n- ")+QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())+QString(" ")+QString(pkg->getRemoteVersion().c_str());
+                }
                 i--;
 
-                delete pkg;
+                delete (*it);
             }
 
             if(i==0){
@@ -183,13 +172,16 @@ void TrayIcon::checkUps(){
             if(manualCheck)
                 showMessage(QString::number(pkgs->size())+(pkgs->size()>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information);
             setIcon(QIcon(":pkgstatus/upgrade.png"));
+
+            pkgs->clear();
+            delete pkgs;
         }else{
             if(manualCheck)
                 showMessage("AppSetTray-Qt",tr("No updates available"),QSystemTrayIcon::Information,3000);
             setIcon(QIcon(":general/appset.png"));
 
             setToolTip(tr("No updates available"));
-        }
+        }        
 
     }
 
@@ -200,32 +192,10 @@ void TrayIcon::checkUps(){
         aspriv << "update\n";
         pfile.close();
         manualCheck=false;
-    }else{
-        timer->setSingleShot(true);
-        ifstream conf;
-        string conf_buffer;
-        int updelay=60*60*1000;
-    #ifdef unix
-        conf.open("/etc/appset/appset-qt.conf", ifstream::in);
-        if(conf.is_open()){
-            int i=0;
-            while(i!=4 && conf.good()){
-                getline (conf,conf_buffer);
-                i++;
-            }
-            updelay = atoi(conf_buffer.data())*60*1000;
-        }
-        conf.close();
-    #endif
-        timer->start(running?3000:updelay);
     }
 }
 
 void TrayIcon::launchAS(){    
-    /*checkRunning();
-    if(!running)
-        showMessage(tr("Launching AppSet-Qt"),tr("Wait..."),QSystemTrayIcon::Information,1000);*/
-
 #ifdef unix
     system("appset-launch.sh &");
 #endif

@@ -26,14 +26,14 @@ namespace AS{
 
     class Package {
     protected:
-        std::string name;
-        std::string description;
-        std::string license;
-        std::string url;
-        std::string group;
-        std::string localVersion;
-        std::string remoteVersion;
-        std::string repository;
+        std::string *name;
+        std::string *description;
+        std::string *license;
+        std::string *url;
+        std::string *group;
+        std::string *localVersion;
+        std::string *remoteVersion;
+        std::string *repository;
 
         int ksize;
 
@@ -42,34 +42,33 @@ namespace AS{
         bool queried;   //Complete info queried
     public:
         Package(bool installed=false);
+        ~Package();
 
         //GETTERS
-        std::string getName(){return name;}
-        std::string getDescription(){return description;}
-        std::string getLicense(){return license;}
-        std::string getURL(){return url;}
-        std::string getGroup(){return group;}
-        std::string getLocalVersion(){return localVersion;}
-        std::string getRemoteVersion(){return remoteVersion;}
-        std::string getRepository(){return repository;}
+        std::string getName(){return *name;}
+        std::string getDescription(){return *description;}
+        std::string getLicense(){return *license;}
+        std::string getURL(){return *url;}
+        std::string getGroup(){return *group;}
+        std::string getLocalVersion(){return *localVersion;}
+        std::string getRemoteVersion(){return *remoteVersion;}
+        std::string getRepository(){return *repository;}
         int getSize(){return ksize;} //In Kbyte
         bool isInstalled(){return installed;}
         bool isQueried(){return queried;}
 
         //SETTERS
-        void setName(std::string name){this->name=name;}
-        void setDescription(std::string description){this->description=description;}
-        void setLicense(std::string license){this->license=license;}
-        void setURL(std::string url){this->url=url;}
-        void setGroup(std::string group){this->group=group;}
-        void setLocalVersion(std::string version){this->localVersion=version;}
-        void setRemoteVersion(std::string version){this->remoteVersion=version;}
-        void setRepository(std::string repository){this->repository=repository;}
+        void setName(const char *name){this->name->assign(name);}
+        void setDescription(const char *description){this->description->assign(description);}
+        void setLicense(const char *license){this->license->assign(license);}
+        void setURL(const char *url){this->url->assign(url);}
+        void setGroup(const char *group){this->group->assign(group);}
+        void setLocalVersion(const char *version){this->localVersion->assign(version);}
+        void setRemoteVersion(const char *version){this->remoteVersion->assign(version);}
+        void setRepository(const char *repository){this->repository->assign(repository);}
         void setInstalled(bool installed=true){this->installed=installed;}
         void setQueried(bool queried=true){this->queried=queried;}
         void setSize(int ks){ksize=ks;}
-
-        void setQueryResult(std::string description=0, std::string url=0, std::string group=0, std::string localVersion=0, std::string remoteVersion=0, std::string repository=0);
 
     };
 

@@ -41,7 +41,7 @@ using namespace AS;
 #include <QWidgetList>
 #include <QDir>
 #include <QFile>
-
+#include <QWebHistory>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow), currentReply(0){
@@ -54,6 +54,9 @@ MainWindow::MainWindow(QWidget *parent) :
     merging = true;
 
     local=false;
+
+    ui->webView->history()->setMaximumItemCount(0);
+    ui->webView_2->history()->setMaximumItemCount(0);
 
     pcomp=0;
 
@@ -795,6 +798,20 @@ void MainWindow::showOptions(){
     }
 
     inModal=false;
+}
+
+#include <QWebSettings>
+
+void MainWindow::hidePriv(){
+    if(!inModal){
+        QFile::remove("/tmp/asshown");
+        oldgeom=geometry();
+        hide();
+
+        if(!preload) clearPackagesList();
+
+        QWebSettings::clearMemoryCaches();
+    }
 }
 
 //RSS

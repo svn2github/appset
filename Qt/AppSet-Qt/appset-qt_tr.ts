@@ -274,18 +274,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="935"/>
         <source>System files</source>
-        <translation type="unfinished"/>
+        <translation>Sistem dosyaları</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1403"/>
         <source>Details</source>
-        <translation type="unfinished"/>
+        <translation>Ayrıntılar</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1336"/>
         <source>Homepage</source>
         <oldsource>Package Homepage</oldsource>
-        <translation type="unfinished"/>
+        <translation>Anasayfa</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1468"/>
