@@ -38,8 +38,38 @@ AS::Package::Package(bool installed){
     ksize = 0;
 }
 
-using namespace std;
-AS::Package::~Package(){
+AS::Package::Package(const Package &p){
+    copy(p);
+}
+
+AS::Package& AS::Package::operator=(const AS::Package &p){
+    //ANTIALIASING
+    if(this==&p)return *this;
+
+    clean();
+    copy(p);
+
+    return *this;
+}
+
+void AS::Package::copy(const Package &p){
+    name = new std::string(*p.name);
+    description = new std::string(*p.description);
+    license = new std::string(*p.license);
+    url = new std::string(*p.url);
+    group = new std::string(*p.group);
+    localVersion = new std::string(*p.localVersion);
+    remoteVersion= new std::string(*p.remoteVersion);
+    repository= new std::string(*p.repository);
+
+    installed = p.installed;
+
+    queried=p.queried;
+
+    ksize=p.ksize;
+}
+
+void AS::Package::clean(){
     delete name;
     delete description;
     delete license;
@@ -48,6 +78,11 @@ AS::Package::~Package(){
     delete localVersion;
     delete remoteVersion;
     delete repository;
+}
+
+using namespace std;
+AS::Package::~Package(){
+    clean();
 }
 
 #undef NO_PKG_INFO_STR

@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es_ES" version="2.0">
 <context>
     <name>About</name>
     <message>
@@ -274,18 +274,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="935"/>
         <source>System files</source>
-        <translation type="unfinished"/>
+        <translation>Paquetes del sistema</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1403"/>
         <source>Details</source>
-        <translation type="unfinished"/>
+        <translation>Detalles</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1336"/>
         <source>Homepage</source>
         <oldsource>Package Homepage</oldsource>
-        <translation type="unfinished"/>
+        <translation>Página web</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1468"/>
@@ -853,7 +853,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="155"/>
         <source>Auto select system files for upgrade (disabled in expert mode)</source>
-        <translation>Auto seleccionar ficheros del sistema para la actualización (desactivado en modo experto)</translation>
+        <translation>Auto seleccionar paquetes del sistema para la actualización (desactivado en modo experto)</translation>
     </message>
     <message>
         <location filename="options.ui" line="172"/>
@@ -878,12 +878,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Automatic</source>
-        <translation>Automático</translation>
+        <translation>Automática</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Semi-Automatic</source>
-        <translation>Semi-Automático</translation>
+        <translation>Semi-Automática</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>

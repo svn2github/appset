@@ -40,9 +40,15 @@ namespace AS{
         bool installed;
 
         bool queried;   //Complete info queried
+
+        void clean();
+        void copy(const Package &p);
     public:
         Package(bool installed=false);
+        Package(const Package &p);
         ~Package();
+
+        Package& operator=(const Package &p);
 
         //GETTERS
         std::string getName(){return *name;}

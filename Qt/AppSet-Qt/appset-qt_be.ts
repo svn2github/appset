@@ -4,27 +4,27 @@
     <message>
         <location filename="about.ui" line="20"/>
         <source>About AppSet-Qt</source>
-        <translation type="unfinished"/>
+        <translation>Аб AppSet-Qt</translation>
     </message>
     <message>
         <location filename="about.ui" line="153"/>
         <source>Version:</source>
-        <translation type="unfinished"/>
+        <translation>Версія:</translation>
     </message>
     <message>
         <location filename="about.ui" line="375"/>
         <source>A special thanks goes to the Chakra-project team for their suggestions and translations.</source>
-        <translation type="unfinished"/>
+        <translation>Асаблівая падзяка камандзе Chakra-project за іх прапановы і пераклады.</translation>
     </message>
     <message>
         <location filename="about.ui" line="193"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Аб</translation>
     </message>
     <message>
         <location filename="about.ui" line="215"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
-        <translation type="unfinished"/>
+        <translation>Перадавыя і багатыя магчымасцямі Frontend мэнэджар пакетаў</translation>
     </message>
     <message>
         <location filename="about.ui" line="232"/>
