@@ -59,4 +59,5 @@ TRANSLATIONS = appsetrepoeditor-qt_it.ts \
     appsetrepoeditor-qt_eu.ts \
     appsetrepoeditor-qt_ru.ts \
     appsetrepoeditor-qt_be.ts \
+    appsetrepoeditor-qt_hu.ts \
     appsetrepoeditor-qt_*.ts

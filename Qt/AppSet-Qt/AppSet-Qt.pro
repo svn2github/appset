@@ -71,4 +71,5 @@ TRANSLATIONS = appset-qt_it.ts \
     appset-qt_eu.ts \
     appset-qt_ru.ts \
     appset-qt_be.ts \
+    appset-qt_hu.ts \
     appset-qt_*.ts

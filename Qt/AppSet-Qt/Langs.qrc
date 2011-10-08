@@ -18,5 +18,6 @@
         <file>appset-qt_ru.qm</file>
         <file>appset-qt_eu.qm</file>
         <file>appset-qt_be.qm</file>
+        <file>appset-qt_hu.qm</file>
     </qresource>
 </RCC>

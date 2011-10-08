@@ -1,74 +1,76 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ca" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="ca">
 <context>
     <name>TrayIcon</name>
     <message>
-        <location filename="trayicon.cpp" line="25"/>
+        <location filename="trayicon.cpp" line="27"/>
         <source>Show/Hide AppSet</source>
         <translation>Mostra/oculta l&apos;AppSet</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="26"/>
+        <location filename="trayicon.cpp" line="28"/>
         <source>Check for updates NOW!</source>
         <translation>Cerca actualitzacions ara!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="27"/>
+        <location filename="trayicon.cpp" line="29"/>
         <source>Quit</source>
         <translation>Abandona</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="57"/>
+        <location filename="trayicon.cpp" line="59"/>
         <source>Waiting helper...</source>
         <translation>S&apos;està esperant l&apos;assistent...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="88"/>
+        <location filename="trayicon.cpp" line="90"/>
         <source>There is an instance of AppSet which is running some privileged operations.</source>
         <translation>Hi ha una instància de l&apos;AppSet executant-se amb algunes operacions privilegiades.</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="89"/>
+        <location filename="trayicon.cpp" line="91"/>
         <source>Do you want to quit anyway (not recommended)?</source>
         <translation>Voleu abandonar igualment (no recomanat)?</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="68"/>
-        <location filename="trayicon.cpp" line="123"/>
+        <location filename="trayicon.cpp" line="130"/>
         <source>AppSet-Qt is Running!</source>
         <translation>L&apos;AppSet-Qt s&apos;està executant!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="164"/>
+        <location filename="trayicon.cpp" line="153"/>
         <source>There are updates for:</source>
         <translation>Hi ha actualitzacions per:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="164"/>
+        <location filename="trayicon.cpp" line="153"/>
         <source>There is an update for:</source>
         <translation>Hi ha una actualització per:</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="174"/>
+        <location filename="trayicon.cpp" line="167"/>
         <source>
 And others...</source>
         <translation>
 I altres...</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="177"/>
-        <location filename="trayicon.cpp" line="180"/>
+        <location filename="trayicon.cpp" line="170"/>
+        <location filename="trayicon.cpp" line="173"/>
         <source> updates available!</source>
         <translation> actualitzacions disponibles!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="177"/>
-        <location filename="trayicon.cpp" line="180"/>
+        <location filename="trayicon.cpp" line="170"/>
+        <location filename="trayicon.cpp" line="173"/>
         <source> update available!</source>
         <translation> actualització disponible!</translation>
     </message>
     <message>
-        <location filename="trayicon.cpp" line="184"/>
-        <location filename="trayicon.cpp" line="187"/>
+        <location filename="trayicon.cpp" line="180"/>
+        <location filename="trayicon.cpp" line="183"/>
         <source>No updates available</source>
         <translation>No hi ha cap actualització disponible</translation>
     </message>

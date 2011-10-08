@@ -18,5 +18,6 @@
         <file>appsetrepoeditor-qt_ru.qm</file>
         <file>appsetrepoeditor-qt_eu.qm</file>
         <file>appsetrepoeditor-qt_be.qm</file>
+        <file>appsetrepoeditor-qt_hu.qm</file>
     </qresource>
 </RCC>

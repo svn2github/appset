@@ -18,5 +18,6 @@
         <file>appsettray-qt_ru.qm</file>
         <file>appsettray-qt_eu.qm</file>
         <file>appsettray-qt_be.qm</file>
+        <file>appsettray-qt_hu.qm</file>
     </qresource>
 </RCC>
