@@ -60,6 +60,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     pcomp=0;
 
+    ui->cancelOps->setIcon(style()->standardIcon(QStyle::SP_DialogCancelButton));
+    connect(ui->cancelOps,SIGNAL(clicked()),this,SLOT(cancelOps()));
+
     QStringList headers;
     headers << tr("S") << tr("Repository") << tr("Packet") << tr("Installed Version") << tr("Last Version") << tr("Description");
     ui->tableWidget->setColumnWidth(0,24);
@@ -84,6 +87,8 @@ MainWindow::MainWindow(QWidget *parent) :
         this->setWindowTitle("AppSet-Qt (SUPERUSER)");        
     }else{
         system("appsettray-qt &");
+
+        ui->cancelOpsWidget->hide();
     }
     argsParsed=pp!=4 && pp!=0;
     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf",privileged?"/tmp/as.tmp":"/tmp/asuser.tmp",!privileged))){
@@ -353,7 +358,7 @@ MainWindow::MainWindow(QWidget *parent) :
     priv = new QProcess(this);
 
     //QWebSettings::setIconDatabasePath("/tmp/favicons/");
-    connect(ui->webView,SIGNAL(iconChanged()),SLOT(appIcon()));
+    connect(ui->webView,SIGNAL(iconChanged()),SLOT(appIcon()));    
 }
 
 
@@ -575,6 +580,7 @@ int MainWindow::privilegedExecuter(int argc, char *argv[]){
     if(argc<2)return 0;
     int actual = 1, i=0; QString opString;
     toR=toU=toI=0;
+
     while(argc>actual){
         opString=argv[actual];
         int op=argInterpreter(opString);
@@ -589,11 +595,12 @@ int MainWindow::privilegedExecuter(int argc, char *argv[]){
             ui->tableUpgraded->hideColumn(4);
             ui->mainToolBar->hide();
             ui->choicesGroup->hide();
+
             ui->line->hide();
             ui->label_5->hide();
             ui->tableCommunity->setColumnWidth(1,250);
             this->setFixedWidth(550);
-            this->setFixedHeight(350);
+            this->setFixedHeight(400);
 
             QFile file(QString("/tmp/as")+opString);
             file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -642,6 +649,19 @@ int MainWindow::privilegedExecuter(int argc, char *argv[]){
     }    
 
     return 1;
+}
+
+void MainWindow::cancelOps(){
+    QMessageBox quest;
+    quest.setText(tr("Are you sure to stop current operations?"));
+    quest.setIcon(QMessageBox::Question);
+    quest.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+    int answer = quest.exec();
+
+    if(answer==QMessageBox::Yes){
+        //Confirmed to stop operations
+        ((AS::QTNIXEngine*)as)->requestStop();
+    }
 }
 
 void MainWindow::hideEvent(QHideEvent *e){
@@ -951,11 +971,13 @@ void MainWindow::refresh(){
 
     int rows=0;
     bool scrolled=false;
+    int currents = 0;
     switch(asThread->getOp()){
     case 1: //Install
         rows=ui->tableUpgraded->rowCount();
         for(int i=0;i<rows;++i){
             if(ui->tableUpgraded->item(i,0)->text()=="Upgrade" || ui->tableUpgraded->item(i,0)->text()=="Remove" || completed[i+baseIndex]) continue;
+            else currents++;
 
             Package pkg;
             QStringList ap=ui->tableUpgraded->item(i,1)->text().split('/');
@@ -1007,20 +1029,19 @@ void MainWindow::refresh(){
                 ui->tableUpgraded->setItem(i,0,new QTableWidgetItem(QIcon(":pkgstatus/working.png"),ui->tableUpgraded->item(i,0)->text()));
 
                 bool totalCompleted=true;
-                for(int k=0;totalCompleted && k<rows;++k){
+                for(int k=0;totalCompleted && k<currents;++k){
                     if(!completed[k]) totalCompleted=false;
                 }
 
                 if(totalCompleted){
+                    ui->cancelOps->setDisabled(true);
                     for(int k=0;k<rows;++k){
-                        /*QLabel *label = new QLabel();
-                        label->setMovie(loadingMovie);
-                        ui->tableUpgraded->setCellWidget(k,0,label);*/
                         ((QProgressBar*)ui->tableUpgraded->cellWidget(k,5))->setFormat(tr("Installing..."));
                     }
 
                     break;
                 }
+                else if(asThread->getOp()==1) ui->cancelOps->setEnabled(true);
             }
         }
         break;
@@ -1028,6 +1049,7 @@ void MainWindow::refresh(){
         rows=ui->tableUpgraded->rowCount();
         for(int i=0;i<rows;++i){
             if(ui->tableUpgraded->item(i,0)->text()!=QString("Upgrade") || completed[i+baseIndex]) continue;
+            else currents++;
 
             Package pkg;
             pkg.setName(ui->tableUpgraded->item(i,1)->text().split('/').at(1).toAscii().data());
@@ -1066,11 +1088,12 @@ void MainWindow::refresh(){
 
 
                 bool totalCompleted=true;
-                for(int k=0;totalCompleted && k<rows;++k){
+                for(int k=0;totalCompleted && k<currents;++k){
                     if(!completed[k+baseIndex]) totalCompleted=false;
                 }
 
                 if(totalCompleted){
+                    ui->cancelOps->setDisabled(true);
                     for(int k=0;k<rows;++k){
                         /*QLabel *label = new QLabel();
                         label->setMovie(loadingMovie);
@@ -1079,7 +1102,7 @@ void MainWindow::refresh(){
                     }
 
                     break;
-                }
+                }else if(asThread->getOp()==2) ui->cancelOps->setEnabled(true);
             }
         }
         break;

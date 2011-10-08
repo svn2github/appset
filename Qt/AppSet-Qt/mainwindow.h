@@ -419,6 +419,8 @@ public slots:
         ((AS::QTNIXEngine*)as)->sendAnswer(res==QMessageBox::Yes?"y":"n");
     }
 
+    void cancelOps();
+
 private:
     QTimer *rssloader;
 

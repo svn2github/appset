@@ -33,10 +33,12 @@ namespace AS{
         InputProvider *inputProvider,*bak;
         QProcess *process;
 
+        bool stopRequested;
+
     protected:        
         int execCmd(std::string command);
     public:
-        QTNIXEngine(InputProvider *ip){inputProvider=ip;}
+        QTNIXEngine(InputProvider *ip){inputProvider=ip;stopRequested=false;}
 
         QString getConfErrStr(int errno);        
 
@@ -57,6 +59,9 @@ namespace AS{
             if(inputProvider!=0)inputProvider->setForced(forced);
             else bak->setForced(forced);
         }
+
+        void forceStop();
+        void requestStop(){stopRequested=true;}
     };
 
 

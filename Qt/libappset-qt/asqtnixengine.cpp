@@ -66,7 +66,8 @@ int AS::QTNIXEngine::execCmd(std::string command){
     QTextStream stream;
     stream.setDevice(process);
     while(!process->waitForFinished(actual)){
-        if(process->state()==QProcess::NotRunning) break;
+        if(stopRequested ||
+                process->state()==QProcess::NotRunning) break;
         if(!process->canReadLine()) actual=(actual+100)%1000;
         else actual=50;
         QString c;
@@ -85,29 +86,52 @@ int AS::QTNIXEngine::execCmd(std::string command){
         }
     }
 
-    QString c;
-    while(!(c=stream.read(1)).isEmpty()){
-        line+=c;
-        if(line.contains('?') || line.contains('\n')){
-            notifyListeners(line.trimmed().toAscii().data());
-            if(inputProvider && inputProvider->isEnabled()){
-                if(!inputProvider->evaluate(line) && line.contains('?')){
-                    stream << "y\n";
-                    stream.flush();
+    if(stopRequested){
+        notifyListeners("*** USER STOP REQUEST RECEIVED ***");
+
+        forceStop();
+        stopRequested = false;
+
+        return 1;
+    }else{
+
+        QString c;
+        while(!(c=stream.read(1)).isEmpty()){
+            line+=c;
+            if(line.contains('?') || line.contains('\n')){
+                notifyListeners(line.trimmed().toAscii().data());
+                if(inputProvider && inputProvider->isEnabled()){
+                    if(!inputProvider->evaluate(line) && line.contains('?')){
+                        stream << "y\n";
+                        stream.flush();
+                    }
                 }
+                line.clear();
             }
-            line.clear();
         }
+
+        process->waitForFinished();
+
+        if(inputProvider==0 || !inputProvider->isEnabled()) yesProcess.close();
+
+        int ret=process->exitCode();
+        process->kill();
+        delete process;
+
+        process=0;
+
+        return ret;
     }
+}
 
-    process->waitForFinished();
+void AS::QTNIXEngine::forceStop(){
+    if(process && process->state()==QProcess::Running){
+        process->kill();
+        delete process;
+        process=0;
 
-    if(inputProvider==0 || !inputProvider->isEnabled()) yesProcess.close();
-
-    int ret=process->exitCode();
-    process->kill();
-    delete process;
-    return ret;
+        removeLock();
+    }
 }
 
 void AS::QTNIXEngine::sendAnswer(QString answer){
