@@ -57,6 +57,8 @@ AS::NIXEngine::NIXEngine(){
     commands.insert(StrPair("tool_post_up_cmd",""));
     commands.insert(StrPair("tool_rm_repo",""));
 
+    commands.insert(StrPair("get_file_list",""));
+
     commands.insert(StrPair("install_local",""));
     commands.insert(StrPair("local_ext",""));
     commands.insert(StrPair("check_local_deps",""));
@@ -276,6 +278,43 @@ int AS::NIXEngine::remove(std::list<Package*>* packages){
     }
 
     return execCmd(cmd);
+}
+
+namespace AS{
+    class FileListListener : public EngineListener{
+        std::list<string>* fileList; //To be freed externally
+    public:
+        FileListListener(std::list<string> *fileList){
+            this->fileList = fileList;
+        }
+
+        void step(const char *content){
+            std::string str(content);
+            fileList->push_back(str);
+        }
+    };
+}
+
+std::list<std::string>* AS::NIXEngine::getFileList(Package *package){
+    if(!package) return 0;
+
+    bool fileListCmdAvailable = commands["get_file_list"].find('*')==std::string::npos;
+
+    if(!fileListCmdAvailable) return 0;
+
+    string cmd(commands["get_file_list"]);
+
+    cmd += " ";
+    cmd += package->getName();
+
+    std::list<string>* fileList = new std::list<string>;
+    EngineListener *el = new FileListListener(fileList);
+    addListener(el);
+    execCmd(cmd);
+    removeListener(el);
+    delete el;
+
+    return fileList;
 }
 
 int AS::NIXEngine::getBytesSize(std::string ssize){

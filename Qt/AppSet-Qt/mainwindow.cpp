@@ -2129,7 +2129,9 @@ QString MainWindow::getDeps(QString pname, bool remote){
     return ret;
 }
 
-void MainWindow::changeStatus(int row, int col){    
+void MainWindow::changeStatus(int row, int col){
+    ui->fileListView->clear();
+
     if(col && row==currentPacket && row)return;    
 
     if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2) && row!=currentPacket){
@@ -2159,6 +2161,22 @@ void MainWindow::changeStatus(int row, int col){
         }else{
             ui->infoText->append(QString("<b>")+tr("Required by")+QString(":<b>"));
             ui->infoText->append(getDeps(p.getName().c_str(),false));
+        }
+
+        if(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove" || ui->tableWidget->item(row,0)->text()=="Upgrade" || ui->tableWidget->item(row,0)->text()=="Upgradable"){
+            ui->extraInfoGroupBox->setTabEnabled(2,true);
+
+            std::list<std::string>* fileList = ((AS::QTNIXEngine*)as)->getFileList(&p);
+            int flsize=fileList->size();
+            for(int i=0;i<flsize;++i){
+                std::string str = fileList->front();
+                fileList->pop_front();
+                ui->fileListView->append(str.c_str());
+            }
+
+            delete fileList;
+        }else{
+            ui->extraInfoGroupBox->setTabEnabled(2,false);
         }
     }
 

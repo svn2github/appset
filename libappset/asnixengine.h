@@ -80,6 +80,8 @@ namespace AS{
 
         virtual bool isIgnoringUpgrades(){ return commands["tool_ignore_upgrades"].find('*')==std::string::npos;}
 
+        virtual std::list<std::string>* getFileList(Package *package=0);
+
         //Community stuff
         virtual bool isCommunityEnabled(){return community_enabled;}
         virtual std::list<Package*>* com_search(std::string pattern);
