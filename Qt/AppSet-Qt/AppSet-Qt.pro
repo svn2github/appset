@@ -14,12 +14,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     options.cpp \
     about.cpp \
-    appitem.cpp
+    appitem.cpp \
+    fileitem.cpp \
+    filetreemodel.cpp
 
 HEADERS  += mainwindow.h \
     options.h \
     about.h \
-    appitem.h
+    appitem.h \
+    fileitem.h \
+    filetreemodel.h
 
 FORMS    += mainwindow.ui \
     options.ui \
@@ -73,3 +77,7 @@ TRANSLATIONS = appset-qt_it.ts \
     appset-qt_be.ts \
     appset-qt_hu.ts \
     appset-qt_*.ts
+
+
+
+

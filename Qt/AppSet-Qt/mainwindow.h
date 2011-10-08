@@ -228,6 +228,7 @@ signals:
     void wheel(int delta);
 };
 #include <QMessageBox>
+#include "filetreemodel.h"
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -547,6 +548,8 @@ private:
     bool maxShown;
 
     int upgradables;
+
+    FileTreeModel *fileTreeModel;
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);

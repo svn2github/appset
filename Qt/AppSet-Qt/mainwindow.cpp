@@ -51,6 +51,8 @@ MainWindow::MainWindow(QWidget *parent) :
     view=0;
     pkgs=0;
 
+    fileTreeModel = 0;
+
     merging = true;
 
     local=false;
@@ -2130,8 +2132,6 @@ QString MainWindow::getDeps(QString pname, bool remote){
 }
 
 void MainWindow::changeStatus(int row, int col){
-    ui->fileListView->clear();
-
     if(col && row==currentPacket && row)return;    
 
     if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2) && row!=currentPacket){
@@ -2163,6 +2163,7 @@ void MainWindow::changeStatus(int row, int col){
             ui->infoText->append(getDeps(p.getName().c_str(),false));
         }
 
+        QStringList fileStringList;
         if(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove" || ui->tableWidget->item(row,0)->text()=="Upgrade" || ui->tableWidget->item(row,0)->text()=="Upgradable"){
             ui->extraInfoGroupBox->setTabEnabled(2,true);
 
@@ -2171,8 +2172,15 @@ void MainWindow::changeStatus(int row, int col){
             for(int i=0;i<flsize;++i){
                 std::string str = fileList->front();
                 fileList->pop_front();
-                ui->fileListView->append(str.c_str());
+                fileStringList.append(str.c_str());
             }
+
+            ui->fileTreeView->reset();
+            if(fileTreeModel) delete fileTreeModel;
+            fileTreeModel = 0;
+            fileStringList.sort();
+            fileTreeModel = new FileTreeModel(fileStringList, this);
+            ui->fileTreeView->setModel(fileTreeModel);
 
             delete fileList;
         }else{

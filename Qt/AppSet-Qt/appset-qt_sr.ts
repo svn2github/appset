@@ -105,8 +105,8 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="824"/>
         <location filename="mainwindow.ui" line="1012"/>
         <location filename="mainwindow.ui" line="1015"/>
-        <location filename="mainwindow.cpp" line="2438"/>
-        <location filename="mainwindow.cpp" line="2874"/>
+        <location filename="mainwindow.cpp" line="2464"/>
+        <location filename="mainwindow.cpp" line="2900"/>
         <source>All</source>
         <translation>Све</translation>
     </message>
@@ -114,7 +114,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="215"/>
         <location filename="mainwindow.ui" line="1057"/>
         <location filename="mainwindow.ui" line="1060"/>
-        <location filename="mainwindow.cpp" line="2324"/>
+        <location filename="mainwindow.cpp" line="2350"/>
         <source>Games</source>
         <translation>Игре</translation>
     </message>
@@ -122,7 +122,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="254"/>
         <location filename="mainwindow.ui" line="1099"/>
         <location filename="mainwindow.ui" line="1102"/>
-        <location filename="mainwindow.cpp" line="2352"/>
+        <location filename="mainwindow.cpp" line="2378"/>
         <source>Multimedia</source>
         <translation>Мултимедија</translation>
     </message>
@@ -130,7 +130,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="293"/>
         <location filename="mainwindow.ui" line="1141"/>
         <location filename="mainwindow.ui" line="1144"/>
-        <location filename="mainwindow.cpp" line="2380"/>
+        <location filename="mainwindow.cpp" line="2406"/>
         <source>Internet</source>
         <translation>Интернет</translation>
     </message>
@@ -138,7 +138,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="332"/>
         <location filename="mainwindow.ui" line="1183"/>
         <location filename="mainwindow.ui" line="1186"/>
-        <location filename="mainwindow.cpp" line="2366"/>
+        <location filename="mainwindow.cpp" line="2392"/>
         <source>Office</source>
         <translation>Канцеларија</translation>
     </message>
@@ -146,7 +146,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="371"/>
         <location filename="mainwindow.ui" line="1225"/>
         <location filename="mainwindow.ui" line="1228"/>
-        <location filename="mainwindow.cpp" line="2338"/>
+        <location filename="mainwindow.cpp" line="2364"/>
         <source>System</source>
         <translation>Систем</translation>
     </message>
@@ -158,7 +158,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="500"/>
         <location filename="mainwindow.ui" line="1406"/>
-        <location filename="mainwindow.ui" line="1718"/>
+        <location filename="mainwindow.ui" line="1747"/>
         <source>about:blank</source>
         <translation>about:blank</translation>
     </message>
@@ -175,49 +175,49 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="543"/>
         <location filename="mainwindow.ui" line="863"/>
-        <location filename="mainwindow.cpp" line="2625"/>
-        <location filename="mainwindow.cpp" line="2772"/>
+        <location filename="mainwindow.cpp" line="2651"/>
+        <location filename="mainwindow.cpp" line="2798"/>
         <source>Installed</source>
         <translation>Инсталирани</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="557"/>
         <location filename="mainwindow.ui" line="843"/>
-        <location filename="mainwindow.cpp" line="2703"/>
-        <location filename="mainwindow.cpp" line="2759"/>
+        <location filename="mainwindow.cpp" line="2729"/>
+        <location filename="mainwindow.cpp" line="2785"/>
         <source>Upgradable</source>
         <translation>Надоградиви</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="571"/>
-        <location filename="mainwindow.cpp" line="2652"/>
-        <location filename="mainwindow.cpp" line="2692"/>
-        <location filename="mainwindow.cpp" line="2800"/>
+        <location filename="mainwindow.cpp" line="2678"/>
+        <location filename="mainwindow.cpp" line="2718"/>
+        <location filename="mainwindow.cpp" line="2826"/>
         <source>External</source>
         <translation>Спољни</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="735"/>
-        <location filename="mainwindow.cpp" line="293"/>
+        <location filename="mainwindow.cpp" line="295"/>
         <source>Name</source>
         <translation>Име</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="740"/>
-        <location filename="mainwindow.cpp" line="67"/>
-        <location filename="mainwindow.cpp" line="293"/>
+        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="295"/>
         <source>Description</source>
         <translation>Опис</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="765"/>
-        <location filename="mainwindow.ui" line="1523"/>
+        <location filename="mainwindow.ui" line="1552"/>
         <source>Search</source>
         <translation>Претрага</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="771"/>
-        <location filename="mainwindow.ui" line="1516"/>
+        <location filename="mainwindow.ui" line="1545"/>
         <source>Search...</source>
         <translation>Тражи...</translation>
     </message>
@@ -253,8 +253,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="883"/>
-        <location filename="mainwindow.cpp" line="2556"/>
-        <location filename="mainwindow.cpp" line="2778"/>
+        <location filename="mainwindow.cpp" line="2582"/>
+        <location filename="mainwindow.cpp" line="2804"/>
         <source>Not Installed</source>
         <translation>Нису инсталирани</translation>
     </message>
@@ -290,32 +290,37 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1478"/>
+        <location filename="mainwindow.ui" line="1459"/>
+        <source>Files Tree</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="1507"/>
         <source>Upgrade All</source>
         <translation>Надогради Све</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1489"/>
+        <location filename="mainwindow.ui" line="1518"/>
         <source>List Installed</source>
         <translation>Листа Инсталираних</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1534"/>
+        <location filename="mainwindow.ui" line="1563"/>
         <source>Clear</source>
         <translation>Очисти</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1561"/>
+        <location filename="mainwindow.ui" line="1590"/>
         <source>Searching...</source>
         <translation>Претраживање...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1651"/>
+        <location filename="mainwindow.ui" line="1680"/>
         <source>These packages are produced by users. Use at your own risk!</source>
         <translation>Ови пакети су произведени од стране корисника. Користите на сопствени ризик!</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1741"/>
+        <location filename="mainwindow.ui" line="1770"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -330,17 +335,17 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Проверите све измене пакета и потом кликните на Потврди или Одустани.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1816"/>
+        <location filename="mainwindow.ui" line="1845"/>
         <source>Backend Output:</source>
         <translation>Системски Извештај:</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1890"/>
+        <location filename="mainwindow.ui" line="1919"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1946"/>
+        <location filename="mainwindow.ui" line="1975"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -353,29 +358,29 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Ваш избор: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1979"/>
-        <location filename="mainwindow.cpp" line="2172"/>
-        <location filename="mainwindow.cpp" line="2229"/>
+        <location filename="mainwindow.ui" line="2008"/>
+        <location filename="mainwindow.cpp" line="2198"/>
+        <location filename="mainwindow.cpp" line="2255"/>
         <source>Cancel</source>
         <translation>Одустани</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2008"/>
-        <location filename="mainwindow.cpp" line="935"/>
-        <location filename="mainwindow.cpp" line="939"/>
-        <location filename="mainwindow.cpp" line="1274"/>
-        <location filename="mainwindow.cpp" line="2097"/>
-        <location filename="mainwindow.cpp" line="2100"/>
+        <location filename="mainwindow.ui" line="2037"/>
+        <location filename="mainwindow.cpp" line="937"/>
+        <location filename="mainwindow.cpp" line="941"/>
+        <location filename="mainwindow.cpp" line="1276"/>
+        <location filename="mainwindow.cpp" line="2099"/>
+        <location filename="mainwindow.cpp" line="2102"/>
         <source>Confirm</source>
         <translation>Потврди</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2052"/>
+        <location filename="mainwindow.ui" line="2081"/>
         <source>Backend&apos;s output:</source>
         <translation>Извештај позадинског програма:</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2079"/>
+        <location filename="mainwindow.ui" line="2108"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -388,399 +393,399 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Чека се позадински програм...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2104"/>
+        <location filename="mainwindow.ui" line="2133"/>
         <source>Wait for the end of operations in order to continue ...</source>
         <translation>Сачекајте за крај операције, како би сте наставили...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2131"/>
+        <location filename="mainwindow.ui" line="2160"/>
         <source>Read the backend&apos;s output and click Continue</source>
         <translation>Прочитајте извештај позадинског програма и кликните на Настави</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2154"/>
-        <location filename="mainwindow.cpp" line="1236"/>
+        <location filename="mainwindow.ui" line="2183"/>
+        <location filename="mainwindow.cpp" line="1238"/>
         <source>Continue</source>
         <translation>Настави</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2218"/>
+        <location filename="mainwindow.ui" line="2247"/>
         <source>About Qt...</source>
         <translation>О Кутеу...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2227"/>
+        <location filename="mainwindow.ui" line="2256"/>
         <source>About AppSet</source>
         <translation>О АпСет програму</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="67"/>
-        <location filename="mainwindow.cpp" line="73"/>
-        <location filename="mainwindow.cpp" line="293"/>
+        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="75"/>
+        <location filename="mainwindow.cpp" line="295"/>
         <source>S</source>
         <translation>С</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="67"/>
-        <location filename="mainwindow.cpp" line="1551"/>
-        <location filename="mainwindow.cpp" line="2148"/>
+        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="1553"/>
+        <location filename="mainwindow.cpp" line="2150"/>
         <source>Repository</source>
         <translation>Складиште</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="67"/>
-        <location filename="mainwindow.cpp" line="73"/>
+        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="75"/>
         <source>Packet</source>
         <translation>Пакет</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="67"/>
-        <location filename="mainwindow.cpp" line="293"/>
-        <location filename="mainwindow.cpp" line="1548"/>
+        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="295"/>
+        <location filename="mainwindow.cpp" line="1550"/>
         <source>Installed Version</source>
         <translation>Инсталирана Верзија</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="67"/>
-        <location filename="mainwindow.cpp" line="293"/>
-        <location filename="mainwindow.cpp" line="1549"/>
+        <location filename="mainwindow.cpp" line="69"/>
+        <location filename="mainwindow.cpp" line="295"/>
+        <location filename="mainwindow.cpp" line="1551"/>
         <source>Last Version</source>
         <translation>Последња Верзија</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="73"/>
+        <location filename="mainwindow.cpp" line="75"/>
         <source>Version</source>
         <translation>Верзија</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="73"/>
+        <location filename="mainwindow.cpp" line="75"/>
         <source>Dependencies</source>
         <translation>Зависности</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="73"/>
+        <location filename="mainwindow.cpp" line="75"/>
         <source>Size(MB)</source>
         <translation>Величина(МБ)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="73"/>
+        <location filename="mainwindow.cpp" line="75"/>
         <source>Progress</source>
         <translation>Напредак</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="97"/>
+        <location filename="mainwindow.cpp" line="99"/>
         <source>Errors while initializing the system!</source>
         <translation>Грешке током иницијализације система!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="149"/>
+        <location filename="mainwindow.cpp" line="151"/>
         <source>Update</source>
         <translation>Ажурирање</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="151"/>
-        <location filename="mainwindow.cpp" line="409"/>
+        <location filename="mainwindow.cpp" line="153"/>
         <location filename="mainwindow.cpp" line="411"/>
-        <location filename="mainwindow.cpp" line="2840"/>
+        <location filename="mainwindow.cpp" line="413"/>
+        <location filename="mainwindow.cpp" line="2866"/>
         <source>Clean cache</source>
         <translation>Очистите кеш</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="154"/>
-        <location filename="mainwindow.cpp" line="2834"/>
+        <location filename="mainwindow.cpp" line="156"/>
+        <location filename="mainwindow.cpp" line="2860"/>
         <source>Mark all upgrades</source>
         <translation>Обележи све надоградње</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="157"/>
-        <location filename="mainwindow.cpp" line="722"/>
+        <location filename="mainwindow.cpp" line="159"/>
+        <location filename="mainwindow.cpp" line="724"/>
         <source>Open local package</source>
         <translation>Отвори локални пакет</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="160"/>
+        <location filename="mainwindow.cpp" line="162"/>
         <source>Check and apply</source>
         <translation>Провери и примени</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="166"/>
+        <location filename="mainwindow.cpp" line="168"/>
         <source>Options</source>
         <translation>Опције</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="167"/>
+        <location filename="mainwindow.cpp" line="169"/>
         <source>Repositories</source>
         <translation>Складишта</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="171"/>
+        <location filename="mainwindow.cpp" line="173"/>
         <source>About</source>
         <translation>Опис</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="172"/>
+        <location filename="mainwindow.cpp" line="174"/>
         <source>Report a bug</source>
         <translation>Пријавите грешку</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="173"/>
+        <location filename="mainwindow.cpp" line="175"/>
         <source>Request a feature</source>
         <translation>Захтевајте нову функцију</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="219"/>
+        <location filename="mainwindow.cpp" line="221"/>
         <source>Link</source>
         <translation>Веза</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="219"/>
+        <location filename="mainwindow.cpp" line="221"/>
         <source>Title</source>
         <translation>Наслов</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="335"/>
-        <location filename="mainwindow.cpp" line="2879"/>
+        <location filename="mainwindow.cpp" line="337"/>
+        <location filename="mainwindow.cpp" line="2905"/>
         <source>To enable external packages support you have to install</source>
         <translation>Да бисте омогућили подршку екстерних пакета морате да инсталирате</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="372"/>
+        <location filename="mainwindow.cpp" line="374"/>
         <source>Are you sure to clean the cache?</source>
         <translation>Да ли сте сигурни да желите да очистите кеш?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="656"/>
+        <location filename="mainwindow.cpp" line="658"/>
         <source>Are you sure to stop current operations?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="724"/>
+        <location filename="mainwindow.cpp" line="726"/>
         <source>Package files</source>
         <translation>Документи пакета</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="748"/>
+        <location filename="mainwindow.cpp" line="750"/>
         <source>Error loading the specified package file!</source>
         <translation>Грешка приликом учитавања наведеног пакета!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="749"/>
+        <location filename="mainwindow.cpp" line="751"/>
         <source>The file</source>
         <translation>Документ</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="749"/>
+        <location filename="mainwindow.cpp" line="751"/>
         <source>doesn&apos;t seems to be a valid package!</source>
         <translation>се не чини да је важећи пакет!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1028"/>
-        <location filename="mainwindow.cpp" line="1086"/>
+        <location filename="mainwindow.cpp" line="1030"/>
+        <location filename="mainwindow.cpp" line="1088"/>
         <source>Waiting others...</source>
         <translation>Чекање других...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1039"/>
-        <location filename="mainwindow.cpp" line="1101"/>
+        <location filename="mainwindow.cpp" line="1041"/>
+        <location filename="mainwindow.cpp" line="1103"/>
         <source>Installing...</source>
         <translation>Инсталирање...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1224"/>
+        <location filename="mainwindow.cpp" line="1226"/>
         <source>Errors during operations!</source>
         <translation>Грешке током операција!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1224"/>
+        <location filename="mainwindow.cpp" line="1226"/>
         <source>Success!</source>
         <translation>Успех!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1225"/>
+        <location filename="mainwindow.cpp" line="1227"/>
         <source>Do you want to see operations logs?</source>
         <translation>Да ли желите да видите извештај операција?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1225"/>
-        <location filename="mainwindow.cpp" line="1261"/>
+        <location filename="mainwindow.cpp" line="1227"/>
+        <location filename="mainwindow.cpp" line="1263"/>
         <source>All operations completed successfully!</source>
         <translation>Све операције су успешно завршене!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1550"/>
-        <location filename="mainwindow.cpp" line="2151"/>
+        <location filename="mainwindow.cpp" line="1552"/>
+        <location filename="mainwindow.cpp" line="2153"/>
         <source>Size</source>
         <translation>Величина</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1552"/>
-        <location filename="mainwindow.cpp" line="2160"/>
+        <location filename="mainwindow.cpp" line="1554"/>
+        <location filename="mainwindow.cpp" line="2162"/>
         <source>Required by</source>
         <translation>Захтевано од</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1552"/>
-        <location filename="mainwindow.cpp" line="2157"/>
+        <location filename="mainwindow.cpp" line="1554"/>
+        <location filename="mainwindow.cpp" line="2159"/>
         <source>Requires</source>
         <translation>Захтева</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1553"/>
+        <location filename="mainwindow.cpp" line="1555"/>
         <source>Close</source>
         <translation>Затвори</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1554"/>
-        <location filename="mainwindow.cpp" line="2169"/>
-        <location filename="mainwindow.cpp" line="2227"/>
+        <location filename="mainwindow.cpp" line="1556"/>
+        <location filename="mainwindow.cpp" line="2195"/>
+        <location filename="mainwindow.cpp" line="2253"/>
         <source>Install</source>
         <translation>Инсталирати</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1555"/>
-        <location filename="mainwindow.cpp" line="2171"/>
+        <location filename="mainwindow.cpp" line="1557"/>
+        <location filename="mainwindow.cpp" line="2197"/>
         <source>Upgrade</source>
         <translation>Надоградња</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1556"/>
-        <location filename="mainwindow.cpp" line="2170"/>
-        <location filename="mainwindow.cpp" line="2228"/>
+        <location filename="mainwindow.cpp" line="1558"/>
+        <location filename="mainwindow.cpp" line="2196"/>
+        <location filename="mainwindow.cpp" line="2254"/>
         <source>Remove</source>
         <translation>Уклони</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1613"/>
+        <location filename="mainwindow.cpp" line="1615"/>
         <source>Are you sure to upgrade ALL external packages?</source>
         <translation>Да ли сте сигурни да желите да надоградите СВЕ спољашње пакете?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1690"/>
-        <location filename="mainwindow.cpp" line="1744"/>
-        <location filename="mainwindow.cpp" line="1779"/>
-        <location filename="mainwindow.cpp" line="1868"/>
-        <location filename="mainwindow.cpp" line="1956"/>
-        <location filename="mainwindow.cpp" line="1965"/>
+        <location filename="mainwindow.cpp" line="1692"/>
+        <location filename="mainwindow.cpp" line="1746"/>
+        <location filename="mainwindow.cpp" line="1781"/>
+        <location filename="mainwindow.cpp" line="1870"/>
+        <location filename="mainwindow.cpp" line="1958"/>
+        <location filename="mainwindow.cpp" line="1967"/>
         <source>Pending changes:</source>
         <translation>Измене на чекању:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1712"/>
+        <location filename="mainwindow.cpp" line="1714"/>
         <source>Some installed packages require</source>
         <translation>Неки инсталирани пакети захтевају </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1713"/>
+        <location filename="mainwindow.cpp" line="1715"/>
         <source>Do you want to proceed anyway (removing them too)?</source>
         <translation>Да ли желите да наставите у сваком случају (уклањање свих)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1793"/>
+        <location filename="mainwindow.cpp" line="1795"/>
         <source>These selected for install packages require</source>
         <translation>Ови пакети изабрани за инсталацију захтевају</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1794"/>
+        <location filename="mainwindow.cpp" line="1796"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
         <translation>Да ли желите да наставите у сваком случају (чишћење свих)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1836"/>
+        <location filename="mainwindow.cpp" line="1838"/>
         <source>These packages were selected as dependencies of</source>
         <translation>Ови пакети су одабрани као зависност од</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1837"/>
+        <location filename="mainwindow.cpp" line="1839"/>
         <source>Do you want to clear them too?</source>
         <translation>Да ли желите да их такође уклоните?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1882"/>
+        <location filename="mainwindow.cpp" line="1884"/>
         <source>These selected for removal packages are required by</source>
         <translation>Ови пакети изабрани за уклањање су зависности од</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1883"/>
+        <location filename="mainwindow.cpp" line="1885"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
         <translation>Да ли желите да наставите у сваком случају (поништавање њиховог уклањања)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1925"/>
+        <location filename="mainwindow.cpp" line="1927"/>
         <source>These packages were selected for removal because they need</source>
         <translation>Ови пакети су изабрани за уклањање, јер им је потребан</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1926"/>
+        <location filename="mainwindow.cpp" line="1928"/>
         <source>Do you want to clear their removal too?</source>
         <translation>Да ли желите да поништите њихово уклањање?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2153"/>
+        <location filename="mainwindow.cpp" line="2155"/>
         <source>URL</source>
         <translation>УРЛ адреса</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2154"/>
+        <location filename="mainwindow.cpp" line="2156"/>
         <source>(Watch the full site)</source>
         <translation>(Погледајте цео сајт)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2273"/>
+        <location filename="mainwindow.cpp" line="2299"/>
         <source>UPDATING DB: </source>
         <translation>НАДОГРАДЊА БАЗЕ:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2285"/>
+        <location filename="mainwindow.cpp" line="2311"/>
         <source>DB UPDATED!</source>
         <translation>БАЗА НАДОГРАЂЕНА!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2514"/>
+        <location filename="mainwindow.cpp" line="2540"/>
         <source>Loading packages...</source>
         <translation>Учитавање пакета...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2590"/>
+        <location filename="mainwindow.cpp" line="2616"/>
         <source>PARSING INSTALLED: </source>
         <translation>ПАРСИРАЊЕ ИНСТАЛИРАНО:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2595"/>
+        <location filename="mainwindow.cpp" line="2621"/>
         <source>Searching correspondeces...</source>
         <translation>Претраживање коресподенције...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2643"/>
+        <location filename="mainwindow.cpp" line="2669"/>
         <source>Installed (external)</source>
         <translation>Инсталирани (екстерни)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2679"/>
+        <location filename="mainwindow.cpp" line="2705"/>
         <source>Checking upgradables</source>
         <translation>Провера надоградњи</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2893"/>
+        <location filename="mainwindow.cpp" line="2919"/>
         <source>The main backend</source>
         <translation>Главни бекенд</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2894"/>
+        <location filename="mainwindow.cpp" line="2920"/>
         <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
         <translation>није надограђен. Морате да га надоградите да би наставили са другим операцијама.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2895"/>
+        <location filename="mainwindow.cpp" line="2921"/>
         <source>Do you want to proceed now?</source>
         <translation>Да ли желите да наставите сада?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1168"/>
+        <location filename="mainwindow.cpp" line="1170"/>
         <source>Running backend&apos;s post upgrade command</source>
         <translation>Покретање пост-инсталационе команде</translation>
     </message>
     <message>
-        <location filename="mainwindow.h" line="418"/>
+        <location filename="mainwindow.h" line="419"/>
         <source>Backend question</source>
         <translation>Питање позадинског програма</translation>
     </message>
