@@ -1371,7 +1371,7 @@ void MainWindow::editConfirm(){
 
 void MainWindow::timeFilter(){
     asyncFilter(ui->searchBar->text());
-    ui->searchBar->setFocus();
+    ui->searchBar->setFocus();        
 }
 
 void MainWindow::timerFired(QString s){    
@@ -2165,7 +2165,16 @@ void MainWindow::changeStatus(int row, int col){
 
         QStringList fileStringList;
         if(ui->tableWidget->item(row,0)->text()=="Installed" || ui->tableWidget->item(row,0)->text()=="Remove" || ui->tableWidget->item(row,0)->text()=="Upgrade" || ui->tableWidget->item(row,0)->text()=="Upgradable"){
+
+            //XXX TODO: remove repo/ from pname
+            QString pkgName(p.getName().c_str());
+            pkgName = pkgName.mid(pkgName.indexOf('/')+1);
+
+            ui->extraInfoGroupBox->setTabIcon(0,QIcon::fromTheme(pkgName));
+
             ui->extraInfoGroupBox->setTabEnabled(2,true);
+
+            p.setName(pkgName.toAscii().data());
 
             std::list<std::string>* fileList = ((AS::QTNIXEngine*)as)->getFileList(&p);
             int flsize=fileList->size();
@@ -2178,13 +2187,13 @@ void MainWindow::changeStatus(int row, int col){
             ui->fileTreeView->reset();
             if(fileTreeModel) delete fileTreeModel;
             fileTreeModel = 0;
-            fileStringList.sort();
-            fileTreeModel = new FileTreeModel(fileStringList, this);
+            fileTreeModel = new FileTreeModel(fileStringList, this, &iconProvider);
             ui->fileTreeView->setModel(fileTreeModel);
 
             delete fileList;
         }else{
             ui->extraInfoGroupBox->setTabEnabled(2,false);
+            ui->extraInfoGroupBox->setTabIcon(0,QIcon());
         }
     }
 

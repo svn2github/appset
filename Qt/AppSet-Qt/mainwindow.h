@@ -228,6 +228,7 @@ signals:
     void wheel(int delta);
 };
 #include <QMessageBox>
+#include <QFileIconProvider>
 #include "filetreemodel.h"
 class MainWindow : public QMainWindow
 {
@@ -550,6 +551,7 @@ private:
     int upgradables;
 
     FileTreeModel *fileTreeModel;
+    QFileIconProvider iconProvider;
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);

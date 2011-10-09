@@ -26,10 +26,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "filetreemodel.h"
 
-FileTreeModel::FileTreeModel(const QStringList &data, QObject *parent)
+FileTreeModel::FileTreeModel(const QStringList &data, QObject *parent, QFileIconProvider *iconProvider)
     : QAbstractItemModel(parent) {
     //Create the root element
     rootItem = new FileItem("/");
+
+    this->iconProvider = iconProvider;
 
     //Populate the data model
     setupModelData(data, rootItem);
@@ -95,6 +97,8 @@ int FileTreeModel::columnCount(const QModelIndex &parent) const{
     return 1;
 }
 
+#include <QFileIconProvider>
+#include <QFileInfo>
 QVariant FileTreeModel::data(const QModelIndex &index, int role) const{
     if(!index.isValid()) return QVariant();
 
@@ -104,7 +108,20 @@ QVariant FileTreeModel::data(const QModelIndex &index, int role) const{
         return item->data();
     }else if(role == Qt::DecorationRole){
         if(item->isFile()){
-            return qApp->style()->standardIcon(QStyle::SP_FileIcon);
+            QStringList filePath;
+            FileItem *cur=item;
+            while( cur ){
+                filePath.push_front(cur->data());
+                cur=cur->parent();
+            }
+            QString file('/');
+            file += filePath.join("/");
+
+            if(iconProvider){
+                return iconProvider->icon(QFileInfo(file));
+            }else{
+                return qApp->style()->standardIcon(QStyle::SP_FileIcon);
+            }
         }else{
             return qApp->style()->standardIcon(QStyle::SP_DirIcon);
         }
@@ -135,21 +152,20 @@ void FileTreeModel::setupModelData(const QStringList &files, FileItem *parent){
     for( int i=0; i<count; ++i ){
         QString newPath = files.at(i);
         bool isLeaf = !newPath.endsWith('/');
-        int newDepth = newPath.count('/') + isLeaf;
-        QString itemData = newPath.mid(newPath.lastIndexOf('/',-2)+1);
-
-        if( !isLeaf ) itemData.chop(1);
+        int newDepth = newPath.count('/') + ( isLeaf ? 1 : 0 );
+        QString itemData = newPath.mid(newPath.lastIndexOf('/',-2)+1);        
 
         FileItem *realParent = item;
-        for( int j=newDepth; j<depth; ++j){
+        for( int j=newDepth; j<=depth; ++j){
             realParent = realParent->parent();
         }
 
-        FileItem *newItem= new FileItem(itemData, realParent, isLeaf);
+        if( !isLeaf ) itemData.chop(1);
 
+        FileItem *newItem= new FileItem(itemData, realParent, isLeaf);
         realParent->appendChild( newItem );
 
-        if( !isLeaf ) item = newItem;
+        item = newItem;
         depth = newDepth;
     }
 }

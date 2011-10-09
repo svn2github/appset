@@ -25,6 +25,8 @@ Options::Options(QWidget *parent,QString path) :
     extraInfo=true;
 
     writeConfigFile(false);
+
+    ui->userBrowser->setIcon(QIcon::fromTheme(ui->userBrowserCmd->text().split(' ').at(0)));
 }
 
 void Options::writeConfigFile(bool overwrite, bool ei){

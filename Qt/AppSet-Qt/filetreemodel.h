@@ -25,11 +25,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "fileitem.h"
 
+class QFileIconProvider;
+
 class FileTreeModel : public QAbstractItemModel{
     Q_OBJECT
 
     public:
-        FileTreeModel(const QStringList &data, QObject *parent = 0);
+        FileTreeModel(const QStringList &data, QObject *parent = 0, QFileIconProvider *iconProvider = 0);
         ~FileTreeModel();
 
         QVariant data(const QModelIndex &index, int role) const;
@@ -46,6 +48,8 @@ class FileTreeModel : public QAbstractItemModel{
         void setupModelData(const QStringList &files, FileItem *parent);
 
         FileItem *rootItem;
+
+        QFileIconProvider *iconProvider;
 
 };
 
