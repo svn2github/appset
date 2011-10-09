@@ -20,6 +20,9 @@ TrayIcon::TrayIcon(QObject *parent) :
 
     manualCheck = false;
 
+    upgradables = 0;
+    visibility = 1; //not visible by default
+
     priv=0;
 
     QMenu *trayMenu = new QMenu();
@@ -107,6 +110,9 @@ void TrayIcon::quitter(){
     }
 }
 
+#include <QFile>
+#include <QDesktopServices>
+#include <QTextStream>
 void TrayIcon::checkRunning(){
     if(priv){
         delete priv;
@@ -130,6 +136,37 @@ void TrayIcon::checkRunning(){
         setToolTip(tr("AppSet-Qt is Running!"));
     }else{
         checkUps();
+    }
+
+    //Set visibility from options
+    QString confPath(QDesktopServices::storageLocation(QDesktopServices::HomeLocation));
+    confPath += "/.appset-qt.conf";
+    QFile conf(confPath);
+    QString conf_buffer;
+    if(conf.exists()){
+        conf.open(QIODevice::ReadOnly);
+
+        if(conf.isOpen()){
+            int i=0;
+            QTextStream confStream(&conf);
+            while(i!=14 && !confStream.atEnd()){
+                conf_buffer = confStream.readLine();
+                i++;
+            }
+            bool isInt=false;
+            conf_buffer.toInt(&isInt);
+            if(isInt){
+                visibility = conf_buffer.toInt();
+            }
+        }
+    }
+    conf.close();
+
+
+    if(visibility && !upgradables && !running && !QFile::exists("/tmp/asshown")){
+        this->hide();
+    }else{
+        this->show();
     }
 
     timer2->start(3000);
@@ -167,10 +204,12 @@ void TrayIcon::checkUps(){
                 str+=tr("\nAnd others...");
             }
 
-            setToolTip(QString::number(pkgs->size())+QString((pkgs->size()>1?tr(" updates available!"):tr(" update available!"))));
+            upgradables = pkgs->size();
+
+            setToolTip(QString::number(upgradables)+QString((upgradables>1?tr(" updates available!"):tr(" update available!"))));
 
             if(manualCheck)
-                showMessage(QString::number(pkgs->size())+(pkgs->size()>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information);
+                showMessage(QString::number(upgradables)+(upgradables>1?tr(" updates available!"):tr(" update available!")),str,QSystemTrayIcon::Information);
             setIcon(QIcon(":pkgstatus/upgrade.png"));
 
             pkgs->clear();

@@ -122,6 +122,12 @@ void Options::writeConfigFile(bool overwrite, bool ei){
         conf.write((QString::number((int)ui->inter->currentIndex())+QString("\n")).toAscii());
         interactions=ui->inter->currentIndex();
     }
+    if(found>13)
+        trayVisibility=configs[13].toInt();
+    else{
+        conf.write((QString::number((int)ui->trayVisibility->currentIndex())+QString("\n")).toAscii());
+        trayVisibility=ui->trayVisibility->currentIndex();
+    }
 
 
     ui->checkBox->setChecked(startfullscreen);
@@ -138,6 +144,7 @@ void Options::writeConfigFile(bool overwrite, bool ei){
     ui->autoupgrade->setChecked(autoupgrade);
     ui->preload->setChecked(preload);
     ui->inter->setCurrentIndex(interactions);
+    ui->trayVisibility->setCurrentIndex(trayVisibility);
 
     conf.close();
 }

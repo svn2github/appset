@@ -29,6 +29,7 @@ public:
     bool autoupgrade;
     bool preload;
     int interactions;
+    int trayVisibility;
 
     int updelay;
 

@@ -2,6 +2,7 @@
   -A button to stop package downloading once started (feature req. #3413922)
   -Owned files tree view tab for installed packages (with desktop theme file icons, not in enhanced view, feature req. #3413878)
   -Tabbed options panel
+  -New option for tray icon visibility (Always or only when there are available updates)
   -Hungarian translation
 
 0.6.4 :

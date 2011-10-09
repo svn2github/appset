@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
          app.installTranslator(&myappTranslator);
 
     TrayIcon tray;
-    tray.show();
+    //tray.show();
 
     return app.exec();
 }

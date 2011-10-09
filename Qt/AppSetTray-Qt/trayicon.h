@@ -67,6 +67,9 @@ private:
 
     bool manualCheck;
 
+    int visibility;
+    int upgradables;
+
     QProcess *priv;
 };
 
