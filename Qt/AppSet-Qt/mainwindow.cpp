@@ -185,6 +185,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),SLOT(searchTermChanged(int)));
 
+    connect(ui->repoFilter,SIGNAL(currentIndexChanged(QString)),SLOT(repoFilter()));
+
     connect(ui->editCancel,SIGNAL(clicked()),SLOT(editCancel()));
     //connect(ui->editConfirm,SIGNAL(clicked()),SLOT(editConfirm()));
     connect(ui->editConfirm,SIGNAL(clicked()),SLOT(getPrivileges()));
@@ -1481,6 +1483,7 @@ void MainWindow::asyncFilter(QString filter){
         for(int i=0;i<rows;++i){
             if(!ui->tableWidget->item(i,2) || !ui->tableWidget->item(i,5) || (!isExpert && ui->tableWidget->item(i,2)->text().contains(expert)) ||
                (ui->tableWidget->item(i,2)->text().contains(category_exclude) || ui->tableWidget->item(i,5)->text().contains(category_exclude))
+                || isRepoFiltered(ui->tableWidget->item(i,1)->text())
                 || (!ui->tableWidget->item(i,2)->text().contains(category) && !ui->tableWidget->item(i,5)->text().contains(category))
                 || (!ui->tableWidget->item(i,2)->text().contains(QRegExp(filter,Qt::CaseInsensitive)) && !ui->tableWidget->item(i,5)->text().contains(QRegExp(filter,Qt::CaseInsensitive)))){
                 ui->tableWidget->hideRow(i);                                
@@ -1498,6 +1501,7 @@ void MainWindow::asyncFilter(QString filter){
             if(!ui->tableWidget->item(i,2) || !ui->tableWidget->item(i,5) || (!isExpert && ui->tableWidget->item(i,2)->text().contains(expert)) ||
                (ui->tableWidget->item(i,2)->text().contains(category_exclude) || ui->tableWidget->item(i,5)->text().contains(category_exclude)) ||
                 (!ui->tableWidget->item(i,2)->text().contains(category) && !ui->tableWidget->item(i,5)->text().contains(category))
+                || isRepoFiltered(ui->tableWidget->item(i,1)->text())
                 || !ui->tableWidget->item(i,index)->text().contains(QRegExp(filter,Qt::CaseInsensitive))){
                 ui->tableWidget->hideRow(i);
 
@@ -2513,6 +2517,22 @@ void MainWindow::showNotInstalled(bool checked){
     asyncFilter();
 }
 
+void MainWindow::repoFilter(){
+    /*int rows = ui->tableWidget->rowCount();
+
+    for(int i=0;i<rows;++i){
+        if(isRepoFiltered(ui->tableWidget->item(i,1)->text())){
+            ui->tableWidget->hideRow(i);
+        }
+    }*/
+
+    asyncFilter("@@");
+}
+
+bool MainWindow::isRepoFiltered(const QString &repoName){
+    return (ui->repoFilter->currentText()!=tr("All") && (repoName=="NO INFO"?((AS::QTNIXEngine*)as)->getCommunityName().c_str():repoName)!=(ui->repoFilter->currentText()));
+}
+
 void MainWindow::clearPackagesList(){
     int count = ui->tableWidget->rowCount();
     for(int i=0;i<count;++i)ui->tableWidget->removeRow(0);    
@@ -2836,16 +2856,22 @@ void MainWindow::addRows(bool checked){
             }
             ui->tableWidget->setItem(i,0, newItem);
 
-            newItem = new QTableWidgetItem(pkg->getRepository().c_str());
-            ui->tableWidget->setItem(i,1, newItem);
+            QString repo(pkg->getRepository().c_str());
+            newItem = new QTableWidgetItem(repo);
+            ui->tableWidget->setItem(i,1, newItem);            
 
             newItem = new QTableWidgetItem(pkg->getName().c_str());
             newItem->setToolTip((QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())));
             ui->tableWidget->setItem(i,2, newItem);
 
+            RepoStats *repoInstance = &repoStats[repo];
+            repoInstance->total++;
+
             if(pkg->isInstalled()){
                 newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
                 ui->tableWidget->setItem(i,3, newItem);
+
+                repoInstance->installed++;
             }else{
                 ui->tableWidget->setItem(i,3, new QTableWidgetItem(""));
             }
@@ -2921,12 +2947,27 @@ void MainWindow::addRows(bool checked){
 
     merging = true;
 
-    //ui->tableWidget->sortByColumn(1,Qt::AscendingOrder);
+    //Repos filter
+    QStringList repos(repoStats.keys());
+    repos.sort();
+    ui->repoFilter->addItems(repos);
+    ui->repoFilter->setItemText(ui->repoFilter->findText("NO INFO"),((AS::QTNIXEngine*)as)->getCommunityName().c_str());
 
-    ui->tLabel->setText(QString::number(tpack));
-    ui->uLabel->setText(QString::number(upack));
-    ui->iLabel->setText(QString::number(ipack));
-    ui->eLabel->setText(QString::number(epack));
+    //Statistics
+    QStringList statText;        
+    for(int j=0;j<repos.size();++j){
+        if(repos.at(j)=="NO INFO") continue;
+        statText.append(QString("<b>")+repos.at(j)+QString("</b>"));
+        statText.append(tr("Packages")+QString(":\t")+QString::number(repoStats[repos.at(j)].total));
+        statText.append(tr("Installed")+QString(":\t")+QString::number(repoStats[repos.at(j)].installed)+QString("<br>"));
+    }
+    statText.append(QString("<b>")+QString(((AS::QTNIXEngine*)as)->getCommunityName().c_str())+QString("</b>"));
+    statText.append(tr("Installed")+QString(":\t")+QString::number(repoStats["NO INFO"].installed));
+    statText.append(QString("<b>"));
+    statText.append(tr("Total")+QString("</b>"));
+    statText.append(tr("Packages")+QString(":\t")+QString::number(tpack));
+    statText.append(tr("Installed")+QString(":\t")+QString::number(ipack));
+    ui->statText->setHtml(statText.join("<br>"));
 
     if(ui->tabWidget->tabText(1)==tr("All"))ui->tabWidget->setTabText(1, tr("All"));
 

@@ -230,6 +230,13 @@ signals:
 #include <QMessageBox>
 #include <QFileIconProvider>
 #include "filetreemodel.h"
+
+struct RepoStats{
+    int total;
+    int installed;
+    int upgradable;
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -259,6 +266,8 @@ public slots:
     void showMultimedia();
     void showOffice();
     void showInternet();
+
+    void repoFilter();
 
     void showOptions();
 
@@ -552,6 +561,11 @@ private:
 
     FileTreeModel *fileTreeModel;
     QFileIconProvider iconProvider;
+
+    QHash<QString, RepoStats> repoStats;
+
+    bool isRepoFiltered(const QString &repoName);
+
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);
