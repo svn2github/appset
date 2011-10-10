@@ -30,6 +30,7 @@ public:
     bool preload;
     int interactions;
     int trayVisibility;
+    bool rssShow;
 
     int updelay;
 

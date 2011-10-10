@@ -128,6 +128,12 @@ void Options::writeConfigFile(bool overwrite, bool ei){
         conf.write((QString::number((int)ui->trayVisibility->currentIndex())+QString("\n")).toAscii());
         trayVisibility=ui->trayVisibility->currentIndex();
     }
+    if(found>14)
+        rssShow=configs[14].toShort();
+    else{
+        conf.write((QString::number((int)ui->rssShow->isChecked())+QString("\n")).toAscii());
+        rssShow=ui->rssShow->isChecked();
+    }
 
 
     ui->checkBox->setChecked(startfullscreen);
@@ -145,6 +151,7 @@ void Options::writeConfigFile(bool overwrite, bool ei){
     ui->preload->setChecked(preload);
     ui->inter->setCurrentIndex(interactions);
     ui->trayVisibility->setCurrentIndex(trayVisibility);
+    ui->rssShow->setChecked(rssShow);
 
     conf.close();
 }

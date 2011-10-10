@@ -218,12 +218,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //RSS
     connect(ui->treeWidget, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
-            this, SLOT(itemActivated(QTreeWidgetItem*)));    
+            this, SLOT(itemActivated(QTreeWidgetItem*)));
     QStringList headerLabels;
     headerLabels << tr("Link") << tr("Title");
     ui->treeWidget->setHeaderLabels(headerLabels);
     ui->treeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
-    get(QUrl(QString(((AS::QTNIXEngine*)as)->getNewsUrl(QLocale::languageToString(QLocale::system().language()).toAscii().data()).c_str())));
+    //get(QUrl(QString(((AS::QTNIXEngine*)as)->getNewsUrl(QLocale::languageToString(QLocale::system().language()).toAscii().data()).c_str())));
     ui->treeWidget->hideColumn(0);
     rssloader=new QTimer(this);
     rssloader->setSingleShot(true);
@@ -273,6 +273,8 @@ MainWindow::MainWindow(QWidget *parent) :
     else ((AS::QTNIXEngine*)as)->setForced(false);
     if(interactions==0 && !((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(true);
     else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
+    if(opt.rssShow) rssloader->start(100);
+    else ui->newsGroup->hide();
 
     QFile helperDelay("/tmp/ashdelay.tmp");
     helperDelay.open(QIODevice::WriteOnly);
@@ -819,6 +821,13 @@ void MainWindow::showOptions(){
         else ((AS::QTNIXEngine*)as)->setForced(false);
         if(interactions==0 && !((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(true);
         else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
+        if(opt.rssShow){
+            rssloader->start(100);
+            ui->newsGroup->show();
+        }else{
+            rssloader->stop();
+            ui->newsGroup->hide();
+        }
 
         QFile helperDelay("/tmp/ashdelay.tmp");
         helperDelay.open(QIODevice::WriteOnly);
