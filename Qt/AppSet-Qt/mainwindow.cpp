@@ -272,6 +272,16 @@ MainWindow::MainWindow(QWidget *parent) :
     if(interactions==0 && !((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(true);
     else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
 
+    QFile helperDelay("/tmp/ashdelay.tmp");
+    helperDelay.open(QIODevice::WriteOnly);
+    if(helperDelay.isOpen()){
+        QTextStream ashstream(&helperDelay);
+
+        ashstream << opt.updelay;
+
+        helperDelay.close();
+    }
+
     connect(ui->infoText,SIGNAL(anchorClicked(QUrl)),SLOT(extBrowserLink(QUrl)));
 
     ui->backGroup->setHidden(true);
@@ -807,6 +817,16 @@ void MainWindow::showOptions(){
         else ((AS::QTNIXEngine*)as)->setForced(false);
         if(interactions==0 && !((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(true);
         else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
+
+        QFile helperDelay("/tmp/ashdelay.tmp");
+        helperDelay.open(QIODevice::WriteOnly);
+        if(helperDelay.isOpen()){
+            QTextStream ashstream(&helperDelay);
+
+            ashstream << opt.updelay << "\n";
+
+            helperDelay.close();
+        }
 
         if(enhanced && !view)asyncFilter();
         if(!enhanced && view){
@@ -2189,6 +2209,8 @@ void MainWindow::changeStatus(int row, int col){
             fileTreeModel = 0;
             fileTreeModel = new FileTreeModel(fileStringList, this, &iconProvider);
             ui->fileTreeView->setModel(fileTreeModel);
+
+            ui->fileTreeView->expandAll();
 
             delete fileList;
         }else{

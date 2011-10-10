@@ -78,26 +78,14 @@ int main(){
     ((NIXEngine*)ase)->removeLock();
 
     ifstream conf;
-    string conf_buffer;    
+    string conf_buffer;
+    bool updelaySet = false;
 #endif
 
     ase->update();
 
     std::list<AS::Package*> *remote, *local;
     while(true){
-#ifdef unix
-        conf.open("/etc/appset/appset-qt.conf", ifstream::in);
-        if(conf.is_open()){
-            int i=0;
-            while(i!=4 && conf.good()){
-                getline (conf,conf_buffer);
-                i++;
-            }
-            updelay = atoi(conf_buffer.data())*60;
-        }
-        conf.close();
-#endif
-
         local = ase->queryLocal(as_QUERY_ALL_INFO|as_EXPERT_QUERY);
         remote = ase->queryRemote(as_QUERY_ALL_INFO|as_EXPERT_QUERY);
 
@@ -161,6 +149,24 @@ int main(){
             //bool upreq=false;
             while(!runned && remains==0){
                 remains = sleep(5);
+
+#ifdef unix
+                //Retrieving update delay
+                conf.open("/tmp/ashdelay.tmp", ifstream::in);
+                //cout << "TRYING TO GET UPDELAY" << endl;
+                if(conf.is_open()){
+                    getline (conf,conf_buffer);
+
+                    updelay = atoi(conf_buffer.data())*60;
+
+                    //cout << "GOT IT: " << updelay << endl;
+
+                    conf.close();
+                    updelaySet = true;
+                    unlink("/tmp/ashdelay.tmp");
+                }//else cout << "CAN'T GET IT" << updelay << endl;
+#endif
+
                 counter = (counter+5-remains);
                 struct stat s;
                 while(stat("/tmp/as.tmp",&s)==0 || stat("/tmp/asshown",&s)==0){
