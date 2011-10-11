@@ -5,6 +5,8 @@
   -Per repository statistics
   -New option for tray icon visibility (Always or only when there are available updates)
   -New option to enable/disable rss feed reader (feature req. #3353471)  
+  -New option to enable/disable packages homepage loading (feature req. #3353471)
+  -New option to select the first page (Start or All packages)
   -Tabbed options panel
   -Hungarian translation
 

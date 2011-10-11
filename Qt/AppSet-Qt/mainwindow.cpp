@@ -275,6 +275,9 @@ MainWindow::MainWindow(QWidget *parent) :
     else if(interactions && ((AS::QTNIXEngine*)as)->isAuto()) ((AS::QTNIXEngine*)as)->setAuto(false);
     if(opt.rssShow) rssloader->start(100);
     else ui->newsGroup->hide();
+    loadHomes = opt.loadHomes;
+    if(!loadHomes) ui->extraInfoGroupBox->removeTab(0);
+    if(!privileged)ui->tabWidget->setCurrentIndex(opt.firstPage);
 
     QFile helperDelay("/tmp/ashdelay.tmp");
     helperDelay.open(QIODevice::WriteOnly);
@@ -828,6 +831,11 @@ void MainWindow::showOptions(){
             rssloader->stop();
             ui->newsGroup->hide();
         }
+        loadHomes = opt.loadHomes;
+        bool homeWidged = ui->extraInfoGroupBox->indexOf(ui->webView)!=-1;
+        if(!loadHomes){
+            if(homeWidged) ui->extraInfoGroupBox->removeTab(0);
+        }else if(!homeWidged) ui->extraInfoGroupBox->insertTab(0,ui->webView,tr("Homepage"));
 
         QFile helperDelay("/tmp/ashdelay.tmp");
         helperDelay.open(QIODevice::WriteOnly);
@@ -2168,6 +2176,7 @@ void MainWindow::changeStatus(int row, int col){
     if(col && row==currentPacket && row)return;    
 
     if(ui->tableWidget->item(row,6) && ui->tableWidget->item(row,2) && row!=currentPacket){
+        if(loadHomes)
         if(ui->urlpre->isChecked() && ui->webView && ui->webView->isEnabled()){
             ui->webView->stop();
             ui->webView->setUrl(QUrl::fromUserInput(ui->tableWidget->item(row,6)->text().trimmed()));
@@ -2640,8 +2649,15 @@ void MainWindow::addRows(bool checked){
             //ui->tableWidget->insertRow(i);
             newItem = new QTableWidgetItem(QIcon(":pkgstatus/unchecked.png"),"Remote");
             newItem->setToolTip(tr("Not Installed"));
-            ui->tableWidget->setItem(i,0, newItem);            
-            newItem = new QTableWidgetItem(pkg->getRepository().c_str());
+            ui->tableWidget->setItem(i,0, newItem);
+
+            QString repo(pkg->getRepository().c_str());
+
+            newItem = new QTableWidgetItem(repo);
+
+            RepoStats *repoInstance = &repoStats[repo];
+            repoInstance->total++;
+
             ui->tableWidget->setItem(i,1, newItem);
             //XXX change for other distributions
             newItem = new QTableWidgetItem(pkg->getName().c_str());
@@ -2713,6 +2729,10 @@ void MainWindow::addRows(bool checked){
                     newItem = new QTableWidgetItem(pkg->getLocalVersion().c_str());
                     ui->tableWidget->setItem(found,3, newItem);
 
+                    QString repo(ui->tableWidget->item(index,1)->text());
+                    RepoStats *repoInstance = &repoStats[repo];
+                    repoInstance->installed++;
+
                     //ui->tableWidget->item(found,1)->setText("");
 
                     //ipack++;
@@ -2727,8 +2747,15 @@ void MainWindow::addRows(bool checked){
                 ui->tableWidget->insertRow(i);
                 newItem = new QTableWidgetItem(QIcon(":pkgstatus/checked.png"),"Installed");
                 newItem->setToolTip(tr("Installed (external)"));
-                ui->tableWidget->setItem(i,0, newItem);                
-                newItem = new QTableWidgetItem(pkg->getRepository().c_str());
+                ui->tableWidget->setItem(i,0, newItem);
+
+                QString repo(pkg->getRepository().c_str());
+
+                newItem = new QTableWidgetItem(repo);
+
+                RepoStats *repoInstance = &repoStats[repo];
+                repoInstance->installed++;
+
                 ui->tableWidget->setItem(i,1, newItem);
                 newItem = new QTableWidgetItem(pkg->getName().c_str());
                 newItem->setToolTip((QString(pkg->getRepository().c_str())+QString("/")+QString(pkg->getName().c_str())));
@@ -2963,19 +2990,27 @@ void MainWindow::addRows(bool checked){
     ui->repoFilter->setItemText(ui->repoFilter->findText("NO INFO"),((AS::QTNIXEngine*)as)->getCommunityName().c_str());
 
     //Statistics
-    QStringList statText;        
+    QStringList statText;
+    int total=0,installed=0;
+    RepoStats *repoInstance;
     for(int j=0;j<repos.size();++j){
         if(repos.at(j)=="NO INFO") continue;
         statText.append(QString("<b>")+repos.at(j)+QString("</b>"));
-        statText.append(tr("Packages")+QString(":\t")+QString::number(repoStats[repos.at(j)].total));
-        statText.append(tr("Installed")+QString(":\t")+QString::number(repoStats[repos.at(j)].installed)+QString("<br>"));
+        repoInstance = &repoStats[repos.at(j)];
+        total+=repoInstance->total;
+        installed+=repoInstance->installed;
+        statText.append(tr("Packages")+QString(":\t")+QString::number(repoInstance->total));
+        statText.append(tr("Installed")+QString(":\t")+QString::number(repoInstance->installed)+QString("<br>"));
     }
+    repoInstance = &repoStats["NO INFO"];
+    total += repoInstance->installed;
+    installed+= repoInstance->installed;
     statText.append(QString("<b>")+QString(((AS::QTNIXEngine*)as)->getCommunityName().c_str())+QString("</b>"));
-    statText.append(tr("Installed")+QString(":\t")+QString::number(repoStats["NO INFO"].installed));
+    statText.append(tr("Installed")+QString(":\t")+QString::number(repoInstance->installed));
     statText.append(QString("<b>"));
     statText.append(tr("Total")+QString("</b>"));
-    statText.append(tr("Packages")+QString(":\t")+QString::number(tpack));
-    statText.append(tr("Installed")+QString(":\t")+QString::number(ipack));
+    statText.append(tr("Packages")+QString(":\t")+QString::number(total));
+    statText.append(tr("Installed")+QString(":\t")+QString::number(installed));
     ui->statText->setHtml(statText.join("<br>"));
 
     if(ui->tabWidget->tabText(1)==tr("All"))ui->tabWidget->setTabText(1, tr("All"));

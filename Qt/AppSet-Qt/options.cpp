@@ -134,6 +134,18 @@ void Options::writeConfigFile(bool overwrite, bool ei){
         conf.write((QString::number((int)ui->rssShow->isChecked())+QString("\n")).toAscii());
         rssShow=ui->rssShow->isChecked();
     }
+    if(found>15)
+        loadHomes=configs[15].toShort();
+    else{
+        conf.write((QString::number((int)ui->loadHomes->isChecked())+QString("\n")).toAscii());
+        loadHomes=ui->loadHomes->isChecked();
+    }
+    if(found>16)
+        firstPage=configs[16].toInt();
+    else{
+        conf.write((QString::number((int)ui->firstPageCombo->currentIndex())+QString("\n")).toAscii());
+        firstPage=ui->firstPageCombo->currentIndex();
+    }
 
 
     ui->checkBox->setChecked(startfullscreen);
@@ -152,6 +164,8 @@ void Options::writeConfigFile(bool overwrite, bool ei){
     ui->inter->setCurrentIndex(interactions);
     ui->trayVisibility->setCurrentIndex(trayVisibility);
     ui->rssShow->setChecked(rssShow);
+    ui->loadHomes->setChecked(loadHomes);
+    ui->firstPageCombo->setCurrentIndex(firstPage);
 
     conf.close();
 }

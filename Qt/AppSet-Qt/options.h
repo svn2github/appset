@@ -31,6 +31,8 @@ public:
     int interactions;
     int trayVisibility;
     bool rssShow;
+    bool loadHomes;
+    int firstPage;
 
     int updelay;
 

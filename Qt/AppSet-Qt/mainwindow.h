@@ -566,6 +566,8 @@ private:
 
     bool isRepoFiltered(const QString &repoName);
 
+    bool loadHomes;
+
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);
     void comPatternUpdated(QString);
