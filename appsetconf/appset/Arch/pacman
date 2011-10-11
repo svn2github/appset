@@ -1,7 +1,7 @@
 update=pacman -Sy
 upgrade=pacman -Su --needed
 install=pacman -S --needed
-remove=pacman -Rsd --noconfirm
+remove=pacman -Rsd
 clean_cache=pacman -Scc
 query_upgradable=pacman -Qui
 query_local_byname=pacman -Q

@@ -49,6 +49,7 @@ namespace Ui {
 
 #include <QStatusBar>
 #include <QCoreApplication>
+#include <QFile>
 
 #include "about.h"
 
@@ -64,12 +65,14 @@ public:
     int status;
     bool local;
     QString pattern;
+    QString xTermCmd;
     AsThread(AS::Engine *as){
         this->l=0;
         this->op=0;
         status=0;
         this->as=as;
         local=false;
+        xTermCmd = "xterm -e";
 
         this->connect(((AS::QTNIXEngine*)as)->getIP(),SIGNAL(userQuery(QString)),this,SIGNAL(userQuery(QString)));
     }
@@ -85,6 +88,7 @@ public:
     int getOp(){return op;}
 
     void run(){
+
         switch(op){
         case 1:
             if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(true);
@@ -121,6 +125,10 @@ public:
             if(((AS::QTNIXEngine*)as)->getIP()!=0)((AS::QTNIXEngine*)as)->getIP()->setEnabled(false);
             status+=((AS::QTNIXEngine*)as)->com_upgrade(pattern.toAscii().data());
             break;
+        case 9:
+            ((AS::QTNIXEngine*)as)->executeBatch(xTermCmd);
+            break;
+
         }
     }
 
@@ -130,7 +138,6 @@ signals:
 
 #include <fstream>
 #include <sys/stat.h>
-#include <QFile>
 class ASLogger:public AS::EngineListener{
     std::ofstream logFile;
 public:
@@ -395,11 +402,13 @@ public slots:
         asshown.write("\n");
         asshown.close();
 
+        if(pp!=9 && pp && pp!=11 && QFile::exists("/tmp/asbatch.tmp")) return;
+
         this->setWindowFlags(Qt::WindowStaysOnTopHint|Qt::X11BypassWindowManagerHint|Qt::Window);
         this->activateWindow();
+        this->showNormal();
         this->raise();
         this->setWindowFlags(Qt::Window);
-        this->showNormal();
 
         if((oldgeom.left()!=-1))
             this->setGeometry(oldgeom);
@@ -567,6 +576,10 @@ private:
     bool isRepoFiltered(const QString &repoName);
 
     bool loadHomes;
+
+    bool buildBatch;
+
+    QString xTermCmd;
 
 signals:
     void installedPackagesUpdated(std::list<AS::Package*> *);

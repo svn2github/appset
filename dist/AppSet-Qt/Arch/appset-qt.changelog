@@ -3,6 +3,9 @@
   -Owned files tree view tab for installed packages (with desktop theme file icons, not in enhanced view, feature req. #3413878)
   -New packages search filter: repository
   -Per repository statistics
+  -An alternative (not for AUR/CCR) way to execute requested operations on an external X Terminal emulator where:
+	*the X Terminal Emulator is configurable via options panel
+	*in the "check and apply" page you can select (via radio button) to use the internal (like before and default) or external tool
   -New option for tray icon visibility (Always or only when there are available updates)
   -New option to enable/disable rss feed reader (feature req. #3353471)  
   -New option to enable/disable packages homepage loading (feature req. #3353471)

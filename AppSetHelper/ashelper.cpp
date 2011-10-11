@@ -58,6 +58,7 @@ int main(){
     unlink("/tmp/asremove.tmp");
     unlink("/tmp/asupgrade.tmp");
     unlink("/tmp/asshown.tmp");
+    unlink("/tmp/asbatch.tmp");
 
     ofstream pid_writer;
     pid_writer.open("/var/run/ashelper.pid");

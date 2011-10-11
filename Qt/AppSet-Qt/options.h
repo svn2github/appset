@@ -33,6 +33,7 @@ public:
     bool rssShow;
     bool loadHomes;
     int firstPage;
+    QString xTermCmd;
 
     int updelay;
 

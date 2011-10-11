@@ -26,6 +26,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "inputprovider.h"
 
+class QFile;
+class QTextStream;
+
 namespace AS{
 
     class QTNIXEngine : public NIXEngine {
@@ -35,10 +38,15 @@ namespace AS{
 
         bool stopRequested;
 
+        QFile *batchFile;
+        QTextStream *batchFileStream;
+        bool buildBatch;
+        bool batching;
+
     protected:        
         int execCmd(std::string command);
     public:
-        QTNIXEngine(InputProvider *ip){inputProvider=ip;stopRequested=false;}
+        QTNIXEngine(InputProvider *ip){inputProvider=ip;stopRequested=false;buildBatch=false;batching = false;}
 
         QString getConfErrStr(int errno);        
 
@@ -62,6 +70,10 @@ namespace AS{
 
         void forceStop();
         void requestStop(){stopRequested=true;}
+
+        int initializeBatch();
+        int finalizeBatch(const QString &pauseMsg);
+        int executeBatch(const QString &executer);
     };
 
 

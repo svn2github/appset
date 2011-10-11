@@ -57,6 +57,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     local=false;
 
+    buildBatch = false;
+
     ui->webView->history()->setMaximumItemCount(0);
     ui->webView_2->history()->setMaximumItemCount(0);
 
@@ -278,6 +280,7 @@ MainWindow::MainWindow(QWidget *parent) :
     loadHomes = opt.loadHomes;
     if(!loadHomes) ui->extraInfoGroupBox->removeTab(0);
     if(!privileged)ui->tabWidget->setCurrentIndex(opt.firstPage);
+    this->xTermCmd=opt.xTermCmd;
 
     QFile helperDelay("/tmp/ashdelay.tmp");
     helperDelay.open(QIODevice::WriteOnly);
@@ -362,11 +365,18 @@ MainWindow::MainWindow(QWidget *parent) :
     oldgeom=QRect(-1,0,0,0);
 
     if((pp!=9 && pp!=5 && pp!=10 && pp) || pp==11){
-        this->showPriv();
+        if(QFile::exists("/tmp/asbatch.tmp")){
+            this->hide();
+        }else{
+            this->showPriv();
+        }
+
         timer->start(100);
     }else{
         this->hidePriv();
         oldgeom=QRect(-1,0,0,0);
+
+        this->changeStatus(0,1);
 
         if(preload) timer->start(100);
     }
@@ -836,6 +846,7 @@ void MainWindow::showOptions(){
         if(!loadHomes){
             if(homeWidged) ui->extraInfoGroupBox->removeTab(0);
         }else if(!homeWidged) ui->extraInfoGroupBox->insertTab(0,ui->webView,tr("Homepage"));
+        this->xTermCmd=opt.xTermCmd;
 
         QFile helperDelay("/tmp/ashdelay.tmp");
         helperDelay.open(QIODevice::WriteOnly);
@@ -1082,8 +1093,8 @@ void MainWindow::refresh(){
 
                     break;
                 }
-                else if(asThread->getOp()==1) ui->cancelOps->setEnabled(true);
-            }
+
+            }else if(asThread->getOp()==1) ui->cancelOps->setEnabled(true);
         }
         break;
      case 2:
@@ -1143,8 +1154,8 @@ void MainWindow::refresh(){
                     }
 
                     break;
-                }else if(asThread->getOp()==2) ui->cancelOps->setEnabled(true);
-            }
+                }
+            }else if(asThread->getOp()==2) ui->cancelOps->setEnabled(true);
         }
         break;
     }
@@ -1237,7 +1248,7 @@ void MainWindow::opFinished(){
 
     }
 
-    if(op>0&&op<4){
+    if(op>0&&op<4 || op==9){
         if(pp==9 || !pp || pp==11){
             ui->stacked->setCurrentIndex(0);
             QCoreApplication::processEvents(QEventLoop::AllEvents,500);
@@ -1301,9 +1312,18 @@ void MainWindow::opFinished(){
                 }
             }else ui->statusBar->showMessage(tr("All operations completed successfully!"),5000);//done.show();
         }else if((!toI && !toU && !toR)){
-            as->removeListener(logger);
-            delete logger;
-            qApp->quit();
+            if(buildBatch){
+                ((AS::QTNIXEngine*)as)->finalizeBatch(tr("Press Enter to continue"));
+
+                asThread->setOp(9);
+                asThread->start();
+
+                buildBatch = false;
+            }else{
+                as->removeListener(logger);
+                delete logger;
+                qApp->quit();
+            }
         }else{
             editConfirm();
         }
@@ -1319,6 +1339,19 @@ void MainWindow::editConfirm(){
     Package *p;
 
     int rows=ui->tableUpgraded->rowCount();
+
+    if(!(pp!=9 && pp && pp!=11) && ui->externalEngineRadioButton->isChecked()){
+        QFile asbatch("/tmp/asbatch.tmp");
+        asbatch.open(QIODevice::WriteOnly);
+        asbatch.write("batch initialize\n");
+        asbatch.close();
+    }
+
+    if(!buildBatch && pp!=9 && pp && pp!=11 && QFile::exists("/tmp/asbatch.tmp")){
+        buildBatch = true;
+        asThread->xTermCmd=this->xTermCmd;
+        ((AS::QTNIXEngine*)as)->initializeBatch();
+    }
 
     if(toR){
         std::list<Package*> *prem=new std::list<Package*>();
@@ -2011,6 +2044,22 @@ void MainWindow::notUpgrade(bool community){
 }
 
 void MainWindow::confirm(){
+    //Engine selector
+    QString xTermCmd = this->xTermCmd.split(" ").at(0);
+    QString tool_check("which ");
+    tool_check.append(xTermCmd);
+    tool_check.append(" >/dev/null 2>/dev/null");
+    bool tool_ok=(system(tool_check.toAscii().data())==0);
+    ui->externalEngineRadioButton->setText(tr("Run externally with %1").arg(xTermCmd));
+    if(tool_ok){
+        ui->externalEngineLabel->hide();
+        ui->externalEngineRadioButton->setEnabled(true);
+    }else{
+        ui->externalEngineLabel->setText(tr("(%1 must be installed on your system!)").arg(xTermCmd));
+        ui->externalEngineLabel->show();
+        ui->externalEngineRadioButton->setEnabled(false);
+    }
+
     ui->tableUpgraded->hideColumn(5);
     ui->tableUpgraded->setColumnWidth(1,300);
     ui->tableUpgraded->setColumnWidth(2,200);
@@ -2019,7 +2068,7 @@ void MainWindow::confirm(){
     ui->mainToolBar->hide();
 
     ui->tableUpgraded->clearContents();
-    ui->tableUpgraded->setRowCount(0);
+    ui->tableUpgraded->setRowCount(0);    
 
     int in=0,r=0,u=0;
     bool ignoring = ((AS::QTNIXEngine*)as)->isIgnoringUpgrades();
@@ -2214,7 +2263,7 @@ void MainWindow::changeStatus(int row, int col){
 
             ui->extraInfoGroupBox->setTabIcon(0,QIcon::fromTheme(pkgName));
 
-            ui->extraInfoGroupBox->setTabEnabled(2,true);
+            ui->extraInfoGroupBox->setTabEnabled(ui->extraInfoGroupBox->indexOf(ui->fileList),true);
 
             p.setName(pkgName.toAscii().data());
 
@@ -2236,7 +2285,7 @@ void MainWindow::changeStatus(int row, int col){
 
             delete fileList;
         }else{
-            ui->extraInfoGroupBox->setTabEnabled(2,false);
+            ui->extraInfoGroupBox->setTabEnabled(ui->extraInfoGroupBox->indexOf(ui->fileList),false);
             ui->extraInfoGroupBox->setTabIcon(0,QIcon());
         }
     }
@@ -2620,6 +2669,8 @@ void MainWindow::addRows(bool checked){
     clearPackagesList();
 
     ui->tableWidget->setSortingEnabled(false);
+
+    repoStats.clear();
 
     std::list<AS::Package*> *ipkgs=new std::list<AS::Package*>();
 

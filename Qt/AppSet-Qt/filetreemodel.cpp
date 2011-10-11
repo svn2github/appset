@@ -156,14 +156,14 @@ void FileTreeModel::setupModelData(const QStringList &files, FileItem *parent){
         QString itemData = newPath.mid(newPath.lastIndexOf('/',-2)+1);        
 
         FileItem *realParent = item;
-        for( int j=newDepth; j<=depth; ++j){
+        for( int j=newDepth; j<=depth && realParent; ++j){
             realParent = realParent->parent();
         }
 
         if( !isLeaf ) itemData.chop(1);
 
         FileItem *newItem= new FileItem(itemData, realParent, isLeaf);
-        realParent->appendChild( newItem );
+        if(realParent) realParent->appendChild( newItem );
 
         item = newItem;
         depth = newDepth;

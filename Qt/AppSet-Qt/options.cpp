@@ -146,6 +146,13 @@ void Options::writeConfigFile(bool overwrite, bool ei){
         conf.write((QString::number((int)ui->firstPageCombo->currentIndex())+QString("\n")).toAscii());
         firstPage=ui->firstPageCombo->currentIndex();
     }
+    if(found>17)
+        xTermCmd=configs[17].trimmed();
+    else{
+        QString userDefined = ui->xTermCmd->text().trimmed();
+        conf.write((((userDefined=="")?QString("xterm -e"):userDefined)+QString("\n")).toAscii());
+        xTermCmd = ((userDefined=="")?QString("xterm -e"):userDefined);
+    }
 
 
     ui->checkBox->setChecked(startfullscreen);
@@ -166,6 +173,7 @@ void Options::writeConfigFile(bool overwrite, bool ei){
     ui->rssShow->setChecked(rssShow);
     ui->loadHomes->setChecked(loadHomes);
     ui->firstPageCombo->setCurrentIndex(firstPage);
+    ui->xTermCmd->setText(xTermCmd);
 
     conf.close();
 }

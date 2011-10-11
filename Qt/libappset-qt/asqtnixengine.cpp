@@ -21,17 +21,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <QTextStream>
 
 int AS::QTNIXEngine::execCmd(std::string command){
+    if(buildBatch){
+        (*batchFileStream) << command.c_str() << "\n";
+
+        return 0;
+    }
+
     process = new QProcess();
 
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     env.insert("LANG", "C");
     env.insert("COLOR","NO");
 
-    process->setProcessEnvironment(env);;
+    if(!batching){
+        process->setProcessEnvironment(env);;
 
-    process->setProcessChannelMode(QProcess::MergedChannels);
+        process->setProcessChannelMode(QProcess::MergedChannels);
+    }
 
     QProcess yesProcess;
+    if(!batching)
     if(inputProvider==0 || !inputProvider->isEnabled()){
         yesProcess.setStandardOutputProcess(process);
         yesProcess.start("yes");
@@ -60,6 +69,18 @@ int AS::QTNIXEngine::execCmd(std::string command){
     args.removeAt(0);
 
     process->start(exec,args);
+
+    if(batching){
+        notifyListeners("Running external X terminal emulator...");
+
+        while(!process->waitForFinished());
+        int ret = process->exitCode();
+
+        delete process;
+        process = 0;
+
+        return ret;
+    }
 
     int actual=50;
     QString line;
@@ -139,6 +160,53 @@ void AS::QTNIXEngine::sendAnswer(QString answer){
     stream.setDevice(process);
     stream << (answer+"\n");
     stream.flush();
+}
+
+
+#include <QFile>
+#include <QTextStream>
+int AS::QTNIXEngine::initializeBatch(){
+    batchFile = new QFile("/tmp/asbatch.tmp");
+
+    batchFile->open(QIODevice::WriteOnly);
+
+    if(batchFile->isOpen()){
+        batchFileStream = new QTextStream(batchFile);
+
+        (*batchFileStream ) << "#!/bin/sh\n";
+
+        buildBatch = true;
+
+        return 0;
+    }
+
+    return 1;
+}
+
+int AS::QTNIXEngine::finalizeBatch(const QString &pauseMsg){
+    (*batchFileStream) << "read -p '" << pauseMsg << "'\n";
+
+    batchFile->close();
+
+    buildBatch = false;
+
+    delete batchFileStream;
+    delete batchFile;
+
+    return 0;
+}
+
+#include <QStringList>
+int AS::QTNIXEngine::executeBatch(const QString &executer){
+    QString lowExecuter("sh /tmp/asbatch.tmp");
+
+    batching = true;
+    int status = execCmd((QStringList(executer) << lowExecuter).join(" ").toAscii().data());
+    batching = false;
+
+    QFile::remove("/tmp/asbatch.tmp");
+
+    return status;
 }
 
 QString AS::QTNIXEngine::getConfErrStr(int errno){
