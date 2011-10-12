@@ -376,8 +376,6 @@ MainWindow::MainWindow(QWidget *parent) :
         this->hidePriv();
         oldgeom=QRect(-1,0,0,0);
 
-        this->changeStatus(0,1);
-
         if(preload) timer->start(100);
     }
 #endif
@@ -530,6 +528,28 @@ void MainWindow::getPrivileges(){
 void MainWindow::getComPrivileges(){
     int ii=toI,rr=toR,uu=toU;
 
+    //Engine check
+    QString xTermCmd = this->xTermCmd.split(" ").at(0);
+    QString tool_check("which ");
+    tool_check.append(xTermCmd);
+    tool_check.append(" >/dev/null 2>/dev/null");
+    bool tool_ok=(system(tool_check.toAscii().data())==0);
+    if(!tool_ok){
+        QMessageBox error;
+        error.setText(tr("No X Terminal Emulator configured correctly. Install %1 or change the appropriate option.").arg(xTermCmd));
+        error.setIcon(QMessageBox::Critical);
+        error.exec();
+        outComPrivileged(666);
+        return;
+    }
+
+    QFile asbatch("/tmp/asbatch.tmp");
+    asbatch.open(QIODevice::WriteOnly);
+    if(asbatch.isOpen()){
+        asbatch.write("Initialize community batch.\n");
+        asbatch.close();
+    }
+
     QFile lfile("/tmp/aslock");
     lfile.open(QIODevice::WriteOnly);
     lfile.close();
@@ -575,7 +595,7 @@ void MainWindow::outComPrivileged(int out){
 
     QFile::remove("/tmp/ascom");
     QFile::remove("/tmp/aspriv");
-    priv->disconnect(SIGNAL(finished(int)),this,SLOT(outComPrivileged(int)));
+    if(out!=666)priv->disconnect(SIGNAL(finished(int)),this,SLOT(outComPrivileged(int)));
 }
 
 void MainWindow::outPrivileged(int out){
@@ -1720,18 +1740,30 @@ void MainWindow::comCommon(int op){
     ui->mainToolBar->setHidden(true);
     ui->comWait->setVisible(true);
 
+    ((AS::QTNIXEngine*)as)->initializeBatch();
+
     asComThread->setOp(op);
+    asComThread->xTermCmd=xTermCmd;
     if(op!=8)asComThread->pattern=this->comPattern;
     asComThread->start();
 }
 
 void MainWindow::comOpFinished(){
     timerUpdateCom->stop();
+
+    if(asComThread->getOp()!=9){
+        ((AS::QTNIXEngine*)as)->finalizeBatch(tr("Press Enter to continue"));
+        asComThread->setOp(9);
+        asComThread->start();
+    }else{
+        qApp->quit();
+    }
+
     //as->removeListener(logger);
     //delete logger;
     //refreshCom();
-    ui->comContinue->setVisible(true);
-    ui->comWait->setHidden(true);
+    //ui->comContinue->setVisible(true);
+    //ui->comWait->setHidden(true);
 }
 
 void MainWindow::install(bool community){
