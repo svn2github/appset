@@ -24,7 +24,7 @@
     <message>
         <location filename="about.ui" line="215"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
-        <translation type="unfinished"/>
+        <translation>Egy fejlett és funkció gazdag Csomagkezelő Előtér Program</translation>
     </message>
     <message>
         <location filename="about.ui" line="232"/>
@@ -263,19 +263,19 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="786"/>
         <source>System files</source>
-        <translation type="unfinished"/>
+        <translation>Rendszerfájlok</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1498"/>
         <source>Details</source>
-        <translation type="unfinished"/>
+        <translation>Részletek</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1431"/>
         <location filename="mainwindow.cpp" line="868"/>
         <source>Homepage</source>
         <oldsource>Package Homepage</oldsource>
-        <translation type="unfinished"/>
+        <translation>Kezdőoldal</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="690"/>
@@ -285,17 +285,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="830"/>
         <source>Filters</source>
-        <translation type="unfinished"/>
+        <translation>Szűrők</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="875"/>
         <source>Status</source>
-        <translation type="unfinished"/>
+        <translation>Állapot</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1542"/>
         <source>Files Tree</source>
-        <translation type="unfinished"/>
+        <translation>Fájlfa</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1590"/>
@@ -340,7 +340,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2002"/>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Megállítás</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2058"/>
@@ -376,7 +376,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2195"/>
         <source>Backend&apos;s output:</source>
-        <translation type="unfinished"/>
+        <translation>Háttér program kimenete:</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2222"/>
@@ -418,7 +418,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="77"/>
         <location filename="mainwindow.cpp" line="315"/>
         <source>S</source>
-        <translation type="unfinished"/>
+        <translation>Á</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1002"/>
@@ -511,7 +511,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="171"/>
         <source>Repositories</source>
-        <translation type="unfinished"/>
+        <translation>Tárolók</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="175"/>
@@ -521,12 +521,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="176"/>
         <source>Report a bug</source>
-        <translation type="unfinished"/>
+        <translation>Hiba bejelentése</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="177"/>
         <source>Request a feature</source>
-        <translation type="unfinished"/>
+        <translation>Funkció kérése</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="225"/>
@@ -557,7 +557,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="705"/>
         <source>Are you sure to stop current operations?</source>
-        <translation type="unfinished"/>
+        <translation>Biztos megállítja a jelenlegi műveletet? </translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="773"/>
@@ -572,12 +572,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="798"/>
         <source>The file</source>
-        <translation type="unfinished"/>
+        <translation>A</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="798"/>
         <source>doesn&apos;t seems to be a valid package!</source>
-        <translation type="unfinished"/>
+        <translation>fájl nem tűnik érvényes csomagnak!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1100"/>
@@ -616,7 +616,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="1336"/>
         <location filename="mainwindow.cpp" line="1755"/>
         <source>Press Enter to continue</source>
-        <translation type="unfinished"/>
+        <translation>Nyomjon Entert a folytatáshoz</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1646"/>
@@ -739,7 +739,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="2278"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webcím</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2279"/>
@@ -785,22 +785,22 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="3085"/>
         <location filename="mainwindow.cpp" line="3095"/>
         <source>Packages</source>
-        <translation type="unfinished"/>
+        <translation>Csomagok</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="3118"/>
         <source>The main backend</source>
-        <translation type="unfinished"/>
+        <translation>A fő háttér program, </translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="3119"/>
         <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
-        <translation type="unfinished"/>
+        <translation>nem naprakész. Frissíteni kell, hogy folytathassa a többi műveletet.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="3120"/>
         <source>Do you want to proceed now?</source>
-        <translation type="unfinished"/>
+        <translation>Szeretné folytatni most?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1240"/>
@@ -823,42 +823,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="152"/>
         <source>Show distribution news (RSS feeds)</source>
-        <translation type="unfinished"/>
+        <translation>Disztribúció hírek mutatása (RSS Feed)</translation>
     </message>
     <message>
         <location filename="options.ui" line="169"/>
         <source>Load packages homepages</source>
-        <translation type="unfinished"/>
+        <translation>Csomagok honlapjainak mutatása</translation>
     </message>
     <message>
         <location filename="options.ui" line="186"/>
         <source>First Page</source>
-        <translation type="unfinished"/>
+        <translation>Elsőlap</translation>
     </message>
     <message>
         <location filename="options.ui" line="203"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Mind</translation>
     </message>
     <message>
         <location filename="options.ui" line="278"/>
         <source>Visibility</source>
-        <translation type="unfinished"/>
+        <translation>Láthatóság</translation>
     </message>
     <message>
         <location filename="options.ui" line="286"/>
         <source>Always</source>
-        <translation type="unfinished"/>
+        <translation>Mindig</translation>
     </message>
     <message>
         <location filename="options.ui" line="291"/>
         <source>Updates available</source>
-        <translation type="unfinished"/>
+        <translation>Frissítések elérhetőek</translation>
     </message>
     <message>
         <location filename="options.ui" line="353"/>
         <source>Advanced</source>
-        <translation type="unfinished"/>
+        <translation>Haladó</translation>
     </message>
     <message>
         <location filename="options.ui" line="400"/>
@@ -868,7 +868,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="437"/>
         <source>X Terminal Emulator command</source>
-        <translation type="unfinished"/>
+        <translation>X Terminál Emulátor parancs</translation>
     </message>
     <message>
         <location filename="options.ui" line="453"/>
@@ -883,67 +883,67 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="488"/>
         <source>This browser:</source>
-        <translation type="unfinished"/>
+        <translation>Ez a böngésző:</translation>
     </message>
     <message>
         <location filename="options.ui" line="268"/>
         <source>Tray</source>
-        <translation type="unfinished"/>
+        <translation>Tálca</translation>
     </message>
     <message>
         <location filename="options.ui" line="299"/>
         <source>Updates control interval (min)</source>
-        <translation type="unfinished"/>
+        <translation>Frissítés ellenőrzés időköze (perc)</translation>
     </message>
     <message>
         <location filename="options.ui" line="37"/>
         <source>Main Interface</source>
-        <translation type="unfinished"/>
+        <translation>Fő ablak</translation>
     </message>
     <message>
         <location filename="options.ui" line="47"/>
         <source>Start Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Teljesképernyőben indítás</translation>
     </message>
     <message>
         <location filename="options.ui" line="68"/>
         <source>Shows Backend Output during operations</source>
-        <translation type="unfinished"/>
+        <translation>Háttérprogram kimenetének mutatása műveletek közben</translation>
     </message>
     <message>
         <location filename="options.ui" line="61"/>
         <source>Show Backend Output</source>
-        <translation type="unfinished"/>
+        <translation>Háttérprogram kimenetének mutatása</translation>
     </message>
     <message>
         <location filename="options.ui" line="81"/>
         <source>Search bar delay (ms)</source>
-        <translation type="unfinished"/>
+        <translation>Keresősáv késleltetés (ms)</translation>
     </message>
     <message>
         <location filename="options.ui" line="104"/>
         <source>Show packages statistics</source>
-        <translation type="unfinished"/>
+        <translation>Csomag statisztikák mutatása</translation>
     </message>
     <message>
         <location filename="options.ui" line="135"/>
         <source>Enable countdown to auto-confirm changes</source>
-        <translation type="unfinished"/>
+        <translation>Automatikus visszaszámlálás a változások elfogadásához</translation>
     </message>
     <message>
         <location filename="options.ui" line="121"/>
         <source>Show repository column in packages table</source>
-        <translation type="unfinished"/>
+        <translation>Tároló oszlop mutatása a csomagtáblában</translation>
     </message>
     <message>
         <location filename="options.ui" line="194"/>
         <source>Start</source>
-        <translation type="unfinished"/>
+        <translation>Kezdőoldal</translation>
     </message>
     <message>
         <location filename="options.ui" line="366"/>
         <source>Auto select system files for upgrade (disabled in expert mode)</source>
-        <translation type="unfinished"/>
+        <translation>Rendszerfájlok automatikus kiválasztása frissítésre (szakértő módban kikapcsolva)</translation>
     </message>
     <message>
         <location filename="options.ui" line="383"/>
@@ -953,37 +953,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="238"/>
         <source>Graphics</source>
-        <translation type="unfinished"/>
+        <translation>Grafika</translation>
     </message>
     <message>
         <location filename="options.ui" line="244"/>
         <source>Standard</source>
-        <translation type="unfinished"/>
+        <translation>Alap</translation>
     </message>
     <message>
         <location filename="options.ui" line="254"/>
         <source>Enhanced</source>
-        <translation type="unfinished"/>
+        <translation>Továbbfejlesztett</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Automatic</source>
-        <translation type="unfinished"/>
+        <translation>Automatikus</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Semi-Automatic</source>
-        <translation type="unfinished"/>
+        <translation>Félig automatikus</translation>
     </message>
     <message>
         <location filename="options.cpp" line="20"/>
         <source>Ask everything</source>
-        <translation type="unfinished"/>
+        <translation>Mindent kérdez</translation>
     </message>
     <message>
         <location filename="options.cpp" line="21"/>
         <source>in English</source>
-        <translation type="unfinished"/>
+        <translation>Angolul</translation>
     </message>
 </context>
 </TS>

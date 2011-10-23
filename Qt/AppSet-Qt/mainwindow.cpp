@@ -3069,6 +3069,7 @@ void MainWindow::addRows(bool checked){
     //Repos filter
     QStringList repos(repoStats.keys());
     repos.sort();
+    ui->repoFilter->clear();
     ui->repoFilter->addItems(repos);
     ui->repoFilter->setItemText(ui->repoFilter->findText("NO INFO"),((AS::QTNIXEngine*)as)->getCommunityName().c_str());
 

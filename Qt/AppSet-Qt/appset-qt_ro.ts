@@ -288,12 +288,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="690"/>
         <source>Keys</source>
-        <translation type="unfinished"/>
+        <translation>Chei</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="830"/>
         <source>Filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtre</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="875"/>
@@ -353,7 +353,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2002"/>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Stop</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2058"/>
@@ -578,7 +578,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="705"/>
         <source>Are you sure to stop current operations?</source>
-        <translation type="unfinished"/>
+        <translation>Ești sigur că vrei să oprești operațiunile curente?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="773"/>
@@ -637,7 +637,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="1336"/>
         <location filename="mainwindow.cpp" line="1755"/>
         <source>Press Enter to continue</source>
-        <translation type="unfinished"/>
+        <translation>Apasă Enter pentru a continua</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1646"/>
@@ -806,7 +806,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="3085"/>
         <location filename="mainwindow.cpp" line="3095"/>
         <source>Packages</source>
-        <translation type="unfinished"/>
+        <translation>Pachete</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="3118"/>
@@ -854,7 +854,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="186"/>
         <source>First Page</source>
-        <translation type="unfinished"/>
+        <translation>Prima Pagină</translation>
     </message>
     <message>
         <location filename="options.ui" line="203"/>
@@ -864,22 +864,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="278"/>
         <source>Visibility</source>
-        <translation type="unfinished"/>
+        <translation>Vizibilitate</translation>
     </message>
     <message>
         <location filename="options.ui" line="286"/>
         <source>Always</source>
-        <translation type="unfinished"/>
+        <translation>Întotdeauna</translation>
     </message>
     <message>
         <location filename="options.ui" line="291"/>
         <source>Updates available</source>
-        <translation type="unfinished"/>
+        <translation>Actualizări disponibile</translation>
     </message>
     <message>
         <location filename="options.ui" line="353"/>
         <source>Advanced</source>
-        <translation type="unfinished"/>
+        <translation>Avansat</translation>
     </message>
     <message>
         <location filename="options.ui" line="400"/>
@@ -959,7 +959,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="194"/>
         <source>Start</source>
-        <translation type="unfinished"/>
+        <translation>Start</translation>
     </message>
     <message>
         <location filename="options.ui" line="366"/>

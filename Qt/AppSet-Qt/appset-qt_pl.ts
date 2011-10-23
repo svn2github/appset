@@ -288,22 +288,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="690"/>
         <source>Keys</source>
-        <translation type="unfinished"/>
+        <translation>Keys</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="830"/>
         <source>Filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtry</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="875"/>
         <source>Status</source>
-        <translation type="unfinished"/>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1542"/>
         <source>Files Tree</source>
-        <translation type="unfinished"/>
+        <translation>Drzewo plików</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1590"/>
@@ -353,7 +353,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2002"/>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Stop</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2058"/>
@@ -388,7 +388,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2135"/>
         <source>Run internally to AppSet</source>
-        <translation type="unfinished"/>
+        <translation>Uruchom wewnętrznie w AppSet</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2195"/>
@@ -573,12 +573,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="539"/>
         <source>No X Terminal Emulator configured correctly. Install %1 or change the appropriate option.</source>
-        <translation type="unfinished"/>
+        <translation>Brak poprawnie skonfigurowanego emulatora terminala. Zainstaluj %1 lub zmień odpowiednią opcję.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="705"/>
         <source>Are you sure to stop current operations?</source>
-        <translation type="unfinished"/>
+        <translation>Czy na pewno chcesz zatrzymać bieżące działania?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="773"/>
@@ -637,7 +637,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="1336"/>
         <location filename="mainwindow.cpp" line="1755"/>
         <source>Press Enter to continue</source>
-        <translation type="unfinished"/>
+        <translation>Nacisnij enter aby kontynuaować</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1646"/>
@@ -750,12 +750,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="2085"/>
         <source>Run externally with %1</source>
-        <translation type="unfinished"/>
+        <translation>Uruchom zewnątrznie z %1</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2090"/>
         <source>(%1 must be installed on your system!)</source>
-        <translation type="unfinished"/>
+        <translation>(%1 musi być zainstalowany w systemie!)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2278"/>
@@ -806,7 +806,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="3085"/>
         <location filename="mainwindow.cpp" line="3095"/>
         <source>Packages</source>
-        <translation type="unfinished"/>
+        <translation>Pakiety</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="3118"/>
@@ -844,42 +844,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="152"/>
         <source>Show distribution news (RSS feeds)</source>
-        <translation type="unfinished"/>
+        <translation>Pokaż wiadomość dystrybucji (kanały RSS)</translation>
     </message>
     <message>
         <location filename="options.ui" line="169"/>
         <source>Load packages homepages</source>
-        <translation type="unfinished"/>
+        <translation>Wczytaj strony domowe pakietów</translation>
     </message>
     <message>
         <location filename="options.ui" line="186"/>
         <source>First Page</source>
-        <translation type="unfinished"/>
+        <translation>Pierwsza strona</translation>
     </message>
     <message>
         <location filename="options.ui" line="203"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Wszystko</translation>
     </message>
     <message>
         <location filename="options.ui" line="278"/>
         <source>Visibility</source>
-        <translation type="unfinished"/>
+        <translation>Widoczność</translation>
     </message>
     <message>
         <location filename="options.ui" line="286"/>
         <source>Always</source>
-        <translation type="unfinished"/>
+        <translation>Zawsze</translation>
     </message>
     <message>
         <location filename="options.ui" line="291"/>
         <source>Updates available</source>
-        <translation type="unfinished"/>
+        <translation>Aktualizacje dostępne</translation>
     </message>
     <message>
         <location filename="options.ui" line="353"/>
         <source>Advanced</source>
-        <translation type="unfinished"/>
+        <translation>Zaawansowany</translation>
     </message>
     <message>
         <location filename="options.ui" line="400"/>
@@ -889,7 +889,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="437"/>
         <source>X Terminal Emulator command</source>
-        <translation type="unfinished"/>
+        <translation>Polecenie Emulatora Terminala</translation>
     </message>
     <message>
         <location filename="options.ui" line="453"/>
@@ -959,7 +959,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="194"/>
         <source>Start</source>
-        <translation type="unfinished"/>
+        <translation>Start</translation>
     </message>
     <message>
         <location filename="options.ui" line="366"/>

@@ -37,7 +37,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Licencia: GNU General Public License Version 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Lizentzia: GNU General Public License Version 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="about.ui" line="260"/>
@@ -55,7 +55,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Por favor use &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt; para reportar bugs o solicitar nuevas características&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Mesedez erabili hau &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt;Bug-ak bidaltzeko edo ezaugarri berriak eskatzeko&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="about.ui" line="300"/>
@@ -271,39 +271,39 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="786"/>
         <source>System files</source>
-        <translation type="unfinished"/>
+        <translation>Sistemaren fitxategiak</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1498"/>
         <source>Details</source>
-        <translation type="unfinished"/>
+        <translation>Ezaugarriak</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1431"/>
         <location filename="mainwindow.cpp" line="868"/>
         <source>Homepage</source>
         <oldsource>Package Homepage</oldsource>
-        <translation type="unfinished"/>
+        <translation>Hasierako orria</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="690"/>
         <source>Keys</source>
-        <translation type="unfinished"/>
+        <translation>Teklak</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="830"/>
         <source>Filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtroak</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="875"/>
         <source>Status</source>
-        <translation type="unfinished"/>
+        <translation>Egoera</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1542"/>
         <source>Files Tree</source>
-        <translation type="unfinished"/>
+        <translation>Fitxategien zuhaitza</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1590"/>
@@ -353,7 +353,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2002"/>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2058"/>
@@ -388,7 +388,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2135"/>
         <source>Run internally to AppSet</source>
-        <translation type="unfinished"/>
+        <translation>Appset-eko barnealdean egikaratu</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2195"/>
@@ -406,7 +406,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Monospace'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Esperando el inicio del Backend...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Backend-en hasiera zai...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2247"/>
@@ -573,12 +573,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="539"/>
         <source>No X Terminal Emulator configured correctly. Install %1 or change the appropriate option.</source>
-        <translation type="unfinished"/>
+        <translation>X terminal-en emuladorea txarto konfiguratuta dago. Instalatu %1 edo aldatu ezazu txarto dagon aukera. </translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="705"/>
         <source>Are you sure to stop current operations?</source>
-        <translation type="unfinished"/>
+        <translation>Orain egikaratzen dauden operazioak gelditu nahi dituzu?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="773"/>
@@ -637,7 +637,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="1336"/>
         <location filename="mainwindow.cpp" line="1755"/>
         <source>Press Enter to continue</source>
-        <translation type="unfinished"/>
+        <translation>Sakatu Enter jarraitzeko</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="1646"/>
@@ -750,12 +750,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="2085"/>
         <source>Run externally with %1</source>
-        <translation type="unfinished"/>
+        <translation>Kanpotik egikaratu %1 ekin</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2090"/>
         <source>(%1 must be installed on your system!)</source>
-        <translation type="unfinished"/>
+        <translation>(%1 zure sisteman instalatuta egon behar da)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2278"/>
@@ -806,7 +806,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="3085"/>
         <location filename="mainwindow.cpp" line="3095"/>
         <source>Packages</source>
-        <translation type="unfinished"/>
+        <translation>Paketeak</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="3118"/>
@@ -844,42 +844,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="152"/>
         <source>Show distribution news (RSS feeds)</source>
-        <translation type="unfinished"/>
+        <translation>Erakutsi distrubuzioaren berriak (RSS feeds)</translation>
     </message>
     <message>
         <location filename="options.ui" line="169"/>
         <source>Load packages homepages</source>
-        <translation type="unfinished"/>
+        <translation>Kargatu paketeen hasierako orriak</translation>
     </message>
     <message>
         <location filename="options.ui" line="186"/>
         <source>First Page</source>
-        <translation type="unfinished"/>
+        <translation>Lehenengo orria</translation>
     </message>
     <message>
         <location filename="options.ui" line="203"/>
         <source>All</source>
-        <translation type="unfinished"/>
+        <translation>Dana</translation>
     </message>
     <message>
         <location filename="options.ui" line="278"/>
         <source>Visibility</source>
-        <translation type="unfinished"/>
+        <translation>Ikuspena</translation>
     </message>
     <message>
         <location filename="options.ui" line="286"/>
         <source>Always</source>
-        <translation type="unfinished"/>
+        <translation>Beti</translation>
     </message>
     <message>
         <location filename="options.ui" line="291"/>
         <source>Updates available</source>
-        <translation type="unfinished"/>
+        <translation>Eguneraketak prest </translation>
     </message>
     <message>
         <location filename="options.ui" line="353"/>
         <source>Advanced</source>
-        <translation type="unfinished"/>
+        <translation>Aurreratuta</translation>
     </message>
     <message>
         <location filename="options.ui" line="400"/>
@@ -889,7 +889,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="437"/>
         <source>X Terminal Emulator command</source>
-        <translation type="unfinished"/>
+        <translation>X terminal emuladorearen komandua</translation>
     </message>
     <message>
         <location filename="options.ui" line="453"/>
@@ -959,7 +959,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="194"/>
         <source>Start</source>
-        <translation type="unfinished"/>
+        <translation>Hasi</translation>
     </message>
     <message>
         <location filename="options.ui" line="366"/>

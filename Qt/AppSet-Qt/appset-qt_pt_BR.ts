@@ -261,7 +261,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="763"/>
         <source>Extra Info</source>
-        <translation>Info. Extras</translation>
+        <translation>Informações Adicionais</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="780"/>
@@ -271,7 +271,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="786"/>
         <source>System files</source>
-        <translation>Pac. do Sistema</translation>
+        <translation>Pacotes do Sistema</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1498"/>
@@ -388,7 +388,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="2135"/>
         <source>Run internally to AppSet</source>
-        <translation>Executar AppSet internamente</translation>
+        <translation>Executar internamente no AppSet</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="2195"/>
@@ -563,7 +563,7 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="357"/>
         <location filename="mainwindow.cpp" line="3104"/>
         <source>To enable external packages support you have to install</source>
-        <translation>Para ativar os pacotes de suporte externos você tem que instalá-los</translation>
+        <translation>Para ativar o suporte a pacotes externos você tem que instalá-lo</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="399"/>
@@ -578,17 +578,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="705"/>
         <source>Are you sure to stop current operations?</source>
-        <translation>Você tem certeza em parar as operações atuais?</translation>
+        <translation>Você tem certeza que quer interromper as operações atuais?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="773"/>
         <source>Package files</source>
-        <translation>Arquivos do pacote</translation>
+        <translation>Arquivos de pacote</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="797"/>
         <source>Error loading the specified package file!</source>
-        <translation>Erro ao carregar o arquivo do pacote especificado!</translation>
+        <translation>Erro ao carregar o arquivo de pacote especificado!</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="798"/>
@@ -755,7 +755,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="2090"/>
         <source>(%1 must be installed on your system!)</source>
-        <translation>(%1 deve ser instalado em seu sistema!)</translation>
+        <translation>(%1 deve ser instalado no seu sistema!)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="2278"/>
@@ -849,7 +849,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="169"/>
         <source>Load packages homepages</source>
-        <translation>Carregar pacotes</translation>
+        <translation>Carregar sites dos pacotes</translation>
     </message>
     <message>
         <location filename="options.ui" line="186"/>

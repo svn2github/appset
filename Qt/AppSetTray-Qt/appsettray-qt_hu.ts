@@ -40,18 +40,19 @@
     <message>
         <location filename="trayicon.cpp" line="164"/>
         <source>There are updates for:</source>
-        <translation type="unfinished"/>
+        <translation>Frissítsék elérhetőek:</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="164"/>
         <source>There is an update for:</source>
-        <translation type="unfinished"/>
+        <translation>Frissítés érhető el:</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="174"/>
         <source>
 And others...</source>
-        <translation type="unfinished"/>
+        <translation>⏎
+És mások...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="177"/>
