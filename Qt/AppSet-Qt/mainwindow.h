@@ -309,7 +309,6 @@ public slots:
     void comTimeFilter();
 
     void refresh();
-    void refreshCom();
 
     void opFinished();
 

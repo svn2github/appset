@@ -340,9 +340,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
         connect(timerUpdateCom,SIGNAL(timeout()),SLOT(refreshCom()));
 
-        ui->comContinue->setHidden(true);
-
-        connect(ui->comContinueButton,SIGNAL(clicked()),qApp,SLOT(quit()));
         connect(ui->lineEditCommunity,SIGNAL(returnPressed()),SLOT(comTimeFilter()));
         connect(ui->comSearch,SIGNAL(clicked()),SLOT(comTimeFilter()));
         connect(ui->comClear,SIGNAL(clicked()),SLOT(clearComLine()));
@@ -590,7 +587,6 @@ void MainWindow::outUpPrivileged(int out){
 void MainWindow::outComPrivileged(int out){
     this->setEnabled(true);
 
-    refreshCom();
     comContinued();
 
     QFile::remove("/tmp/ascom");
@@ -723,9 +719,7 @@ void MainWindow::clearComLine(){
 }
 
 void MainWindow::comContinued(){
-    ui->comContinue->setHidden(true);
     ui->mainToolBar->setVisible(true);
-    ui->comWait->setVisible(true);
     ui->stacked->setCurrentIndex(0);
 
     merging=false;
@@ -736,31 +730,6 @@ void MainWindow::comContinued(){
 
 void MainWindow::comInfoRetrieved(AS::Package *pkg){
     if(pkg) ui->webView_2->setUrl(QUrl(pkg->getURL().c_str()));
-}
-
-#include <QScrollBar>
-void MainWindow::refreshCom(){
-    QStringList logs;
-    QFile logFile;
-    QByteArray preLog;
-
-#ifdef unix
-    if(QFile::exists("/var/log/appset.log")){
-        logFile.setFileName("/var/log/appset.log");
-#endif
-        logFile.open(QFile::ReadOnly);
-        while(!logFile.atEnd()){
-            preLog = logFile.readLine();
-            if(preLog.size()) logs.append(preLog);
-            if(logs.size()>60)logs.removeFirst();
-        }        
-
-        if(logs.size()) ui->backOut_2->setText(logs.join("\n"));
-
-
-        QScrollBar *bar = ui->backOut_2->verticalScrollBar();
-        bar->setValue(bar->maximum());
-    }
 }
 
 #include <QFileDialog>
@@ -862,10 +831,10 @@ void MainWindow::showOptions(){
             ui->newsGroup->hide();
         }
         loadHomes = opt.loadHomes;
-        bool homeWidged = ui->extraInfoGroupBox->indexOf(ui->webView)!=-1;
+        bool homeWidged = ui->extraInfoGroupBox->indexOf(ui->extraInfoTabWidgetPage1)!=-1;
         if(!loadHomes){
             if(homeWidged) ui->extraInfoGroupBox->removeTab(0);
-        }else if(!homeWidged) ui->extraInfoGroupBox->insertTab(0,ui->webView,tr("Homepage"));
+        }else if(!homeWidged) ui->extraInfoGroupBox->insertTab(0,ui->extraInfoTabWidgetPage1,tr("Homepage"));
         this->xTermCmd=opt.xTermCmd;
 
         QFile helperDelay("/tmp/ashdelay.tmp");
@@ -1738,7 +1707,6 @@ void MainWindow::comCommon(int op){
     timerUpdateCom->start(150);
 
     ui->mainToolBar->setHidden(true);
-    ui->comWait->setVisible(true);
 
     ((AS::QTNIXEngine*)as)->initializeBatch();
 
@@ -3070,6 +3038,7 @@ void MainWindow::addRows(bool checked){
     QStringList repos(repoStats.keys());
     repos.sort();
     ui->repoFilter->clear();
+    ui->repoFilter->addItem(tr("All"));
     ui->repoFilter->addItems(repos);
     ui->repoFilter->setItemText(ui->repoFilter->findText("NO INFO"),((AS::QTNIXEngine*)as)->getCommunityName().c_str());
 

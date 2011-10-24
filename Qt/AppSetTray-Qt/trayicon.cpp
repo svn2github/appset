@@ -179,6 +179,7 @@ bool compareRepos(Package *p1, Package *p2){
 #include <cctype>
 void TrayIcon::checkUps(){
     bool running = this->running;
+
     if(!running){
         Package *pp=new Package(true);
         pp->setName("");
@@ -220,6 +221,8 @@ void TrayIcon::checkUps(){
             setIcon(QIcon(":general/appset.png"));
 
             setToolTip(tr("No updates available"));
+
+            upgradables = 0;
         }        
 
     }
