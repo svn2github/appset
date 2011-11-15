@@ -21,14 +21,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define REPOCONF_H
 
 #include <QAbstractTableModel>
-#include <QQueue>
+#include <QList>
 #include "repoentry.h"
 
 class RepoConf : public QAbstractTableModel {
     Q_OBJECT
 
 private:
-    QQueue<RepoEntry> entries;
+    QList<RepoEntry> entries;
     QStringList preamble;
 
     QString repoConfFilePath;    

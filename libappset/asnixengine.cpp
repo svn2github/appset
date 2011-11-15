@@ -125,7 +125,7 @@ int AS::NIXEngine::loadConfigFile(const char *path, StrMap *params, int fErrorRe
 
 int AS::NIXEngine::execCmd(string command){
     string buffer;
-    string env = "LANG=en ";
+    string env = "LC_ALL=C ";
     command += " > ";
     command += pipePath;
     command += " 2> ";

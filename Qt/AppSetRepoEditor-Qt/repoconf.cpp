@@ -131,7 +131,7 @@ bool RepoConf::loadConf(const QString &eFile){
 
 void RepoConf::addEntry(const RepoEntry & entry){
     beginInsertRows(QModelIndex(),entries.count(),entries.count());
-    entries.enqueue(entry);
+    entries.push_back(entry);
     endInsertRows();
 }
 
