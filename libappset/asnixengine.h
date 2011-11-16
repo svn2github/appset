@@ -82,6 +82,8 @@ namespace AS{
 
         virtual std::list<std::string>* getFileList(Package *package=0);
 
+        virtual const char* getToolReposDir(){ return commands["tool_repos_dir"].c_str();}
+
         //Community stuff
         virtual bool isCommunityEnabled(){return community_enabled;}
         virtual std::list<Package*>* com_search(std::string pattern);

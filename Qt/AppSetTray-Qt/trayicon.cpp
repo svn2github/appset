@@ -177,13 +177,23 @@ bool compareRepos(Package *p1, Package *p2){
 }
 
 #include <cctype>
+#include <QDir>
 void TrayIcon::checkUps(){
     bool running = this->running;
 
     if(!running){
         Package *pp=new Package(true);
         pp->setName("");
-        std::list<Package*> *pkgs = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
+        std::list<Package*> *pkgs = 0;
+
+        const char* reposDirName = (((AS::QTNIXEngine*)as)->getToolReposDir());
+        if(reposDirName){
+            QDir reposDir(reposDirName);
+            if(reposDir.exists() && reposDir.count()){
+                pkgs = as->checkDeps(pp,true,true);//as->queryLocal(as_QUERY_UPGRADABLE|as_EXPERT_QUERY);
+            }
+        }
+
         if(pkgs && pkgs->size()>1)pkgs->sort(compareRepos);
         delete pp;
 

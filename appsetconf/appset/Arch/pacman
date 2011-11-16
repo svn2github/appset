@@ -22,6 +22,7 @@ check_local_deps=pacman -Up --print-format "%r/%n %s"
 tool_post_up_cmd=pacman-db-upgrade
 tool_rm_repo=*
 get_file_list=pacman -Qlq
+tool_repos_dir=/var/lib/pacman/sync/
 
 query_filter_regexp=^[^ ]+ [^ ]+$
 query_repo_sep=/

@@ -51,8 +51,8 @@ public:
 
     QString toString() const;
 
-    RepoEntry at(int i) const {return ((i<=entries.count())?entries.at(i):RepoEntry());};
-    int count() const {return entries.count();};
+    RepoEntry at(int i) const {return ((i<=entries.count())?entries.at(i):RepoEntry());}
+    int count() const {return entries.count();}
 
     bool detailsExists() const;
 

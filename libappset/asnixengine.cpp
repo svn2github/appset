@@ -34,7 +34,7 @@ using namespace std;
 AS::NIXEngine::NIXEngine(){
     sysinfo.insert(StrPair("distribution",""));
     sysinfo.insert(StrPair("tool",""));
-    sysinfo.insert(StrPair("as_conf_path",""));
+    sysinfo.insert(StrPair("as_conf_path",""));    
 
     commands.insert(StrPair("update",""));
     commands.insert(StrPair("upgrade",""));
@@ -62,6 +62,8 @@ AS::NIXEngine::NIXEngine(){
     commands.insert(StrPair("install_local",""));
     commands.insert(StrPair("local_ext",""));
     commands.insert(StrPair("check_local_deps",""));
+
+    commands.insert(StrPair("tool_repos_dir",""));
 
     regexps.insert(StrPair("query_filter_regexp",""));
     regexps.insert(StrPair("query_repo_sep",""));
