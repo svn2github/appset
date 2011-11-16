@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="hu_HU">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="hu_HU" version="2.0">
 <context>
     <name>About</name>
     <message>
@@ -26,16 +24,16 @@
     <message>
         <location filename="about.ui" line="215"/>
         <source>An advanced and feature rich Package Manager Frontend</source>
-        <translation>Egy fejlett és funkció gazdag Csomagkezelő Előtér Program</translation>
+        <translation>Egy fejlett és funkció gazdag Csomagkezelő Előtét Program</translation>
     </message>
     <message>
         <location filename="about.ui" line="232"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;License: GNU General Public License Version 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;⏎ &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;⏎ p, li { white-space: pre-wrap; }⏎ &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;⏎ &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Licenc: GNU Általános Nyilvános Licenc 2-es verziója&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="about.ui" line="260"/>
@@ -47,9 +45,9 @@ p, li { white-space: pre-wrap; }
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Please use &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt; to report bugs or request new features&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;⏎ &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;⏎ p, li { white-space: pre-wrap; }⏎ &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;⏎ &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Kérem használja a &lt;a href=&quot;http://sourceforge.net/tracker/?group_id=376825&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;http://sourceforge.net/tracker/?group_id=376825&lt;/span&gt;&lt;/a&gt; oldalt a hibák bejelentéséhez és új funkciók igényléséhez&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="about.ui" line="300"/>
@@ -69,7 +67,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="about.ui" line="403"/>
         <source>about:blank</source>
-        <translation type="unfinished"></translation>
+        <translation>about:blank</translation>
     </message>
 </context>
 <context>
@@ -86,7 +84,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="154"/>
-        <location filename="mainwindow.ui" line="1058"/>
+        <location filename="mainwindow.ui" line="1064"/>
         <source>Sections</source>
         <translation>Szekciók</translation>
     </message>
@@ -95,52 +93,52 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="560"/>
         <location filename="mainwindow.ui" line="726"/>
         <location filename="mainwindow.ui" line="885"/>
-        <location filename="mainwindow.ui" line="1089"/>
-        <location filename="mainwindow.ui" line="1092"/>
-        <location filename="mainwindow.cpp" line="2566"/>
-        <location filename="mainwindow.cpp" line="2600"/>
-        <location filename="mainwindow.cpp" line="3041"/>
-        <location filename="mainwindow.cpp" line="3069"/>
+        <location filename="mainwindow.ui" line="1010"/>
+        <location filename="mainwindow.ui" line="1095"/>
+        <location filename="mainwindow.ui" line="1098"/>
+        <location filename="mainwindow.cpp" line="2598"/>
+        <location filename="mainwindow.cpp" line="2632"/>
+        <location filename="mainwindow.cpp" line="3099"/>
         <source>All</source>
         <translation>Összes</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="215"/>
-        <location filename="mainwindow.ui" line="1134"/>
-        <location filename="mainwindow.ui" line="1137"/>
-        <location filename="mainwindow.cpp" line="2452"/>
+        <location filename="mainwindow.ui" line="1140"/>
+        <location filename="mainwindow.ui" line="1143"/>
+        <location filename="mainwindow.cpp" line="2484"/>
         <source>Games</source>
         <translation>Játékok</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="254"/>
-        <location filename="mainwindow.ui" line="1176"/>
-        <location filename="mainwindow.ui" line="1179"/>
-        <location filename="mainwindow.cpp" line="2480"/>
+        <location filename="mainwindow.ui" line="1182"/>
+        <location filename="mainwindow.ui" line="1185"/>
+        <location filename="mainwindow.cpp" line="2512"/>
         <source>Multimedia</source>
         <translation>Multimédia</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="293"/>
-        <location filename="mainwindow.ui" line="1218"/>
-        <location filename="mainwindow.ui" line="1221"/>
-        <location filename="mainwindow.cpp" line="2508"/>
+        <location filename="mainwindow.ui" line="1224"/>
+        <location filename="mainwindow.ui" line="1227"/>
+        <location filename="mainwindow.cpp" line="2540"/>
         <source>Internet</source>
         <translation>Internet</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="332"/>
-        <location filename="mainwindow.ui" line="1260"/>
-        <location filename="mainwindow.ui" line="1263"/>
-        <location filename="mainwindow.cpp" line="2494"/>
+        <location filename="mainwindow.ui" line="1266"/>
+        <location filename="mainwindow.ui" line="1269"/>
+        <location filename="mainwindow.cpp" line="2526"/>
         <source>Office</source>
         <translation>Iroda</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="371"/>
-        <location filename="mainwindow.ui" line="1302"/>
-        <location filename="mainwindow.ui" line="1305"/>
-        <location filename="mainwindow.cpp" line="2466"/>
+        <location filename="mainwindow.ui" line="1308"/>
+        <location filename="mainwindow.ui" line="1311"/>
+        <location filename="mainwindow.cpp" line="2498"/>
         <source>System</source>
         <translation>Rendszer</translation>
     </message>
@@ -151,10 +149,10 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="500"/>
-        <location filename="mainwindow.ui" line="1483"/>
-        <location filename="mainwindow.ui" line="1824"/>
+        <location filename="mainwindow.ui" line="1489"/>
+        <location filename="mainwindow.ui" line="1830"/>
         <source>about:blank</source>
-        <translation type="unfinished"></translation>
+        <translation>about:blank</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="522"/>
@@ -162,31 +160,31 @@ p, li { white-space: pre-wrap; }
         <translation>Statisztikák</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="3064"/>
+        <location filename="mainwindow.cpp" line="3094"/>
         <source>Total</source>
         <translation>Teljes</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="924"/>
-        <location filename="mainwindow.cpp" line="2778"/>
-        <location filename="mainwindow.cpp" line="2936"/>
-        <location filename="mainwindow.cpp" line="3056"/>
-        <location filename="mainwindow.cpp" line="3062"/>
-        <location filename="mainwindow.cpp" line="3066"/>
+        <location filename="mainwindow.cpp" line="2810"/>
+        <location filename="mainwindow.cpp" line="2968"/>
+        <location filename="mainwindow.cpp" line="3086"/>
+        <location filename="mainwindow.cpp" line="3092"/>
+        <location filename="mainwindow.cpp" line="3096"/>
         <source>Installed</source>
         <translation>Telepített</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="904"/>
-        <location filename="mainwindow.cpp" line="2867"/>
-        <location filename="mainwindow.cpp" line="2923"/>
+        <location filename="mainwindow.cpp" line="2899"/>
+        <location filename="mainwindow.cpp" line="2955"/>
         <source>Upgradable</source>
         <translation>Frissíthető</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2816"/>
-        <location filename="mainwindow.cpp" line="2856"/>
-        <location filename="mainwindow.cpp" line="2970"/>
+        <location filename="mainwindow.cpp" line="2848"/>
+        <location filename="mainwindow.cpp" line="2888"/>
+        <location filename="mainwindow.cpp" line="3002"/>
         <source>External</source>
         <translation>Külső</translation>
     </message>
@@ -205,13 +203,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="653"/>
-        <location filename="mainwindow.ui" line="1629"/>
+        <location filename="mainwindow.ui" line="1635"/>
         <source>Search</source>
         <translation>Keresés</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="659"/>
-        <location filename="mainwindow.ui" line="1622"/>
+        <location filename="mainwindow.ui" line="1628"/>
         <source>Search...</source>
         <translation>Keresés...</translation>
     </message>
@@ -242,8 +240,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.ui" line="944"/>
-        <location filename="mainwindow.cpp" line="2702"/>
-        <location filename="mainwindow.cpp" line="2942"/>
+        <location filename="mainwindow.cpp" line="2734"/>
+        <location filename="mainwindow.cpp" line="2974"/>
         <source>Not Installed</source>
         <translation>Telepítetlen</translation>
     </message>
@@ -268,13 +266,13 @@ p, li { white-space: pre-wrap; }
         <translation>Rendszerfájlok</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1492"/>
+        <location filename="mainwindow.ui" line="1498"/>
         <source>Details</source>
         <translation>Részletek</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1425"/>
-        <location filename="mainwindow.cpp" line="837"/>
+        <location filename="mainwindow.ui" line="1431"/>
+        <location filename="mainwindow.cpp" line="868"/>
         <source>Homepage</source>
         <oldsource>Package Homepage</oldsource>
         <translation>Kezdőoldal</translation>
@@ -282,7 +280,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="690"/>
         <source>Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Kulcsok</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="830"/>
@@ -295,106 +293,123 @@ p, li { white-space: pre-wrap; }
         <translation>Állapot</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1536"/>
+        <location filename="mainwindow.ui" line="1542"/>
         <source>Files Tree</source>
         <translation>Fájlfa</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1584"/>
+        <location filename="mainwindow.ui" line="1590"/>
         <source>Upgrade All</source>
         <translation>Mind frissítése</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1595"/>
+        <location filename="mainwindow.ui" line="1601"/>
         <source>List Installed</source>
         <translation>Telepített listázása</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1640"/>
+        <location filename="mainwindow.ui" line="1646"/>
         <source>Clear</source>
         <translation>Törlés</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1667"/>
+        <location filename="mainwindow.ui" line="1673"/>
         <source>Searching...</source>
         <translation>Keresés...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1757"/>
+        <location filename="mainwindow.ui" line="1763"/>
         <source>These packages are produced by users. Use at your own risk!</source>
         <translation>Ezeket a csomagokat felhasználók készítették. Csak saját felelőségre használd</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1847"/>
+        <location filename="mainwindow.ui" line="1853"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;Summary of changes&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Check all the modified packages and then click on Confirm or Cancel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;⏎ &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;⏎ p, li { white-space: pre-wrap; }⏎ &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;⏎ &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;Változások összegzése&lt;/span&gt;&lt;/p&gt;⏎ &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ellenőrizze az összes módosított csomagot, majd kattintson a Megerősítés vagy a Mégse gombra.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1922"/>
+        <location filename="mainwindow.ui" line="1928"/>
         <source>Backend Output:</source>
-        <translation>Backend kimenet</translation>
+        <translation>Háttér program kimenet</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1996"/>
+        <location filename="mainwindow.ui" line="2002"/>
         <source>Stop</source>
         <translation>Megállítás</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2052"/>
+        <location filename="mainwindow.ui" line="2058"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Make your choice: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;⏎ &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;⏎ p, li { white-space: pre-wrap; }⏎ &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;⏎ &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Válasszon: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2085"/>
-        <location filename="mainwindow.cpp" line="2300"/>
-        <location filename="mainwindow.cpp" line="2357"/>
+        <location filename="mainwindow.ui" line="2091"/>
+        <location filename="mainwindow.cpp" line="2332"/>
+        <location filename="mainwindow.cpp" line="2389"/>
         <source>Cancel</source>
         <translation>Vissza</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2114"/>
-        <location filename="mainwindow.cpp" line="976"/>
-        <location filename="mainwindow.cpp" line="980"/>
-        <location filename="mainwindow.cpp" line="1324"/>
-        <location filename="mainwindow.cpp" line="2189"/>
-        <location filename="mainwindow.cpp" line="2192"/>
+        <location filename="mainwindow.ui" line="2120"/>
+        <location filename="mainwindow.cpp" line="1007"/>
+        <location filename="mainwindow.cpp" line="1011"/>
+        <location filename="mainwindow.cpp" line="1355"/>
+        <location filename="mainwindow.cpp" line="2221"/>
+        <location filename="mainwindow.cpp" line="2224"/>
         <source>Confirm</source>
         <translation>Elfogad</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2129"/>
+        <location filename="mainwindow.ui" line="2135"/>
         <source>Run internally to AppSet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="2195"/>
         <source>Backend&apos;s output:</source>
-        <translation type="obsolete">Háttér program kimenete:</translation>
+        <translation>Háttér program kimenete:</translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="2222"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Monospace'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Waiting backend&apos;s initialization...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;⏎ &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;⏎ p, li { white-space: pre-wrap; }⏎ &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Monospace&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;⏎ &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Várakozás a háttér program incializálására...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="2247"/>
         <source>Wait for the end of operations in order to continue ...</source>
-        <translation type="obsolete">Várakozás a műveletek végére, a folytatás érdekében...</translation>
+        <translation>Várakozás a műveletek végére, a folytatás érdekében...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1277"/>
+        <location filename="mainwindow.ui" line="2274"/>
+        <source>Read the backend&apos;s output and click Continue</source>
+        <translation>Olvassa el a háttér program a kimenet és kattintson a Tovább gombra</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="2297"/>
+        <location filename="mainwindow.cpp" line="1308"/>
         <source>Continue</source>
         <translation>Folytatás</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2220"/>
+        <location filename="mainwindow.ui" line="2361"/>
         <source>About Qt...</source>
         <translation>Névjegy: Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="2229"/>
+        <location filename="mainwindow.ui" line="2370"/>
         <source>About AppSet</source>
         <translation>Névjegy: AppSet</translation>
     </message>
@@ -408,8 +423,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.ui" line="1002"/>
         <location filename="mainwindow.cpp" line="71"/>
-        <location filename="mainwindow.cpp" line="1616"/>
-        <location filename="mainwindow.cpp" line="2241"/>
+        <location filename="mainwindow.cpp" line="1647"/>
+        <location filename="mainwindow.cpp" line="2273"/>
         <source>Repository</source>
         <translation>Tároló</translation>
     </message>
@@ -422,14 +437,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="mainwindow.cpp" line="71"/>
         <location filename="mainwindow.cpp" line="315"/>
-        <location filename="mainwindow.cpp" line="1613"/>
+        <location filename="mainwindow.cpp" line="1644"/>
         <source>Installed Version</source>
         <translation>Telepített verzió</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="71"/>
         <location filename="mainwindow.cpp" line="315"/>
-        <location filename="mainwindow.cpp" line="1614"/>
+        <location filename="mainwindow.cpp" line="1645"/>
         <source>Last Version</source>
         <translation>Utolsó verzió</translation>
     </message>
@@ -465,21 +480,21 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="mainwindow.cpp" line="155"/>
-        <location filename="mainwindow.cpp" line="433"/>
-        <location filename="mainwindow.cpp" line="435"/>
-        <location filename="mainwindow.cpp" line="3010"/>
+        <location filename="mainwindow.cpp" line="436"/>
+        <location filename="mainwindow.cpp" line="438"/>
+        <location filename="mainwindow.cpp" line="3042"/>
         <source>Clean cache</source>
         <translation>Gyorsítótár törlése</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="158"/>
-        <location filename="mainwindow.cpp" line="3004"/>
+        <location filename="mainwindow.cpp" line="3036"/>
         <source>Mark all upgrades</source>
         <translation>Minden frissítés kijelölése</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="161"/>
-        <location filename="mainwindow.cpp" line="740"/>
+        <location filename="mainwindow.cpp" line="771"/>
         <source>Open local package</source>
         <translation>Helyi csomag megnyitása</translation>
     </message>
@@ -524,278 +539,278 @@ p, li { white-space: pre-wrap; }
         <translation>Cím</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="354"/>
-        <location filename="mainwindow.cpp" line="3074"/>
+        <location filename="mainwindow.cpp" line="357"/>
+        <location filename="mainwindow.cpp" line="3104"/>
         <source>To enable external packages support you have to install</source>
         <translation>A külső csomag támogatás engedélyezéséhez telepíteni kell:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="396"/>
+        <location filename="mainwindow.cpp" line="399"/>
         <source>Are you sure to clean the cache?</source>
         <translation>Biztos, hogy törli a gyorsítótárat</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="536"/>
+        <location filename="mainwindow.cpp" line="539"/>
         <source>No X Terminal Emulator configured correctly. Install %1 or change the appropriate option.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="701"/>
+        <location filename="mainwindow.cpp" line="705"/>
         <source>Are you sure to stop current operations?</source>
         <translation>Biztos megállítja a jelenlegi műveletet? </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="742"/>
+        <location filename="mainwindow.cpp" line="773"/>
         <source>Package files</source>
         <translation>Csomag fájlok</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="766"/>
+        <location filename="mainwindow.cpp" line="797"/>
         <source>Error loading the specified package file!</source>
         <translation>Nem sikerült betölteni a megadott csomag fájlt!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="767"/>
+        <location filename="mainwindow.cpp" line="798"/>
         <source>The file</source>
-        <translation>A</translation>
+        <translation>A(z)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="767"/>
+        <location filename="mainwindow.cpp" line="798"/>
         <source>doesn&apos;t seems to be a valid package!</source>
         <translation>fájl nem tűnik érvényes csomagnak!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1069"/>
-        <location filename="mainwindow.cpp" line="1127"/>
+        <location filename="mainwindow.cpp" line="1100"/>
+        <location filename="mainwindow.cpp" line="1158"/>
         <source>Waiting others...</source>
         <translation>Várakozás másokra...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1080"/>
-        <location filename="mainwindow.cpp" line="1142"/>
+        <location filename="mainwindow.cpp" line="1111"/>
+        <location filename="mainwindow.cpp" line="1173"/>
         <source>Installing...</source>
         <translation>Telepítés...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1265"/>
+        <location filename="mainwindow.cpp" line="1296"/>
         <source>Errors during operations!</source>
         <translation>Hibák a műveletek során!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1265"/>
+        <location filename="mainwindow.cpp" line="1296"/>
         <source>Success!</source>
         <translation>Siker!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1266"/>
+        <location filename="mainwindow.cpp" line="1297"/>
         <source>Do you want to see operations logs?</source>
         <translation>Szeretné látni művelet naplót?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1266"/>
-        <location filename="mainwindow.cpp" line="1302"/>
+        <location filename="mainwindow.cpp" line="1297"/>
+        <location filename="mainwindow.cpp" line="1333"/>
         <source>All operations completed successfully!</source>
         <translation>Minden művelet sikeresen befejeződött!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1305"/>
-        <location filename="mainwindow.cpp" line="1723"/>
+        <location filename="mainwindow.cpp" line="1336"/>
+        <location filename="mainwindow.cpp" line="1755"/>
         <source>Press Enter to continue</source>
         <translation>Nyomjon Entert a folytatáshoz</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1615"/>
-        <location filename="mainwindow.cpp" line="2244"/>
+        <location filename="mainwindow.cpp" line="1646"/>
+        <location filename="mainwindow.cpp" line="2276"/>
         <source>Size</source>
         <translation>Méret</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1617"/>
-        <location filename="mainwindow.cpp" line="2253"/>
+        <location filename="mainwindow.cpp" line="1648"/>
+        <location filename="mainwindow.cpp" line="2285"/>
         <source>Required by</source>
-        <translation type="unfinished"></translation>
+        <translation>Szükséges által</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1617"/>
-        <location filename="mainwindow.cpp" line="2250"/>
+        <location filename="mainwindow.cpp" line="1648"/>
+        <location filename="mainwindow.cpp" line="2282"/>
         <source>Requires</source>
-        <translation type="unfinished"></translation>
+        <translation>Szükséges</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1618"/>
+        <location filename="mainwindow.cpp" line="1649"/>
         <source>Close</source>
         <translation>Bezárás</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1619"/>
-        <location filename="mainwindow.cpp" line="2297"/>
-        <location filename="mainwindow.cpp" line="2355"/>
+        <location filename="mainwindow.cpp" line="1650"/>
+        <location filename="mainwindow.cpp" line="2329"/>
+        <location filename="mainwindow.cpp" line="2387"/>
         <source>Install</source>
         <translation>Telepítés</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1620"/>
-        <location filename="mainwindow.cpp" line="2299"/>
+        <location filename="mainwindow.cpp" line="1651"/>
+        <location filename="mainwindow.cpp" line="2331"/>
         <source>Upgrade</source>
         <translation>Frissítés</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1621"/>
-        <location filename="mainwindow.cpp" line="2298"/>
-        <location filename="mainwindow.cpp" line="2356"/>
+        <location filename="mainwindow.cpp" line="1652"/>
+        <location filename="mainwindow.cpp" line="2330"/>
+        <location filename="mainwindow.cpp" line="2388"/>
         <source>Remove</source>
         <translation>Eltávolítás</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1678"/>
+        <location filename="mainwindow.cpp" line="1709"/>
         <source>Are you sure to upgrade ALL external packages?</source>
         <translation>Biztos benne, hogy frissít MINDEN külső csomagot?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1766"/>
-        <location filename="mainwindow.cpp" line="1820"/>
-        <location filename="mainwindow.cpp" line="1855"/>
-        <location filename="mainwindow.cpp" line="1944"/>
-        <location filename="mainwindow.cpp" line="2032"/>
-        <location filename="mainwindow.cpp" line="2041"/>
+        <location filename="mainwindow.cpp" line="1798"/>
+        <location filename="mainwindow.cpp" line="1852"/>
+        <location filename="mainwindow.cpp" line="1887"/>
+        <location filename="mainwindow.cpp" line="1976"/>
+        <location filename="mainwindow.cpp" line="2064"/>
+        <location filename="mainwindow.cpp" line="2073"/>
         <source>Pending changes:</source>
         <translation>Függőben lévő változások:</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1788"/>
+        <location filename="mainwindow.cpp" line="1820"/>
         <source>Some installed packages require</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1789"/>
+        <location filename="mainwindow.cpp" line="1821"/>
         <source>Do you want to proceed anyway (removing them too)?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1869"/>
+        <location filename="mainwindow.cpp" line="1901"/>
         <source>These selected for install packages require</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1870"/>
+        <location filename="mainwindow.cpp" line="1902"/>
         <source>Do you want to proceed anyway (clearing them too)?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1912"/>
+        <location filename="mainwindow.cpp" line="1944"/>
         <source>These packages were selected as dependencies of</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1913"/>
+        <location filename="mainwindow.cpp" line="1945"/>
         <source>Do you want to clear them too?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1958"/>
+        <location filename="mainwindow.cpp" line="1990"/>
         <source>These selected for removal packages are required by</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1959"/>
+        <location filename="mainwindow.cpp" line="1991"/>
         <source>Do you want to proceed anyway (canceling their removal too)?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2001"/>
+        <location filename="mainwindow.cpp" line="2033"/>
         <source>These packages were selected for removal because they need</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2002"/>
+        <location filename="mainwindow.cpp" line="2034"/>
         <source>Do you want to clear their removal too?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2053"/>
+        <location filename="mainwindow.cpp" line="2085"/>
         <source>Run externally with %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2058"/>
+        <location filename="mainwindow.cpp" line="2090"/>
         <source>(%1 must be installed on your system!)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2246"/>
+        <location filename="mainwindow.cpp" line="2278"/>
         <source>URL</source>
         <translation>Webcím</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2247"/>
+        <location filename="mainwindow.cpp" line="2279"/>
         <source>(Watch the full site)</source>
         <translation>(Teljes oldal megtekintése)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2401"/>
+        <location filename="mainwindow.cpp" line="2433"/>
         <source>UPDATING DB: </source>
         <translation>Adatbázis frissítése: </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2413"/>
+        <location filename="mainwindow.cpp" line="2445"/>
         <source>DB UPDATED!</source>
         <translation>Adatbázis frissítve</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2658"/>
+        <location filename="mainwindow.cpp" line="2690"/>
         <source>Loading packages...</source>
         <translation>Csomagok betöltése...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2743"/>
+        <location filename="mainwindow.cpp" line="2775"/>
         <source>PARSING INSTALLED: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2748"/>
+        <location filename="mainwindow.cpp" line="2780"/>
         <source>Searching correspondeces...</source>
         <translation>Egyezések keresése...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2800"/>
+        <location filename="mainwindow.cpp" line="2832"/>
         <source>Installed (external)</source>
         <translation>Telepített (külső)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="2843"/>
+        <location filename="mainwindow.cpp" line="2875"/>
         <source>Checking upgradables</source>
         <translation>Frissítések ellenőrzése</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="3055"/>
-        <location filename="mainwindow.cpp" line="3065"/>
+        <location filename="mainwindow.cpp" line="3085"/>
+        <location filename="mainwindow.cpp" line="3095"/>
         <source>Packages</source>
         <translation>Csomagok</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="3088"/>
+        <location filename="mainwindow.cpp" line="3118"/>
         <source>The main backend</source>
         <translation>A fő háttér program, </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="3089"/>
+        <location filename="mainwindow.cpp" line="3119"/>
         <source>is not up to date. You have to upgrade it in order to continue with other operations.</source>
         <translation>nem naprakész. Frissíteni kell, hogy folytathassa a többi műveletet.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="3090"/>
+        <location filename="mainwindow.cpp" line="3120"/>
         <source>Do you want to proceed now?</source>
         <translation>Szeretné folytatni most?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1209"/>
+        <location filename="mainwindow.cpp" line="1240"/>
         <source>Running backend&apos;s post upgrade command</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="mainwindow.h" line="437"/>
+        <location filename="mainwindow.h" line="438"/>
         <source>Backend question</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -818,7 +833,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="186"/>
         <source>First Page</source>
-        <translation>Elsőlap</translation>
+        <translation>Első lap</translation>
     </message>
     <message>
         <location filename="options.ui" line="203"/>
@@ -848,7 +863,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="400"/>
         <source>Answers to backend&apos;s questions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="options.ui" line="437"/>
@@ -888,7 +903,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="47"/>
         <source>Start Fullscreen</source>
-        <translation>Teljesképernyőben indítás</translation>
+        <translation>Teljes képernyőben indítás</translation>
     </message>
     <message>
         <location filename="options.ui" line="68"/>
@@ -933,7 +948,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="options.ui" line="383"/>
         <source>Preload packages (otherwise load/unload when show/hide)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="options.ui" line="238"/>
