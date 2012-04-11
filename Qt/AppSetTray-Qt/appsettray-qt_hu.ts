@@ -51,20 +51,20 @@
         <location filename="trayicon.cpp" line="174"/>
         <source>
 And others...</source>
-        <translation>⏎
+        <translation>
 És mások...</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="177"/>
         <location filename="trayicon.cpp" line="180"/>
         <source> updates available!</source>
-        <translation>  frissítések elérhetőek!</translation>
+        <translation> frissítés elérhető!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="177"/>
         <location filename="trayicon.cpp" line="180"/>
         <source> update available!</source>
-        <translation> frissítések elérhetőek!</translation>
+        <translation> frissítés elérhető!</translation>
     </message>
     <message>
         <location filename="trayicon.cpp" line="184"/>
